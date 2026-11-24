@@ -1,0 +1,15 @@
+{
+    "version":  "1.2.29",
+    "notes":  "lumabar 1.2.29",
+    "pub_date":  "2026-11-23T18:19:48Z",
+    "platforms":  {
+                      "windows-x86_64":  {
+                                             "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOVRMSHZZWGZ6RklJdUlxdlRtaDVwM3M3RUYyL21TcVpGVDl1MS96ang4dk5NQmg5YnVBejhzbGR5dkZpUkxSQ0phT09WYS9qbDRGN2ZoQ3ZNRVI2UzdUcldXcVFJMHc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDU3NTM1CWZpbGU6bHVtYWJhcl8xLjIuMjlfeDY0X2VuLVVTLm1zaQpsVjJ6ZHVHWnhIa2d4Z0szclEwNFZpck9BakoyZksyQlExaG9ORDc5N3RCbm9VcGxUWXdoSGIvWTJYUFZVV1RPNjNQczBLYkk4M0xucWg5US9HQVNCZz09Cg==",
+                                             "url":  "https://github.com/Acadbek/lumabar/releases/download/v1.2.29/lumabar-1.2.29-64-bit.msi"
+                                         },
+                      "windows-i686":  {
+                                           "signature":  "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTOVRMSHZZWGZ6RlB3RXBYWjRBSDFHcXlSTHNFNlpJWGlJN2hYWEQxTEFVbXhQU210WUZxR1BOQ3lyVmMvVTJjaVBBOVg3ZFVBREk4WWJtT29BVVFkeG96c25yUGZocXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDU3OTg3CWZpbGU6bHVtYWJhcl8xLjIuMjlfeDg2X2VuLVVTLm1zaQpqSzZxVXE2a2w5cGVMN0VGK1VpdVM4S2U2NmNRT2lyY2Nqc2NGa0J4Mi9oQldmdURTUEVQVzdvenJwR2xrckxGdU11eE5wSWY2Q0NMalNWRE5CNVlDQT09Cg==",
+                                           "url":  "https://github.com/Acadbek/lumabar/releases/download/v1.2.29/lumabar-1.2.29-32-bit.msi"
+                                       }
+                  }
+}

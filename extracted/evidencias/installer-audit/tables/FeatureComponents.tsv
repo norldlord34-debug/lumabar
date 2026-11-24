@@ -1,0 +1,10 @@
+Feature_	Component_
+s38	s72
+FeatureComponents	Feature_	Component_
+ShortcutsFeature	ApplicationShortcutDesktop
+ShortcutsFeature	Path
+ShortcutsFeature	CMP_UninstallShortcut
+ShortcutsFeature	ApplicationShortcut
+MainProgram	RegistryEntries
+MainProgram	I951db590be1f486c97a0a65b5de97b08
+Environment	Path

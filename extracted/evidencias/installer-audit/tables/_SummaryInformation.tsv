@@ -1,0 +1,17 @@
+PropertyId	Value
+i2	l255
+_SummaryInformation	PropertyId
+1	1252
+2	Installation Database
+3	lumabar
+4	lumabar
+5	Installer
+6	This installer database contains the logic and data required to install lumabar.
+7	x64;0
+9	{FB8326B8-1501-4C2E-9624-DF1D7BBF2063}
+12	2026/11/23 18:12:04
+13	2026/11/23 18:12:04
+14	450
+15	2
+18	Windows Installer XML Toolset (3.14.1.8722)
+19	2

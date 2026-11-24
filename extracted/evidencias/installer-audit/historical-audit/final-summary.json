@@ -1,0 +1,22 @@
+{
+  "installers": 82,
+  "releases": 41,
+  "verified_bytes": 720863232,
+  "digest_matches": 82,
+  "errors": [],
+  "pe_files": 123,
+  "native_applications": 82,
+  "resource_instances": 1904,
+  "unique_saved_text_objects": 195,
+  "saved_text_bytes": 102273846,
+  "source_or_symbol_flags": [],
+  "source_map_or_source_asset_flags": [],
+  "additional_non_pe_files": [],
+  "earliest": "v0.1.9",
+  "latest": "v1.2.29",
+  "scope_limitations": [
+    "Static extraction, known metadata and pattern checks; not exhaustive semantic analysis of every historical executable.",
+    "No historical installer or application was executed.",
+    "No claim of recovering complete original Rust source or a recompilable original repository."
+  ]
+}

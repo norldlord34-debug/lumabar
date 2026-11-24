@@ -1,0 +1,1801 @@
+[
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20586,
+    "callee": "L",
+    "command": "capture_glass_frame",
+    "context": "sync function qs(e, t, n, r, i, a) {\n  return Js(\n    await L(`capture_glass_frame`, {\n      x: e,\n      y: t,\n      width: n,\n      height: r,\n      fresh: i,\n      live: a,\n    }),\n  );\n}\nfunction Js(e) {\n  let [t = 0, n = 2] = e.byteLength >= 8 ? new Int32Array(e, 0, 2) : [],\n    r = {\n      frame: null,\n      rustM"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20618,
+    "callee": "L",
+    "command": "glass_release_hold",
+    "context": "* l * 4) },\n      }),\n    r\n  );\n}\nfunction Ys() {\n  return L(`glass_release_hold`);\n}\nfunction Xs(e) {\n  return L(`glass_set_recording_mode`, { on: e });\n}\nfunction Zs(e, t, n, r, i = 4) {\n  return L(`capture_backdrop`, { x: e, y: t, width: n, height: r, scale: i });\n}\nfunction Qs() {\n  return L(`glass_backdrop_can_sl"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20621,
+    "callee": "L",
+    "command": "glass_set_recording_mode",
+    "context": "return L(`glass_release_hold`);\n}\nfunction Xs(e) {\n  return L(`glass_set_recording_mode`, { on: e });\n}\nfunction Zs(e, t, n, r, i = 4) {\n  return L(`capture_backdrop`, { x: e, y: t, width: n, height: r, scale: i });\n}\nfunction Qs() {\n  return L(`glass_backdrop_can_sleep`);\n}\nfunction $s(e) {\n  return z(`glass-backdrop-"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20624,
+    "callee": "L",
+    "command": "capture_backdrop",
+    "context": "e`, { on: e });\n}\nfunction Zs(e, t, n, r, i = 4) {\n  return L(`capture_backdrop`, { x: e, y: t, width: n, height: r, scale: i });\n}\nfunction Qs() {\n  return L(`glass_backdrop_can_sleep`);\n}\nfunction $s(e) {\n  return z(`glass-backdrop-dirty`, (t) => e(t.payload === !0));\n}\nvar ec = (e) =>\n    e.style === `white` || (e.s"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20627,
+    "callee": "L",
+    "command": "glass_backdrop_can_sleep",
+    "context": "idth: n, height: r, scale: i });\n}\nfunction Qs() {\n  return L(`glass_backdrop_can_sleep`);\n}\nfunction $s(e) {\n  return z(`glass-backdrop-dirty`, (t) => e(t.payload === !0));\n}\nvar ec = (e) =>\n    e.style === `white` || (e.style === `clear` && e.clearTiles === `white`),\n  tc = [`black`, `white`, `glass`, `iosGlass`, `mi"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20769,
+    "callee": "L",
+    "command": "get_media_state",
+    "context": "(t) => {\n    e(t.payload);\n  });\n}\nfunction uc() {\n  return L(`get_media_state`);\n}\nfunction dc() {\n  return L(`media_play_pause`);\n}\nfunction fc() {\n  return L(`media_pause`);\n}\nfunction pc() {\n  return L(`media_play`);\n}\nfunction mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunct"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20772,
+    "callee": "L",
+    "command": "media_play_pause",
+    "context": "{\n  return L(`get_media_state`);\n}\nfunction dc() {\n  return L(`media_play_pause`);\n}\nfunction fc() {\n  return L(`media_pause`);\n}\nfunction pc() {\n  return L(`media_play`);\n}\nfunction mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunction Y(e) {\n  return e instanceof Error ? e.messag"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20775,
+    "callee": "L",
+    "command": "media_pause",
+    "context": "\n  return L(`media_play_pause`);\n}\nfunction fc() {\n  return L(`media_pause`);\n}\nfunction pc() {\n  return L(`media_play`);\n}\nfunction mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunction Y(e) {\n  return e instanceof Error ? e.message : typeof e == `string` ? e : String(e);\n}\nvar gc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20778,
+    "callee": "L",
+    "command": "media_play",
+    "context": "c() {\n  return L(`media_pause`);\n}\nfunction pc() {\n  return L(`media_play`);\n}\nfunction mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunction Y(e) {\n  return e instanceof Error ? e.message : typeof e == `string` ? e : String(e);\n}\nvar gc = i()((e) => ({\n    state: null,\n    actionE"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20781,
+    "callee": "L",
+    "command": "media_next",
+    "context": "pc() {\n  return L(`media_play`);\n}\nfunction mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunction Y(e) {\n  return e instanceof Error ? e.message : typeof e == `string` ? e : String(e);\n}\nvar gc = i()((e) => ({\n    state: null,\n    actionError: null,\n    playPause: async () => {\n   "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20784,
+    "callee": "L",
+    "command": "media_previous",
+    "context": "mc() {\n  return L(`media_next`);\n}\nfunction hc() {\n  return L(`media_previous`);\n}\nfunction Y(e) {\n  return e instanceof Error ? e.message : typeof e == `string` ? e : String(e);\n}\nvar gc = i()((e) => ({\n    state: null,\n    actionError: null,\n    playPause: async () => {\n      try {\n        (await dc(), e({ actionErro"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20911,
+    "callee": "L",
+    "command": "open_path",
+    "context": "//www.google.com/search?q={q}`;\nfunction X(e, t) {\n  return L(`open_path`, { target: e, params: t ?? null });\n}\nfunction Oc(e, t) {\n  return L(`jump_list`, { appIds: e, exe: t });\n}\nfunction kc(e) {\n  return L(`open_terminal`, { admin: e });\n}\nfunction Ac() {\n  return L(`quick_access_folders`);\n}\nvar jc = `dock-unpin-a"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20914,
+    "callee": "L",
+    "command": "jump_list",
+    "context": "et: e, params: t ?? null });\n}\nfunction Oc(e, t) {\n  return L(`jump_list`, { appIds: e, exe: t });\n}\nfunction kc(e) {\n  return L(`open_terminal`, { admin: e });\n}\nfunction Ac() {\n  return L(`quick_access_folders`);\n}\nvar jc = `dock-unpin-app`;\nfunction Mc() {\n  return L(`list_pinned_taskbar_apps`);\n}\nvar Nc = `trash-ch"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20917,
+    "callee": "L",
+    "command": "open_terminal",
+    "context": "_list`, { appIds: e, exe: t });\n}\nfunction kc(e) {\n  return L(`open_terminal`, { admin: e });\n}\nfunction Ac() {\n  return L(`quick_access_folders`);\n}\nvar jc = `dock-unpin-app`;\nfunction Mc() {\n  return L(`list_pinned_taskbar_apps`);\n}\nvar Nc = `trash-changed`,\n  Pc = (e) => Fc.test(e),\n  Fc = /\\\\installer\\\\\\{[^\\\\]+\\}\\\\"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20920,
+    "callee": "L",
+    "command": "quick_access_folders",
+    "context": "(`open_terminal`, { admin: e });\n}\nfunction Ac() {\n  return L(`quick_access_folders`);\n}\nvar jc = `dock-unpin-app`;\nfunction Mc() {\n  return L(`list_pinned_taskbar_apps`);\n}\nvar Nc = `trash-changed`,\n  Pc = (e) => Fc.test(e),\n  Fc = /\\\\installer\\\\\\{[^\\\\]+\\}\\\\/i;\nfunction Ic(e) {\n  return L(`installer_stub_programs`, { "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20924,
+    "callee": "L",
+    "command": "list_pinned_taskbar_apps",
+    "context": "rs`);\n}\nvar jc = `dock-unpin-app`;\nfunction Mc() {\n  return L(`list_pinned_taskbar_apps`);\n}\nvar Nc = `trash-changed`,\n  Pc = (e) => Fc.test(e),\n  Fc = /\\\\installer\\\\\\{[^\\\\]+\\}\\\\/i;\nfunction Ic(e) {\n  return L(`installer_stub_programs`, { stubs: e });\n}\nfunction Lc(e) {\n  return L(`pin_dropped_app`, { path: e });\n}\nfun"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20930,
+    "callee": "L",
+    "command": "installer_stub_programs",
+    "context": "c = /\\\\installer\\\\\\{[^\\\\]+\\}\\\\/i;\nfunction Ic(e) {\n  return L(`installer_stub_programs`, { stubs: e });\n}\nfunction Lc(e) {\n  return L(`pin_dropped_app`, { path: e });\n}\nfunction Rc(e, t, n) {\n  return L(`unpin_taskbar_app`, {\n    targetPath: e,\n    args: t ?? null,\n    shortcut: n ?? null,\n  });\n}\nfunction zc(e) {\n  re"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20933,
+    "callee": "L",
+    "command": "pin_dropped_app",
+    "context": "_stub_programs`, { stubs: e });\n}\nfunction Lc(e) {\n  return L(`pin_dropped_app`, { path: e });\n}\nfunction Rc(e, t, n) {\n  return L(`unpin_taskbar_app`, {\n    targetPath: e,\n    args: t ?? null,\n    shortcut: n ?? null,\n  });\n}\nfunction zc(e) {\n  return X(`ms-settings:${e}`);\n}\nfunction Bc() {\n  return L(`recycle_bin_in"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20936,
+    "callee": "L",
+    "command": "unpin_taskbar_app",
+    "context": "opped_app`, { path: e });\n}\nfunction Rc(e, t, n) {\n  return L(`unpin_taskbar_app`, {\n    targetPath: e,\n    args: t ?? null,\n    shortcut: n ?? null,\n  });\n}\nfunction zc(e) {\n  return X(`ms-settings:${e}`);\n}\nfunction Bc() {\n  return L(`recycle_bin_info`);\n}\nfunction Vc() {\n  return L(`recycle_bin_drives`);\n}\nfunction "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20946,
+    "callee": "L",
+    "command": "recycle_bin_info",
+    "context": "\n  return X(`ms-settings:${e}`);\n}\nfunction Bc() {\n  return L(`recycle_bin_info`);\n}\nfunction Vc() {\n  return L(`recycle_bin_drives`);\n}\nfunction Hc() {\n  return L(`empty_recycle_bin`);\n}\nfunction Uc(e) {\n  return L(`recycle_paths`, { paths: e });\n}\nfunction Wc(e) {\n  let t = e.trim();\n  return t\n    ? Gc(t)\n      ? X("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20949,
+    "callee": "L",
+    "command": "recycle_bin_drives",
+    "context": "\n  return L(`recycle_bin_info`);\n}\nfunction Vc() {\n  return L(`recycle_bin_drives`);\n}\nfunction Hc() {\n  return L(`empty_recycle_bin`);\n}\nfunction Uc(e) {\n  return L(`recycle_paths`, { paths: e });\n}\nfunction Wc(e) {\n  let t = e.trim();\n  return t\n    ? Gc(t)\n      ? X(t)\n      : X(Dc.replace(`{q}`, encodeURIComponent("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20952,
+    "callee": "L",
+    "command": "empty_recycle_bin",
+    "context": " return L(`recycle_bin_drives`);\n}\nfunction Hc() {\n  return L(`empty_recycle_bin`);\n}\nfunction Uc(e) {\n  return L(`recycle_paths`, { paths: e });\n}\nfunction Wc(e) {\n  let t = e.trim();\n  return t\n    ? Gc(t)\n      ? X(t)\n      : X(Dc.replace(`{q}`, encodeURIComponent(t)))\n    : Promise.resolve();\n}\nfunction Gc(e) {\n  l"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 20955,
+    "callee": "L",
+    "command": "recycle_paths",
+    "context": " return L(`empty_recycle_bin`);\n}\nfunction Uc(e) {\n  return L(`recycle_paths`, { paths: e });\n}\nfunction Wc(e) {\n  let t = e.trim();\n  return t\n    ? Gc(t)\n      ? X(t)\n      : X(Dc.replace(`{q}`, encodeURIComponent(t)))\n    : Promise.resolve();\n}\nfunction Gc(e) {\n  let t = /^[a-z][a-z0-9+.-]*:\\/\\//i.test(e) || /^www\\."
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21196,
+    "callee": "L",
+    "command": "signals_sync",
+    "context": "}\nvar ol = `signals://events`;\nfunction sl(e, t) {\n  return L(`signals_sync`, { source: e, events: t });\n}\nfunction cl(e, t) {\n  return L(`signals_add`, { source: e, events: t });\n}\nfunction ll(e, t) {\n  return L(`signals_events`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction ul(e, t, n) {\n  return L(`signals"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21199,
+    "callee": "L",
+    "command": "signals_add",
+    "context": ", { source: e, events: t });\n}\nfunction cl(e, t) {\n  return L(`signals_add`, { source: e, events: t });\n}\nfunction ll(e, t) {\n  return L(`signals_events`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction ul(e, t, n) {\n  return L(`signals_claim`, { rule: e, keys: t, cooldownMs: n });\n}\nfunction dl(e) {\n  return z"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21202,
+    "callee": "L",
+    "command": "signals_events",
+    "context": ", { source: e, events: t });\n}\nfunction ll(e, t) {\n  return L(`signals_events`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction ul(e, t, n) {\n  return L(`signals_claim`, { rule: e, keys: t, cooldownMs: n });\n}\nfunction dl(e) {\n  return z(ol, e);\n}\nfunction fl(e, t, n, r) {\n  return L(`focus_log`, {\n    started:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21205,
+    "callee": "L",
+    "command": "signals_claim",
+    "context": "e), to: Math.floor(t) });\n}\nfunction ul(e, t, n) {\n  return L(`signals_claim`, { rule: e, keys: t, cooldownMs: n });\n}\nfunction dl(e) {\n  return z(ol, e);\n}\nfunction fl(e, t, n, r) {\n  return L(`focus_log`, {\n    started: Math.floor(e),\n    secs: Math.round(t),\n    completed: n,\n    taskId: r?.id ?? null,\n    task: r?."
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21211,
+    "callee": "L",
+    "command": "focus_log",
+    "context": ") {\n  return z(ol, e);\n}\nfunction fl(e, t, n, r) {\n  return L(`focus_log`, {\n    started: Math.floor(e),\n    secs: Math.round(t),\n    completed: n,\n    taskId: r?.id ?? null,\n    task: r?.title ?? null,\n  });\n}\nfunction pl(e, t) {\n  return L(`focus_summary`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction ml(e,"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21220,
+    "callee": "L",
+    "command": "focus_summary",
+    "context": "ask: r?.title ?? null,\n  });\n}\nfunction pl(e, t) {\n  return L(`focus_summary`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction ml(e, t) {\n  return L(`focus_stretches`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction hl(e) {\n  return L(`history_append`, { points: e });\n}\nasync function gl(e, t, n) {\n  re"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21223,
+    "callee": "L",
+    "command": "focus_stretches",
+    "context": "or(e), to: Math.floor(t) });\n}\nfunction ml(e, t) {\n  return L(`focus_stretches`, { from: Math.floor(e), to: Math.floor(t) });\n}\nfunction hl(e) {\n  return L(`history_append`, { points: e });\n}\nasync function gl(e, t, n) {\n  return (\n    await L(`history_series`, {\n      series: e,\n      from: Math.floor(t),\n      to: Ma"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21226,
+    "callee": "L",
+    "command": "history_append",
+    "context": "floor(e), to: Math.floor(t) });\n}\nfunction hl(e) {\n  return L(`history_append`, { points: e });\n}\nasync function gl(e, t, n) {\n  return (\n    await L(`history_series`, {\n      series: e,\n      from: Math.floor(t),\n      to: Math.floor(n),\n    })\n  ).map(([e, t]) => ({ at: e, value: t }));\n}\nfunction _l() {\n  return L(`"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21230,
+    "callee": "L",
+    "command": "history_series",
+    "context": ": e });\n}\nasync function gl(e, t, n) {\n  return (\n    await L(`history_series`, {\n      series: e,\n      from: Math.floor(t),\n      to: Math.floor(n),\n    })\n  ).map(([e, t]) => ({ at: e, value: t }));\n}\nfunction _l() {\n  return L(`get_sound_settings`);\n}\nfunction vl(e, t) {\n  return L(`set_sound_settings`, { enabled: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21238,
+    "callee": "L",
+    "command": "get_sound_settings",
+    "context": ", t]) => ({ at: e, value: t }));\n}\nfunction _l() {\n  return L(`get_sound_settings`);\n}\nfunction vl(e, t) {\n  return L(`set_sound_settings`, { enabled: e, tone: t });\n}\nfunction yl(e) {\n  return L(`preview_alert_tone`, { tone: e });\n}\nfunction bl() {\n  L(`play_alert_sound`).catch(() => {});\n}\nvar xl = `pomodoro-settings"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21241,
+    "callee": "L",
+    "command": "set_sound_settings",
+    "context": "urn L(`get_sound_settings`);\n}\nfunction vl(e, t) {\n  return L(`set_sound_settings`, { enabled: e, tone: t });\n}\nfunction yl(e) {\n  return L(`preview_alert_tone`, { tone: e });\n}\nfunction bl() {\n  L(`play_alert_sound`).catch(() => {});\n}\nvar xl = `pomodoro-settings-changed`,\n  Sl = `pomodoro-focus-task`,\n  Cl = (e) => M"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21244,
+    "callee": "L",
+    "command": "preview_alert_tone",
+    "context": "ngs`, { enabled: e, tone: t });\n}\nfunction yl(e) {\n  return L(`preview_alert_tone`, { tone: e });\n}\nfunction bl() {\n  L(`play_alert_sound`).catch(() => {});\n}\nvar xl = `pomodoro-settings-changed`,\n  Sl = `pomodoro-focus-task`,\n  Cl = (e) => Math.min(120, Math.max(1, Math.round(e))),\n  wl = (e) => Math.min(8, Math.max(2"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 21247,
+    "callee": "L",
+    "command": "play_alert_sound",
+    "context": "n L(`preview_alert_tone`, { tone: e });\n}\nfunction bl() {\n  L(`play_alert_sound`).catch(() => {});\n}\nvar xl = `pomodoro-settings-changed`,\n  Sl = `pomodoro-focus-task`,\n  Cl = (e) => Math.min(120, Math.max(1, Math.round(e))),\n  wl = (e) => Math.min(8, Math.max(2, Math.round(e)));\nfunction Tl(e) {\n  return e.mode === `w"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22184,
+    "callee": "L",
+    "command": "get_exchange_rate",
+    "context": "    ],\n      }),\n    })\n  );\n}\nfunction Su(e, t) {\n  return L(`get_exchange_rate`, { base: e, target: t });\n}\nvar Cu = `currency-changed`;\nfunction wu(e, t, n, r) {\n  (Tu.persist.rehydrate(),\n    e({ base: n, target: r, rate: null, error: null }),\n    F(Cu, null).catch(() => {}),\n    t());\n}\nvar Tu = i()(\n    P(\n      "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22644,
+    "callee": "L",
+    "command": "energy_saver_is_on",
+    "context": "ion rd() {\n  return (0, B.useSyncExternalStore)(nd, td);\n}\n(L(`energy_saver_is_on`).then(\n  (e) => ed(e === !0),\n  () => {},\n),\n  z(`energy-saver-changed`, (e) => ed(e.payload === !0)).catch(() => {}));\nfunction id() {\n  return L(`get_radio_states`);\n}\nfunction ad(e, t) {\n  return L(`set_radio_state`, { kind: e, on: t "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22650,
+    "callee": "L",
+    "command": "get_radio_states",
+    "context": "payload === !0)).catch(() => {}));\nfunction id() {\n  return L(`get_radio_states`);\n}\nfunction ad(e, t) {\n  return L(`set_radio_state`, { kind: e, on: t }).catch((t) => {\n    throw (ce(`[toggles] UI ${e} FAILED: ${String(t)}`).catch(() => {}), t);\n  });\n}\nfunction od() {\n  return L(`get_extra_toggle_states`);\n}\nfunction"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22653,
+    "callee": "L",
+    "command": "set_radio_state",
+    "context": "eturn L(`get_radio_states`);\n}\nfunction ad(e, t) {\n  return L(`set_radio_state`, { kind: e, on: t }).catch((t) => {\n    throw (ce(`[toggles] UI ${e} FAILED: ${String(t)}`).catch(() => {}), t);\n  });\n}\nfunction od() {\n  return L(`get_extra_toggle_states`);\n}\nfunction sd(e, t) {\n  return L(`set_extra_toggle_state`, { kin"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22658,
+    "callee": "L",
+    "command": "get_extra_toggle_states",
+    "context": "t)}`).catch(() => {}), t);\n  });\n}\nfunction od() {\n  return L(`get_extra_toggle_states`);\n}\nfunction sd(e, t) {\n  return L(`set_extra_toggle_state`, { kind: e, on: t }).catch((t) => {\n    throw (ce(`[toggles] UI ${e} FAILED: ${String(t)}`).catch(() => {}), t);\n  });\n}\nvar cd = (e, t) =>\n    e.title === t.title && e.det"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22661,
+    "callee": "L",
+    "command": "set_extra_toggle_state",
+    "context": "(`get_extra_toggle_states`);\n}\nfunction sd(e, t) {\n  return L(`set_extra_toggle_state`, { kind: e, on: t }).catch((t) => {\n    throw (ce(`[toggles] UI ${e} FAILED: ${String(t)}`).catch(() => {}), t);\n  });\n}\nvar cd = (e, t) =>\n    e.title === t.title && e.detail === t.detail && e.kind === t.kind,\n  ld = 0,\n  ud = i((e)"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22831,
+    "callee": "L",
+    "command": "list_windows",
+    "context": "s: t, error: n, toggle: i }\n  );\n}\nfunction _d() {\n  return L(`list_windows`);\n}\nfunction vd() {\n  return L(`front_app_window`);\n}\nfunction yd(e) {\n  return z(`windows-changed`, e);\n}\nfunction bd(e) {\n  return L(`focus_window`, { hwnd: e });\n}\nfunction xd(e) {\n  return L(`close_window`, { hwnd: e });\n}\nfunction Sd(e) {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22834,
+    "callee": "L",
+    "command": "front_app_window",
+    "context": "() {\n  return L(`list_windows`);\n}\nfunction vd() {\n  return L(`front_app_window`);\n}\nfunction yd(e) {\n  return z(`windows-changed`, e);\n}\nfunction bd(e) {\n  return L(`focus_window`, { hwnd: e });\n}\nfunction xd(e) {\n  return L(`close_window`, { hwnd: e });\n}\nfunction Sd(e) {\n  return L(`end_task`, { hwnd: e });\n}\nfuncti"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22840,
+    "callee": "L",
+    "command": "focus_window",
+    "context": "return z(`windows-changed`, e);\n}\nfunction bd(e) {\n  return L(`focus_window`, { hwnd: e });\n}\nfunction xd(e) {\n  return L(`close_window`, { hwnd: e });\n}\nfunction Sd(e) {\n  return L(`end_task`, { hwnd: e });\n}\nfunction Cd(e) {\n  return L(`minimize_window`, { hwnd: e });\n}\nfunction wd() {\n  return L(`show_desktop`);\n}\nf"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22843,
+    "callee": "L",
+    "command": "close_window",
+    "context": "L(`focus_window`, { hwnd: e });\n}\nfunction xd(e) {\n  return L(`close_window`, { hwnd: e });\n}\nfunction Sd(e) {\n  return L(`end_task`, { hwnd: e });\n}\nfunction Cd(e) {\n  return L(`minimize_window`, { hwnd: e });\n}\nfunction wd() {\n  return L(`show_desktop`);\n}\nfunction Td() {\n  return L(`open_start_menu`);\n}\nfunction Ed("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22846,
+    "callee": "L",
+    "command": "end_task",
+    "context": "L(`close_window`, { hwnd: e });\n}\nfunction Sd(e) {\n  return L(`end_task`, { hwnd: e });\n}\nfunction Cd(e) {\n  return L(`minimize_window`, { hwnd: e });\n}\nfunction wd() {\n  return L(`show_desktop`);\n}\nfunction Td() {\n  return L(`open_start_menu`);\n}\nfunction Ed() {\n  return L(`open_notification_center`);\n}\nfunction Dd() "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22849,
+    "callee": "L",
+    "command": "minimize_window",
+    "context": "urn L(`end_task`, { hwnd: e });\n}\nfunction Cd(e) {\n  return L(`minimize_window`, { hwnd: e });\n}\nfunction wd() {\n  return L(`show_desktop`);\n}\nfunction Td() {\n  return L(`open_start_menu`);\n}\nfunction Ed() {\n  return L(`open_notification_center`);\n}\nfunction Dd() {\n  return L(`toggle_onscreen_keyboard`);\n}\nfunction Od("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22852,
+    "callee": "L",
+    "command": "show_desktop",
+    "context": "`minimize_window`, { hwnd: e });\n}\nfunction wd() {\n  return L(`show_desktop`);\n}\nfunction Td() {\n  return L(`open_start_menu`);\n}\nfunction Ed() {\n  return L(`open_notification_center`);\n}\nfunction Dd() {\n  return L(`toggle_onscreen_keyboard`);\n}\nfunction Od() {\n  return L(`open_project_menu`);\n}\nfunction kd(e) {\n  retu"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22855,
+    "callee": "L",
+    "command": "open_start_menu",
+    "context": "() {\n  return L(`show_desktop`);\n}\nfunction Td() {\n  return L(`open_start_menu`);\n}\nfunction Ed() {\n  return L(`open_notification_center`);\n}\nfunction Dd() {\n  return L(`toggle_onscreen_keyboard`);\n}\nfunction Od() {\n  return L(`open_project_menu`);\n}\nfunction kd(e) {\n  return L(`raise_window`, { hwnd: e });\n}\nfunction "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22858,
+    "callee": "L",
+    "command": "open_notification_center",
+    "context": "{\n  return L(`open_start_menu`);\n}\nfunction Ed() {\n  return L(`open_notification_center`);\n}\nfunction Dd() {\n  return L(`toggle_onscreen_keyboard`);\n}\nfunction Od() {\n  return L(`open_project_menu`);\n}\nfunction kd(e) {\n  return L(`raise_window`, { hwnd: e });\n}\nfunction Ad(e) {\n  return L(`win_shortcut`, { key: e });\n}"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22861,
+    "callee": "L",
+    "command": "toggle_onscreen_keyboard",
+    "context": "n L(`open_notification_center`);\n}\nfunction Dd() {\n  return L(`toggle_onscreen_keyboard`);\n}\nfunction Od() {\n  return L(`open_project_menu`);\n}\nfunction kd(e) {\n  return L(`raise_window`, { hwnd: e });\n}\nfunction Ad(e) {\n  return L(`win_shortcut`, { key: e });\n}\nfunction jd(e) {\n  return L(`system_power`, { action: e }"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22864,
+    "callee": "L",
+    "command": "open_project_menu",
+    "context": "n L(`toggle_onscreen_keyboard`);\n}\nfunction Od() {\n  return L(`open_project_menu`);\n}\nfunction kd(e) {\n  return L(`raise_window`, { hwnd: e });\n}\nfunction Ad(e) {\n  return L(`win_shortcut`, { key: e });\n}\nfunction jd(e) {\n  return L(`system_power`, { action: e });\n}\nfunction Md(e) {\n  return L(`dock_keys_ready`, { read"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22867,
+    "callee": "L",
+    "command": "raise_window",
+    "context": " return L(`open_project_menu`);\n}\nfunction kd(e) {\n  return L(`raise_window`, { hwnd: e });\n}\nfunction Ad(e) {\n  return L(`win_shortcut`, { key: e });\n}\nfunction jd(e) {\n  return L(`system_power`, { action: e });\n}\nfunction Md(e) {\n  return L(`dock_keys_ready`, { ready: e });\n}\nvar Nd = `dock-win-t`,\n  Pd = `dock-win-n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22870,
+    "callee": "L",
+    "command": "win_shortcut",
+    "context": "L(`raise_window`, { hwnd: e });\n}\nfunction Ad(e) {\n  return L(`win_shortcut`, { key: e });\n}\nfunction jd(e) {\n  return L(`system_power`, { action: e });\n}\nfunction Md(e) {\n  return L(`dock_keys_ready`, { ready: e });\n}\nvar Nd = `dock-win-t`,\n  Pd = `dock-win-num`;\nfunction Fd(e) {\n  return L(`dock_pill_keys`, { level: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22873,
+    "callee": "L",
+    "command": "system_power",
+    "context": " L(`win_shortcut`, { key: e });\n}\nfunction jd(e) {\n  return L(`system_power`, { action: e });\n}\nfunction Md(e) {\n  return L(`dock_keys_ready`, { ready: e });\n}\nvar Nd = `dock-win-t`,\n  Pd = `dock-win-num`;\nfunction Fd(e) {\n  return L(`dock_pill_keys`, { level: e });\n}\nvar Id = `dock-pill-key`,\n  Ld = [\n    { kind: `wif"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22876,
+    "callee": "L",
+    "command": "dock_keys_ready",
+    "context": "`system_power`, { action: e });\n}\nfunction Md(e) {\n  return L(`dock_keys_ready`, { ready: e });\n}\nvar Nd = `dock-win-t`,\n  Pd = `dock-win-num`;\nfunction Fd(e) {\n  return L(`dock_pill_keys`, { level: e });\n}\nvar Id = `dock-pill-key`,\n  Ld = [\n    { kind: `wifi`, label: `Wi-Fi`, Icon: ao },\n    { kind: `ethernet`, label:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 22881,
+    "callee": "L",
+    "command": "dock_pill_keys",
+    "context": "ck-win-t`,\n  Pd = `dock-win-num`;\nfunction Fd(e) {\n  return L(`dock_pill_keys`, { level: e });\n}\nvar Id = `dock-pill-key`,\n  Ld = [\n    { kind: `wifi`, label: `Wi-Fi`, Icon: ao },\n    { kind: `ethernet`, label: `Ethernet`, Icon: yo, opens: `ethernet` },\n    { kind: `bluetooth`, label: `Bluetooth`, Icon: oo, alwaysListe"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23026,
+    "callee": "L",
+    "command": "get_audio_state",
+    "context": "en: i }),\n      ],\n    }),\n  });\n}\nfunction Gd() {\n  return L(`get_audio_state`);\n}\nfunction Kd(e) {\n  return L(`set_volume`, { volumePercent: e });\n}\nfunction qd() {\n  return L(`toggle_mute`);\n}\nfunction Jd() {\n  return L(`list_audio_outputs`);\n}\nfunction Yd() {\n  return L(`list_audio_sessions`);\n}\nfunction Xd(e, t, n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23029,
+    "callee": "L",
+    "command": "set_volume",
+    "context": "\n  return L(`get_audio_state`);\n}\nfunction Kd(e) {\n  return L(`set_volume`, { volumePercent: e });\n}\nfunction qd() {\n  return L(`toggle_mute`);\n}\nfunction Jd() {\n  return L(`list_audio_outputs`);\n}\nfunction Yd() {\n  return L(`list_audio_sessions`);\n}\nfunction Xd(e, t, n = null) {\n  return L(`set_session_volume`, { id: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23032,
+    "callee": "L",
+    "command": "toggle_mute",
+    "context": "_volume`, { volumePercent: e });\n}\nfunction qd() {\n  return L(`toggle_mute`);\n}\nfunction Jd() {\n  return L(`list_audio_outputs`);\n}\nfunction Yd() {\n  return L(`list_audio_sessions`);\n}\nfunction Xd(e, t, n = null) {\n  return L(`set_session_volume`, { id: e, volumePercent: t, muted: n });\n}\nfunction Zd(e) {\n  return L(`s"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23035,
+    "callee": "L",
+    "command": "list_audio_outputs",
+    "context": "d() {\n  return L(`toggle_mute`);\n}\nfunction Jd() {\n  return L(`list_audio_outputs`);\n}\nfunction Yd() {\n  return L(`list_audio_sessions`);\n}\nfunction Xd(e, t, n = null) {\n  return L(`set_session_volume`, { id: e, volumePercent: t, muted: n });\n}\nfunction Zd(e) {\n  return L(`set_audio_output`, { id: e });\n}\nfunction Qd(e"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23038,
+    "callee": "L",
+    "command": "list_audio_sessions",
+    "context": " return L(`list_audio_outputs`);\n}\nfunction Yd() {\n  return L(`list_audio_sessions`);\n}\nfunction Xd(e, t, n = null) {\n  return L(`set_session_volume`, { id: e, volumePercent: t, muted: n });\n}\nfunction Zd(e) {\n  return L(`set_audio_output`, { id: e });\n}\nfunction Qd(e) {\n  return z(`audio-changed`, (t) => e(t.payload))"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23041,
+    "callee": "L",
+    "command": "set_session_volume",
+    "context": "_audio_sessions`);\n}\nfunction Xd(e, t, n = null) {\n  return L(`set_session_volume`, { id: e, volumePercent: t, muted: n });\n}\nfunction Zd(e) {\n  return L(`set_audio_output`, { id: e });\n}\nfunction Qd(e) {\n  return z(`audio-changed`, (t) => e(t.payload));\n}\nfunction $d(e) {\n  return z(`audio-devices-changed`, e);\n}\nfunc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23044,
+    "callee": "L",
+    "command": "set_audio_output",
+    "context": " volumePercent: t, muted: n });\n}\nfunction Zd(e) {\n  return L(`set_audio_output`, { id: e });\n}\nfunction Qd(e) {\n  return z(`audio-changed`, (t) => e(t.payload));\n}\nfunction $d(e) {\n  return z(`audio-devices-changed`, e);\n}\nfunction ef() {\n  return L(`mic_state`);\n}\nfunction tf(e) {\n  return z(`mic-changed`, (t) => e(t"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23053,
+    "callee": "L",
+    "command": "mic_state",
+    "context": "n z(`audio-devices-changed`, e);\n}\nfunction ef() {\n  return L(`mic_state`);\n}\nfunction tf(e) {\n  return z(`mic-changed`, (t) => e(t.payload));\n}\nvar nf = 400,\n  rf = i()((e, t) => ({\n    state: null,\n    error: null,\n    lastLocalWrite: 0,\n    refresh: async () => {\n      try {\n        let n = await Gd();\n        retur"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23171,
+    "callee": "L",
+    "command": "search_places",
+    "context": "en: t,\n        }),\n    ],\n  });\n}\nfunction sf(e) {\n  return L(`search_places`, { query: e });\n}\nfunction cf() {\n  return L(`locate_by_ip`);\n}\nfunction lf() {\n  return L(`system_uses_12h`);\n}\nvar uf = new Map();\nfunction df(e) {\n  let t = uf.get(e);\n  return (\n    t ||\n      ((t = new Intl.DateTimeFormat(`en-US`, {\n    "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23174,
+    "callee": "L",
+    "command": "locate_by_ip",
+    "context": "(`search_places`, { query: e });\n}\nfunction cf() {\n  return L(`locate_by_ip`);\n}\nfunction lf() {\n  return L(`system_uses_12h`);\n}\nvar uf = new Map();\nfunction df(e) {\n  let t = uf.get(e);\n  return (\n    t ||\n      ((t = new Intl.DateTimeFormat(`en-US`, {\n        timeZone: e,\n        hourCycle: `h23`,\n        year: `num"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23177,
+    "callee": "L",
+    "command": "system_uses_12h",
+    "context": "() {\n  return L(`locate_by_ip`);\n}\nfunction lf() {\n  return L(`system_uses_12h`);\n}\nvar uf = new Map();\nfunction df(e) {\n  let t = uf.get(e);\n  return (\n    t ||\n      ((t = new Intl.DateTimeFormat(`en-US`, {\n        timeZone: e,\n        hourCycle: `h23`,\n        year: `numeric`,\n        month: `numeric`,\n        day: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23372,
+    "callee": "L",
+    "command": "get_weather",
+    "context": "n Cf((e) => e.hour12 ?? !1);\n}\nfunction Tf(e, t) {\n  return L(`get_weather`, { latitude: e, longitude: t });\n}\nfunction Ef(e, t) {\n  return L(`get_weather_forecast`, { latitude: e, longitude: t });\n}\nvar Df = i()((e) => ({\n    snapshot: null,\n    error: null,\n    refresh: async (t, n) => {\n      try {\n        let r = a"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 23375,
+    "callee": "L",
+    "command": "get_weather_forecast",
+    "context": "atitude: e, longitude: t });\n}\nfunction Ef(e, t) {\n  return L(`get_weather_forecast`, { latitude: e, longitude: t });\n}\nvar Df = i()((e) => ({\n    snapshot: null,\n    error: null,\n    refresh: async (t, n) => {\n      try {\n        let r = await Tf(t, n);\n        return (e({ snapshot: r, error: null }), r);\n      } catc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25019,
+    "callee": "L",
+    "command": "github_device_start",
+    "context": "}\nvar Qp = `Ov23liueqfcwYKdFnLtC`;\nfunction $p() {\n  return L(`github_device_start`, { clientId: Qp });\n}\nfunction em(e) {\n  return L(`github_device_poll`, { clientId: Qp, deviceCode: e });\n}\nfunction tm() {\n  return L(`github_get_session`);\n}\nfunction nm() {\n  return L(`github_sign_out`);\n}\nfunction rm() {\n  return L("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25022,
+    "callee": "L",
+    "command": "github_device_poll",
+    "context": "vice_start`, { clientId: Qp });\n}\nfunction em(e) {\n  return L(`github_device_poll`, { clientId: Qp, deviceCode: e });\n}\nfunction tm() {\n  return L(`github_get_session`);\n}\nfunction nm() {\n  return L(`github_sign_out`);\n}\nfunction rm() {\n  return L(`github_fetch_contributions`);\n}\nfunction im() {\n  return L(`github_fetc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25025,
+    "callee": "L",
+    "command": "github_get_session",
+    "context": " clientId: Qp, deviceCode: e });\n}\nfunction tm() {\n  return L(`github_get_session`);\n}\nfunction nm() {\n  return L(`github_sign_out`);\n}\nfunction rm() {\n  return L(`github_fetch_contributions`);\n}\nfunction im() {\n  return L(`github_fetch_overview`);\n}\nfunction am(e) {\n  return L(`github_pat_sign_in`, { token: e });\n}\nva"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25028,
+    "callee": "L",
+    "command": "github_sign_out",
+    "context": " return L(`github_get_session`);\n}\nfunction nm() {\n  return L(`github_sign_out`);\n}\nfunction rm() {\n  return L(`github_fetch_contributions`);\n}\nfunction im() {\n  return L(`github_fetch_overview`);\n}\nfunction am(e) {\n  return L(`github_pat_sign_in`, { token: e });\n}\nvar om = null,\n  sm = 0;\nfunction cm() {\n  om !== null"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25031,
+    "callee": "L",
+    "command": "github_fetch_contributions",
+    "context": "{\n  return L(`github_sign_out`);\n}\nfunction rm() {\n  return L(`github_fetch_contributions`);\n}\nfunction im() {\n  return L(`github_fetch_overview`);\n}\nfunction am(e) {\n  return L(`github_pat_sign_in`, { token: e });\n}\nvar om = null,\n  sm = 0;\nfunction cm() {\n  om !== null && (window.clearTimeout(om), (om = null));\n}\nfun"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25034,
+    "callee": "L",
+    "command": "github_fetch_overview",
+    "context": "L(`github_fetch_contributions`);\n}\nfunction im() {\n  return L(`github_fetch_overview`);\n}\nfunction am(e) {\n  return L(`github_pat_sign_in`, { token: e });\n}\nvar om = null,\n  sm = 0;\nfunction cm() {\n  om !== null && (window.clearTimeout(om), (om = null));\n}\nfunction lm(e) {\n  F(`github-connected`, { login: e }).catch(()"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25037,
+    "callee": "L",
+    "command": "github_pat_sign_in",
+    "context": "urn L(`github_fetch_overview`);\n}\nfunction am(e) {\n  return L(`github_pat_sign_in`, { token: e });\n}\nvar om = null,\n  sm = 0;\nfunction cm() {\n  om !== null && (window.clearTimeout(om), (om = null));\n}\nfunction lm(e) {\n  F(`github-connected`, { login: e }).catch(() => {});\n}\nvar um = i()((e, t) => ({\n  checkedSession: !"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25246,
+    "callee": "L",
+    "command": "claude_get_session",
+    "context": "0.2, 1)`,\n      },\n    }),\n  });\n}\nfunction pm() {\n  return L(`claude_get_session`);\n}\nfunction mm() {\n  return L(`claude_fetch_usage`);\n}\nfunction hm() {\n  return L(`claude_local_usage`);\n}\nvar gm = 3e4,\n  _m = `claude-usage`,\n  vm = null,\n  ym = 0,\n  bm = i()((e, t) => ({\n    checkedSession: !1,\n    connected: !1,\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25249,
+    "callee": "L",
+    "command": "claude_fetch_usage",
+    "context": " return L(`claude_get_session`);\n}\nfunction mm() {\n  return L(`claude_fetch_usage`);\n}\nfunction hm() {\n  return L(`claude_local_usage`);\n}\nvar gm = 3e4,\n  _m = `claude-usage`,\n  vm = null,\n  ym = 0,\n  bm = i()((e, t) => ({\n    checkedSession: !1,\n    connected: !1,\n    usage: null,\n    localUsage: null,\n    error: null"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25252,
+    "callee": "L",
+    "command": "claude_local_usage",
+    "context": " return L(`claude_fetch_usage`);\n}\nfunction hm() {\n  return L(`claude_local_usage`);\n}\nvar gm = 3e4,\n  _m = `claude-usage`,\n  vm = null,\n  ym = 0,\n  bm = i()((e, t) => ({\n    checkedSession: !1,\n    connected: !1,\n    usage: null,\n    localUsage: null,\n    error: null,\n    loadSession: async () => {\n      if (!(Date.no"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25546,
+    "callee": "L",
+    "command": "opencode_usage",
+    "context": "      ],\n      }),\n    }),\n  });\n}\nfunction jm() {\n  return L(`opencode_usage`);\n}\nvar Mm = 6e4,\n  Nm = i()((e) => ({\n    checked: !1,\n    usage: null,\n    refresh: async () => {\n      try {\n        e({ usage: await jm(), checked: !0 });\n      } catch {\n        e({ checked: !0 });\n      }\n    },\n  }));\nfunction Pm(e) {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25645,
+    "callee": "L",
+    "command": "x_sign_in",
+    "context": "gydmdEaWZDZTdaMGdfWDJzYm46MTpjaQ`;\nfunction zm() {\n  return L(`x_sign_in`, { clientId: Rm });\n}\nfunction Bm() {\n  return L(`x_get_session`);\n}\nfunction Vm() {\n  return L(`x_sign_out`);\n}\nfunction Hm() {\n  return L(`x_fetch_profile`, { clientId: Rm });\n}\nfunction Um() {\n  F(`x-connected`, null).catch(() => {});\n}\nvar Wm"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25648,
+    "callee": "L",
+    "command": "x_get_session",
+    "context": "(`x_sign_in`, { clientId: Rm });\n}\nfunction Bm() {\n  return L(`x_get_session`);\n}\nfunction Vm() {\n  return L(`x_sign_out`);\n}\nfunction Hm() {\n  return L(`x_fetch_profile`, { clientId: Rm });\n}\nfunction Um() {\n  F(`x-connected`, null).catch(() => {});\n}\nvar Wm = i()((e, t) => ({\n    checkedSession: !1,\n    session: null"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25651,
+    "callee": "L",
+    "command": "x_sign_out",
+    "context": ") {\n  return L(`x_get_session`);\n}\nfunction Vm() {\n  return L(`x_sign_out`);\n}\nfunction Hm() {\n  return L(`x_fetch_profile`, { clientId: Rm });\n}\nfunction Um() {\n  F(`x-connected`, null).catch(() => {});\n}\nvar Wm = i()((e, t) => ({\n    checkedSession: !1,\n    session: null,\n    connecting: !1,\n    connectError: null,\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25654,
+    "callee": "L",
+    "command": "x_fetch_profile",
+    "context": "Vm() {\n  return L(`x_sign_out`);\n}\nfunction Hm() {\n  return L(`x_fetch_profile`, { clientId: Rm });\n}\nfunction Um() {\n  F(`x-connected`, null).catch(() => {});\n}\nvar Wm = i()((e, t) => ({\n    checkedSession: !1,\n    session: null,\n    connecting: !1,\n    connectError: null,\n    error: null,\n    loadSession: async () =>"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25779,
+    "callee": "L",
+    "command": "leetcode_get_username",
+    "context": "      ],\n      }),\n    }),\n  });\n}\nfunction Jm() {\n  return L(`leetcode_get_username`);\n}\nfunction Ym(e) {\n  return L(`leetcode_set_username`, { username: e });\n}\nfunction Xm() {\n  return L(`leetcode_fetch_stats`);\n}\nfunction Zm() {\n  F(`leetcode-connected`, null).catch(() => {});\n}\nvar Qm = i()((e, t) => ({\n  checkedS"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25782,
+    "callee": "L",
+    "command": "leetcode_set_username",
+    "context": "urn L(`leetcode_get_username`);\n}\nfunction Ym(e) {\n  return L(`leetcode_set_username`, { username: e });\n}\nfunction Xm() {\n  return L(`leetcode_fetch_stats`);\n}\nfunction Zm() {\n  F(`leetcode-connected`, null).catch(() => {});\n}\nvar Qm = i()((e, t) => ({\n  checkedSession: !1,\n  username: null,\n  connecting: !1,\n  connec"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 25785,
+    "callee": "L",
+    "command": "leetcode_fetch_stats",
+    "context": "set_username`, { username: e });\n}\nfunction Xm() {\n  return L(`leetcode_fetch_stats`);\n}\nfunction Zm() {\n  F(`leetcode-connected`, null).catch(() => {});\n}\nvar Qm = i()((e, t) => ({\n  checkedSession: !1,\n  username: null,\n  connecting: !1,\n  connectError: null,\n  stats: null,\n  error: null,\n  loadSession: async () => {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26011,
+    "callee": "L",
+    "command": "get_theme_is_light",
+    "context": "      ],\n      }),\n    }),\n  });\n}\nfunction nh() {\n  return L(`get_theme_is_light`);\n}\nfunction rh(e) {\n  return L(`set_theme_is_light`, { isLight: e });\n}\nvar ih = `display-mode-changed`,\n  ah = i()((e, t) => ({\n    isLight: null,\n    error: null,\n    load: async () => {\n      try {\n        e({ isLight: await nh(), er"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26014,
+    "callee": "L",
+    "command": "set_theme_is_light",
+    "context": "return L(`get_theme_is_light`);\n}\nfunction rh(e) {\n  return L(`set_theme_is_light`, { isLight: e });\n}\nvar ih = `display-mode-changed`,\n  ah = i()((e, t) => ({\n    isLight: null,\n    error: null,\n    load: async () => {\n      try {\n        e({ isLight: await nh(), error: null });\n      } catch (t) {\n        e({ error: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26079,
+    "callee": "L",
+    "command": "get_battery_status",
+    "context": "ren: t,\n        }),\n    ],\n  });\n}\nfunction sh() {\n  return L(`get_battery_status`);\n}\nvar ch = i()((e, t) => ({\n  status: null,\n  error: null,\n  refresh: async () => {\n    try {\n      let n = await sh();\n      return (\n        (!dd(n, t().status) || t().error !== null) &&\n          e({ status: n, error: null }),\n     "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26356,
+    "callee": "L",
+    "command": "social_accounts",
+    "context": " ),\n      ],\n    }),\n  });\n}\nfunction bh(e = !1) {\n  return L(`social_accounts`, { force: e });\n}\nfunction xh(e, t) {\n  return L(`social_connect_youtube`, { handle: e, apiKey: t });\n}\nfunction Sh(e) {\n  return L(`social_connect_tiktok`, { handle: e });\n}\nfunction Ch(e, t) {\n  return L(`social_connect_instagram`, { hand"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26359,
+    "callee": "L",
+    "command": "social_connect_youtube",
+    "context": "al_accounts`, { force: e });\n}\nfunction xh(e, t) {\n  return L(`social_connect_youtube`, { handle: e, apiKey: t });\n}\nfunction Sh(e) {\n  return L(`social_connect_tiktok`, { handle: e });\n}\nfunction Ch(e, t) {\n  return L(`social_connect_instagram`, { handle: e, token: t || null });\n}\nfunction wh(e) {\n  return L(`social_d"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26362,
+    "callee": "L",
+    "command": "social_connect_tiktok",
+    "context": "be`, { handle: e, apiKey: t });\n}\nfunction Sh(e) {\n  return L(`social_connect_tiktok`, { handle: e });\n}\nfunction Ch(e, t) {\n  return L(`social_connect_instagram`, { handle: e, token: t || null });\n}\nfunction wh(e) {\n  return L(`social_disconnect`, { platform: e });\n}\nfunction Th(e) {\n  F(`social-connected`, { platform"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26365,
+    "callee": "L",
+    "command": "social_connect_instagram",
+    "context": "ect_tiktok`, { handle: e });\n}\nfunction Ch(e, t) {\n  return L(`social_connect_instagram`, { handle: e, token: t || null });\n}\nfunction wh(e) {\n  return L(`social_disconnect`, { platform: e });\n}\nfunction Th(e) {\n  F(`social-connected`, { platform: e }).catch(() => {});\n}\nvar Eh = i()((e, t) => ({\n  checked: !1,\n  accou"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26368,
+    "callee": "L",
+    "command": "social_disconnect",
+    "context": "handle: e, token: t || null });\n}\nfunction wh(e) {\n  return L(`social_disconnect`, { platform: e });\n}\nfunction Th(e) {\n  F(`social-connected`, { platform: e }).catch(() => {});\n}\nvar Eh = i()((e, t) => ({\n  checked: !1,\n  accounts: [],\n  loading: !1,\n  saving: null,\n  connectError: null,\n  load: async (t = !1) => {\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26523,
+    "callee": "L",
+    "command": "revenue_status",
+    "context": "      ],\n      }),\n    }),\n  });\n}\nfunction Oh() {\n  return L(`revenue_status`);\n}\nfunction kh(e, t, n = {}) {\n  return L(`revenue_connect`, {\n    provider: e,\n    apiKey: t,\n    shop: n.shop || null,\n    secret: n.secret || null,\n  });\n}\nfunction Ah(e) {\n  return L(`revenue_disconnect`, { provider: e });\n}\nfunction jh"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26526,
+    "callee": "L",
+    "command": "revenue_connect",
+    "context": "L(`revenue_status`);\n}\nfunction kh(e, t, n = {}) {\n  return L(`revenue_connect`, {\n    provider: e,\n    apiKey: t,\n    shop: n.shop || null,\n    secret: n.secret || null,\n  });\n}\nfunction Ah(e) {\n  return L(`revenue_disconnect`, { provider: e });\n}\nfunction jh(e = !1) {\n  let t;\n  try {\n    t = Intl.DateTimeFormat().re"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26534,
+    "callee": "L",
+    "command": "revenue_disconnect",
+    "context": "secret: n.secret || null,\n  });\n}\nfunction Ah(e) {\n  return L(`revenue_disconnect`, { provider: e });\n}\nfunction jh(e = !1) {\n  let t;\n  try {\n    t = Intl.DateTimeFormat().resolvedOptions().timeZone || void 0;\n  } catch {\n    t = void 0;\n  }\n  return L(`revenue_snapshot`, { force: e, timezone: t });\n}\nvar Mh = [\n  `st"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 26543,
+    "callee": "L",
+    "command": "revenue_snapshot",
+    "context": "imeZone || void 0;\n  } catch {\n    t = void 0;\n  }\n  return L(`revenue_snapshot`, { force: e, timezone: t });\n}\nvar Mh = [\n  `stripe`,\n  `polar`,\n  `dodo`,\n  `shopify`,\n  `lemonsqueezy`,\n  `paddle`,\n  `gumroad`,\n];\nfunction Nh(e) {\n  return { provider: e, connected: !1, account: null, testMode: !1 };\n}\nfunction Ph() {\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27786,
+    "callee": "L",
+    "command": "stocks_status",
+    "context": "       ),\n      ],\n    }),\n  });\n}\nfunction e_() {\n  return L(`stocks_status`);\n}\nfunction t_(e, t) {\n  return L(`stocks_connect`, { apiKey: e, symbols: t });\n}\nfunction n_(e) {\n  return L(`stocks_set_primary`, { symbol: e });\n}\nfunction r_(e) {\n  return L(`stocks_set_watchlist`, { symbols: e });\n}\nfunction i_() {\n  re"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27789,
+    "callee": "L",
+    "command": "stocks_connect",
+    "context": "  return L(`stocks_status`);\n}\nfunction t_(e, t) {\n  return L(`stocks_connect`, { apiKey: e, symbols: t });\n}\nfunction n_(e) {\n  return L(`stocks_set_primary`, { symbol: e });\n}\nfunction r_(e) {\n  return L(`stocks_set_watchlist`, { symbols: e });\n}\nfunction i_() {\n  return L(`stocks_disconnect`);\n}\nfunction a_(e = !1) "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27792,
+    "callee": "L",
+    "command": "stocks_set_primary",
+    "context": "t`, { apiKey: e, symbols: t });\n}\nfunction n_(e) {\n  return L(`stocks_set_primary`, { symbol: e });\n}\nfunction r_(e) {\n  return L(`stocks_set_watchlist`, { symbols: e });\n}\nfunction i_() {\n  return L(`stocks_disconnect`);\n}\nfunction a_(e = !1) {\n  return L(`stocks_snapshot`, { force: e });\n}\nvar o_ = 5;\nfunction s_(e) "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27795,
+    "callee": "L",
+    "command": "stocks_set_watchlist",
+    "context": "s_set_primary`, { symbol: e });\n}\nfunction r_(e) {\n  return L(`stocks_set_watchlist`, { symbols: e });\n}\nfunction i_() {\n  return L(`stocks_disconnect`);\n}\nfunction a_(e = !1) {\n  return L(`stocks_snapshot`, { force: e });\n}\nvar o_ = 5;\nfunction s_(e) {\n  F(`stocks-connected`, { connected: e }).catch(() => {});\n}\nvar c"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27798,
+    "callee": "L",
+    "command": "stocks_disconnect",
+    "context": "set_watchlist`, { symbols: e });\n}\nfunction i_() {\n  return L(`stocks_disconnect`);\n}\nfunction a_(e = !1) {\n  return L(`stocks_snapshot`, { force: e });\n}\nvar o_ = 5;\nfunction s_(e) {\n  F(`stocks-connected`, { connected: e }).catch(() => {});\n}\nvar c_ = null;\nasync function l_(e, t) {\n  e({ loading: !0 });\n  let n;\n  t"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 27801,
+    "callee": "L",
+    "command": "stocks_snapshot",
+    "context": "rn L(`stocks_disconnect`);\n}\nfunction a_(e = !1) {\n  return L(`stocks_snapshot`, { force: e });\n}\nvar o_ = 5;\nfunction s_(e) {\n  F(`stocks-connected`, { connected: e }).catch(() => {});\n}\nvar c_ = null;\nasync function l_(e, t) {\n  e({ loading: !0 });\n  let n;\n  try {\n    n = await e_();\n  } catch (t) {\n    e({ checked:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28036,
+    "callee": "L",
+    "command": "datafast_status",
+    "context": " { config: e.watchlist }),\n  });\n}\nfunction S_() {\n  return L(`datafast_status`);\n}\nfunction C_(e) {\n  return L(`datafast_connect`, { apiKey: e });\n}\nfunction w_() {\n  return L(`datafast_disconnect`);\n}\nfunction T_(e = !1) {\n  return L(`datafast_stats`, { force: e });\n}\nfunction E_(e) {\n  F(`datafast-connected`, { conn"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28039,
+    "callee": "L",
+    "command": "datafast_connect",
+    "context": "\n  return L(`datafast_status`);\n}\nfunction C_(e) {\n  return L(`datafast_connect`, { apiKey: e });\n}\nfunction w_() {\n  return L(`datafast_disconnect`);\n}\nfunction T_(e = !1) {\n  return L(`datafast_stats`, { force: e });\n}\nfunction E_(e) {\n  F(`datafast-connected`, { connected: e }).catch(() => {});\n}\nvar D_ = i()((e, t)"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28042,
+    "callee": "L",
+    "command": "datafast_disconnect",
+    "context": "tafast_connect`, { apiKey: e });\n}\nfunction w_() {\n  return L(`datafast_disconnect`);\n}\nfunction T_(e = !1) {\n  return L(`datafast_stats`, { force: e });\n}\nfunction E_(e) {\n  F(`datafast-connected`, { connected: e }).catch(() => {});\n}\nvar D_ = i()((e, t) => ({\n    checked: !1,\n    connected: !1,\n    domain: null,\n    "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28045,
+    "callee": "L",
+    "command": "datafast_stats",
+    "context": " L(`datafast_disconnect`);\n}\nfunction T_(e = !1) {\n  return L(`datafast_stats`, { force: e });\n}\nfunction E_(e) {\n  F(`datafast-connected`, { connected: e }).catch(() => {});\n}\nvar D_ = i()((e, t) => ({\n    checked: !1,\n    connected: !1,\n    domain: null,\n    stats: null,\n    loading: !1,\n    error: null,\n    connectE"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28397,
+    "callee": "L",
+    "command": "get_system_stats",
+    "context": "       ],\n      }),\n    ],\n  });\n}\nfunction z_() {\n  return L(`get_system_stats`);\n}\nvar B_ = i()((e) => ({\n    stats: null,\n    error: null,\n    refresh: async () => {\n      try {\n        let t = await z_();\n        return (e({ stats: t, error: null }), t);\n      } catch (t) {\n        throw (e({ error: Y(t) }), t);\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 28580,
+    "callee": "L",
+    "command": "get_network_speed",
+    "context": "       ],\n      }),\n    ],\n  });\n}\nfunction ev() {\n  return L(`get_network_speed`);\n}\nvar tv = i()((e) => ({\n  speed: null,\n  error: null,\n  refresh: async () => {\n    try {\n      let t = await ev();\n      return (e({ speed: t, error: null }), t);\n    } catch (t) {\n      throw (e({ error: Y(t) }), t);\n    }\n  },\n}));\nf"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29246,
+    "callee": "L",
+    "command": "open_capture_overlay",
+    "context": "  )\n  );\n}\nfunction Bv(e) {\n  return zv(`open(${e})`, () => L(`open_capture_overlay`, { mode: e }));\n}\nfunction Vv() {\n  return L(`capture_mode`);\n}\nfunction Hv() {\n  return zv(`close`, () => L(`close_capture_overlay`));\n}\nfunction Uv(e, t, n, r) {\n  return zv(`region(${e},${t},${n}x${r})`, () =>\n    L(`capture_region`"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29249,
+    "callee": "L",
+    "command": "capture_mode",
+    "context": "capture_overlay`, { mode: e }));\n}\nfunction Vv() {\n  return L(`capture_mode`);\n}\nfunction Hv() {\n  return zv(`close`, () => L(`close_capture_overlay`));\n}\nfunction Uv(e, t, n, r) {\n  return zv(`region(${e},${t},${n}x${r})`, () =>\n    L(`capture_region`, { x: e, y: t, width: n, height: r }),\n  );\n}\nfunction Wv(e, t) {\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29252,
+    "callee": "L",
+    "command": "close_capture_overlay",
+    "context": "apture_mode`);\n}\nfunction Hv() {\n  return zv(`close`, () => L(`close_capture_overlay`));\n}\nfunction Uv(e, t, n, r) {\n  return zv(`region(${e},${t},${n}x${r})`, () =>\n    L(`capture_region`, { x: e, y: t, width: n, height: r }),\n  );\n}\nfunction Wv(e, t) {\n  return zv(`window(${e},${t})`, () => L(`capture_window_at`, { x"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29256,
+    "callee": "L",
+    "command": "capture_region",
+    "context": ", r) {\n  return zv(`region(${e},${t},${n}x${r})`, () =>\n    L(`capture_region`, { x: e, y: t, width: n, height: r }),\n  );\n}\nfunction Wv(e, t) {\n  return zv(`window(${e},${t})`, () => L(`capture_window_at`, { x: e, y: t }));\n}\nfunction Gv(e, t) {\n  return L(`window_rect_at`, { x: e, y: t });\n}\nvar Kv = `storage-scanned"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29260,
+    "callee": "L",
+    "command": "capture_window_at",
+    "context": "\nfunction Wv(e, t) {\n  return zv(`window(${e},${t})`, () => L(`capture_window_at`, { x: e, y: t }));\n}\nfunction Gv(e, t) {\n  return L(`window_rect_at`, { x: e, y: t });\n}\nvar Kv = `storage-scanned`;\nfunction qv(e = null) {\n  return L(`get_storage_info`, { drive: e });\n}\nfunction Jv() {\n  return L(`list_drives`);\n}\nfunc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29263,
+    "callee": "L",
+    "command": "window_rect_at",
+    "context": "indow_at`, { x: e, y: t }));\n}\nfunction Gv(e, t) {\n  return L(`window_rect_at`, { x: e, y: t });\n}\nvar Kv = `storage-scanned`;\nfunction qv(e = null) {\n  return L(`get_storage_info`, { drive: e });\n}\nfunction Jv() {\n  return L(`list_drives`);\n}\nfunction Yv(e = 10, t = !1, n = null) {\n  return L(`storage_top_items`, { li"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29267,
+    "callee": "L",
+    "command": "get_storage_info",
+    "context": "ar Kv = `storage-scanned`;\nfunction qv(e = null) {\n  return L(`get_storage_info`, { drive: e });\n}\nfunction Jv() {\n  return L(`list_drives`);\n}\nfunction Yv(e = 10, t = !1, n = null) {\n  return L(`storage_top_items`, { limit: e, force: t, drive: n });\n}\nfunction Xv(e = null) {\n  return L(`storage_scan_cached`, { drive: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29270,
+    "callee": "L",
+    "command": "list_drives",
+    "context": "et_storage_info`, { drive: e });\n}\nfunction Jv() {\n  return L(`list_drives`);\n}\nfunction Yv(e = 10, t = !1, n = null) {\n  return L(`storage_top_items`, { limit: e, force: t, drive: n });\n}\nfunction Xv(e = null) {\n  return L(`storage_scan_cached`, { drive: e });\n}\nfunction Zv(e) {\n  return L(`open_known_folder`, { kind:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29273,
+    "callee": "L",
+    "command": "storage_top_items",
+    "context": "rives`);\n}\nfunction Yv(e = 10, t = !1, n = null) {\n  return L(`storage_top_items`, { limit: e, force: t, drive: n });\n}\nfunction Xv(e = null) {\n  return L(`storage_scan_cached`, { drive: e });\n}\nfunction Zv(e) {\n  return L(`open_known_folder`, { kind: e });\n}\nfunction Qv(e) {\n  return L(`ocr_copy_text`, { path: e });\n}"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29276,
+    "callee": "L",
+    "command": "storage_scan_cached",
+    "context": ", force: t, drive: n });\n}\nfunction Xv(e = null) {\n  return L(`storage_scan_cached`, { drive: e });\n}\nfunction Zv(e) {\n  return L(`open_known_folder`, { kind: e });\n}\nfunction Qv(e) {\n  return L(`ocr_copy_text`, { path: e });\n}\nvar $v = ``,\n  ey = 0;\nfunction ty(e) {\n  let t = Date.now();\n  if (e.path === $v && t - ey "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29279,
+    "callee": "L",
+    "command": "open_known_folder",
+    "context": "ge_scan_cached`, { drive: e });\n}\nfunction Zv(e) {\n  return L(`open_known_folder`, { kind: e });\n}\nfunction Qv(e) {\n  return L(`ocr_copy_text`, { path: e });\n}\nvar $v = ``,\n  ey = 0;\nfunction ty(e) {\n  let t = Date.now();\n  if (e.path === $v && t - ey < 1500) return;\n  (($v = e.path), (ey = t));\n  let n = e.path.split("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29282,
+    "callee": "L",
+    "command": "ocr_copy_text",
+    "context": "en_known_folder`, { kind: e });\n}\nfunction Qv(e) {\n  return L(`ocr_copy_text`, { path: e });\n}\nvar $v = ``,\n  ey = 0;\nfunction ty(e) {\n  let t = Date.now();\n  if (e.path === $v && t - ey < 1500) return;\n  (($v = e.path), (ey = t));\n  let n = e.path.split(/[\\\\/]/).pop() ?? `screenshot.png`;\n  ud.getState().show({\n    ti"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 29337,
+    "callee": "L",
+    "command": "capture_screenshot",
+    "context": "h: e.width, height: e.height });\n}\nfunction iy() {\n  return L(`capture_screenshot`).then((e) => (ry(e), e));\n}\nvar ay = `min-h-[118px] w-[240px] !border-white/[0.07]`,\n  oy = `#ff9f43`,\n  sy = `group block rounded-card transition-transform duration-150 ease-out hover:-translate-y-0.5 focus-visible:outline focus-visible"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30947,
+    "callee": "L",
+    "command": "pick_image_file",
+    "context": " return !1;\n  }\n})();\nasync function Tb() {\n  let e = await L(`pick_image_file`),\n    t = e instanceof ArrayBuffer ? new Uint8Array(e) : Uint8Array.from(e);\n  return t.byteLength > 0 ? t : null;\n}\nvar Eb = null,\n  Db = new Set(),\n  Ob = () => Eb;\nfunction kb(e) {\n  ((Eb = e), Db.forEach((e) => e()));\n}\nfunction Ab(e) {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30966,
+    "callee": "L",
+    "command": "drag_ghost_show",
+    "context": ".delete(e);\n    }\n  );\n}\nfunction jb(e, t, n, r) {\n  return L(`drag_ghost_show`, { normal: e, remove: t, hotX: n, hotY: r });\n}\nfunction Mb(e) {\n  return L(`drag_ghost_face`, { remove: e });\n}\nfunction Nb(e, t, n) {\n  return L(`hover_label_show`, { image: e, x: t, y: n });\n}\nfunction Pb() {\n  return (kb(null), L(`hover"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30969,
+    "callee": "L",
+    "command": "drag_ghost_face",
+    "context": "remove: t, hotX: n, hotY: r });\n}\nfunction Mb(e) {\n  return L(`drag_ghost_face`, { remove: e });\n}\nfunction Nb(e, t, n) {\n  return L(`hover_label_show`, { image: e, x: t, y: n });\n}\nfunction Pb() {\n  return (kb(null), L(`hover_label_hide`));\n}\nfunction Fb(e) {\n  return L(`drag_ghost_hide`, { poof: e });\n}\nvar Ib = `doc"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30972,
+    "callee": "L",
+    "command": "hover_label_show",
+    "context": "st_face`, { remove: e });\n}\nfunction Nb(e, t, n) {\n  return L(`hover_label_show`, { image: e, x: t, y: n });\n}\nfunction Pb() {\n  return (kb(null), L(`hover_label_hide`));\n}\nfunction Fb(e) {\n  return L(`drag_ghost_hide`, { poof: e });\n}\nvar Ib = `dock-drop`,\n  Lb = null;\nfunction Rb(e) {\n  Lb = e;\n}\nfunction zb(e, t) {\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30975,
+    "callee": "L",
+    "command": "hover_label_hide",
+    "context": "ge: e, x: t, y: n });\n}\nfunction Pb() {\n  return (kb(null), L(`hover_label_hide`));\n}\nfunction Fb(e) {\n  return L(`drag_ghost_hide`, { poof: e });\n}\nvar Ib = `dock-drop`,\n  Lb = null;\nfunction Rb(e) {\n  Lb = e;\n}\nfunction zb(e, t) {\n  let n = Lb?.getBoundingClientRect();\n  return !!n && e >= n.left && e <= n.right && t"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30978,
+    "callee": "L",
+    "command": "drag_ghost_hide",
+    "context": "(null), L(`hover_label_hide`));\n}\nfunction Fb(e) {\n  return L(`drag_ghost_hide`, { poof: e });\n}\nvar Ib = `dock-drop`,\n  Lb = null;\nfunction Rb(e) {\n  Lb = e;\n}\nfunction zb(e, t) {\n  let n = Lb?.getBoundingClientRect();\n  return !!n && e >= n.left && e <= n.right && t >= n.top && t <= n.bottom;\n}\nfunction Bb(e, t) {\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30990,
+    "callee": "L",
+    "command": "dock_item_image",
+    "context": "t >= n.top && t <= n.bottom;\n}\nfunction Bb(e, t) {\n  return L(`dock_item_image`, { path: e, px: t });\n}\nfunction Vb(e, t) {\n  return L(`dock_folder_preview`, { path: e, px: t });\n}\nfunction Hb(e) {\n  return L(`dock_files_gone`, { paths: e });\n}\nvar Ub = `menu`,\n  Wb = [\n    { id: `widgets`, label: `Widgets\u2026` },\n    { i"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30993,
+    "callee": "L",
+    "command": "dock_folder_preview",
+    "context": "image`, { path: e, px: t });\n}\nfunction Vb(e, t) {\n  return L(`dock_folder_preview`, { path: e, px: t });\n}\nfunction Hb(e) {\n  return L(`dock_files_gone`, { paths: e });\n}\nvar Ub = `menu`,\n  Wb = [\n    { id: `widgets`, label: `Widgets\u2026` },\n    { id: `settings`, label: `Settings` },\n  ];\nfunction Gb(e) {\n  return [\n    "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 30996,
+    "callee": "L",
+    "command": "dock_files_gone",
+    "context": "_preview`, { path: e, px: t });\n}\nfunction Hb(e) {\n  return L(`dock_files_gone`, { paths: e });\n}\nvar Ub = `menu`,\n  Wb = [\n    { id: `widgets`, label: `Widgets\u2026` },\n    { id: `settings`, label: `Settings` },\n  ];\nfunction Gb(e) {\n  return [\n    ...Wb,\n    ...e.map((e, t) => (t === 0 ? { ...e, separatorBefore: !0 } : e"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31030,
+    "callee": "L",
+    "command": "appmenu_show",
+    "context": " +\n      Kb.padding,\n  );\n}\nfunction Jb(e, t, n) {\n  return L(`appmenu_show`, {\n    rows: e,\n    left: t,\n    top: n,\n    partHeight: qb(e),\n    sideWidth: e.some((e) => e.submenu?.length)\n      ? Kb.submenuWidth + Kb.submenuGap\n      : 0,\n  });\n}\nvar Yb = `appmenu-hidden`;\nfunction Xb() {\n  return L(`appmenu_hide`);\n}"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31042,
+    "callee": "L",
+    "command": "appmenu_hide",
+    "context": "  });\n}\nvar Yb = `appmenu-hidden`;\nfunction Xb() {\n  return L(`appmenu_hide`);\n}\nfunction Zb(e) {\n  return L(`appmenu_placement`, { barAtTop: e });\n}\nvar Qb = (e, t, n = null, r = null) => ({\n    label: e,\n    usedPercent: t,\n    value: n,\n    resetsAtMs: null,\n    note: r,\n  }),\n  $b = [\n    {\n      id: `chatgpt`,\n   "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31045,
+    "callee": "L",
+    "command": "appmenu_placement",
+    "context": ") {\n  return L(`appmenu_hide`);\n}\nfunction Zb(e) {\n  return L(`appmenu_placement`, { barAtTop: e });\n}\nvar Qb = (e, t, n = null, r = null) => ({\n    label: e,\n    usedPercent: t,\n    value: n,\n    resetsAtMs: null,\n    note: r,\n  }),\n  $b = [\n    {\n      id: `chatgpt`,\n      widgetId: `chatgptUsage`,\n      label: `Chat"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31131,
+    "callee": "L",
+    "command": "ai_usage",
+    "context": "b.map((e) => [e.id, e]));\nfunction nx(e, t = !1) {\n  return L(`ai_usage`, { provider: e, force: t });\n}\nfunction rx(e, t) {\n  return L(`ai_usage_connect`, { provider: e, key: t });\n}\nfunction ix(e) {\n  return L(`ai_usage_disconnect`, { provider: e });\n}\nvar ax = `ai-usage-changed`,\n  ox = 6e4,\n  sx = new Map(),\n  cx = "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31134,
+    "callee": "L",
+    "command": "ai_usage_connect",
+    "context": " { provider: e, force: t });\n}\nfunction rx(e, t) {\n  return L(`ai_usage_connect`, { provider: e, key: t });\n}\nfunction ix(e) {\n  return L(`ai_usage_disconnect`, { provider: e });\n}\nvar ax = `ai-usage-changed`,\n  ox = 6e4,\n  sx = new Map(),\n  cx = new Map(),\n  lx = (e) => ({\n    status: `error`,\n    plan: null,\n    rows"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 31137,
+    "callee": "L",
+    "command": "ai_usage_disconnect",
+    "context": "ect`, { provider: e, key: t });\n}\nfunction ix(e) {\n  return L(`ai_usage_disconnect`, { provider: e });\n}\nvar ax = `ai-usage-changed`,\n  ox = 6e4,\n  sx = new Map(),\n  cx = new Map(),\n  lx = (e) => ({\n    status: `error`,\n    plan: null,\n    rows: [],\n    billing: null,\n    message: e,\n  }),\n  ux = i()((e, t) => {\n    le"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 33024,
+    "callee": "getItem",
+    "command": "dock_edge",
+    "context": "y]);\n  let S = (() => {\n    try {\n      return localStorage.getItem(`dock_edge`) === `top`;\n    } catch {\n      return !1;\n    }\n  })();\n  return (\n    (0, B.useEffect)(() => {\n      n && t.length < 2 && r();\n    }, [n, t.length, r]),\n    (0, W.jsx)(`div`, {\n      className: `pointer-events-none flex h-full flex-col ${"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 33601,
+    "callee": "L",
+    "command": "service_status",
+    "context": "enue` }),\n      ],\n    }),\n  });\n}\nfunction AC() {\n  return L(`service_status`);\n}\nfunction jC(e, t) {\n  return L(`service_connect`, { service: e, fields: t });\n}\nfunction MC(e) {\n  return L(`service_disconnect`, { service: e });\n}\nfunction NC(e = !1) {\n  let t;\n  try {\n    t = Intl.DateTimeFormat().resolvedOptions().t"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 33604,
+    "callee": "L",
+    "command": "service_connect",
+    "context": " return L(`service_status`);\n}\nfunction jC(e, t) {\n  return L(`service_connect`, { service: e, fields: t });\n}\nfunction MC(e) {\n  return L(`service_disconnect`, { service: e });\n}\nfunction NC(e = !1) {\n  let t;\n  try {\n    t = Intl.DateTimeFormat().resolvedOptions().timeZone || void 0;\n  } catch {\n    t = void 0;\n  }\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 33607,
+    "callee": "L",
+    "command": "service_disconnect",
+    "context": "t`, { service: e, fields: t });\n}\nfunction MC(e) {\n  return L(`service_disconnect`, { service: e });\n}\nfunction NC(e = !1) {\n  let t;\n  try {\n    t = Intl.DateTimeFormat().resolvedOptions().timeZone || void 0;\n  } catch {\n    t = void 0;\n  }\n  return L(`service_snapshot`, { force: e, timezone: t });\n}\nvar PC = [`plausi"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 33616,
+    "callee": "L",
+    "command": "service_snapshot",
+    "context": "imeZone || void 0;\n  } catch {\n    t = void 0;\n  }\n  return L(`service_snapshot`, { force: e, timezone: t });\n}\nvar PC = [`plausible`, `dub`, `resend`, `linear`, `supabase`];\nfunction FC(e) {\n  F(`service-connected`, { service: e }).catch(() => {});\n}\nvar IC = null,\n  LC = i()((e, t) => ({\n    checked: !1,\n    statuses"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34236,
+    "callee": "L",
+    "command": "input_language_state",
+    "context": "      }),\n      }),\n    ],\n  });\n}\nfunction $C() {\n  return L(`input_language_state`);\n}\nfunction ew(e) {\n  return L(`input_language_set`, { id: e });\n}\nfunction tw(e) {\n  return L(`input_language_watch`, { on: e });\n}\nfunction nw(e) {\n  return z(`input-language-changed`, (t) => e(t.payload));\n}\nvar rw = i()((e, t) => "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34239,
+    "callee": "L",
+    "command": "input_language_set",
+    "context": "turn L(`input_language_state`);\n}\nfunction ew(e) {\n  return L(`input_language_set`, { id: e });\n}\nfunction tw(e) {\n  return L(`input_language_watch`, { on: e });\n}\nfunction nw(e) {\n  return z(`input-language-changed`, (t) => e(t.payload));\n}\nvar rw = i()((e, t) => ({\n  state: null,\n  refresh: async () => {\n    try {\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34242,
+    "callee": "L",
+    "command": "input_language_watch",
+    "context": "nput_language_set`, { id: e });\n}\nfunction tw(e) {\n  return L(`input_language_watch`, { on: e });\n}\nfunction nw(e) {\n  return z(`input-language-changed`, (t) => e(t.payload));\n}\nvar rw = i()((e, t) => ({\n  state: null,\n  refresh: async () => {\n    try {\n      t().apply(await $C());\n    } catch {}\n  },\n  apply: (n) => {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34268,
+    "callee": "L",
+    "command": "tray_relay",
+    "context": "etTimeout(() => void e(), 600);\n}\nfunction aw(e) {\n  return L(`tray_relay`, { on: e });\n}\nfunction ow() {\n  return L(`tray_icons`);\n}\nfunction sw(e, t, n = !1) {\n  return L(`tray_icon_click`, { key: e, button: t, double: n });\n}\nfunction cw(e) {\n  return L(`tray_menu_state`, { key: e });\n}\nfunction lw(e) {\n  return z(`"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34271,
+    "callee": "L",
+    "command": "tray_icons",
+    "context": "turn L(`tray_relay`, { on: e });\n}\nfunction ow() {\n  return L(`tray_icons`);\n}\nfunction sw(e, t, n = !1) {\n  return L(`tray_icon_click`, { key: e, button: t, double: n });\n}\nfunction cw(e) {\n  return L(`tray_menu_state`, { key: e });\n}\nfunction lw(e) {\n  return z(`tray-icons-changed`, (t) => e(t.payload));\n}\nvar uw = i"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34274,
+    "callee": "L",
+    "command": "tray_icon_click",
+    "context": "urn L(`tray_icons`);\n}\nfunction sw(e, t, n = !1) {\n  return L(`tray_icon_click`, { key: e, button: t, double: n });\n}\nfunction cw(e) {\n  return L(`tray_menu_state`, { key: e });\n}\nfunction lw(e) {\n  return z(`tray-icons-changed`, (t) => e(t.payload));\n}\nvar uw = i()((e, t) => ({\n    icons: [],\n    apply: (n) => {\n     "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34277,
+    "callee": "L",
+    "command": "tray_menu_state",
+    "context": "ey: e, button: t, double: n });\n}\nfunction cw(e) {\n  return L(`tray_menu_state`, { key: e });\n}\nfunction lw(e) {\n  return z(`tray-icons-changed`, (t) => e(t.payload));\n}\nvar uw = i()((e, t) => ({\n    icons: [],\n    apply: (n) => {\n      let r = (e) =>\n          (\n            e.tip\n              .split(\n                "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34339,
+    "callee": "L",
+    "command": "popover_show",
+    "context": "null),\n    await new Promise((e) => setTimeout(e, 35)),\n    L(`popover_show`, e)\n  );\n}\nfunction bw(e, t, n, r, i) {\n  return yw({\n    kind: `menu`,\n    left: e,\n    top: t,\n    barBase: r,\n    barAtTop: i,\n    width: dw.width,\n    height: n,\n    gap: dw.gap,\n    margin: dw.margin,\n  });\n}\nfunction xw(e, t) {\n  return "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34368,
+    "callee": "L",
+    "command": "popover_follow_bar",
+    "context": "p,\n    margin: gw.margin,\n  });\n}\nfunction Sw(e) {\n  return L(`popover_follow_bar`, { barBase: e });\n}\nfunction Cw(e, t) {\n  return yw({\n    kind: `settings`,\n    left: 0,\n    barBase: e,\n    barAtTop: t,\n    width: _w.width,\n    height: _w.height,\n    gap: _w.gap,\n    margin: _w.margin,\n  });\n}\nvar ww = { width: 420, "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34413,
+    "callee": "L",
+    "command": "popover_show",
+    "context": ", i = !1) {\n  let { width: a, height: o } = Ew(t);\n  return L(`popover_show`, {\n    kind: `appWindows`,\n    left: e,\n    barBase: n,\n    barAtTop: r,\n    width: a,\n    height: o,\n    gap: Tw.gap + Dw(),\n    margin: Tw.margin,\n    focus: i,\n  });\n}\nvar kw = `app-windows-preview`,\n  Aw = `app-windows-preview-keys`,\n  jw "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34435,
+    "callee": "L",
+    "command": "show_app_window_thumbnails",
+    "context": "urn jw === null || jw === e;\n}\nfunction Pw(e, t) {\n  return L(`show_app_window_thumbnails`, { hwnds: e, grid: t ?? null });\n}\nfunction Fw() {\n  return L(`hide_app_window_thumbnails`);\n}\nfunction Iw(e) {\n  return L(`peek_window`, { hwnd: e });\n}\nfunction Lw(e, t) {\n  return L(`resize_app_windows_preview`, { windowCount:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34438,
+    "callee": "L",
+    "command": "hide_app_window_thumbnails",
+    "context": " { hwnds: e, grid: t ?? null });\n}\nfunction Fw() {\n  return L(`hide_app_window_thumbnails`);\n}\nfunction Iw(e) {\n  return L(`peek_window`, { hwnd: e });\n}\nfunction Lw(e, t) {\n  return L(`resize_app_windows_preview`, { windowCount: e, left: t ?? null });\n}\nfunction Rw(e, t, n = null) {\n  return yw({\n    kind: `gmail`,\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34441,
+    "callee": "L",
+    "command": "peek_window",
+    "context": "(`hide_app_window_thumbnails`);\n}\nfunction Iw(e) {\n  return L(`peek_window`, { hwnd: e });\n}\nfunction Lw(e, t) {\n  return L(`resize_app_windows_preview`, { windowCount: e, left: t ?? null });\n}\nfunction Rw(e, t, n = null) {\n  return yw({\n    kind: `gmail`,\n    left: 0,\n    anchor: n,\n    barBase: e,\n    barAtTop: t,\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34444,
+    "callee": "L",
+    "command": "resize_app_windows_preview",
+    "context": "`peek_window`, { hwnd: e });\n}\nfunction Lw(e, t) {\n  return L(`resize_app_windows_preview`, { windowCount: e, left: t ?? null });\n}\nfunction Rw(e, t, n = null) {\n  return yw({\n    kind: `gmail`,\n    left: 0,\n    anchor: n,\n    barBase: e,\n    barAtTop: t,\n    width: ww.width,\n    height: ww.height,\n    gap: ww.gap,\n   "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34661,
+    "callee": "L",
+    "command": "popover_fit",
+    "context": "p,\n    margin: vw.margin,\n  });\n}\nfunction sT(e) {\n  return L(`popover_fit`, { height: e });\n}\nfunction cT() {\n  return L(`popover_hide`);\n}\nfunction lT(e = 15e3) {\n  let t = rC((e) => e.apps),\n    n = rC((e) => e.order),\n    r = rC((e) => e.error),\n    i = rC((e) => e.refresh),\n    a = vc();\n  return (\n    (0, B.useEf"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34664,
+    "callee": "L",
+    "command": "popover_hide",
+    "context": "L(`popover_fit`, { height: e });\n}\nfunction cT() {\n  return L(`popover_hide`);\n}\nfunction lT(e = 15e3) {\n  let t = rC((e) => e.apps),\n    n = rC((e) => e.order),\n    r = rC((e) => e.error),\n    i = rC((e) => e.refresh),\n    a = vc();\n  return (\n    (0, B.useEffect)(() => {\n      if (a) {\n        Promise.resolve(rC.pers"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34793,
+    "callee": "L",
+    "command": "app_badges",
+    "context": "e) => [e.hwnd, e.icon])),\n    });\nfunction yT(e) {\n  return L(`app_badges`, { on: e });\n}\nvar bT = !1;\nfunction xT() {\n  bT ||\n    ((bT = !0),\n    L(`app_badges_list`)\n      .then(vT)\n      .catch(() => {}),\n    z(`app-badges-changed`, (e) => vT(e.payload)));\n}\nfunction ST(e, t) {\n  for (let n of t) if (e[n.hwnd]) retu"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34799,
+    "callee": "L",
+    "command": "app_badges_list",
+    "context": "\n}\nvar bT = !1;\nfunction xT() {\n  bT ||\n    ((bT = !0),\n    L(`app_badges_list`)\n      .then(vT)\n      .catch(() => {}),\n    z(`app-badges-changed`, (e) => vT(e.payload)));\n}\nfunction ST(e, t) {\n  for (let n of t) if (e[n.hwnd]) return e[n.hwnd];\n  return null;\n}\nfunction CT({ n: e }) {\n  return e\n    ? (0, W.jsx)(`spa"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 34856,
+    "callee": "L",
+    "command": "windows_attention",
+    "context": "\n      (z(`window-attention`, (t) => e(t.payload)),\n        L(`windows_attention`).then(e, () => {}));\n    }, []),\n    DT((e) => e.hwnds)\n  );\n}\nvar AT = 128,\n  jT = 0.24;\nasync function MT(e) {\n  let t = URL.createObjectURL(\n    new Blob([e], NT(e) ? { type: `image/svg+xml` } : void 0),\n  );\n  try {\n    let e = new Im"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37177,
+    "callee": "L",
+    "command": "wifi_networks",
+    "context": "),\n          ],\n        })\n  );\n}\nfunction GE(e) {\n  return L(`wifi_networks`, { rescan: e });\n}\nfunction KE(e, t) {\n  return L(`wifi_connect`, { id: e, password: t ?? null });\n}\nfunction qE() {\n  return L(`wifi_disconnect`);\n}\nfunction JE() {\n  return L(`bluetooth_devices`);\n}\nfunction YE() {\n  return L(`ethernet_adap"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37180,
+    "callee": "L",
+    "command": "wifi_connect",
+    "context": "i_networks`, { rescan: e });\n}\nfunction KE(e, t) {\n  return L(`wifi_connect`, { id: e, password: t ?? null });\n}\nfunction qE() {\n  return L(`wifi_disconnect`);\n}\nfunction JE() {\n  return L(`bluetooth_devices`);\n}\nfunction YE() {\n  return L(`ethernet_adapters`);\n}\nfunction XE(e, t) {\n  return L(`bluetooth_set_connected`"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37183,
+    "callee": "L",
+    "command": "wifi_disconnect",
+    "context": "{ id: e, password: t ?? null });\n}\nfunction qE() {\n  return L(`wifi_disconnect`);\n}\nfunction JE() {\n  return L(`bluetooth_devices`);\n}\nfunction YE() {\n  return L(`ethernet_adapters`);\n}\nfunction XE(e, t) {\n  return L(`bluetooth_set_connected`, { address: e, connected: t });\n}\nvar ZE = 4,\n  QE = 36,\n  $E = 3.5,\n  eD = 2"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37186,
+    "callee": "L",
+    "command": "bluetooth_devices",
+    "context": "{\n  return L(`wifi_disconnect`);\n}\nfunction JE() {\n  return L(`bluetooth_devices`);\n}\nfunction YE() {\n  return L(`ethernet_adapters`);\n}\nfunction XE(e, t) {\n  return L(`bluetooth_set_connected`, { address: e, connected: t });\n}\nvar ZE = 4,\n  QE = 36,\n  $E = 3.5,\n  eD = 20,\n  tD = `#ff453a`,\n  nD = `#30d158`;\nfunction r"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37189,
+    "callee": "L",
+    "command": "ethernet_adapters",
+    "context": "  return L(`bluetooth_devices`);\n}\nfunction YE() {\n  return L(`ethernet_adapters`);\n}\nfunction XE(e, t) {\n  return L(`bluetooth_set_connected`, { address: e, connected: t });\n}\nvar ZE = 4,\n  QE = 36,\n  $E = 3.5,\n  eD = 20,\n  tD = `#ff453a`,\n  nD = `#30d158`;\nfunction rD(e) {\n  let t = e.name.toLowerCase();\n  return /mo"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 37192,
+    "callee": "L",
+    "command": "bluetooth_set_connected",
+    "context": "turn L(`ethernet_adapters`);\n}\nfunction XE(e, t) {\n  return L(`bluetooth_set_connected`, { address: e, connected: t });\n}\nvar ZE = 4,\n  QE = 36,\n  $E = 3.5,\n  eD = 20,\n  tD = `#ff453a`,\n  nD = `#30d158`;\nfunction rD(e) {\n  let t = e.name.toLowerCase();\n  return /mouse|mx master|mx anywhere|trackball|pebble|trackpad/.te"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 38267,
+    "callee": "L",
+    "command": "top_processes",
+    "context": "(\n    kf(\n      (0, B.useCallback)(\n        () =>\n          L(`top_processes`, { by: e }).then((t) => {\n            let r = t.map((t) => ({\n              name: t.name,\n              icon: t.icon,\n              value: ZD(t, e),\n            }));\n            n((e) => (QD(e, r) ? e : r));\n          }),\n        [e],\n      )"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 39539,
+    "callee": "L",
+    "command": "get_brightness",
+    "context": "k = `/assets/papers-ByzPKJS8.png`;\nfunction ok() {\n  return L(`get_brightness`);\n}\nfunction sk(e) {\n  return L(`set_brightness`, { percent: Math.round(e) });\n}\nfunction ck(e) {\n  return z(`brightness-changed`, (t) => e(t.payload));\n}\nvar lk = `nightlight-changed`,\n  uk = i()(\n    P(\n      (e, t) => ({\n        on: !1,\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 39542,
+    "callee": "L",
+    "command": "set_brightness",
+    "context": "{\n  return L(`get_brightness`);\n}\nfunction sk(e) {\n  return L(`set_brightness`, { percent: Math.round(e) });\n}\nfunction ck(e) {\n  return z(`brightness-changed`, (t) => e(t.payload));\n}\nvar lk = `nightlight-changed`,\n  uk = i()(\n    P(\n      (e, t) => ({\n        on: !1,\n        error: null,\n        setOn: async (t) => {"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40534,
+    "callee": "L",
+    "command": "set_taskbar_mode",
+    "context": "mode: `hidden` }),\n    },\n  ),\n);\nfunction Lk(e) {\n  return L(`set_taskbar_mode`, { hidden: e === `hidden` }).catch(() => {});\n}\nfunction Rk(e) {\n  return L(`set_autostart`, { enabled: e });\n}\nfunction zk() {\n  return L(`get_autostart`);\n}\nvar Bk = () => $.getState(),\n  Vk = () => T.getState(),\n  Hk = (e, t) => Math.ro"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40537,
+    "callee": "L",
+    "command": "set_autostart",
+    "context": "== `hidden` }).catch(() => {});\n}\nfunction Rk(e) {\n  return L(`set_autostart`, { enabled: e });\n}\nfunction zk() {\n  return L(`get_autostart`);\n}\nvar Bk = () => $.getState(),\n  Vk = () => T.getState(),\n  Hk = (e, t) => Math.round((e / t) * 100),\n  Uk = (e, t, n) => Math.round(((e / 100) * t) / n) * n,\n  Wk = {\n    magni"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40540,
+    "callee": "L",
+    "command": "get_autostart",
+    "context": "set_autostart`, { enabled: e });\n}\nfunction zk() {\n  return L(`get_autostart`);\n}\nvar Bk = () => $.getState(),\n  Vk = () => T.getState(),\n  Hk = (e, t) => Math.round((e / t) * 100),\n  Uk = (e, t, n) => Math.round(((e / 100) * t) / n) * n,\n  Wk = {\n    magnification: { get: () => Bk().magnify, set: (e) => Bk().setMagnif"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40661,
+    "callee": "setItem",
+    "command": "dock_edge",
+    "context": " },\n    position: (e) => {\n      try {\n        localStorage.setItem(`dock_edge`, e);\n      } catch {}\n      F(Te, e);\n    },\n    taskbar: (e) =>\n      Ik.getState().setMode(e === `auto_hide` ? `autoHide` : `hidden`),\n    magnification_speed: (e) => Bk().setMagnifySpeed(e),\n    open_indicator: (e) => Bk().setOpenDot(e),"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40673,
+    "callee": "L",
+    "command": "dock_ask",
+    "context": " Mk.getState().setAccent(e),\n  };\nfunction Jk(e) {\n  return L(`dock_ask`, { state: e.state, questions: e.questions });\n}\nfunction Yk() {\n  let e = new Map(),\n    t = (t, n) => {\n      let r = t.trim().toLowerCase();\n      r && !e.has(r) && e.set(r, { name: t.trim(), run: n });\n    },\n    n = ip.getState().windows;\n  fo"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 40889,
+    "callee": "L",
+    "command": "net_status",
+    "context": "id, n),\n    { ...e, on: n }\n  );\n}\nfunction cA() {\n  return L(`net_status`);\n}\nvar lA = i(() => ({ status: null })),\n  uA = !1;\nfunction dA() {\n  return (\n    (0, B.useEffect)(() => {\n      uA ||\n        ((uA = !0),\n        z(`net-status`, (e) => lA.setState({ status: e.payload })),\n        cA()\n          .then((e) => "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42156,
+    "callee": "L",
+    "command": "screen_time_day",
+    "context": "      ],\n      }),\n    ],\n  });\n}\nfunction rj(e) {\n  return L(`screen_time_day`, { day: e });\n}\nfunction ij(e) {\n  return L(`screen_time_week`, { end: e });\n}\nfunction aj(e) {\n  return L(`screen_time_set_sites`, { on: e });\n}\nvar oj = `Other pages`;\nfunction sj(e) {\n  return L(`screen_time_hours`, { day: e });\n}\nfuncti"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42159,
+    "callee": "L",
+    "command": "screen_time_week",
+    "context": "`screen_time_day`, { day: e });\n}\nfunction ij(e) {\n  return L(`screen_time_week`, { end: e });\n}\nfunction aj(e) {\n  return L(`screen_time_set_sites`, { on: e });\n}\nvar oj = `Other pages`;\nfunction sj(e) {\n  return L(`screen_time_hours`, { day: e });\n}\nfunction cj(e) {\n  return L(`screen_time_tile`, { app: e });\n}\nvar l"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42162,
+    "callee": "L",
+    "command": "screen_time_set_sites",
+    "context": "screen_time_week`, { end: e });\n}\nfunction aj(e) {\n  return L(`screen_time_set_sites`, { on: e });\n}\nvar oj = `Other pages`;\nfunction sj(e) {\n  return L(`screen_time_hours`, { day: e });\n}\nfunction cj(e) {\n  return L(`screen_time_tile`, { app: e });\n}\nvar lj = `screen-time-settings-changed`,\n  uj = i()(\n    P(\n      (e"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42166,
+    "callee": "L",
+    "command": "screen_time_hours",
+    "context": ": e });\n}\nvar oj = `Other pages`;\nfunction sj(e) {\n  return L(`screen_time_hours`, { day: e });\n}\nfunction cj(e) {\n  return L(`screen_time_tile`, { app: e });\n}\nvar lj = `screen-time-settings-changed`,\n  uj = i()(\n    P(\n      (e) => ({\n        dockApp: null,\n        setDockApp: (t) => {\n          (e({ dockApp: t }), V"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42169,
+    "callee": "L",
+    "command": "screen_time_tile",
+    "context": "creen_time_hours`, { day: e });\n}\nfunction cj(e) {\n  return L(`screen_time_tile`, { app: e });\n}\nvar lj = `screen-time-settings-changed`,\n  uj = i()(\n    P(\n      (e) => ({\n        dockApp: null,\n        setDockApp: (t) => {\n          (e({ dockApp: t }), V(lj));\n        },\n        summaryOn: !0,\n        summaryTime: `2"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42285,
+    "callee": "L",
+    "command": "system_temps",
+    "context": "      }),\n      }),\n    ],\n  });\n}\nfunction _j() {\n  return L(`system_temps`);\n}\nfunction vj() {\n  return L(`top_cpu_app`);\n}\nfunction yj(e) {\n  return e >= 85 ? `hot` : e >= 70 ? `warm` : `normal`;\n}\nvar bj = { normal: `Normal`, warm: `Warm`, hot: `Hot` };\nfunction xj(e, t) {\n  return e === `hot`\n    ? t\n      ? `#d70"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42288,
+    "callee": "L",
+    "command": "top_cpu_app",
+    "context": "() {\n  return L(`system_temps`);\n}\nfunction vj() {\n  return L(`top_cpu_app`);\n}\nfunction yj(e) {\n  return e >= 85 ? `hot` : e >= 70 ? `warm` : `normal`;\n}\nvar bj = { normal: `Normal`, warm: `Warm`, hot: `Hot` };\nfunction xj(e, t) {\n  return e === `hot`\n    ? t\n      ? `#d70015`\n      : `#ff453a`\n    : e === `warm`\n    "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42921,
+    "callee": "L",
+    "command": "whatsapp_state",
+    "context": "\n  return (\n    kf(\n      (0, B.useCallback)(\n        () => L(`whatsapp_state`).then((e) => t((t) => (EM(t, e) ? t : e))),\n        [],\n      ),\n      TM,\n    ),\n    e\n  );\n}\nfunction OM(e) {\n  X(e ? `shell:AppsFolder\\\\${e}` : `whatsapp:`).catch(() => {});\n}\nvar kM = 12e4,\n  AM = 0,\n  jM = 0,\n  MM = () => void F(`outloo"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42951,
+    "callee": "L",
+    "command": "outlook_get_session",
+    "context": "oadSession: async () => {\n      try {\n        let n = await L(`outlook_get_session`);\n        (e({ session: n, checkedSession: !0 }), n && t().refresh());\n      } catch {\n        e({ checkedSession: !0 });\n      }\n    },\n    signIn: async () => {\n      let n = ++AM;\n      e({ connectError: null, device: null });\n      "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42961,
+    "callee": "L",
+    "command": "outlook_device_start",
+    "context": "r: null, device: null });\n      try {\n        let r = await L(`outlook_device_start`);\n        if (n !== AM) return;\n        (e({ device: r }), X(r.verificationUri).catch(() => {}));\n        let i = Date.now() + r.expiresIn * 1e3;\n        for (; n === AM && Date.now() < i;) {\n          if (\n            (await new Promi"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42973,
+    "callee": "L",
+    "command": "outlook_device_poll",
+    "context": "AM)\n          )\n            return;\n          let i = await L(`outlook_device_poll`, { deviceCode: r.deviceCode });\n          if (n !== AM) return;\n          if (i.status === `authorized`) {\n            (e({ device: null, session: { email: i.login }, error: null }),\n              MM(),\n              t().refresh());\n   "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 42996,
+    "callee": "L",
+    "command": "outlook_sign_out",
+    "context": "r: null }));\n    },\n    signOut: async () => {\n      (await L(`outlook_sign_out`).catch(() => {}),\n        e({\n          session: null,\n          unread: null,\n          today: null,\n          list: null,\n          query: ``,\n          error: null,\n        }),\n        MM());\n    },\n    refresh: async () => {\n      try "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43009,
+    "callee": "L",
+    "command": "outlook_get_unread",
+    "context": "> {\n      try {\n        let { unread: t, today: n } = await L(`outlook_get_unread`);\n        e({ unread: t, today: n, error: null });\n      } catch (n) {\n        let r = Y(n);\n        (e({ error: r }),\n          r.includes(`signed lumabar out`) && (await t().loadSession(), MM()));\n      }\n    },\n    loadList: async (n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43027,
+    "callee": "L",
+    "command": "outlook_list",
+    "context": ": null } : {}),\n      });\n      try {\n        let t = await L(`outlook_list`, { mailbox: n, query: r || null });\n        i === jM && e({ list: t, listLoading: !1 });\n      } catch (n) {\n        if (i !== jM) return;\n        (e({ listError: Y(n), listLoading: !1 }), t().loadSession());\n      }\n    },\n  })),\n  PM = `/ass"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43044,
+    "callee": "L",
+    "command": "gmail_list",
+    "context": "r=${encodeURIComponent(e)}`;\n}\nfunction RM(e, t) {\n  return L(`gmail_list`, { mailbox: e, query: t ?? null });\n}\nfunction zM() {\n  return L(`gmail_get_config`);\n}\nfunction BM(e, t) {\n  return L(`gmail_set_config`, { clientId: e, clientSecret: t });\n}\nfunction VM() {\n  return L(`gmail_sign_in`);\n}\nfunction HM() {\n  retu"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43047,
+    "callee": "L",
+    "command": "gmail_get_config",
+    "context": "mailbox: e, query: t ?? null });\n}\nfunction zM() {\n  return L(`gmail_get_config`);\n}\nfunction BM(e, t) {\n  return L(`gmail_set_config`, { clientId: e, clientSecret: t });\n}\nfunction VM() {\n  return L(`gmail_sign_in`);\n}\nfunction HM() {\n  return L(`gmail_cancel_sign_in`);\n}\nfunction UM() {\n  return L(`gmail_get_session`"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43050,
+    "callee": "L",
+    "command": "gmail_set_config",
+    "context": "eturn L(`gmail_get_config`);\n}\nfunction BM(e, t) {\n  return L(`gmail_set_config`, { clientId: e, clientSecret: t });\n}\nfunction VM() {\n  return L(`gmail_sign_in`);\n}\nfunction HM() {\n  return L(`gmail_cancel_sign_in`);\n}\nfunction UM() {\n  return L(`gmail_get_session`);\n}\nfunction WM() {\n  return L(`gmail_sign_out`);\n}\nf"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43053,
+    "callee": "L",
+    "command": "gmail_sign_in",
+    "context": "clientId: e, clientSecret: t });\n}\nfunction VM() {\n  return L(`gmail_sign_in`);\n}\nfunction HM() {\n  return L(`gmail_cancel_sign_in`);\n}\nfunction UM() {\n  return L(`gmail_get_session`);\n}\nfunction WM() {\n  return L(`gmail_sign_out`);\n}\nfunction GM() {\n  return L(`gmail_get_unread`);\n}\nvar KM = 0,\n  qM = 0;\nfunction JM()"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43056,
+    "callee": "L",
+    "command": "gmail_cancel_sign_in",
+    "context": ") {\n  return L(`gmail_sign_in`);\n}\nfunction HM() {\n  return L(`gmail_cancel_sign_in`);\n}\nfunction UM() {\n  return L(`gmail_get_session`);\n}\nfunction WM() {\n  return L(`gmail_sign_out`);\n}\nfunction GM() {\n  return L(`gmail_get_unread`);\n}\nvar KM = 0,\n  qM = 0;\nfunction JM() {\n  F(`gmail-connected`, null).catch(() => {})"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43059,
+    "callee": "L",
+    "command": "gmail_get_session",
+    "context": "eturn L(`gmail_cancel_sign_in`);\n}\nfunction UM() {\n  return L(`gmail_get_session`);\n}\nfunction WM() {\n  return L(`gmail_sign_out`);\n}\nfunction GM() {\n  return L(`gmail_get_unread`);\n}\nvar KM = 0,\n  qM = 0;\nfunction JM() {\n  F(`gmail-connected`, null).catch(() => {});\n}\nvar YM = i()((e, t) => ({\n    checkedSession: !1,\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43062,
+    "callee": "L",
+    "command": "gmail_sign_out",
+    "context": "  return L(`gmail_get_session`);\n}\nfunction WM() {\n  return L(`gmail_sign_out`);\n}\nfunction GM() {\n  return L(`gmail_get_unread`);\n}\nvar KM = 0,\n  qM = 0;\nfunction JM() {\n  F(`gmail-connected`, null).catch(() => {});\n}\nvar YM = i()((e, t) => ({\n    checkedSession: !1,\n    clientId: null,\n    configError: null,\n    sess"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 43065,
+    "callee": "L",
+    "command": "gmail_get_unread",
+    "context": " {\n  return L(`gmail_sign_out`);\n}\nfunction GM() {\n  return L(`gmail_get_unread`);\n}\nvar KM = 0,\n  qM = 0;\nfunction JM() {\n  F(`gmail-connected`, null).catch(() => {});\n}\nvar YM = i()((e, t) => ({\n    checkedSession: !1,\n    clientId: null,\n    configError: null,\n    session: null,\n    connecting: !1,\n    connectError:"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44547,
+    "callee": "L",
+    "command": "unsplash_get_access_key",
+    "context": "      }),\n      ],\n    }),\n  });\n}\nfunction NN() {\n  return L(`unsplash_get_access_key`);\n}\nfunction PN(e) {\n  return L(`unsplash_set_access_key`, { accessKey: e });\n}\nfunction FN(e, t, n) {\n  return L(`unsplash_search`, { accessKey: e, category: t, page: n });\n}\nfunction IN(e, t) {\n  return L(`unsplash_set_wallpaper`,"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44550,
+    "callee": "L",
+    "command": "unsplash_set_access_key",
+    "context": "n L(`unsplash_get_access_key`);\n}\nfunction PN(e) {\n  return L(`unsplash_set_access_key`, { accessKey: e });\n}\nfunction FN(e, t, n) {\n  return L(`unsplash_search`, { accessKey: e, category: t, page: n });\n}\nfunction IN(e, t) {\n  return L(`unsplash_set_wallpaper`, {\n    accessKey: e,\n    photoId: t.id,\n    fullUrl: t.ful"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44553,
+    "callee": "L",
+    "command": "unsplash_search",
+    "context": "_key`, { accessKey: e });\n}\nfunction FN(e, t, n) {\n  return L(`unsplash_search`, { accessKey: e, category: t, page: n });\n}\nfunction IN(e, t) {\n  return L(`unsplash_set_wallpaper`, {\n    accessKey: e,\n    photoId: t.id,\n    fullUrl: t.fullUrl,\n  });\n}\nfunction LN(e) {\n  return L(`unsplash_prefetch_wallpaper`, {\n    pho"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44556,
+    "callee": "L",
+    "command": "unsplash_set_wallpaper",
+    "context": " e, category: t, page: n });\n}\nfunction IN(e, t) {\n  return L(`unsplash_set_wallpaper`, {\n    accessKey: e,\n    photoId: t.id,\n    fullUrl: t.fullUrl,\n  });\n}\nfunction LN(e) {\n  return L(`unsplash_prefetch_wallpaper`, {\n    photoId: e.id,\n    fullUrl: e.fullUrl,\n  });\n}\nfunction RN() {\n  return L(`unsplash_get_auto`);\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44563,
+    "callee": "L",
+    "command": "unsplash_prefetch_wallpaper",
+    "context": ",\n    fullUrl: t.fullUrl,\n  });\n}\nfunction LN(e) {\n  return L(`unsplash_prefetch_wallpaper`, {\n    photoId: e.id,\n    fullUrl: e.fullUrl,\n  });\n}\nfunction RN() {\n  return L(`unsplash_get_auto`);\n}\nfunction zN(e, t) {\n  return L(`unsplash_set_auto`, { every: e, theme: t });\n}\nfunction BN(e) {\n  return L(`get_current_wal"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44569,
+    "callee": "L",
+    "command": "unsplash_get_auto",
+    "context": "d,\n    fullUrl: e.fullUrl,\n  });\n}\nfunction RN() {\n  return L(`unsplash_get_auto`);\n}\nfunction zN(e, t) {\n  return L(`unsplash_set_auto`, { every: e, theme: t });\n}\nfunction BN(e) {\n  return L(`get_current_wallpaper`, { maxSide: e ?? null });\n}\nvar VN = [\n  `New`,\n  `Nature`,\n  `Landscape`,\n  `Cozy`,\n  `Dark`,\n  `Gradi"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44572,
+    "callee": "L",
+    "command": "unsplash_set_auto",
+    "context": "turn L(`unsplash_get_auto`);\n}\nfunction zN(e, t) {\n  return L(`unsplash_set_auto`, { every: e, theme: t });\n}\nfunction BN(e) {\n  return L(`get_current_wallpaper`, { maxSide: e ?? null });\n}\nvar VN = [\n  `New`,\n  `Nature`,\n  `Landscape`,\n  `Cozy`,\n  `Dark`,\n  `Gradient`,\n  `Cars`,\n  `Windows`,\n  `MacBook`,\n];\nfunction H"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44575,
+    "callee": "L",
+    "command": "get_current_wallpaper",
+    "context": "auto`, { every: e, theme: t });\n}\nfunction BN(e) {\n  return L(`get_current_wallpaper`, { maxSide: e ?? null });\n}\nvar VN = [\n  `New`,\n  `Nature`,\n  `Landscape`,\n  `Cozy`,\n  `Dark`,\n  `Gradient`,\n  `Cars`,\n  `Windows`,\n  `MacBook`,\n];\nfunction HN(e) {\n  ce(`[wallpaper-gallery] ${e}`).catch(() => {});\n}\nfunction UN() {\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 44953,
+    "callee": "L",
+    "command": "crypto_tickers",
+    "context": "t`),\n          }),\n    ],\n  });\n}\nfunction ZN(e) {\n  return L(`crypto_tickers`, { symbols: e });\n}\nvar QN = [\n  `FDUSD`,\n  `USDT`,\n  `USDC`,\n  `TUSD`,\n  `BUSD`,\n  `EUR`,\n  `TRY`,\n  `BTC`,\n  `ETH`,\n  `BNB`,\n];\nfunction $N(e) {\n  let t = QN.find((t) => e.endsWith(t) && e.length > t.length);\n  return t ? { base: e.slice(0"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45452,
+    "callee": "L",
+    "command": "search_console_status",
+    "context": "default:\n      return t.key;\n  }\n}\nfunction zP() {\n  return L(`search_console_status`);\n}\nfunction BP(e, t) {\n  return L(`search_console_set_config`, { clientId: e, clientSecret: t });\n}\nfunction VP() {\n  return L(`search_console_sign_in`);\n}\nfunction HP() {\n  return L(`search_console_cancel_sign_in`);\n}\nfunction UP() "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45455,
+    "callee": "L",
+    "command": "search_console_set_config",
+    "context": " L(`search_console_status`);\n}\nfunction BP(e, t) {\n  return L(`search_console_set_config`, { clientId: e, clientSecret: t });\n}\nfunction VP() {\n  return L(`search_console_sign_in`);\n}\nfunction HP() {\n  return L(`search_console_cancel_sign_in`);\n}\nfunction UP() {\n  return L(`search_console_sign_out`);\n}\nfunction WP() {\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45458,
+    "callee": "L",
+    "command": "search_console_sign_in",
+    "context": "clientId: e, clientSecret: t });\n}\nfunction VP() {\n  return L(`search_console_sign_in`);\n}\nfunction HP() {\n  return L(`search_console_cancel_sign_in`);\n}\nfunction UP() {\n  return L(`search_console_sign_out`);\n}\nfunction WP() {\n  return L(`search_console_sites`);\n}\nfunction GP(e) {\n  return L(`search_console_set_site`, "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45461,
+    "callee": "L",
+    "command": "search_console_cancel_sign_in",
+    "context": "urn L(`search_console_sign_in`);\n}\nfunction HP() {\n  return L(`search_console_cancel_sign_in`);\n}\nfunction UP() {\n  return L(`search_console_sign_out`);\n}\nfunction WP() {\n  return L(`search_console_sites`);\n}\nfunction GP(e) {\n  return L(`search_console_set_site`, { site: e });\n}\nfunction KP(e, t = !1) {\n  return L(`sea"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45464,
+    "callee": "L",
+    "command": "search_console_sign_out",
+    "context": "search_console_cancel_sign_in`);\n}\nfunction UP() {\n  return L(`search_console_sign_out`);\n}\nfunction WP() {\n  return L(`search_console_sites`);\n}\nfunction GP(e) {\n  return L(`search_console_set_site`, { site: e });\n}\nfunction KP(e, t = !1) {\n  return L(`search_console_stats`, { days: e, force: t });\n}\nfunction qP(e) {\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45467,
+    "callee": "L",
+    "command": "search_console_sites",
+    "context": "rn L(`search_console_sign_out`);\n}\nfunction WP() {\n  return L(`search_console_sites`);\n}\nfunction GP(e) {\n  return L(`search_console_set_site`, { site: e });\n}\nfunction KP(e, t = !1) {\n  return L(`search_console_stats`, { days: e, force: t });\n}\nfunction qP(e) {\n  return L(`search_console_inspect`, { url: e });\n}\nfunct"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45470,
+    "callee": "L",
+    "command": "search_console_set_site",
+    "context": "turn L(`search_console_sites`);\n}\nfunction GP(e) {\n  return L(`search_console_set_site`, { site: e });\n}\nfunction KP(e, t = !1) {\n  return L(`search_console_stats`, { days: e, force: t });\n}\nfunction qP(e) {\n  return L(`search_console_inspect`, { url: e });\n}\nfunction JP(e, t) {\n  let n = e.trim();\n  if (/^https?:\\/\\//"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45473,
+    "callee": "L",
+    "command": "search_console_stats",
+    "context": "et_site`, { site: e });\n}\nfunction KP(e, t = !1) {\n  return L(`search_console_stats`, { days: e, force: t });\n}\nfunction qP(e) {\n  return L(`search_console_inspect`, { url: e });\n}\nfunction JP(e, t) {\n  let n = e.trim();\n  if (/^https?:\\/\\//i.test(n)) return n;\n  let r = t.startsWith(`sc-domain:`)\n    ? `https://${t.sl"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 45476,
+    "callee": "L",
+    "command": "search_console_inspect",
+    "context": "stats`, { days: e, force: t });\n}\nfunction qP(e) {\n  return L(`search_console_inspect`, { url: e });\n}\nfunction JP(e, t) {\n  let n = e.trim();\n  if (/^https?:\\/\\//i.test(n)) return n;\n  let r = t.startsWith(`sc-domain:`)\n    ? `https://${t.slice(10)}`\n    : t.replace(/\\/+$/, ``).replace(/^(https?:\\/\\/[^/]+).*$/, `$1`);"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 46579,
+    "callee": "L",
+    "command": "dock_debug_log",
+    "context": ".now() < WF;\n}\nvar JF = 2e4,\n  YF = 1e3,\n  XF = (e) => void L(`dock_debug_log`, { msg: e }).catch(() => {});\nfunction ZF(e) {\n  let t = performance.now(),\n    n = `${e} widget${e === 1 ? `` : `s`}`,\n    r = {\n      frame: `frame`,\n      timer: `timer`,\n      answer: `answer from the main thread`,\n    },\n    i = { frame"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 49397,
+    "callee": "getItem",
+    "command": "dock_edge",
+    "context": ";\n      },\n      t = `bottom`;\n    try {\n      localStorage.getItem(`dock_edge`) === `top` && (t = `top`);\n    } catch {}\n    (_e(t), We.current.then(() => e(t, `launch`)));\n    let n = z(Te, ({ payload: t }) => {\n      (t === `top` || t === `bottom`) && e(t, `settings`);\n    });\n    return () => void n.then((e) => e()"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50103,
+    "callee": "L",
+    "command": "license_get_status",
+    "context": ";\n  } catch {\n    return !0;\n  }\n}\nfunction RR() {\n  return L(`license_get_status`);\n}\nfunction zR(e) {\n  return L(`license_activate`, { licenseKey: e });\n}\nfunction BR() {\n  return L(`license_revalidate`);\n}\nfunction VR() {\n  return L(`license_deactivate`);\n}\nvar HR = `This is a modified copy of lumabar and can't be a"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50106,
+    "callee": "L",
+    "command": "license_activate",
+    "context": "return L(`license_get_status`);\n}\nfunction zR(e) {\n  return L(`license_activate`, { licenseKey: e });\n}\nfunction BR() {\n  return L(`license_revalidate`);\n}\nfunction VR() {\n  return L(`license_deactivate`);\n}\nvar HR = `This is a modified copy of lumabar and can't be activated. The real one is at lumabar.xyz.`,\n  UR = i("
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50109,
+    "callee": "L",
+    "command": "license_revalidate",
+    "context": "e_activate`, { licenseKey: e });\n}\nfunction BR() {\n  return L(`license_revalidate`);\n}\nfunction VR() {\n  return L(`license_deactivate`);\n}\nvar HR = `This is a modified copy of lumabar and can't be activated. The real one is at lumabar.xyz.`,\n  UR = i()((e) => ({\n    phase: `checking`,\n    status: null,\n    activating: "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50112,
+    "callee": "L",
+    "command": "license_deactivate",
+    "context": " return L(`license_revalidate`);\n}\nfunction VR() {\n  return L(`license_deactivate`);\n}\nvar HR = `This is a modified copy of lumabar and can't be activated. The real one is at lumabar.xyz.`,\n  UR = i()((e) => ({\n    phase: `checking`,\n    status: null,\n    activating: !1,\n    activateError: null,\n    notice: null,\n    i"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50666,
+    "callee": "L",
+    "command": "update_supported",
+    "context": "en((e) => e());\n    };\n  }, []);\n}\nfunction mz() {\n  return L(`update_supported`);\n}\nfunction hz() {\n  return L(`update_check`);\n}\nfunction gz() {\n  return L(`update_install`);\n}\nfunction _z(e) {\n  return z(`update-progress`, (t) => e(t.payload));\n}\nvar vz = `https://lumabar.xyz/changelog`,\n  yz = 6e4,\n  bz = 6e5,\n  xz"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50669,
+    "callee": "L",
+    "command": "update_check",
+    "context": "\n  return L(`update_supported`);\n}\nfunction hz() {\n  return L(`update_check`);\n}\nfunction gz() {\n  return L(`update_install`);\n}\nfunction _z(e) {\n  return z(`update-progress`, (t) => e(t.payload));\n}\nvar vz = `https://lumabar.xyz/changelog`,\n  yz = 6e4,\n  bz = 6e5,\n  xz = 12e4,\n  Sz = 600,\n  Cz = { version: null, dismi"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 50672,
+    "callee": "L",
+    "command": "update_install",
+    "context": "() {\n  return L(`update_check`);\n}\nfunction gz() {\n  return L(`update_install`);\n}\nfunction _z(e) {\n  return z(`update-progress`, (t) => e(t.payload));\n}\nvar vz = `https://lumabar.xyz/changelog`,\n  yz = 6e4,\n  bz = 6e5,\n  xz = 12e4,\n  Sz = 600,\n  Cz = { version: null, dismissed: !1, installing: !1 };\nfunction wz() {\n  "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 52008,
+    "callee": "L",
+    "command": "set_hotkeys",
+    "context": ") },\n    ),\n  ),\n  QB = `hotkey`;\nfunction $B(e) {\n  return L(`set_hotkeys`, { bindings: e });\n}\nfunction eV() {\n  let e = UR((e) => e.phase);\n  ((0, B.useEffect)(() => {\n    e === `unlocked` && Se().catch(() => {});\n  }, [e]),\n    (0, B.useEffect)(() => {\n      let e = (e) => {\n        if (e.key !== `Escape`) return;\n"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 52751,
+    "callee": "L",
+    "command": "dock_restore_after_reopen",
+    "context": "t)(() => {\n      let e = () => {\n        document.hidden || L(`dock_restore_after_reopen`).catch(() => {});\n      };\n      return (\n        document.addEventListener(`visibilitychange`, e),\n        e(),\n        () => document.removeEventListener(`visibilitychange`, e)\n      );\n    }, []));\n}\nfunction fV() {\n  return (p"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 54413,
+    "callee": "L",
+    "command": "list_dock_displays",
+    "context": "       ],\n      }),\n    ],\n  });\n}\nfunction OH() {\n  return L(`list_dock_displays`);\n}\nfunction kH(e) {\n  return L(`set_dock_display`, { id: e });\n}\nfunction AH() {\n  return VF();\n}\nvar jH = `flex size-8 items-center justify-center rounded-full bg-overlay/[0.08] text-foreground transition-colors hover:bg-overlay/[0.14]"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 54416,
+    "callee": "L",
+    "command": "set_dock_display",
+    "context": "return L(`list_dock_displays`);\n}\nfunction kH(e) {\n  return L(`set_dock_display`, { id: e });\n}\nfunction AH() {\n  return VF();\n}\nvar jH = `flex size-8 items-center justify-center rounded-full bg-overlay/[0.08] text-foreground transition-colors hover:bg-overlay/[0.14] disabled:opacity-35 disabled:hover:bg-overlay/[0.08]"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 54587,
+    "callee": "getItem",
+    "command": "dock_edge",
+    "context": "und-muted`;\nfunction ZH() {\n  try {\n    return localStorage.getItem(`dock_edge`) === `top`;\n  } catch {\n    return !1;\n  }\n}\nfunction QH({ entered: e, onClose: t }) {\n  let n = ic((e) => e.style),\n    r = ic((e) => e.clearTiles),\n    i = ic((e) => e.widgetStyle),\n    a = () => window.setTimeout(() => void F(`bar-style-"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 54705,
+    "callee": "setItem",
+    "command": "dock_edge",
+    "context": "= Qe) {\n        $e(e);\n        try {\n          localStorage.setItem(`dock_edge`, e);\n        } catch {}\n        F(Te, e);\n      }\n    },\n    tt = () => {\n      let e = !h;\n      (be(e), F(`dock-full-width-changed`, e));\n    },\n    nt = () => {\n      let e = !xe;\n      (Oe(e), F(ye, e));\n    },\n    rt = () => {\n      le"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 58365,
+    "callee": "L",
+    "command": "feedback_report",
+    "context": " if (!r && t.length === 0) return `failed`;\n  let i = await L(`feedback_report`).catch(\n      (e) => (xW(`no system report: ${String(e)}`), null),\n    ),\n    a = i?.log ? new File([i.log], `dock.log`, { type: `text/plain` }) : null,\n    o = a ? [...t, a] : t,\n    s = o.reduce((e, t) => e + t.size, 0) || 1,\n    c = 0,\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 59316,
+    "callee": "L",
+    "command": "get_app_catalog",
+    "context": "       ],\n      }),\n    ],\n  });\n}\nfunction PW() {\n  return L(`get_app_catalog`);\n}\nfunction FW({ entered: e, onClose: t }) {\n  let n = vp((e) => e.bindings),\n    r = vp((e) => e.bind),\n    i = vp((e) => e.unbind),\n    [a, o] = (0, B.useState)(null),\n    [s, c] = (0, B.useState)(!1),\n    [l, u] = (0, B.useState)(``),\n "
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 61835,
+    "callee": "L",
+    "command": "calendar_feeds",
+    "context": "       ],\n      }),\n    ],\n  });\n}\nfunction OG() {\n  return L(`calendar_feeds`);\n}\nfunction kG(e) {\n  return L(`calendar_feed_add`, { url: e });\n}\nfunction AG(e) {\n  return L(`calendar_feed_remove`, { id: e });\n}\nfunction jG() {\n  return L(`calendar_sync`);\n}\nvar MG = `flex h-8 shrink-0 items-end gap-2 px-4 pb-1.5 text"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 61838,
+    "callee": "L",
+    "command": "calendar_feed_add",
+    "context": "{\n  return L(`calendar_feeds`);\n}\nfunction kG(e) {\n  return L(`calendar_feed_add`, { url: e });\n}\nfunction AG(e) {\n  return L(`calendar_feed_remove`, { id: e });\n}\nfunction jG() {\n  return L(`calendar_sync`);\n}\nvar MG = `flex h-8 shrink-0 items-end gap-2 px-4 pb-1.5 text-[11px] font-medium uppercase tracking-wide text-"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 61841,
+    "callee": "L",
+    "command": "calendar_feed_remove",
+    "context": "alendar_feed_add`, { url: e });\n}\nfunction AG(e) {\n  return L(`calendar_feed_remove`, { id: e });\n}\nfunction jG() {\n  return L(`calendar_sync`);\n}\nvar MG = `flex h-8 shrink-0 items-end gap-2 px-4 pb-1.5 text-[11px] font-medium uppercase tracking-wide text-foreground-muted`,\n  NG = `flex w-[300px] shrink-0 flex-col over"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 61844,
+    "callee": "L",
+    "command": "calendar_sync",
+    "context": "lendar_feed_remove`, { id: e });\n}\nfunction jG() {\n  return L(`calendar_sync`);\n}\nvar MG = `flex h-8 shrink-0 items-end gap-2 px-4 pb-1.5 text-[11px] font-medium uppercase tracking-wide text-foreground-muted`,\n  NG = `flex w-[300px] shrink-0 flex-col overflow-hidden border-l border-hairline`,\n  PG = `divide-y divide-ha"
+  },
+  {
+    "file": "index-Cq3B5g79.js",
+    "line": 66771,
+    "callee": "L",
+    "command": "set_clipboard_text",
+    "context": "         ],\n          }),\n  });\n}\nfunction CJ(e) {\n  return L(`set_clipboard_text`, { text: e });\n}\nvar wJ = { expr: ``, result: null, fresh: !1, error: !1 },\n  TJ = 14;\nfunction EJ(e) {\n  return e.error ? `Error` : e.expr === `` ? `0` : e.expr;\n}\nfunction DJ(e, t) {\n  if (e.error) return null;\n  if (e.fresh) return e."
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1243,
+    "callee": "u",
+    "command": "dock_headroom",
+    "context": " = () => F;\nfunction Se(e) {\n  e !== F &&\n    ((F = e),\n    u(`dock_headroom`, { headroom: e, open: !1 }).catch(() => {}),\n    Je().catch(() => {}));\n}\nvar Ce = `dock-win-key`,\n  we = `start-menu-open`,\n  Te = `dock-room-closed`;\nfunction Ee() {\n  return u(`dock_watch_keys`);\n}\nvar I = new Set();\nfunction De(e, t = `ma"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1250,
+    "callee": "u",
+    "command": "dock_watch_keys",
+    "context": "-open`,\n  Te = `dock-room-closed`;\nfunction Ee() {\n  return u(`dock_watch_keys`);\n}\nvar I = new Set();\nfunction De(e, t = `magnify`) {\n  return (\n    e ? I.add(t) : I.delete(t),\n    !e && I.size > 0\n      ? Promise.resolve(!0)\n      : u(`dock_headroom`, { headroom: F, open: I.size > 0 })\n  );\n}\nfunction Oe() {\n  I.clea"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1258,
+    "callee": "u",
+    "command": "dock_headroom",
+    "context": "),\n    !e && I.size > 0\n      ? Promise.resolve(!0)\n      : u(`dock_headroom`, { headroom: F, open: I.size > 0 })\n  );\n}\nfunction Oe() {\n  I.clear();\n}\nfunction L() {\n  return P;\n}\nfunction ke(e, t = e) {\n  ((P = e), (be = t));\n}\nfunction R() {\n  return Math.max(640, window.screen.width);\n}\nvar z = new Map(),\n  B = nul"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1375,
+    "callee": "u",
+    "command": "dock_resize",
+    "context": " < B && ze(t);\n}\nasync function X(e, t) {\n  try {\n    await u(`dock_resize`, {\n      width: e,\n      height: t + F,\n      reserveHeight: be,\n      live: q,\n    });\n  } catch (n) {\n    throw (\n      st(`[dock] dock_resize ${e}x${t} failed: ${String(n)}`).catch(() => {}),\n      n\n    );\n  }\n  (async () => {\n    let [{ wa"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1410,
+    "callee": "u",
+    "command": "quit_app",
+    "context": "ion Ye() {\n  return w().close();\n}\nfunction Xe() {\n  return u(`quit_app`);\n}\nfunction Ze() {\n  return w().setFocus();\n}\nfunction Qe() {\n  return k().listen(`dock-ping`, () => {\n    u(`dock_alive`).catch(() => {});\n  });\n}\nasync function $e() {\n  if (!(await u(`dock_hover_focus_enabled`).catch(() => !1))) return;\n  let "
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1417,
+    "callee": "u",
+    "command": "dock_alive",
+    "context": "unction Qe() {\n  return k().listen(`dock-ping`, () => {\n    u(`dock_alive`).catch(() => {});\n  });\n}\nasync function $e() {\n  if (!(await u(`dock_hover_focus_enabled`).catch(() => !1))) return;\n  let e = (e) => {\n      u(`dock_pointer`, { event: e }).catch(() => {});\n    },\n    t = document.documentElement;\n  (t.addEven"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1421,
+    "callee": "u",
+    "command": "dock_hover_focus_enabled",
+    "context": "atch(() => {});\n  });\n}\nasync function $e() {\n  if (!(await u(`dock_hover_focus_enabled`).catch(() => !1))) return;\n  let e = (e) => {\n      u(`dock_pointer`, { event: e }).catch(() => {});\n    },\n    t = document.documentElement;\n  (t.addEventListener(`pointerenter`, () => e(`enter`)),\n    t.addEventListener(`pointerl"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1423,
+    "callee": "u",
+    "command": "dock_pointer",
+    "context": "nabled`).catch(() => !1))) return;\n  let e = (e) => {\n      u(`dock_pointer`, { event: e }).catch(() => {});\n    },\n    t = document.documentElement;\n  (t.addEventListener(`pointerenter`, () => e(`enter`)),\n    t.addEventListener(`pointerleave`, () => e(`leave`)),\n    window.addEventListener(`pointerdown`, () => e(`dow"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1434,
+    "callee": "u",
+    "command": "dock_snap",
+    "context": "ten(`dock-display-changed`, e);\n}\nfunction tt(e) {\n  return u(`dock_snap`, { edge: e });\n}\nvar nt = `dock-edge-changed`;\nfunction rt(e) {\n  return u(`dock_set_autohide`, { enabled: e });\n}\nfunction it(e) {\n  return u(`dock_set_lift`, { lift: e, live: q });\n}\nfunction at(e) {\n  return u(`dock_set_smart_hide`, { on: e })"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1438,
+    "callee": "u",
+    "command": "dock_set_autohide",
+    "context": ";\n}\nvar nt = `dock-edge-changed`;\nfunction rt(e) {\n  return u(`dock_set_autohide`, { enabled: e });\n}\nfunction it(e) {\n  return u(`dock_set_lift`, { lift: e, live: q });\n}\nfunction at(e) {\n  return u(`dock_set_smart_hide`, { on: e });\n}\nfunction ot(e) {\n  return u(`dock_autohide_hidden`, { hidden: e });\n}\nfunction st(e"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1441,
+    "callee": "u",
+    "command": "dock_set_lift",
+    "context": "set_autohide`, { enabled: e });\n}\nfunction it(e) {\n  return u(`dock_set_lift`, { lift: e, live: q });\n}\nfunction at(e) {\n  return u(`dock_set_smart_hide`, { on: e });\n}\nfunction ot(e) {\n  return u(`dock_autohide_hidden`, { hidden: e });\n}\nfunction st(e) {\n  return u(`dock_debug_log`, { msg: e });\n}\nfunction ct() {\n  re"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1444,
+    "callee": "u",
+    "command": "dock_set_smart_hide",
+    "context": "t_lift`, { lift: e, live: q });\n}\nfunction at(e) {\n  return u(`dock_set_smart_hide`, { on: e });\n}\nfunction ot(e) {\n  return u(`dock_autohide_hidden`, { hidden: e });\n}\nfunction st(e) {\n  return u(`dock_debug_log`, { msg: e });\n}\nfunction ct() {\n  return u(`is_left_mouse_down`);\n}\nasync function lt() {\n  let e = await "
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1447,
+    "callee": "u",
+    "command": "dock_autohide_hidden",
+    "context": "ck_set_smart_hide`, { on: e });\n}\nfunction ot(e) {\n  return u(`dock_autohide_hidden`, { hidden: e });\n}\nfunction st(e) {\n  return u(`dock_debug_log`, { msg: e });\n}\nfunction ct() {\n  return u(`is_left_mouse_down`);\n}\nasync function lt() {\n  let e = await w().outerPosition();\n  return { x: e.x, y: e.y };\n}\nvar ut = i(e("
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1450,
+    "callee": "u",
+    "command": "dock_debug_log",
+    "context": "tohide_hidden`, { hidden: e });\n}\nfunction st(e) {\n  return u(`dock_debug_log`, { msg: e });\n}\nfunction ct() {\n  return u(`is_left_mouse_down`);\n}\nasync function lt() {\n  let e = await w().outerPosition();\n  return { x: e.x, y: e.y };\n}\nvar ut = i(e(), 1),\n  dt = 0.4,\n  ft = 1.25,\n  pt = typeof screen < `u` && screen.h"
+  },
+  {
+    "file": "useDockDrag-NiG8jndm.js",
+    "line": 1453,
+    "callee": "u",
+    "command": "is_left_mouse_down",
+    "context": "u(`dock_debug_log`, { msg: e });\n}\nfunction ct() {\n  return u(`is_left_mouse_down`);\n}\nasync function lt() {\n  let e = await w().outerPosition();\n  return { x: e.x, y: e.y };\n}\nvar ut = i(e(), 1),\n  dt = 0.4,\n  ft = 1.25,\n  pt = typeof screen < `u` && screen.height >= 1440 ? 1 : 0.75,\n  mt = { small: 0.75, medium: 0.87"
+  }
+]

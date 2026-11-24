@@ -1,0 +1,9 @@
+Directory	Directory_Parent	DefaultDir
+s72	S72	l255
+Directory	Directory
+INSTALLDIR	ProgramFiles64Folder	lumabar
+DesktopFolder	TARGETDIR	Desktop
+ApplicationProgramsFolder	ProgramMenuFolder	lumabar
+TARGETDIR		SourceDir
+ProgramFiles64Folder	TARGETDIR	PFiles
+ProgramMenuFolder	TARGETDIR	.

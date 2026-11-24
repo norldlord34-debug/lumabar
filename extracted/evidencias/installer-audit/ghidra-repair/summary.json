@@ -1,0 +1,20 @@
+{
+  "selected_ranges": 395,
+  "previous_pseudocode": 254,
+  "repaired_pseudocode": 140,
+  "total_pseudocode": 394,
+  "unresolved": [
+    {
+      "address": "0x140b5f250",
+      "end": "0x140b71a87",
+      "modules_inferred": "src\\commands\\revenue.rs",
+      "result": "timeout_unresolved",
+      "file": "",
+      "error": "Exception while decompiling 140b5f250: process: timeout "
+    }
+  ],
+  "heuristic_switch_overrides": 894,
+  "decompiler_warning_markers": 2313,
+  "original_source_recovered": false,
+  "execution_validation": false
+}

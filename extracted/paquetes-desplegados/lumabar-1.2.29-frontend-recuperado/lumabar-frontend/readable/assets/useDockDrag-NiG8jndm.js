@@ -1,0 +1,1716 @@
+import { i as e, n as t, o as n, r, s as i } from "./dockEdgeStore-bDVyOMfy.js";
+function a(e, t, n, r) {
+  if (n === `a` && !r)
+    throw TypeError(`Private accessor was defined without a getter`);
+  if (typeof t == `function` ? e !== t || !r : !t.has(e))
+    throw TypeError(
+      `Cannot read private member from an object whose class did not declare it`,
+    );
+  return n === `m` ? r : n === `a` ? r.call(e) : r ? r.value : t.get(e);
+}
+function o(e, t, n, r, i) {
+  if (r === `m`) throw TypeError(`Private method is not writable`);
+  if (r === `a` && !i)
+    throw TypeError(`Private accessor was defined without a setter`);
+  if (typeof t == `function` ? e !== t || !i : !t.has(e))
+    throw TypeError(
+      `Cannot write private member to an object whose class did not declare it`,
+    );
+  return (r === `a` ? i.call(e, n) : i ? (i.value = n) : t.set(e, n), n);
+}
+var s,
+  c = `__TAURI_TO_IPC_KEY__`;
+function l(e, t = !1) {
+  return window.__TAURI_INTERNALS__.transformCallback(e, t);
+}
+async function u(e, t = {}, n) {
+  return window.__TAURI_INTERNALS__.invoke(e, t, n);
+}
+var d = class {
+  get rid() {
+    return a(this, s, `f`);
+  }
+  constructor(e) {
+    (s.set(this, void 0), o(this, s, e, `f`));
+  }
+  async close() {
+    return u(`plugin:resources|close`, { rid: this.rid });
+  }
+};
+s = new WeakMap();
+var f = class {
+    constructor(...e) {
+      ((this.type = `Logical`),
+        e.length === 1
+          ? `Logical` in e[0]
+            ? ((this.width = e[0].Logical.width),
+              (this.height = e[0].Logical.height))
+            : ((this.width = e[0].width), (this.height = e[0].height))
+          : ((this.width = e[0]), (this.height = e[1])));
+    }
+    toPhysical(e) {
+      return new p(this.width * e, this.height * e);
+    }
+    [c]() {
+      return { width: this.width, height: this.height };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  p = class {
+    constructor(...e) {
+      ((this.type = `Physical`),
+        e.length === 1
+          ? `Physical` in e[0]
+            ? ((this.width = e[0].Physical.width),
+              (this.height = e[0].Physical.height))
+            : ((this.width = e[0].width), (this.height = e[0].height))
+          : ((this.width = e[0]), (this.height = e[1])));
+    }
+    toLogical(e) {
+      return new f(this.width / e, this.height / e);
+    }
+    [c]() {
+      return { width: this.width, height: this.height };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  m = class {
+    constructor(e) {
+      this.size = e;
+    }
+    toLogical(e) {
+      return this.size instanceof f ? this.size : this.size.toLogical(e);
+    }
+    toPhysical(e) {
+      return this.size instanceof p ? this.size : this.size.toPhysical(e);
+    }
+    [c]() {
+      return {
+        [`${this.size.type}`]: {
+          width: this.size.width,
+          height: this.size.height,
+        },
+      };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  h = class {
+    constructor(...e) {
+      ((this.type = `Logical`),
+        e.length === 1
+          ? `Logical` in e[0]
+            ? ((this.x = e[0].Logical.x), (this.y = e[0].Logical.y))
+            : ((this.x = e[0].x), (this.y = e[0].y))
+          : ((this.x = e[0]), (this.y = e[1])));
+    }
+    toPhysical(e) {
+      return new g(this.x * e, this.y * e);
+    }
+    [c]() {
+      return { x: this.x, y: this.y };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  g = class {
+    constructor(...e) {
+      ((this.type = `Physical`),
+        e.length === 1
+          ? `Physical` in e[0]
+            ? ((this.x = e[0].Physical.x), (this.y = e[0].Physical.y))
+            : ((this.x = e[0].x), (this.y = e[0].y))
+          : ((this.x = e[0]), (this.y = e[1])));
+    }
+    toLogical(e) {
+      return new h(this.x / e, this.y / e);
+    }
+    [c]() {
+      return { x: this.x, y: this.y };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  _ = class {
+    constructor(e) {
+      this.position = e;
+    }
+    toLogical(e) {
+      return this.position instanceof h
+        ? this.position
+        : this.position.toLogical(e);
+    }
+    toPhysical(e) {
+      return this.position instanceof g
+        ? this.position
+        : this.position.toPhysical(e);
+    }
+    [c]() {
+      return {
+        [`${this.position.type}`]: { x: this.position.x, y: this.position.y },
+      };
+    }
+    toJSON() {
+      return this[c]();
+    }
+  },
+  v;
+(function (e) {
+  ((e.WINDOW_RESIZED = `tauri://resize`),
+    (e.WINDOW_MOVED = `tauri://move`),
+    (e.WINDOW_CLOSE_REQUESTED = `tauri://close-requested`),
+    (e.WINDOW_DESTROYED = `tauri://destroyed`),
+    (e.WINDOW_FOCUS = `tauri://focus`),
+    (e.WINDOW_BLUR = `tauri://blur`),
+    (e.WINDOW_SCALE_FACTOR_CHANGED = `tauri://scale-change`),
+    (e.WINDOW_THEME_CHANGED = `tauri://theme-changed`),
+    (e.WINDOW_CREATED = `tauri://window-created`),
+    (e.WINDOW_SUSPENDED = `tauri://suspended`),
+    (e.WINDOW_RESUMED = `tauri://resumed`),
+    (e.WEBVIEW_CREATED = `tauri://webview-created`),
+    (e.DRAG_ENTER = `tauri://drag-enter`),
+    (e.DRAG_OVER = `tauri://drag-over`),
+    (e.DRAG_DROP = `tauri://drag-drop`),
+    (e.DRAG_LEAVE = `tauri://drag-leave`));
+})((v ||= {}));
+async function ee(e, t) {
+  (window.__TAURI_EVENT_PLUGIN_INTERNALS__.unregisterListener(e, t),
+    await u(`plugin:event|unlisten`, { event: e, eventId: t }));
+}
+async function y(e, t, n) {
+  return u(`plugin:event|listen`, {
+    event: e,
+    target:
+      typeof n?.target == `string`
+        ? { kind: `AnyLabel`, label: n.target }
+        : (n?.target ?? { kind: `Any` }),
+    handler: l(t),
+  }).then((t) => async () => ee(e, t));
+}
+async function b(e, t, n) {
+  return y(
+    e,
+    (n) => {
+      (ee(e, n.id), t(n));
+    },
+    n,
+  );
+}
+async function x(e, t) {
+  await u(`plugin:event|emit`, { event: e, payload: t });
+}
+async function S(e, t, n) {
+  await u(`plugin:event|emit_to`, {
+    target: typeof e == `string` ? { kind: `AnyLabel`, label: e } : e,
+    event: t,
+    payload: n,
+  });
+}
+var te = class e extends d {
+  constructor(e) {
+    super(e);
+  }
+  static async new(t, n, r) {
+    return u(`plugin:image|new`, { rgba: C(t), width: n, height: r }).then(
+      (t) => new e(t),
+    );
+  }
+  static async fromBytes(t) {
+    return u(`plugin:image|from_bytes`, { bytes: C(t) }).then((t) => new e(t));
+  }
+  static async fromPath(t) {
+    return u(`plugin:image|from_path`, { path: t }).then((t) => new e(t));
+  }
+  async rgba() {
+    return u(`plugin:image|rgba`, { rid: this.rid }).then(
+      (e) => new Uint8Array(e),
+    );
+  }
+  async size() {
+    return u(`plugin:image|size`, { rid: this.rid });
+  }
+};
+function C(e) {
+  return e == null
+    ? null
+    : typeof e == `string`
+      ? e
+      : e instanceof te
+        ? e.rid
+        : e;
+}
+var ne;
+(function (e) {
+  ((e[(e.Critical = 1)] = `Critical`),
+    (e[(e.Informational = 2)] = `Informational`));
+})((ne ||= {}));
+var re = class {
+    constructor(e) {
+      ((this._preventDefault = !1), (this.event = e.event), (this.id = e.id));
+    }
+    preventDefault() {
+      this._preventDefault = !0;
+    }
+    isPreventDefault() {
+      return this._preventDefault;
+    }
+  },
+  ie;
+(function (e) {
+  ((e.None = `none`),
+    (e.Normal = `normal`),
+    (e.Indeterminate = `indeterminate`),
+    (e.Paused = `paused`),
+    (e.Error = `error`));
+})((ie ||= {}));
+function w() {
+  return new E(window.__TAURI_INTERNALS__.metadata.currentWindow.label, {
+    skip: !0,
+  });
+}
+async function T() {
+  return u(`plugin:window|get_all_windows`).then((e) =>
+    e.map((e) => new E(e, { skip: !0 })),
+  );
+}
+var ae = [`tauri://created`, `tauri://error`],
+  E = class {
+    constructor(e, t = {}) {
+      ((this.label = e),
+        (this.listeners = Object.create(null)),
+        t?.skip ||
+          u(`plugin:window|create`, {
+            options: {
+              ...t,
+              parent: typeof t.parent == `string` ? t.parent : t.parent?.label,
+              label: e,
+            },
+          })
+            .then(async () => this.emit(`tauri://created`))
+            .catch(async (e) => this.emit(`tauri://error`, e)));
+    }
+    static async getByLabel(e) {
+      return (await T()).find((t) => t.label === e) ?? null;
+    }
+    static getCurrent() {
+      return w();
+    }
+    static async getAll() {
+      return T();
+    }
+    static async getFocusedWindow() {
+      for (let e of await T()) if (await e.isFocused()) return e;
+      return null;
+    }
+    async listen(e, t) {
+      return this._handleTauriEvent(e, t)
+        ? () => {
+            let n = this.listeners[e];
+            n.splice(n.indexOf(t), 1);
+          }
+        : y(e, t, { target: { kind: `Window`, label: this.label } });
+    }
+    async once(e, t) {
+      return this._handleTauriEvent(e, t)
+        ? () => {
+            let n = this.listeners[e];
+            n.splice(n.indexOf(t), 1);
+          }
+        : b(e, t, { target: { kind: `Window`, label: this.label } });
+    }
+    async emit(e, t) {
+      if (ae.includes(e)) {
+        for (let n of this.listeners[e] || [])
+          n({ event: e, id: -1, payload: t });
+        return;
+      }
+      return x(e, t);
+    }
+    async emitTo(e, t, n) {
+      if (ae.includes(t)) {
+        for (let e of this.listeners[t] || [])
+          e({ event: t, id: -1, payload: n });
+        return;
+      }
+      return S(e, t, n);
+    }
+    _handleTauriEvent(e, t) {
+      return ae.includes(e)
+        ? (e in this.listeners
+            ? this.listeners[e].push(t)
+            : (this.listeners[e] = [t]),
+          !0)
+        : !1;
+    }
+    async scaleFactor() {
+      return u(`plugin:window|scale_factor`, { label: this.label });
+    }
+    async innerPosition() {
+      return u(`plugin:window|inner_position`, { label: this.label }).then(
+        (e) => new g(e),
+      );
+    }
+    async outerPosition() {
+      return u(`plugin:window|outer_position`, { label: this.label }).then(
+        (e) => new g(e),
+      );
+    }
+    async innerSize() {
+      return u(`plugin:window|inner_size`, { label: this.label }).then(
+        (e) => new p(e),
+      );
+    }
+    async outerSize() {
+      return u(`plugin:window|outer_size`, { label: this.label }).then(
+        (e) => new p(e),
+      );
+    }
+    async isFullscreen() {
+      return u(`plugin:window|is_fullscreen`, { label: this.label });
+    }
+    async isMinimized() {
+      return u(`plugin:window|is_minimized`, { label: this.label });
+    }
+    async isMaximized() {
+      return u(`plugin:window|is_maximized`, { label: this.label });
+    }
+    async isFocused() {
+      return u(`plugin:window|is_focused`, { label: this.label });
+    }
+    async isDecorated() {
+      return u(`plugin:window|is_decorated`, { label: this.label });
+    }
+    async isResizable() {
+      return u(`plugin:window|is_resizable`, { label: this.label });
+    }
+    async isMaximizable() {
+      return u(`plugin:window|is_maximizable`, { label: this.label });
+    }
+    async isMinimizable() {
+      return u(`plugin:window|is_minimizable`, { label: this.label });
+    }
+    async isClosable() {
+      return u(`plugin:window|is_closable`, { label: this.label });
+    }
+    async isVisible() {
+      return u(`plugin:window|is_visible`, { label: this.label });
+    }
+    async title() {
+      return u(`plugin:window|title`, { label: this.label });
+    }
+    async theme() {
+      return u(`plugin:window|theme`, { label: this.label });
+    }
+    async isAlwaysOnTop() {
+      return u(`plugin:window|is_always_on_top`, { label: this.label });
+    }
+    async activityName() {
+      return u(`plugin:window|activity_name`, { label: this.label });
+    }
+    async sceneIdentifier() {
+      return u(`plugin:window|scene_identifier`, { label: this.label });
+    }
+    async center() {
+      return u(`plugin:window|center`, { label: this.label });
+    }
+    async requestUserAttention(e) {
+      let t = null;
+      return (
+        e &&
+          (t =
+            e === ne.Critical
+              ? { type: `Critical` }
+              : { type: `Informational` }),
+        u(`plugin:window|request_user_attention`, {
+          label: this.label,
+          value: t,
+        })
+      );
+    }
+    async setResizable(e) {
+      return u(`plugin:window|set_resizable`, { label: this.label, value: e });
+    }
+    async setEnabled(e) {
+      return u(`plugin:window|set_enabled`, { label: this.label, value: e });
+    }
+    async isEnabled() {
+      return u(`plugin:window|is_enabled`, { label: this.label });
+    }
+    async setMaximizable(e) {
+      return u(`plugin:window|set_maximizable`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setMinimizable(e) {
+      return u(`plugin:window|set_minimizable`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setClosable(e) {
+      return u(`plugin:window|set_closable`, { label: this.label, value: e });
+    }
+    async setTitle(e) {
+      return u(`plugin:window|set_title`, { label: this.label, value: e });
+    }
+    async maximize() {
+      return u(`plugin:window|maximize`, { label: this.label });
+    }
+    async unmaximize() {
+      return u(`plugin:window|unmaximize`, { label: this.label });
+    }
+    async toggleMaximize() {
+      return u(`plugin:window|toggle_maximize`, { label: this.label });
+    }
+    async minimize() {
+      return u(`plugin:window|minimize`, { label: this.label });
+    }
+    async unminimize() {
+      return u(`plugin:window|unminimize`, { label: this.label });
+    }
+    async show() {
+      return u(`plugin:window|show`, { label: this.label });
+    }
+    async hide() {
+      return u(`plugin:window|hide`, { label: this.label });
+    }
+    async close() {
+      return u(`plugin:window|close`, { label: this.label });
+    }
+    async destroy() {
+      return u(`plugin:window|destroy`, { label: this.label });
+    }
+    async setDecorations(e) {
+      return u(`plugin:window|set_decorations`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setShadow(e) {
+      return u(`plugin:window|set_shadow`, { label: this.label, value: e });
+    }
+    async setEffects(e) {
+      return u(`plugin:window|set_effects`, { label: this.label, value: e });
+    }
+    async clearEffects() {
+      return u(`plugin:window|set_effects`, { label: this.label, value: null });
+    }
+    async setAlwaysOnTop(e) {
+      return u(`plugin:window|set_always_on_top`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setAlwaysOnBottom(e) {
+      return u(`plugin:window|set_always_on_bottom`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setContentProtected(e) {
+      return u(`plugin:window|set_content_protected`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setSize(e) {
+      return u(`plugin:window|set_size`, {
+        label: this.label,
+        value: e instanceof m ? e : new m(e),
+      });
+    }
+    async setMinSize(e) {
+      return u(`plugin:window|set_min_size`, {
+        label: this.label,
+        value: e instanceof m ? e : e ? new m(e) : null,
+      });
+    }
+    async setMaxSize(e) {
+      return u(`plugin:window|set_max_size`, {
+        label: this.label,
+        value: e instanceof m ? e : e ? new m(e) : null,
+      });
+    }
+    async setSizeConstraints(e) {
+      function t(e) {
+        return e ? { Logical: e } : null;
+      }
+      return u(`plugin:window|set_size_constraints`, {
+        label: this.label,
+        value: {
+          minWidth: t(e?.minWidth),
+          minHeight: t(e?.minHeight),
+          maxWidth: t(e?.maxWidth),
+          maxHeight: t(e?.maxHeight),
+        },
+      });
+    }
+    async setPosition(e) {
+      return u(`plugin:window|set_position`, {
+        label: this.label,
+        value: e instanceof _ ? e : new _(e),
+      });
+    }
+    async setFullscreen(e) {
+      return u(`plugin:window|set_fullscreen`, { label: this.label, value: e });
+    }
+    async setSimpleFullscreen(e) {
+      return u(`plugin:window|set_simple_fullscreen`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setFocus() {
+      return u(`plugin:window|set_focus`, { label: this.label });
+    }
+    async setFocusable(e) {
+      return u(`plugin:window|set_focusable`, { label: this.label, value: e });
+    }
+    async setIcon(e) {
+      return u(`plugin:window|set_icon`, { label: this.label, value: C(e) });
+    }
+    async setSkipTaskbar(e) {
+      return u(`plugin:window|set_skip_taskbar`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setCursorGrab(e) {
+      return u(`plugin:window|set_cursor_grab`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setCursorVisible(e) {
+      return u(`plugin:window|set_cursor_visible`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setCursorIcon(e) {
+      return u(`plugin:window|set_cursor_icon`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setBackgroundColor(e) {
+      return u(`plugin:window|set_background_color`, { color: e });
+    }
+    async setCursorPosition(e) {
+      return u(`plugin:window|set_cursor_position`, {
+        label: this.label,
+        value: e instanceof _ ? e : new _(e),
+      });
+    }
+    async setIgnoreCursorEvents(e) {
+      return u(`plugin:window|set_ignore_cursor_events`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async startDragging() {
+      return u(`plugin:window|start_dragging`, { label: this.label });
+    }
+    async startResizeDragging(e) {
+      return u(`plugin:window|start_resize_dragging`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setBadgeCount(e) {
+      return u(`plugin:window|set_badge_count`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setBadgeLabel(e) {
+      return u(`plugin:window|set_badge_label`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setOverlayIcon(e) {
+      return u(`plugin:window|set_overlay_icon`, {
+        label: this.label,
+        value: e ? C(e) : void 0,
+      });
+    }
+    async setProgressBar(e) {
+      return u(`plugin:window|set_progress_bar`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setVisibleOnAllWorkspaces(e) {
+      return u(`plugin:window|set_visible_on_all_workspaces`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setTitleBarStyle(e) {
+      return u(`plugin:window|set_title_bar_style`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async setTheme(e) {
+      return u(`plugin:window|set_theme`, { label: this.label, value: e });
+    }
+    async onResized(e) {
+      return this.listen(v.WINDOW_RESIZED, (t) => {
+        ((t.payload = new p(t.payload)), e(t));
+      });
+    }
+    async onMoved(e) {
+      return this.listen(v.WINDOW_MOVED, (t) => {
+        ((t.payload = new g(t.payload)), e(t));
+      });
+    }
+    async onCloseRequested(e) {
+      return this.listen(v.WINDOW_CLOSE_REQUESTED, async (t) => {
+        let n = new re(t);
+        (await e(n), n.isPreventDefault() || (await this.destroy()));
+      });
+    }
+    async onDragDropEvent(e) {
+      let t = await this.listen(v.DRAG_ENTER, (t) => {
+          e({
+            ...t,
+            payload: {
+              type: `enter`,
+              paths: t.payload.paths,
+              position: new g(t.payload.position),
+            },
+          });
+        }),
+        n = await this.listen(v.DRAG_OVER, (t) => {
+          e({
+            ...t,
+            payload: { type: `over`, position: new g(t.payload.position) },
+          });
+        }),
+        r = await this.listen(v.DRAG_DROP, (t) => {
+          e({
+            ...t,
+            payload: {
+              type: `drop`,
+              paths: t.payload.paths,
+              position: new g(t.payload.position),
+            },
+          });
+        }),
+        i = await this.listen(v.DRAG_LEAVE, (t) => {
+          e({ ...t, payload: { type: `leave` } });
+        });
+      return () => {
+        (t(), r(), n(), i());
+      };
+    }
+    async onFocusChanged(e) {
+      let t = await this.listen(v.WINDOW_FOCUS, (t) => {
+          e({ ...t, payload: !0 });
+        }),
+        n = await this.listen(v.WINDOW_BLUR, (t) => {
+          e({ ...t, payload: !1 });
+        });
+      return () => {
+        (t(), n());
+      };
+    }
+    async onScaleChanged(e) {
+      return this.listen(v.WINDOW_SCALE_FACTOR_CHANGED, e);
+    }
+    async onThemeChanged(e) {
+      return this.listen(v.WINDOW_THEME_CHANGED, e);
+    }
+  },
+  oe;
+(function (e) {
+  ((e.Disabled = `disabled`),
+    (e.Throttle = `throttle`),
+    (e.Suspend = `suspend`));
+})((oe ||= {}));
+var se;
+(function (e) {
+  ((e.Default = `default`), (e.FluentOverlay = `fluentOverlay`));
+})((se ||= {}));
+var ce;
+(function (e) {
+  ((e.AppearanceBased = `appearanceBased`),
+    (e.Light = `light`),
+    (e.Dark = `dark`),
+    (e.MediumLight = `mediumLight`),
+    (e.UltraDark = `ultraDark`),
+    (e.Titlebar = `titlebar`),
+    (e.Selection = `selection`),
+    (e.Menu = `menu`),
+    (e.Popover = `popover`),
+    (e.Sidebar = `sidebar`),
+    (e.HeaderView = `headerView`),
+    (e.Sheet = `sheet`),
+    (e.WindowBackground = `windowBackground`),
+    (e.HudWindow = `hudWindow`),
+    (e.FullScreenUI = `fullScreenUI`),
+    (e.Tooltip = `tooltip`),
+    (e.ContentBackground = `contentBackground`),
+    (e.UnderWindowBackground = `underWindowBackground`),
+    (e.UnderPageBackground = `underPageBackground`),
+    (e.Mica = `mica`),
+    (e.Blur = `blur`),
+    (e.Acrylic = `acrylic`),
+    (e.Tabbed = `tabbed`),
+    (e.TabbedDark = `tabbedDark`),
+    (e.TabbedLight = `tabbedLight`));
+})((ce ||= {}));
+var le;
+(function (e) {
+  ((e.FollowsWindowActiveState = `followsWindowActiveState`),
+    (e.Active = `active`),
+    (e.Inactive = `inactive`));
+})((le ||= {}));
+function ue(e) {
+  return e === null
+    ? null
+    : {
+        name: e.name,
+        scaleFactor: e.scaleFactor,
+        position: new g(e.position),
+        size: new p(e.size),
+        workArea: {
+          position: new g(e.workArea.position),
+          size: new p(e.workArea.size),
+        },
+      };
+}
+async function de() {
+  return u(`plugin:window|current_monitor`).then(ue);
+}
+function fe() {
+  return new O(w(), window.__TAURI_INTERNALS__.metadata.currentWebview.label, {
+    skip: !0,
+  });
+}
+async function pe() {
+  return u(`plugin:webview|get_all_webviews`).then((e) =>
+    e.map(
+      (e) => new O(new E(e.windowLabel, { skip: !0 }), e.label, { skip: !0 }),
+    ),
+  );
+}
+var D = [`tauri://created`, `tauri://error`],
+  O = class {
+    constructor(e, t, n) {
+      ((this.window = e),
+        (this.label = t),
+        (this.listeners = Object.create(null)),
+        n?.skip ||
+          u(`plugin:webview|create_webview`, {
+            windowLabel: e.label,
+            options: { ...n, label: t },
+          })
+            .then(async () => this.emit(`tauri://created`))
+            .catch(async (e) => this.emit(`tauri://error`, e)));
+    }
+    static async getByLabel(e) {
+      return (await pe()).find((t) => t.label === e) ?? null;
+    }
+    static getCurrent() {
+      return fe();
+    }
+    static async getAll() {
+      return pe();
+    }
+    async listen(e, t) {
+      return this._handleTauriEvent(e, t)
+        ? () => {
+            let n = this.listeners[e];
+            n.splice(n.indexOf(t), 1);
+          }
+        : y(e, t, { target: { kind: `Webview`, label: this.label } });
+    }
+    async once(e, t) {
+      return this._handleTauriEvent(e, t)
+        ? () => {
+            let n = this.listeners[e];
+            n.splice(n.indexOf(t), 1);
+          }
+        : b(e, t, { target: { kind: `Webview`, label: this.label } });
+    }
+    async emit(e, t) {
+      if (D.includes(e)) {
+        for (let n of this.listeners[e] || [])
+          n({ event: e, id: -1, payload: t });
+        return;
+      }
+      return x(e, t);
+    }
+    async emitTo(e, t, n) {
+      if (D.includes(t)) {
+        for (let e of this.listeners[t] || [])
+          e({ event: t, id: -1, payload: n });
+        return;
+      }
+      return S(e, t, n);
+    }
+    _handleTauriEvent(e, t) {
+      return D.includes(e)
+        ? (e in this.listeners
+            ? this.listeners[e].push(t)
+            : (this.listeners[e] = [t]),
+          !0)
+        : !1;
+    }
+    async position() {
+      return u(`plugin:webview|webview_position`, { label: this.label }).then(
+        (e) => new g(e),
+      );
+    }
+    async size() {
+      return u(`plugin:webview|webview_size`, { label: this.label }).then(
+        (e) => new p(e),
+      );
+    }
+    async close() {
+      return u(`plugin:webview|webview_close`, { label: this.label });
+    }
+    async setSize(e) {
+      return u(`plugin:webview|set_webview_size`, {
+        label: this.label,
+        value: e instanceof m ? e : new m(e),
+      });
+    }
+    async setPosition(e) {
+      return u(`plugin:webview|set_webview_position`, {
+        label: this.label,
+        value: e instanceof _ ? e : new _(e),
+      });
+    }
+    async setFocus() {
+      return u(`plugin:webview|set_webview_focus`, { label: this.label });
+    }
+    async setAutoResize(e) {
+      return u(`plugin:webview|set_webview_auto_resize`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async hide() {
+      return u(`plugin:webview|webview_hide`, { label: this.label });
+    }
+    async show() {
+      return u(`plugin:webview|webview_show`, { label: this.label });
+    }
+    async setZoom(e) {
+      return u(`plugin:webview|set_webview_zoom`, {
+        label: this.label,
+        value: e,
+      });
+    }
+    async reparent(e) {
+      return u(`plugin:webview|reparent`, {
+        label: this.label,
+        window: typeof e == `string` ? e : e.label,
+      });
+    }
+    async clearAllBrowsingData() {
+      return u(`plugin:webview|clear_all_browsing_data`);
+    }
+    async setBackgroundColor(e) {
+      return u(`plugin:webview|set_webview_background_color`, { color: e });
+    }
+    async onDragDropEvent(e) {
+      let t = await this.listen(v.DRAG_ENTER, (t) => {
+          e({
+            ...t,
+            payload: {
+              type: `enter`,
+              paths: t.payload.paths,
+              position: new g(t.payload.position),
+            },
+          });
+        }),
+        n = await this.listen(v.DRAG_OVER, (t) => {
+          e({
+            ...t,
+            payload: { type: `over`, position: new g(t.payload.position) },
+          });
+        }),
+        r = await this.listen(v.DRAG_DROP, (t) => {
+          e({
+            ...t,
+            payload: {
+              type: `drop`,
+              paths: t.payload.paths,
+              position: new g(t.payload.position),
+            },
+          });
+        }),
+        i = await this.listen(v.DRAG_LEAVE, (t) => {
+          e({ ...t, payload: { type: `leave` } });
+        });
+      return () => {
+        (t(), r(), n(), i());
+      };
+    }
+  };
+function k() {
+  return new A(fe().label, { skip: !0 });
+}
+async function me() {
+  return u(`plugin:window|get_all_windows`).then((e) =>
+    e.map((e) => new A(e, { skip: !0 })),
+  );
+}
+var A = class e {
+  constructor(e, t = {}) {
+    ((this.label = e),
+      (this.listeners = Object.create(null)),
+      t?.skip ||
+        u(`plugin:webview|create_webview_window`, {
+          options: {
+            ...t,
+            parent: typeof t.parent == `string` ? t.parent : t.parent?.label,
+            label: e,
+          },
+        })
+          .then(async () => this.emit(`tauri://created`))
+          .catch(async (e) => this.emit(`tauri://error`, e)));
+  }
+  static async getByLabel(t) {
+    let n = (await me()).find((e) => e.label === t) ?? null;
+    return n ? new e(n.label, { skip: !0 }) : null;
+  }
+  static getCurrent() {
+    return k();
+  }
+  static async getAll() {
+    return me();
+  }
+  async listen(e, t) {
+    return this._handleTauriEvent(e, t)
+      ? () => {
+          let n = this.listeners[e];
+          n.splice(n.indexOf(t), 1);
+        }
+      : y(e, t, { target: { kind: `WebviewWindow`, label: this.label } });
+  }
+  async once(e, t) {
+    return this._handleTauriEvent(e, t)
+      ? () => {
+          let n = this.listeners[e];
+          n.splice(n.indexOf(t), 1);
+        }
+      : b(e, t, { target: { kind: `WebviewWindow`, label: this.label } });
+  }
+  async setBackgroundColor(e) {
+    return u(`plugin:window|set_background_color`, { color: e }).then(() =>
+      u(`plugin:webview|set_webview_background_color`, { color: e }),
+    );
+  }
+};
+he(A, [E, O]);
+function he(e, t) {
+  (Array.isArray(t) ? t : [t]).forEach((t) => {
+    Object.getOwnPropertyNames(t.prototype).forEach((n) => {
+      (typeof e.prototype == `object` && e.prototype && n in e.prototype) ||
+        Object.defineProperty(
+          e.prototype,
+          n,
+          Object.getOwnPropertyDescriptor(t.prototype, n) ??
+            Object.create(null),
+        );
+    });
+  });
+}
+function ge(e, t) {
+  let n;
+  try {
+    n = e();
+  } catch {
+    return;
+  }
+  return {
+    getItem: (e) => {
+      let r = (e) => (e === null ? null : JSON.parse(e, t?.reviver)),
+        i = n.getItem(e) ?? null;
+      return i instanceof Promise ? i.then(r) : r(i);
+    },
+    setItem: (e, r) => n.setItem(e, JSON.stringify(r, t?.replacer)),
+    removeItem: (e) => n.removeItem(e),
+  };
+}
+var j = (e) => (t) => {
+    try {
+      let n = e(t);
+      return n instanceof Promise
+        ? n
+        : {
+            then(e) {
+              return j(e)(n);
+            },
+            catch(e) {
+              return this;
+            },
+          };
+    } catch (e) {
+      return {
+        then(e) {
+          return this;
+        },
+        catch(t) {
+          return j(t)(e);
+        },
+      };
+    }
+  },
+  M = (e, t) => (n, r, i) => {
+    let a = {
+        storage: ge(() => window.localStorage),
+        partialize: (e) => e,
+        version: 0,
+        merge: (e, t) => ({ ...t, ...e }),
+        ...t,
+      },
+      o = !1,
+      s = 0,
+      c = new Set(),
+      l = new Set(),
+      u = a.storage;
+    if (!u)
+      return e(
+        (...e) => {
+          (console.warn(
+            `[zustand persist middleware] Unable to update item '${a.name}', the given storage is currently unavailable.`,
+          ),
+            n(...e));
+        },
+        r,
+        i,
+      );
+    let d = () => {
+        let e = a.partialize({ ...r() });
+        return u.setItem(a.name, { state: e, version: a.version });
+      },
+      f = i.setState;
+    i.setState = (e, t) => (f(e, t), d());
+    let p = e((...e) => (n(...e), d()), r, i);
+    i.getInitialState = () => p;
+    let m,
+      h = () => {
+        if (!u) return;
+        let e = ++s;
+        ((o = !1), c.forEach((e) => e(r() ?? p)));
+        let t = a.onRehydrateStorage?.call(a, r() ?? p) || void 0;
+        return j(u.getItem.bind(u))(a.name)
+          .then((e) => {
+            if (e) {
+              if (typeof e.version == `number` && e.version !== a.version) {
+                if (a.migrate) {
+                  let t = a.migrate(e.state, e.version);
+                  return t instanceof Promise
+                    ? t.then((e) => [!0, e])
+                    : [!0, t];
+                }
+                console.error(
+                  `State loaded from storage couldn't be migrated since no migrate function was provided`,
+                );
+              } else return [!1, e.state];
+            }
+            return [!1, void 0];
+          })
+          .then((t) => {
+            if (e !== s) return;
+            let [i, o] = t;
+            if (((m = a.merge(o, r() ?? p)), n(m, !0), i)) return d();
+          })
+          .then(() => {
+            e === s &&
+              (t?.(r(), void 0), (m = r()), (o = !0), l.forEach((e) => e(m)));
+          })
+          .catch((n) => {
+            e === s && t?.(void 0, n);
+          });
+      };
+    return (
+      (i.persist = {
+        setOptions: (e) => {
+          ((a = { ...a, ...e }), e.storage && (u = e.storage));
+        },
+        clearStorage: () => {
+          (++s, u?.removeItem(a.name));
+        },
+        getOptions: () => a,
+        rehydrate: () => h(),
+        hasHydrated: () => o,
+        onHydrate: (e) => (
+          c.add(e),
+          () => {
+            c.delete(e);
+          }
+        ),
+        onFinishHydration: (e) => (
+          l.add(e),
+          () => {
+            l.delete(e);
+          }
+        ),
+      }),
+      a.skipHydration || h(),
+      m || p
+    );
+  },
+  _e = `modulepreload`,
+  ve = function (e) {
+    return `/` + e;
+  },
+  ye = {},
+  N = function (e, t, n) {
+    let r = Promise.resolve();
+    if (t && t.length > 0) {
+      let e = document.getElementsByTagName(`link`),
+        i = document.querySelector(`meta[property=csp-nonce]`),
+        a = i?.nonce || i?.getAttribute(`nonce`);
+      function o(e) {
+        return Promise.all(
+          e.map((e) =>
+            Promise.resolve(e).then(
+              (e) => ({ status: `fulfilled`, value: e }),
+              (e) => ({ status: `rejected`, reason: e }),
+            ),
+          ),
+        );
+      }
+      function s(e) {
+        return import.meta.resolve
+          ? import.meta.resolve(e)
+          : new URL(e, import.meta.url).href;
+      }
+      r = o(
+        t
+          .map((t) => {
+            if (((t = ve(t, n)), (t = s(t)), t in ye)) return;
+            ye[t] = !0;
+            let r = t.endsWith(`.css`);
+            for (let n = e.length - 1; n >= 0; n--) {
+              let i = e[n];
+              if (i.href === t && (!r || i.rel === `stylesheet`)) return;
+            }
+            let i = document.createElement(`link`);
+            if (
+              ((i.rel = r ? `stylesheet` : _e),
+              r || (i.as = `script`),
+              (i.crossOrigin = ``),
+              (i.href = t),
+              a && i.setAttribute(`nonce`, a),
+              document.head.appendChild(i),
+              r)
+            )
+              return new Promise((e, n) => {
+                (i.addEventListener(`load`, e),
+                  i.addEventListener(`error`, () =>
+                    n(Error(`Unable to preload CSS for ${t}`)),
+                  ));
+              });
+          })
+          .filter((e) => e !== void 0),
+      );
+    }
+    function i(e) {
+      let t = new Event(`vite:preloadError`, { cancelable: !0 });
+      if (((t.payload = e), window.dispatchEvent(t), !t.defaultPrevented))
+        throw e;
+    }
+    return r.then((t) => {
+      for (let e of t || []) e.status === `rejected` && i(e.reason);
+      return e().catch(i);
+    });
+  },
+  P = { expanded: { h: 96 } }.expanded.h,
+  be = P,
+  F = 0,
+  xe = () => F;
+function Se(e) {
+  e !== F &&
+    ((F = e),
+    u(`dock_headroom`, { headroom: e, open: !1 }).catch(() => {}),
+    Je().catch(() => {}));
+}
+var Ce = `dock-win-key`,
+  we = `start-menu-open`,
+  Te = `dock-room-closed`;
+function Ee() {
+  return u(`dock_watch_keys`);
+}
+var I = new Set();
+function De(e, t = `magnify`) {
+  return (
+    e ? I.add(t) : I.delete(t),
+    !e && I.size > 0
+      ? Promise.resolve(!0)
+      : u(`dock_headroom`, { headroom: F, open: I.size > 0 })
+  );
+}
+function Oe() {
+  I.clear();
+}
+function L() {
+  return P;
+}
+function ke(e, t = e) {
+  ((P = e), (be = t));
+}
+function R() {
+  return Math.max(640, window.screen.width);
+}
+var z = new Map(),
+  B = null,
+  V = null,
+  Ae = 150,
+  je = 40,
+  Me = 1e3,
+  Ne = 250;
+function H() {
+  let e = 0;
+  for (let t of z.values()) e = Math.max(e, t);
+  return L() + e;
+}
+function U() {
+  V !== null && (clearTimeout(V), (V = null));
+}
+var Pe = !1,
+  Fe = [300, 1e3, 3e3, 8e3],
+  W = 0,
+  G = null;
+function Ie() {
+  G !== null ||
+    W >= Fe.length ||
+    (G = setTimeout(() => {
+      ((G = null), (W += 1), K(H()).catch(() => {}));
+    }, Fe[W]));
+}
+async function K(e) {
+  Pe = !0;
+  let t = B;
+  B = e;
+  try {
+    (await Le(e, t), (W = 0));
+  } catch (n) {
+    throw (B === e && (B = t), Ie(), n);
+  }
+}
+async function Le(e, t) {
+  if ((t === null ? 1 / 0 : Math.abs(e - t)) < 32 || q) {
+    await X(R(), Math.max(je, e));
+    return;
+  }
+  let n = document.documentElement;
+  n.classList.add(`dock-resizing`);
+  let r = window.setTimeout(() => n.classList.remove(`dock-resizing`), Me);
+  try {
+    (await Re(), await X(R(), Math.max(je, e)), await Re());
+  } finally {
+    (window.clearTimeout(r), n.classList.remove(`dock-resizing`));
+  }
+}
+function Re() {
+  return new Promise((e) => {
+    let t = window.setTimeout(e, Ne);
+    requestAnimationFrame(() => {
+      (window.clearTimeout(t), e());
+    });
+  });
+}
+function ze(e) {
+  U();
+  let t = B;
+  V = setTimeout(() => {
+    V = null;
+    let n = B;
+    n === null || n !== t || e >= n || K(e).catch(() => {});
+  }, Ae);
+}
+function Be(e, t) {
+  z.set(e, Math.max(0, Math.round(t)));
+  let n = H();
+  return B !== null && n <= B
+    ? (n < B && ze(n), Promise.resolve())
+    : (U(), K(n));
+}
+var q = !1;
+function Ve(e) {
+  q !== e && ((q = e), e || Je().catch(() => {}));
+}
+var J = null,
+  Y = null;
+function He(e) {
+  return (
+    (J = e),
+    () => {
+      J === e && (J = null);
+    }
+  );
+}
+function Ue(e) {
+  return !q || !J?.show(e) ? !1 : ((Y = e), !0);
+}
+function We(e) {
+  let t = Y;
+  ((Y = null), t !== null && (e(t), J?.settle()));
+}
+function Ge(e) {
+  if (!z.delete(e)) return;
+  let t = H();
+  B !== null && t < B && ze(t);
+}
+async function X(e, t) {
+  try {
+    await u(`dock_resize`, {
+      width: e,
+      height: t + F,
+      reserveHeight: be,
+      live: q,
+    });
+  } catch (n) {
+    throw (
+      st(`[dock] dock_resize ${e}x${t} failed: ${String(n)}`).catch(() => {}),
+      n
+    );
+  }
+  (async () => {
+    let [{ watchAndCorrectPosition: e }, { useDockEdgeStore: t }] =
+      await Promise.all([
+        N(() => Promise.resolve().then(() => jt), void 0),
+        N(() => import(`./dockEdgeStore-bDVyOMfy.js`).then((e) => e.t), []),
+      ]);
+    await e(t.getState().barAtTop ? `top` : `bottom`, `resize`);
+  })().catch(() => {});
+}
+async function Ke() {
+  let e = L();
+  (U(), (B = e), await X(R(), e));
+}
+async function qe(e) {
+  return (U(), K(e));
+}
+async function Je() {
+  if (Pe) return (U(), K(H()));
+}
+function Ye() {
+  return w().close();
+}
+function Xe() {
+  return u(`quit_app`);
+}
+function Ze() {
+  return w().setFocus();
+}
+function Qe() {
+  return k().listen(`dock-ping`, () => {
+    u(`dock_alive`).catch(() => {});
+  });
+}
+async function $e() {
+  if (!(await u(`dock_hover_focus_enabled`).catch(() => !1))) return;
+  let e = (e) => {
+      u(`dock_pointer`, { event: e }).catch(() => {});
+    },
+    t = document.documentElement;
+  (t.addEventListener(`pointerenter`, () => e(`enter`)),
+    t.addEventListener(`pointerleave`, () => e(`leave`)),
+    window.addEventListener(`pointerdown`, () => e(`down`), { capture: !0 }));
+}
+function et(e) {
+  return k().listen(`dock-display-changed`, e);
+}
+function tt(e) {
+  return u(`dock_snap`, { edge: e });
+}
+var nt = `dock-edge-changed`;
+function rt(e) {
+  return u(`dock_set_autohide`, { enabled: e });
+}
+function it(e) {
+  return u(`dock_set_lift`, { lift: e, live: q });
+}
+function at(e) {
+  return u(`dock_set_smart_hide`, { on: e });
+}
+function ot(e) {
+  return u(`dock_autohide_hidden`, { hidden: e });
+}
+function st(e) {
+  return u(`dock_debug_log`, { msg: e });
+}
+function ct() {
+  return u(`is_left_mouse_down`);
+}
+async function lt() {
+  let e = await w().outerPosition();
+  return { x: e.x, y: e.y };
+}
+var ut = i(e(), 1),
+  dt = 0.4,
+  ft = 1.25,
+  pt = typeof screen < `u` && screen.height >= 1440 ? 1 : 0.75,
+  mt = { small: 0.75, medium: 0.875, large: 1 };
+function ht(e) {
+  return typeof e == `number` && e >= 0.4 && e <= 1.25;
+}
+function gt(e) {
+  return typeof e == `number` && e >= 0 && e <= 200;
+}
+function _t(e) {
+  return typeof e == `number` && e >= 0 && e <= 8;
+}
+function vt(e) {
+  return typeof e == `number` && e >= 0 && e <= 8;
+}
+var yt = 17.6;
+function bt(e) {
+  return typeof e == `number` && e >= 0 && e <= 32;
+}
+var xt = (e) => (bt(e.radius) ? e.radius : yt);
+function St(e) {
+  return Math.min(6, Math.max(1, 8 * e - 4));
+}
+function Ct(e) {
+  return 4 * e;
+}
+function wt(e, t, n = 1, r = 1) {
+  let i = Math.max(2, Math.round(Ct(e) * t)) / t,
+    a = n === 1 ? i : Math.round(i * n * t) / t;
+  return {
+    pad: i,
+    padY: r === 1 ? i : Math.round(i * r * t) / t,
+    margin: a / 2,
+  };
+}
+function Tt(e) {
+  let t = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`),
+    n = () => {
+      (t.removeEventListener(`change`, n),
+        (t = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`)),
+        t.addEventListener(`change`, n),
+        e());
+    };
+  return (
+    t.addEventListener(`change`, n),
+    () => t.removeEventListener(`change`, n)
+  );
+}
+function Et() {
+  let e = Z((e) => e.size),
+    t = Z((e) => e.gap),
+    n = _t(t) ? t : 1,
+    r = Z((e) => e.padY),
+    i = vt(r) ? r : 1,
+    a = (0, ut.useSyncExternalStore)(Tt, () => window.devicePixelRatio || 1);
+  return { ...wt(e, a, n, i), dpr: a };
+}
+var Z = r()(
+    M(
+      (e) => ({
+        size: pt,
+        fullWidth: !1,
+        gap: 1,
+        padY: 1,
+        radius: yt,
+        lift: 0,
+        setLift: (t) => e({ lift: t }),
+        setSize: (t) => e({ size: t }),
+        setFullWidth: (t) => e({ fullWidth: t }),
+        setGap: (t) => e({ gap: t }),
+        setPadY: (t) => e({ padY: t }),
+        setRadius: (t) => e({ radius: t }),
+      }),
+      {
+        name: `ww-dock-size`,
+        version: 1,
+        migrate: (e, t) => {
+          let n = e ?? {};
+          if (t < 1) {
+            let e = typeof n.size == `string` ? mt[n.size] : n.size;
+            n.size = ht(e) ? e : pt;
+          }
+          return n;
+        },
+      },
+    ),
+  ),
+  Dt = `dock-autohide-changed`,
+  Ot = `dock-smart-hide-changed`,
+  kt = r()(
+    M(
+      (e) => ({
+        enabled: !1,
+        smart: !1,
+        holds: [],
+        setEnabled: (t) => e({ enabled: t }),
+        setSmart: (t) => e({ smart: t }),
+      }),
+      {
+        name: `ww-dock-autohide`,
+        partialize: (e) => ({ enabled: e.enabled, smart: e.smart }),
+      },
+    ),
+  );
+function At(e, t) {
+  kt.setState((n) =>
+    n.holds.includes(e) === t
+      ? n
+      : { holds: t ? [...n.holds, e] : n.holds.filter((t) => t !== e) },
+  );
+}
+var jt = n({
+    isDockParked: () => zt,
+    onDockParkedChange: () => Bt,
+    setBarAnchorFromEdge: () => Pt,
+    setDockCovered: () => Rt,
+    setDockParked: () => Lt,
+    watchAndCorrectPosition: () => Wt,
+  }),
+  Mt = 1,
+  Nt = 0;
+function Pt(e) {
+  t.getState().setBarAtTop(e === `top`);
+}
+var Q = !1,
+  $ = !1,
+  Ft = new Set();
+function It(e) {
+  let t = Q || $;
+  e();
+  let n = Q || $;
+  n !== t &&
+    (document.documentElement.toggleAttribute(`data-dock-parked`, n),
+    Ft.forEach((e) => e()));
+}
+function Lt(e) {
+  It(() => (Q = e));
+}
+function Rt(e) {
+  It(() => ($ = e));
+}
+function zt() {
+  return Q || $;
+}
+function Bt(e) {
+  return (
+    Ft.add(e),
+    () => {
+      Ft.delete(e);
+    }
+  );
+}
+var Vt = 2500,
+  Ht = 50,
+  Ut = 10;
+async function Wt(e, t) {
+  let n = ++Nt,
+    r = performance.now() + Vt,
+    i = 0;
+  for (; performance.now() < r;) {
+    if (n !== Nt || Q) return;
+    let r = !1;
+    try {
+      r = await ct();
+    } catch {}
+    if (r) return;
+    let [a, o, s] = await Promise.all([
+      w().outerPosition(),
+      w().outerSize(),
+      de(),
+    ]);
+    if (n !== Nt || Q) return;
+    let c = s ? s.position.y : 0,
+      l = s ? s.size.height : 1080,
+      u = kt.getState().enabled
+        ? 0
+        : Math.round(Z.getState().lift * (s?.scaleFactor ?? 1)),
+      d = e === `top` ? c + u : c + l - o.height - u;
+    if (Math.abs(a.y - d) > Mt) {
+      if (i >= Ut) break;
+      ((i += 1),
+        st(
+          `[watch-pos ${t}] drift detected y=${a.y} expected=${d} h=${o.height} - re-asserting dockSnap(${e}) (#${i})`,
+        ),
+        await tt(e));
+    }
+    await new Promise((e) => setTimeout(e, Ht));
+  }
+}
+export {
+  He as $,
+  We as A,
+  et as B,
+  Et as C,
+  Ce as D,
+  we as E,
+  $e as F,
+  Ge as G,
+  Ue as H,
+  L as I,
+  ot as J,
+  Be as K,
+  xe as L,
+  tt as M,
+  Oe as N,
+  Qe as O,
+  Ze as P,
+  it as Q,
+  lt as R,
+  Z as S,
+  Te as T,
+  Xe as U,
+  De as V,
+  Je as W,
+  Se as X,
+  rt as Y,
+  qe as Z,
+  _t as _,
+  Lt as a,
+  M as at,
+  bt as b,
+  Ot as c,
+  x as ct,
+  yt as d,
+  u as dt,
+  at as et,
+  ft as f,
+  Ct as g,
+  St as h,
+  Rt as i,
+  N as it,
+  st as j,
+  Ye as k,
+  At as l,
+  S as lt,
+  xt as m,
+  Bt as n,
+  Ve as nt,
+  Wt as o,
+  k as ot,
+  dt as p,
+  ke as q,
+  Pt as r,
+  Ee as rt,
+  Dt as s,
+  w as st,
+  zt as t,
+  Ke as tt,
+  kt as u,
+  y as ut,
+  gt as v,
+  nt as w,
+  ht as x,
+  vt as y,
+  ct as z,
+};

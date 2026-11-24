@@ -1,0 +1,25 @@
+[package]
+name = "lumabar"
+version = "1.2.29"
+description = "A clean and safe reimplementation of LumaBar desktop dock"
+authors = ["CleanRoom"]
+edition = "2021"
+
+[lib]
+name = "lumabar_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.5.4", features = [] }
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+tauri = { version = "2.10.0", features = [] }
+tauri-plugin-log = "2"
+sysinfo = "0.33"
+reqwest = { version = "0.12", features = ["json", "blocking"] }
+window-vibrancy = "0.8.1"
+png = "0.18"
+base64 = "0.22"

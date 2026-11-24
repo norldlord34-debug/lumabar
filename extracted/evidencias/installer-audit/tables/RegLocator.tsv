@@ -1,0 +1,8 @@
+Signature_	Root	Key	Name	Type
+s72	i2	s255	S255	I2
+RegLocator	Signature_
+PrevInstallDirNoName	1	Software\lumabar\lumabar		18
+PrevInstallDirWithName	1	Software\lumabar\lumabar	InstallDir	18
+Webview2VersionSystemx64	2	SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18
+Webview2VersionSystemx86	2	SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18
+Webview2VersionUser	1	SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18

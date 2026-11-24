@@ -1,0 +1,18 @@
+{
+  "urls": [
+    "http://crl.microsoft.com/pki/crl/products/MicRooCerAut2011_2011_03_22.crl0^",
+    "http://crl.microsoft.com/pki/crl/products/MicRooCerAut_2010-06-23.crl0Z",
+    "http://www.microsoft.com/pki/certs/MicRooCerAut2011_2011_03_22.crt0",
+    "http://www.microsoft.com/pki/certs/MicRooCerAut_2010-06-23.crt0",
+    "http://www.microsoft.com/pkiops/Docs/Repository.htm0",
+    "http://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt0",
+    "http://www.microsoft.com/pkiops/certs/Microsoft%20Time-Stamp%20PCA%202010(1).crt0",
+    "http://www.microsoft.com/pkiops/crl/MicCodSigPCA2011_2011-07-08.crl0a",
+    "http://www.microsoft.com/pkiops/crl/Microsoft%20Time-Stamp%20PCA%202010(1).crl0l",
+    "http://www.microsoft.com/pkiops/docs/primarycps.htm0@",
+    "https://www.microsoft.com"
+  ],
+  "snippets": [
+    "WebView2Loader.dll.pdb"
+  ]
+}

@@ -1,0 +1,5 @@
+File	Component_	FileName	FileSize	Version	Language	Attributes	Sequence
+s72	s72	l255	i4	S72	S20	I2	i4
+File	File
+Path	Path	lumabar.exe	25588736	1.2.29.0	0	1536	1
+PathFile_I951db590be1f486c97a0a65b5de97b08	I951db590be1f486c97a0a65b5de97b08	blbl_9_t.dll|WebView2Loader.dll	160320	1.0.3650.58	1033	512	2

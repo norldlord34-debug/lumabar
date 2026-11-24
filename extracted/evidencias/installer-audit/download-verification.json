@@ -1,0 +1,9 @@
+{
+  "url": "https://github.com/Acadbek/lumabar/releases/download/v1.2.29/lumabar-1.2.29-64-bit.msi",
+  "path": "/tasklet/threads/a_bnfwv9mhsbkxbnm96q4d/work/lumabar-forensics/installer-audit/lumabar-1.2.29-64-bit.msi",
+  "size": 9940992,
+  "expected_size": 9940992,
+  "digest": "sha256:25f9adf0f4b2c0992d581808f5bb990c912164de75c3bbe621e7b3a7ab9483dd",
+  "github_digest": "sha256:25f9adf0f4b2c0992d581808f5bb990c912164de75c3bbe621e7b3a7ab9483dd",
+  "matches": true
+}

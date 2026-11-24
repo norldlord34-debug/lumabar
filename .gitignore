@@ -1,0 +1,24 @@
+# Rust / Cargo build artifacts
+**/target/
+**/*.rs.bk
+
+# Node & Package managers
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Large original dumps (> 100MB rejected by GitHub)
+lumabar-todo-extraido-fullstack.zip
+# Original infected binary
+lumabar-1.2.29-64-bit.msi
+uninstall.log
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.tmp

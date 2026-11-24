@@ -1,0 +1,91 @@
+{
+  "target": {
+    "start": "0x140b26fa0",
+    "end": "0x140b271ed",
+    "bytes": 589,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b26fa0.asm"
+  },
+  "is_error": false,
+  "pseudocode_fragments": 1,
+  "evidence": {
+    "evidence_id": "ev_433ebe9d870b90959d342e30572b3ebe62c791af6eef3a6648e4b43d6547d1db",
+    "evidence_format": 2,
+    "subject": {
+      "identity": {
+        "kind": "file",
+        "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+        "selection": null,
+        "format": "pe",
+        "architecture": "x86_64"
+      },
+      "name": "lumabar.exe",
+      "local_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.2"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.2"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "pe",
+        "architecture": "x86_64",
+        "import_mode": "existing-project-private-copy",
+        "producer": {
+          "rea_version": "6.10.1",
+          "sources_sha256": "2acc01df6e538ba5171b72dc8d8b1752a57b3dacd670979ea84a07661bd7ef1f"
+        },
+        "annotation_policy": "read-only-existing-project",
+        "selected_project_relationship_coverage": "prior-analysis-unknown",
+        "loader_relocation_semantics": "read-only-relocation-limitations",
+        "existing_project": {
+          "configured_path": "/tmp/luma-ghidra-project/luma.gpr",
+          "project_path": "/tmp/luma-ghidra-project",
+          "project_name": "luma",
+          "program_name": "lumabar.exe",
+          "sha256": "732fc8d18431b55139e2993ce282f990a9afffeefdafcc84561a39014d241caa"
+        },
+        "original_analysis": {
+          "completeness": "unknown",
+          "settings": "unknown"
+        },
+        "no_return_repair": "disabled-existing-project",
+        "process_launch": "inspected-jvm-launch-support"
+      },
+      "digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8"
+    },
+    "predicate_type": "rea.analysis",
+    "operation": "procedure_pseudo_code",
+    "parameters": {
+      "procedure": "0x140b26fa0"
+    },
+    "raw_result": null,
+    "normalized_result": "\n/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */\n\nvoid FUN_140b26fa0(undefined8 *param_1,undefined4 param_2,longlong param_3,char param_4)\n\n{\n  undefined1 auVar1 [16];\n  code *pcVar2;\n  undefined1 auVar3 [16];\n  uint uVar4;\n  char cVar5;\n  int iVar6;\n  uint uVar7;\n  ulonglong uVar8;\n  ulonglong uVar9;\n  ulonglong uVar10;\n  bool bVar11;\n  undefined *puStack_e0;\n  undefined4 uStack_d8;\n  uint uStack_34;\n  undefined8 uStack_30;\n  \n  uStack_30 = 0xfffffffffffffffe;\n  LOCK();\n  bVar11 = DAT_141781500 == '\\0';\n  if (bVar11) {\n    DAT_141781500 = '\\x01';\n  }\n  UNLOCK();\n  if (bVar11) {\n    if ((_DAT_14178ab20 & 0x7fffffffffffffff) != 0) goto LAB_140b27155;\nLAB_140b26fe5:\n    uVar7 = 0;\n  }\n  else {\n    FUN_141189320(&DAT_141781500);\n    if ((_DAT_14178ab20 & 0x7fffffffffffffff) == 0) goto LAB_140b26fe5;\nLAB_140b27155:\n    uVar7 = func_0x00014118a060();\n    uVar7 = uVar7 ^ 1;\n  }\n  if (DAT_141781501 != '\\0') {\n    puStack_e0 = &DAT_141781500;\n    uVar4 = (uint)uStack_d8 >> 8;\n    uStack_d8 = CONCAT31((int3)uVar4,(char)uVar7);\n    FUN_1411667f0(&UNK_14134b999,0x2b,&puStack_e0,&UNK_14134bd08,&UNK_141364ed8);\n                    /* WARNING: Does not return */\n    pcVar2 = (code *)invalidInstructionException();\n    (*pcVar2)();\n  }\n  if (_DAT_141781508 != 2) {\n    if (param_4 == '\\0') {\n      uVar10 = 3600000;\n      if (DAT_1417815d8 != '\\0') {\n        uVar10 = 600000;\n      }\n    }\n    else {\n      uVar10 = 120000;\n      if (DAT_1417815d8 != '\\0') goto LAB_140b270e8;\n    }\n    if ((_DAT_1417815c0 == param_3) && (iVar6 = FUN_141165450(_DAT_1417815b8), iVar6 == 0)) {\n      uStack_34 = uVar7;\n      puStack_e0 = (undefined *)FUN_140e31980();\n      uVar9 = _DAT_1417815c8;\n      uStack_d8 = param_2;\n      uVar8 = FUN_140e31760(&puStack_e0);\n      auVar1._8_8_ = 0;\n      auVar1._0_8_ = uVar8;\n      auVar1 = auVar1 * ZEXT816(1000);\n      uVar8 = uVar9 & 0xffffffff;\n      if ((int)uVar9 == -1) {\n        uVar8 = 0;\n        auVar1 = ZEXT816(0);\n      }\n      auVar3._8_8_ = 0;\n      auVar3._0_8_ = uVar8 / 1000000;\n      uVar7 = uStack_34;\n      if (SUB168(auVar1 + auVar3,8) < (ulonglong)(SUB168(auVar1 + auVar3,0) < uVar10)) {\n        FUN_140c669f0(&puStack_e0,&DAT_141781508);\n        FUN_141164a10(param_1,&puStack_e0,0xa8);\n        cVar5 = (char)uStack_34;\n        goto LAB_140b270ef;\n      }\n    }\n  }\nLAB_140b270e8:\n  cVar5 = (char)uVar7;\n  *param_1 = 2;\nLAB_140b270ef:\n  if (((cVar5 == '\\0') && ((_DAT_14178ab20 & 0x7fffffffffffffff) != 0)) &&\n     (cVar5 = func_0x00014118a060(), cVar5 == '\\0')) {\n    DAT_141781501 = '\\x01';\n  }\n  cVar5 = DAT_141781500;\n  LOCK();\n  DAT_141781500 = 0;\n  UNLOCK();\n  if (cVar5 == '\\x02') {\n                    /* WARNING: Could not recover jumptable at 0x000140b271cd. Too many branches */\n                    /* WARNING: Treating indirect jump as call */\n    WakeByAddressSingle(&DAT_141781500);\n    return;\n  }\n  return;\n}\n\n",
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "This session opens a caller-selected existing Ghidra project through a private copy, without import, auto-analysis or repair scripts. Original analysis completeness and settings are unknown.",
+      "The original project is never opened by Ghidra or modified. The private copy is read-only to bridge operations and deleted on close; original executable bytes are never written.",
+      "The analysis profile records the selected project content fingerprint and program name. The imported program SHA-256 must match the admitted target; the project may contain caller annotations or earlier edits, which are not fresh REA discoveries.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+      "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+      "The Ghidra Program references PDB lumabar.pdb (GUID 84ce8363-80ab-4301-b08d-5bb3dcbcdbcc, age (hex) 1, signature unknown, version RSDS); Ghidra reports load state unknown. Original names and types may be missing; an empty name search does not prove a procedure is absent. Use list_procedures and address-based analysis to inspect recovered functions. REA does not admit a caller-selected PDB companion.",
+      "Known provider defect ghidra-9996 (jump-table-flow-references-omitted): Ghidra 12.2 can omit jump-table flow references and emit incorrect decompiler output for clang -O0 x86-64 switches whose case labels start above zero. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/9996 is closed by c93917a622211349998f641de54cfdbe0e0e5bee, milestone 12.2.1, which is not yet released. This limitation is recorded for parsed 12.2 releases whose patch is below 12.2.1, including a zero patch and a suffix, and clears on 12.2.1. REA's verified switch lane compiles with -O2 and does not cover this shape.",
+      "Known provider defect ghidra-10154 (jump-table-unrecovered-function-truncated): Ghidra 12.2 leaves an aarch64 switch unrecovered when it is a byte-offset bounded by and-0xff. The function body stops at the indirect branch. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/10154 is open and names a Swift -O swift-enum switch; it has no fix commit and no milestone. REA reproduced the unrecovered jump table on the exact 12.2 build with an AArch64 ELF object of that instruction shape. A compare-bounded byte table still recovers. This record stays on every admitted build until a release is known to clear it."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

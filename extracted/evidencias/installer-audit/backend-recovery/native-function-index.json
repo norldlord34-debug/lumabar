@@ -1,0 +1,3572 @@
+[
+  {
+    "start": "0x140111870",
+    "end": "0x1401118be",
+    "bytes": 78,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140111870.asm"
+  },
+  {
+    "start": "0x1402a6610",
+    "end": "0x1402a68c2",
+    "bytes": 690,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/00000001402a6610.asm"
+  },
+  {
+    "start": "0x1402a68d0",
+    "end": "0x1402a6b66",
+    "bytes": 662,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/00000001402a68d0.asm"
+  },
+  {
+    "start": "0x1402a7b70",
+    "end": "0x1402a8efb",
+    "bytes": 5003,
+    "associated_modules": [
+      "src\\commands\\gmail.rs"
+    ],
+    "file": "assembly/00000001402a7b70.asm"
+  },
+  {
+    "start": "0x1402abc50",
+    "end": "0x1402ad9d4",
+    "bytes": 7556,
+    "associated_modules": [
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/00000001402abc50.asm"
+  },
+  {
+    "start": "0x1402b0de0",
+    "end": "0x1402b1ca6",
+    "bytes": 3782,
+    "associated_modules": [
+      "src\\commands\\net_status.rs"
+    ],
+    "file": "assembly/00000001402b0de0.asm"
+  },
+  {
+    "start": "0x1402b21d0",
+    "end": "0x1402b33e5",
+    "bytes": 4629,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/00000001402b21d0.asm"
+  },
+  {
+    "start": "0x1402b39b0",
+    "end": "0x1402b53bf",
+    "bytes": 6671,
+    "associated_modules": [
+      "src\\commands\\taskbar_keys.rs"
+    ],
+    "file": "assembly/00000001402b39b0.asm"
+  },
+  {
+    "start": "0x1402b5a40",
+    "end": "0x1402b5c86",
+    "bytes": 582,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/00000001402b5a40.asm"
+  },
+  {
+    "start": "0x1402b6480",
+    "end": "0x1402b6a3a",
+    "bytes": 1466,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001402b6480.asm"
+  },
+  {
+    "start": "0x1402b6a40",
+    "end": "0x1402b6bd7",
+    "bytes": 407,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001402b6a40.asm"
+  },
+  {
+    "start": "0x1402b6cd0",
+    "end": "0x1402b76ae",
+    "bytes": 2526,
+    "associated_modules": [
+      "src\\commands\\badges.rs",
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/00000001402b6cd0.asm"
+  },
+  {
+    "start": "0x1402b76f0",
+    "end": "0x1402b8f46",
+    "bytes": 6230,
+    "associated_modules": [
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/00000001402b76f0.asm"
+  },
+  {
+    "start": "0x1402b99d0",
+    "end": "0x1402ba695",
+    "bytes": 3269,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/00000001402b99d0.asm"
+  },
+  {
+    "start": "0x1402bad20",
+    "end": "0x1402bb639",
+    "bytes": 2329,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/00000001402bad20.asm"
+  },
+  {
+    "start": "0x1402bb800",
+    "end": "0x1402bc855",
+    "bytes": 4181,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/00000001402bb800.asm"
+  },
+  {
+    "start": "0x1402bd4d0",
+    "end": "0x1402bd794",
+    "bytes": 708,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/00000001402bd4d0.asm"
+  },
+  {
+    "start": "0x1402bda00",
+    "end": "0x1402c09d7",
+    "bytes": 12247,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/00000001402bda00.asm"
+  },
+  {
+    "start": "0x1402c15b0",
+    "end": "0x1402c2535",
+    "bytes": 3973,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/00000001402c15b0.asm"
+  },
+  {
+    "start": "0x1402c4df0",
+    "end": "0x1402c5a99",
+    "bytes": 3241,
+    "associated_modules": [
+      "src\\commands\\autostart.rs"
+    ],
+    "file": "assembly/00000001402c4df0.asm"
+  },
+  {
+    "start": "0x140343c10",
+    "end": "0x140344752",
+    "bytes": 2882,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140343c10.asm"
+  },
+  {
+    "start": "0x140346a70",
+    "end": "0x140347dda",
+    "bytes": 4970,
+    "associated_modules": [
+      "src\\commands\\drag_ghost.rs"
+    ],
+    "file": "assembly/0000000140346a70.asm"
+  },
+  {
+    "start": "0x140350610",
+    "end": "0x140350ea7",
+    "bytes": 2199,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140350610.asm"
+  },
+  {
+    "start": "0x1403512e0",
+    "end": "0x140351b8d",
+    "bytes": 2221,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/00000001403512e0.asm"
+  },
+  {
+    "start": "0x140351fc0",
+    "end": "0x140352847",
+    "bytes": 2183,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140351fc0.asm"
+  },
+  {
+    "start": "0x140358020",
+    "end": "0x1403592ea",
+    "bytes": 4810,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140358020.asm"
+  },
+  {
+    "start": "0x14035ad30",
+    "end": "0x14035b595",
+    "bytes": 2149,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/000000014035ad30.asm"
+  },
+  {
+    "start": "0x14036d940",
+    "end": "0x14036e7c3",
+    "bytes": 3715,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/000000014036d940.asm"
+  },
+  {
+    "start": "0x14036ef50",
+    "end": "0x14036ff80",
+    "bytes": 4144,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/000000014036ef50.asm"
+  },
+  {
+    "start": "0x1403707c0",
+    "end": "0x140371a09",
+    "bytes": 4681,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001403707c0.asm"
+  },
+  {
+    "start": "0x1403723d0",
+    "end": "0x140373417",
+    "bytes": 4167,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001403723d0.asm"
+  },
+  {
+    "start": "0x140374580",
+    "end": "0x1403754c1",
+    "bytes": 3905,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/0000000140374580.asm"
+  },
+  {
+    "start": "0x140375b00",
+    "end": "0x140376cd2",
+    "bytes": 4562,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/0000000140375b00.asm"
+  },
+  {
+    "start": "0x14038bb20",
+    "end": "0x14038c1e7",
+    "bytes": 1735,
+    "associated_modules": [
+      "src\\commands\\autostart.rs"
+    ],
+    "file": "assembly/000000014038bb20.asm"
+  },
+  {
+    "start": "0x14038cfc0",
+    "end": "0x14038daef",
+    "bytes": 2863,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/000000014038cfc0.asm"
+  },
+  {
+    "start": "0x14058c8f0",
+    "end": "0x14058d2d7",
+    "bytes": 2535,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/000000014058c8f0.asm"
+  },
+  {
+    "start": "0x14058df10",
+    "end": "0x14058e027",
+    "bytes": 279,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/000000014058df10.asm"
+  },
+  {
+    "start": "0x14058e030",
+    "end": "0x14058f447",
+    "bytes": 5143,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/000000014058e030.asm"
+  },
+  {
+    "start": "0x14061aaf0",
+    "end": "0x14061be97",
+    "bytes": 5031,
+    "associated_modules": [
+      "src\\commands\\drag_ghost.rs"
+    ],
+    "file": "assembly/000000014061aaf0.asm"
+  },
+  {
+    "start": "0x14061cfa0",
+    "end": "0x14061e261",
+    "bytes": 4801,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/000000014061cfa0.asm"
+  },
+  {
+    "start": "0x14061eb70",
+    "end": "0x14061fffd",
+    "bytes": 5261,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/000000014061eb70.asm"
+  },
+  {
+    "start": "0x140620920",
+    "end": "0x140621b6c",
+    "bytes": 4684,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/0000000140620920.asm"
+  },
+  {
+    "start": "0x140622440",
+    "end": "0x140623489",
+    "bytes": 4169,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/0000000140622440.asm"
+  },
+  {
+    "start": "0x140623e00",
+    "end": "0x1406248cb",
+    "bytes": 2763,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/0000000140623e00.asm"
+  },
+  {
+    "start": "0x140624f80",
+    "end": "0x140625d19",
+    "bytes": 3481,
+    "associated_modules": [
+      "src\\commands\\ocr.rs"
+    ],
+    "file": "assembly/0000000140624f80.asm"
+  },
+  {
+    "start": "0x140626380",
+    "end": "0x140627194",
+    "bytes": 3604,
+    "associated_modules": [
+      "src\\commands\\weather.rs"
+    ],
+    "file": "assembly/0000000140626380.asm"
+  },
+  {
+    "start": "0x140627b40",
+    "end": "0x140628c7c",
+    "bytes": 4412,
+    "associated_modules": [
+      "src\\commands\\crypto.rs"
+    ],
+    "file": "assembly/0000000140627b40.asm"
+  },
+  {
+    "start": "0x140629510",
+    "end": "0x14062adce",
+    "bytes": 6334,
+    "associated_modules": [
+      "src\\commands\\weather.rs"
+    ],
+    "file": "assembly/0000000140629510.asm"
+  },
+  {
+    "start": "0x14062b5a0",
+    "end": "0x14062c3c8",
+    "bytes": 3624,
+    "associated_modules": [
+      "src\\commands\\locale.rs"
+    ],
+    "file": "assembly/000000014062b5a0.asm"
+  },
+  {
+    "start": "0x14062cc00",
+    "end": "0x14062d79f",
+    "bytes": 2975,
+    "associated_modules": [
+      "src\\commands\\locale.rs"
+    ],
+    "file": "assembly/000000014062cc00.asm"
+  },
+  {
+    "start": "0x14062de00",
+    "end": "0x14062e9cb",
+    "bytes": 3019,
+    "associated_modules": [
+      "src\\commands\\wallpaper.rs"
+    ],
+    "file": "assembly/000000014062de00.asm"
+  },
+  {
+    "start": "0x14062f0c0",
+    "end": "0x14062fe64",
+    "bytes": 3492,
+    "associated_modules": [
+      "src\\commands\\wallpaper.rs"
+    ],
+    "file": "assembly/000000014062f0c0.asm"
+  },
+  {
+    "start": "0x1406305a0",
+    "end": "0x140631d54",
+    "bytes": 6068,
+    "associated_modules": [
+      "src\\commands\\unsplash.rs"
+    ],
+    "file": "assembly/00000001406305a0.asm"
+  },
+  {
+    "start": "0x1406325e0",
+    "end": "0x140633339",
+    "bytes": 3417,
+    "associated_modules": [
+      "src\\commands\\unsplash.rs"
+    ],
+    "file": "assembly/00000001406325e0.asm"
+  },
+  {
+    "start": "0x140633ac0",
+    "end": "0x1406346d8",
+    "bytes": 3096,
+    "associated_modules": [
+      "src\\commands\\unsplash.rs"
+    ],
+    "file": "assembly/0000000140633ac0.asm"
+  },
+  {
+    "start": "0x140635c40",
+    "end": "0x1406365c3",
+    "bytes": 2435,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140635c40.asm"
+  },
+  {
+    "start": "0x140636ab0",
+    "end": "0x1406378db",
+    "bytes": 3627,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140636ab0.asm"
+  },
+  {
+    "start": "0x140638280",
+    "end": "0x140638ca1",
+    "bytes": 2593,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140638280.asm"
+  },
+  {
+    "start": "0x1406390d0",
+    "end": "0x140639c98",
+    "bytes": 3016,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/00000001406390d0.asm"
+  },
+  {
+    "start": "0x14063b160",
+    "end": "0x14063bb9b",
+    "bytes": 2619,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/000000014063b160.asm"
+  },
+  {
+    "start": "0x14063d590",
+    "end": "0x14063dd3b",
+    "bytes": 1963,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/000000014063d590.asm"
+  },
+  {
+    "start": "0x14063e0e0",
+    "end": "0x14063ef8f",
+    "bytes": 3759,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/000000014063e0e0.asm"
+  },
+  {
+    "start": "0x14063f5f0",
+    "end": "0x1406401bd",
+    "bytes": 3021,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/000000014063f5f0.asm"
+  },
+  {
+    "start": "0x1406408b0",
+    "end": "0x140641815",
+    "bytes": 3941,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/00000001406408b0.asm"
+  },
+  {
+    "start": "0x140641fe0",
+    "end": "0x140643331",
+    "bytes": 4945,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140641fe0.asm"
+  },
+  {
+    "start": "0x140643ba0",
+    "end": "0x140644ebe",
+    "bytes": 4894,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140643ba0.asm"
+  },
+  {
+    "start": "0x1406456b0",
+    "end": "0x14064626f",
+    "bytes": 3007,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/00000001406456b0.asm"
+  },
+  {
+    "start": "0x1406467d0",
+    "end": "0x14064762b",
+    "bytes": 3675,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/00000001406467d0.asm"
+  },
+  {
+    "start": "0x140647da0",
+    "end": "0x140648bd9",
+    "bytes": 3641,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/0000000140647da0.asm"
+  },
+  {
+    "start": "0x140649e80",
+    "end": "0x14064afae",
+    "bytes": 4398,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/0000000140649e80.asm"
+  },
+  {
+    "start": "0x14064b790",
+    "end": "0x14064c5e0",
+    "bytes": 3664,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/000000014064b790.asm"
+  },
+  {
+    "start": "0x14064cd10",
+    "end": "0x14064da6c",
+    "bytes": 3420,
+    "associated_modules": [
+      "src\\commands\\gmail.rs"
+    ],
+    "file": "assembly/000000014064cd10.asm"
+  },
+  {
+    "start": "0x14064e1c0",
+    "end": "0x14064f2df",
+    "bytes": 4383,
+    "associated_modules": [
+      "src\\commands\\top_processes.rs"
+    ],
+    "file": "assembly/000000014064e1c0.asm"
+  },
+  {
+    "start": "0x14064fb60",
+    "end": "0x140650cf5",
+    "bytes": 4501,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/000000014064fb60.asm"
+  },
+  {
+    "start": "0x140651500",
+    "end": "0x140652450",
+    "bytes": 3920,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140651500.asm"
+  },
+  {
+    "start": "0x140652be0",
+    "end": "0x14065348b",
+    "bytes": 2219,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140652be0.asm"
+  },
+  {
+    "start": "0x140653860",
+    "end": "0x140654730",
+    "bytes": 3792,
+    "associated_modules": [
+      "src\\commands\\bluetooth.rs"
+    ],
+    "file": "assembly/0000000140653860.asm"
+  },
+  {
+    "start": "0x140654d90",
+    "end": "0x140655b2a",
+    "bytes": 3482,
+    "associated_modules": [
+      "src\\commands\\bluetooth.rs"
+    ],
+    "file": "assembly/0000000140654d90.asm"
+  },
+  {
+    "start": "0x140656220",
+    "end": "0x140656f33",
+    "bytes": 3347,
+    "associated_modules": [
+      "src\\commands\\x.rs"
+    ],
+    "file": "assembly/0000000140656220.asm"
+  },
+  {
+    "start": "0x140657fe0",
+    "end": "0x140658cf3",
+    "bytes": 3347,
+    "associated_modules": [
+      "src\\commands\\x.rs"
+    ],
+    "file": "assembly/0000000140657fe0.asm"
+  },
+  {
+    "start": "0x14065a230",
+    "end": "0x14065b380",
+    "bytes": 4432,
+    "associated_modules": [
+      "src\\commands\\leetcode.rs"
+    ],
+    "file": "assembly/000000014065a230.asm"
+  },
+  {
+    "start": "0x14065bb70",
+    "end": "0x14065ca31",
+    "bytes": 3777,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/000000014065bb70.asm"
+  },
+  {
+    "start": "0x14065d0b0",
+    "end": "0x14065df45",
+    "bytes": 3733,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/000000014065d0b0.asm"
+  },
+  {
+    "start": "0x14065e560",
+    "end": "0x14065effd",
+    "bytes": 2717,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/000000014065e560.asm"
+  },
+  {
+    "start": "0x14065f580",
+    "end": "0x140660433",
+    "bytes": 3763,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/000000014065f580.asm"
+  },
+  {
+    "start": "0x140660d00",
+    "end": "0x1406618d7",
+    "bytes": 3031,
+    "associated_modules": [
+      "src\\commands\\brightness.rs"
+    ],
+    "file": "assembly/0000000140660d00.asm"
+  },
+  {
+    "start": "0x140661ed0",
+    "end": "0x140662a75",
+    "bytes": 2981,
+    "associated_modules": [
+      "src\\commands\\brightness.rs"
+    ],
+    "file": "assembly/0000000140661ed0.asm"
+  },
+  {
+    "start": "0x1406631a0",
+    "end": "0x140664138",
+    "bytes": 3992,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/00000001406631a0.asm"
+  },
+  {
+    "start": "0x140664870",
+    "end": "0x140665771",
+    "bytes": 3841,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140664870.asm"
+  },
+  {
+    "start": "0x140665ee0",
+    "end": "0x140666c45",
+    "bytes": 3429,
+    "associated_modules": [
+      "src\\commands\\gmail.rs"
+    ],
+    "file": "assembly/0000000140665ee0.asm"
+  },
+  {
+    "start": "0x140667260",
+    "end": "0x140667d6e",
+    "bytes": 2830,
+    "associated_modules": [
+      "src\\commands\\outlook.rs"
+    ],
+    "file": "assembly/0000000140667260.asm"
+  },
+  {
+    "start": "0x140668250",
+    "end": "0x140668fce",
+    "bytes": 3454,
+    "associated_modules": [
+      "src\\commands\\outlook.rs"
+    ],
+    "file": "assembly/0000000140668250.asm"
+  },
+  {
+    "start": "0x14066a130",
+    "end": "0x14066aeb5",
+    "bytes": 3461,
+    "associated_modules": [
+      "src\\commands\\outlook.rs"
+    ],
+    "file": "assembly/000000014066a130.asm"
+  },
+  {
+    "start": "0x14066b550",
+    "end": "0x14066c413",
+    "bytes": 3779,
+    "associated_modules": [
+      "src\\commands\\outlook.rs"
+    ],
+    "file": "assembly/000000014066b550.asm"
+  },
+  {
+    "start": "0x14066cc40",
+    "end": "0x14066da9b",
+    "bytes": 3675,
+    "associated_modules": [
+      "src\\commands\\gmail.rs"
+    ],
+    "file": "assembly/000000014066cc40.asm"
+  },
+  {
+    "start": "0x140670800",
+    "end": "0x14067164e",
+    "bytes": 3662,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140670800.asm"
+  },
+  {
+    "start": "0x140671ce0",
+    "end": "0x140672e83",
+    "bytes": 4515,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140671ce0.asm"
+  },
+  {
+    "start": "0x140673610",
+    "end": "0x14067470e",
+    "bytes": 4350,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140673610.asm"
+  },
+  {
+    "start": "0x140674fb0",
+    "end": "0x140676019",
+    "bytes": 4201,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140674fb0.asm"
+  },
+  {
+    "start": "0x140676880",
+    "end": "0x140677432",
+    "bytes": 2994,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140676880.asm"
+  },
+  {
+    "start": "0x140677ac0",
+    "end": "0x1406787a7",
+    "bytes": 3303,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140677ac0.asm"
+  },
+  {
+    "start": "0x140678e20",
+    "end": "0x140679aec",
+    "bytes": 3276,
+    "associated_modules": [
+      "src\\commands\\opencode.rs"
+    ],
+    "file": "assembly/0000000140678e20.asm"
+  },
+  {
+    "start": "0x14067a0f0",
+    "end": "0x14067b1c1",
+    "bytes": 4305,
+    "associated_modules": [
+      "src\\commands\\whatsapp.rs"
+    ],
+    "file": "assembly/000000014067a0f0.asm"
+  },
+  {
+    "start": "0x14067b840",
+    "end": "0x14067ec34",
+    "bytes": 13300,
+    "associated_modules": [
+      "src\\commands\\updater.rs"
+    ],
+    "file": "assembly/000000014067b840.asm"
+  },
+  {
+    "start": "0x1406811b0",
+    "end": "0x140681bd1",
+    "bytes": 2593,
+    "associated_modules": [
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/00000001406811b0.asm"
+  },
+  {
+    "start": "0x140682000",
+    "end": "0x140682bc8",
+    "bytes": 3016,
+    "associated_modules": [
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/0000000140682000.asm"
+  },
+  {
+    "start": "0x140683560",
+    "end": "0x1406853e3",
+    "bytes": 7811,
+    "associated_modules": [
+      "src\\commands\\hotkey.rs"
+    ],
+    "file": "assembly/0000000140683560.asm"
+  },
+  {
+    "start": "0x140687210",
+    "end": "0x1406877e2",
+    "bytes": 1490,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140687210.asm"
+  },
+  {
+    "start": "0x140687b90",
+    "end": "0x14068906f",
+    "bytes": 5343,
+    "associated_modules": [
+      "src\\commands\\feedback.rs"
+    ],
+    "file": "assembly/0000000140687b90.asm"
+  },
+  {
+    "start": "0x140689850",
+    "end": "0x140689afb",
+    "bytes": 683,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140689850.asm"
+  },
+  {
+    "start": "0x140689c00",
+    "end": "0x14068ab9c",
+    "bytes": 3996,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140689c00.asm"
+  },
+  {
+    "start": "0x14068b2e0",
+    "end": "0x14068c139",
+    "bytes": 3673,
+    "associated_modules": [
+      "src\\commands\\dialogs.rs"
+    ],
+    "file": "assembly/000000014068b2e0.asm"
+  },
+  {
+    "start": "0x14068c9b0",
+    "end": "0x14068d69c",
+    "bytes": 3308,
+    "associated_modules": [
+      "src\\commands\\sounds.rs"
+    ],
+    "file": "assembly/000000014068c9b0.asm"
+  },
+  {
+    "start": "0x14068dde0",
+    "end": "0x14068e9c5",
+    "bytes": 3045,
+    "associated_modules": [
+      "src\\commands\\sounds.rs"
+    ],
+    "file": "assembly/000000014068dde0.asm"
+  },
+  {
+    "start": "0x14068f0d0",
+    "end": "0x14068ff9f",
+    "bytes": 3791,
+    "associated_modules": [
+      "src\\commands\\ethernet.rs"
+    ],
+    "file": "assembly/000000014068f0d0.asm"
+  },
+  {
+    "start": "0x140690600",
+    "end": "0x140691179",
+    "bytes": 2937,
+    "associated_modules": [
+      "src\\commands\\peek.rs"
+    ],
+    "file": "assembly/0000000140690600.asm"
+  },
+  {
+    "start": "0x140691620",
+    "end": "0x140692125",
+    "bytes": 2821,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140691620.asm"
+  },
+  {
+    "start": "0x1406927b0",
+    "end": "0x1406938ba",
+    "bytes": 4362,
+    "associated_modules": [
+      "src\\commands\\currency.rs"
+    ],
+    "file": "assembly/00000001406927b0.asm"
+  },
+  {
+    "start": "0x1406940a0",
+    "end": "0x1406952d0",
+    "bytes": 4656,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/00000001406940a0.asm"
+  },
+  {
+    "start": "0x140695dc0",
+    "end": "0x140697068",
+    "bytes": 4776,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140695dc0.asm"
+  },
+  {
+    "start": "0x140697c00",
+    "end": "0x140698d5d",
+    "bytes": 4445,
+    "associated_modules": [
+      "src\\commands\\photos.rs"
+    ],
+    "file": "assembly/0000000140697c00.asm"
+  },
+  {
+    "start": "0x1406994e0",
+    "end": "0x14069a649",
+    "bytes": 4457,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/00000001406994e0.asm"
+  },
+  {
+    "start": "0x14069ad80",
+    "end": "0x14069b703",
+    "bytes": 2435,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/000000014069ad80.asm"
+  },
+  {
+    "start": "0x14069bbf0",
+    "end": "0x14069beae",
+    "bytes": 702,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/000000014069bbf0.asm"
+  },
+  {
+    "start": "0x14069bfe0",
+    "end": "0x14069dbea",
+    "bytes": 7178,
+    "associated_modules": [
+      "src\\commands\\jumplist.rs"
+    ],
+    "file": "assembly/000000014069bfe0.asm"
+  },
+  {
+    "start": "0x14069e5a0",
+    "end": "0x14069f325",
+    "bytes": 3461,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/000000014069e5a0.asm"
+  },
+  {
+    "start": "0x14069fad0",
+    "end": "0x1406a0855",
+    "bytes": 3461,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/000000014069fad0.asm"
+  },
+  {
+    "start": "0x1406a1000",
+    "end": "0x1406a25a9",
+    "bytes": 5545,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406a1000.asm"
+  },
+  {
+    "start": "0x1406a2ec0",
+    "end": "0x1406a3eb6",
+    "bytes": 4086,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406a2ec0.asm"
+  },
+  {
+    "start": "0x1406a4750",
+    "end": "0x1406a5821",
+    "bytes": 4305,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406a4750.asm"
+  },
+  {
+    "start": "0x1406a6140",
+    "end": "0x1406a74a0",
+    "bytes": 4960,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/00000001406a6140.asm"
+  },
+  {
+    "start": "0x1406a7f20",
+    "end": "0x1406a8dc6",
+    "bytes": 3750,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/00000001406a7f20.asm"
+  },
+  {
+    "start": "0x1406a9320",
+    "end": "0x1406ab00b",
+    "bytes": 7403,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/00000001406a9320.asm"
+  },
+  {
+    "start": "0x1406ab910",
+    "end": "0x1406ac9f7",
+    "bytes": 4327,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/00000001406ab910.asm"
+  },
+  {
+    "start": "0x1406ad470",
+    "end": "0x1406ade21",
+    "bytes": 2481,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/00000001406ad470.asm"
+  },
+  {
+    "start": "0x1406ae4c0",
+    "end": "0x1406aff28",
+    "bytes": 6760,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/00000001406ae4c0.asm"
+  },
+  {
+    "start": "0x1406b10f0",
+    "end": "0x1406b27c7",
+    "bytes": 5847,
+    "associated_modules": [
+      "src\\commands\\app_catalog.rs"
+    ],
+    "file": "assembly/00000001406b10f0.asm"
+  },
+  {
+    "start": "0x1406b4bc0",
+    "end": "0x1406b6d31",
+    "bytes": 8561,
+    "associated_modules": [
+      "src\\commands\\storage.rs"
+    ],
+    "file": "assembly/00000001406b4bc0.asm"
+  },
+  {
+    "start": "0x1406b7eb0",
+    "end": "0x1406b8629",
+    "bytes": 1913,
+    "associated_modules": [
+      "src\\commands\\autostart.rs"
+    ],
+    "file": "assembly/00000001406b7eb0.asm"
+  },
+  {
+    "start": "0x1406b8a40",
+    "end": "0x1406b9443",
+    "bytes": 2563,
+    "associated_modules": [
+      "src\\commands\\autostart.rs"
+    ],
+    "file": "assembly/00000001406b8a40.asm"
+  },
+  {
+    "start": "0x1406b9a20",
+    "end": "0x1406ba6b5",
+    "bytes": 3221,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001406b9a20.asm"
+  },
+  {
+    "start": "0x1406bad80",
+    "end": "0x1406bbdc1",
+    "bytes": 4161,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001406bad80.asm"
+  },
+  {
+    "start": "0x1406bc560",
+    "end": "0x1406bd35d",
+    "bytes": 3581,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001406bc560.asm"
+  },
+  {
+    "start": "0x1406bdb00",
+    "end": "0x1406beabe",
+    "bytes": 4030,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001406bdb00.asm"
+  },
+  {
+    "start": "0x1406bf400",
+    "end": "0x1406c04f1",
+    "bytes": 4337,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001406bf400.asm"
+  },
+  {
+    "start": "0x1406c0e50",
+    "end": "0x1406c1cd2",
+    "bytes": 3714,
+    "associated_modules": [
+      "src\\commands\\files.rs"
+    ],
+    "file": "assembly/00000001406c0e50.asm"
+  },
+  {
+    "start": "0x1406c23f0",
+    "end": "0x1406c317d",
+    "bytes": 3469,
+    "associated_modules": [
+      "src\\commands\\files.rs"
+    ],
+    "file": "assembly/00000001406c23f0.asm"
+  },
+  {
+    "start": "0x1406c37e0",
+    "end": "0x1406c4662",
+    "bytes": 3714,
+    "associated_modules": [
+      "src\\commands\\files.rs"
+    ],
+    "file": "assembly/00000001406c37e0.asm"
+  },
+  {
+    "start": "0x1406c4d80",
+    "end": "0x1406c64b8",
+    "bytes": 5944,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406c4d80.asm"
+  },
+  {
+    "start": "0x1406c6e20",
+    "end": "0x1406c81a9",
+    "bytes": 5001,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406c6e20.asm"
+  },
+  {
+    "start": "0x1406c8ad0",
+    "end": "0x1406ca406",
+    "bytes": 6454,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406c8ad0.asm"
+  },
+  {
+    "start": "0x1406cb250",
+    "end": "0x1406cc394",
+    "bytes": 4420,
+    "associated_modules": [
+      "src\\commands\\signals.rs"
+    ],
+    "file": "assembly/00000001406cb250.asm"
+  },
+  {
+    "start": "0x1406ccd60",
+    "end": "0x1406cdd09",
+    "bytes": 4009,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/00000001406ccd60.asm"
+  },
+  {
+    "start": "0x1406ce6a0",
+    "end": "0x1406cf4e9",
+    "bytes": 3657,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/00000001406ce6a0.asm"
+  },
+  {
+    "start": "0x1406cfca0",
+    "end": "0x1406d08a6",
+    "bytes": 3078,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/00000001406cfca0.asm"
+  },
+  {
+    "start": "0x1406d1020",
+    "end": "0x1406d26a0",
+    "bytes": 5760,
+    "associated_modules": [
+      "src\\commands\\temps.rs"
+    ],
+    "file": "assembly/00000001406d1020.asm"
+  },
+  {
+    "start": "0x1406d2e50",
+    "end": "0x1406d3bc4",
+    "bytes": 3444,
+    "associated_modules": [
+      "src\\commands\\temps.rs"
+    ],
+    "file": "assembly/00000001406d2e50.asm"
+  },
+  {
+    "start": "0x1406d4350",
+    "end": "0x1406d5160",
+    "bytes": 3600,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/00000001406d4350.asm"
+  },
+  {
+    "start": "0x1406d58d0",
+    "end": "0x1406d6002",
+    "bytes": 1842,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/00000001406d58d0.asm"
+  },
+  {
+    "start": "0x1406d6390",
+    "end": "0x1406d77e5",
+    "bytes": 5205,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/00000001406d6390.asm"
+  },
+  {
+    "start": "0x1406d7f70",
+    "end": "0x1406d8f76",
+    "bytes": 4102,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001406d7f70.asm"
+  },
+  {
+    "start": "0x1406d9770",
+    "end": "0x1406da6f1",
+    "bytes": 3969,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001406d9770.asm"
+  },
+  {
+    "start": "0x1406dae60",
+    "end": "0x1406dbc4d",
+    "bytes": 3565,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001406dae60.asm"
+  },
+  {
+    "start": "0x1406dc280",
+    "end": "0x1406dd201",
+    "bytes": 3969,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001406dc280.asm"
+  },
+  {
+    "start": "0x1406dd970",
+    "end": "0x1406de504",
+    "bytes": 2964,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001406dd970.asm"
+  },
+  {
+    "start": "0x1406dea40",
+    "end": "0x1406df863",
+    "bytes": 3619,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001406dea40.asm"
+  },
+  {
+    "start": "0x1406dffd0",
+    "end": "0x1406e0a0c",
+    "bytes": 2620,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001406dffd0.asm"
+  },
+  {
+    "start": "0x1406e0ef0",
+    "end": "0x1406e228d",
+    "bytes": 5021,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001406e0ef0.asm"
+  },
+  {
+    "start": "0x1406e2a20",
+    "end": "0x1406e374f",
+    "bytes": 3375,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001406e2a20.asm"
+  },
+  {
+    "start": "0x1406e3e10",
+    "end": "0x1406e4b3f",
+    "bytes": 3375,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/00000001406e3e10.asm"
+  },
+  {
+    "start": "0x14084a0a0",
+    "end": "0x14084a397",
+    "bytes": 759,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/000000014084a0a0.asm"
+  },
+  {
+    "start": "0x14084bfd0",
+    "end": "0x14084c361",
+    "bytes": 913,
+    "associated_modules": [
+      "src\\commands\\drag_ghost.rs"
+    ],
+    "file": "assembly/000000014084bfd0.asm"
+  },
+  {
+    "start": "0x140851480",
+    "end": "0x140852873",
+    "bytes": 5107,
+    "associated_modules": [
+      "src\\commands\\capture.rs"
+    ],
+    "file": "assembly/0000000140851480.asm"
+  },
+  {
+    "start": "0x140859820",
+    "end": "0x140859f62",
+    "bytes": 1858,
+    "associated_modules": [
+      "src\\commands\\badges.rs"
+    ],
+    "file": "assembly/0000000140859820.asm"
+  },
+  {
+    "start": "0x14085ba20",
+    "end": "0x14085be55",
+    "bytes": 1077,
+    "associated_modules": [
+      "src\\commands\\locale.rs"
+    ],
+    "file": "assembly/000000014085ba20.asm"
+  },
+  {
+    "start": "0x1408600d0",
+    "end": "0x140860520",
+    "bytes": 1104,
+    "associated_modules": [
+      "src\\commands\\appmenu.rs"
+    ],
+    "file": "assembly/00000001408600d0.asm"
+  },
+  {
+    "start": "0x140862450",
+    "end": "0x1408631f6",
+    "bytes": 3494,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/0000000140862450.asm"
+  },
+  {
+    "start": "0x140863e60",
+    "end": "0x140864751",
+    "bytes": 2289,
+    "associated_modules": [
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/0000000140863e60.asm"
+  },
+  {
+    "start": "0x140864ca0",
+    "end": "0x140865d58",
+    "bytes": 4280,
+    "associated_modules": [
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/0000000140864ca0.asm"
+  },
+  {
+    "start": "0x1408663b0",
+    "end": "0x14086689e",
+    "bytes": 1262,
+    "associated_modules": [
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/00000001408663b0.asm"
+  },
+  {
+    "start": "0x140867110",
+    "end": "0x1408677e6",
+    "bytes": 1750,
+    "associated_modules": [
+      "src\\commands\\audio.rs"
+    ],
+    "file": "assembly/0000000140867110.asm"
+  },
+  {
+    "start": "0x1408740e0",
+    "end": "0x14087480f",
+    "bytes": 1839,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/00000001408740e0.asm"
+  },
+  {
+    "start": "0x140882330",
+    "end": "0x140882e57",
+    "bytes": 2855,
+    "associated_modules": [
+      "src\\commands\\theme.rs"
+    ],
+    "file": "assembly/0000000140882330.asm"
+  },
+  {
+    "start": "0x140885b40",
+    "end": "0x140886480",
+    "bytes": 2368,
+    "associated_modules": [
+      "src\\commands\\dock.rs",
+      "src\\commands\\fullscreen.rs"
+    ],
+    "file": "assembly/0000000140885b40.asm"
+  },
+  {
+    "start": "0x14088b070",
+    "end": "0x14088bb67",
+    "bytes": 2807,
+    "associated_modules": [
+      "src\\commands\\sounds.rs"
+    ],
+    "file": "assembly/000000014088b070.asm"
+  },
+  {
+    "start": "0x14088f1d0",
+    "end": "0x14088f7fb",
+    "bytes": 1579,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/000000014088f1d0.asm"
+  },
+  {
+    "start": "0x14088fb30",
+    "end": "0x140890467",
+    "bytes": 2359,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/000000014088fb30.asm"
+  },
+  {
+    "start": "0x140890860",
+    "end": "0x140892965",
+    "bytes": 8453,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140890860.asm"
+  },
+  {
+    "start": "0x140893d20",
+    "end": "0x140894cef",
+    "bytes": 4047,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140893d20.asm"
+  },
+  {
+    "start": "0x140895850",
+    "end": "0x1408965ab",
+    "bytes": 3419,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140895850.asm"
+  },
+  {
+    "start": "0x14089b000",
+    "end": "0x14089b393",
+    "bytes": 915,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/000000014089b000.asm"
+  },
+  {
+    "start": "0x14089dbf0",
+    "end": "0x14089f28c",
+    "bytes": 5788,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/000000014089dbf0.asm"
+  },
+  {
+    "start": "0x14089ffd0",
+    "end": "0x1408a040a",
+    "bytes": 1082,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/000000014089ffd0.asm"
+  },
+  {
+    "start": "0x1408a05f0",
+    "end": "0x1408a0c00",
+    "bytes": 1552,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/00000001408a05f0.asm"
+  },
+  {
+    "start": "0x1408a2000",
+    "end": "0x1408a2d10",
+    "bytes": 3344,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a2000.asm"
+  },
+  {
+    "start": "0x1408a32c0",
+    "end": "0x1408a3a73",
+    "bytes": 1971,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a32c0.asm"
+  },
+  {
+    "start": "0x1408a3c80",
+    "end": "0x1408a43e8",
+    "bytes": 1896,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a3c80.asm"
+  },
+  {
+    "start": "0x1408a4660",
+    "end": "0x1408a4b25",
+    "bytes": 1221,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a4660.asm"
+  },
+  {
+    "start": "0x1408a4ca0",
+    "end": "0x1408a55b4",
+    "bytes": 2324,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a4ca0.asm"
+  },
+  {
+    "start": "0x1408a5fa0",
+    "end": "0x1408a638e",
+    "bytes": 1006,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a5fa0.asm"
+  },
+  {
+    "start": "0x1408a76f0",
+    "end": "0x1408a87c6",
+    "bytes": 4310,
+    "associated_modules": [
+      "src\\commands\\displays.rs"
+    ],
+    "file": "assembly/00000001408a76f0.asm"
+  },
+  {
+    "start": "0x1408a9f70",
+    "end": "0x1408aa721",
+    "bytes": 1969,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001408a9f70.asm"
+  },
+  {
+    "start": "0x1408b74d0",
+    "end": "0x1408b8935",
+    "bytes": 5221,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/00000001408b74d0.asm"
+  },
+  {
+    "start": "0x1408c1fd0",
+    "end": "0x1408c2668",
+    "bytes": 1688,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/00000001408c1fd0.asm"
+  },
+  {
+    "start": "0x1408c3680",
+    "end": "0x1408cd1c7",
+    "bytes": 39751,
+    "associated_modules": [
+      "src\\commands\\audio.rs",
+      "src\\commands\\displays.rs",
+      "src\\commands\\dock.rs",
+      "src\\commands\\dock_drop.rs"
+    ],
+    "file": "assembly/00000001408c3680.asm"
+  },
+  {
+    "start": "0x1409151e0",
+    "end": "0x140915301",
+    "bytes": 289,
+    "associated_modules": [
+      "src\\commands\\voice.rs"
+    ],
+    "file": "assembly/00000001409151e0.asm"
+  },
+  {
+    "start": "0x140915c10",
+    "end": "0x1409161d3",
+    "bytes": 1475,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140915c10.asm"
+  },
+  {
+    "start": "0x1409162f0",
+    "end": "0x140916709",
+    "bytes": 1049,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/00000001409162f0.asm"
+  },
+  {
+    "start": "0x140916d60",
+    "end": "0x140916ed8",
+    "bytes": 376,
+    "associated_modules": [
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/0000000140916d60.asm"
+  },
+  {
+    "start": "0x140947170",
+    "end": "0x14094729d",
+    "bytes": 301,
+    "associated_modules": [
+      "src\\commands\\voice.rs"
+    ],
+    "file": "assembly/0000000140947170.asm"
+  },
+  {
+    "start": "0x1409477f0",
+    "end": "0x140947c31",
+    "bytes": 1089,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/00000001409477f0.asm"
+  },
+  {
+    "start": "0x140961850",
+    "end": "0x140961aa0",
+    "bytes": 592,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140961850.asm"
+  },
+  {
+    "start": "0x140961b20",
+    "end": "0x1409624c3",
+    "bytes": 2467,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/0000000140961b20.asm"
+  },
+  {
+    "start": "0x140a237c0",
+    "end": "0x140a2394d",
+    "bytes": 397,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140a237c0.asm"
+  },
+  {
+    "start": "0x140a23990",
+    "end": "0x140a23e5a",
+    "bytes": 1226,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140a23990.asm"
+  },
+  {
+    "start": "0x140a240e0",
+    "end": "0x140a24690",
+    "bytes": 1456,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140a240e0.asm"
+  },
+  {
+    "start": "0x140a45db0",
+    "end": "0x140a46e2f",
+    "bytes": 4223,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs",
+      "src\\commands\\input_lang.rs",
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140a45db0.asm"
+  },
+  {
+    "start": "0x140a47320",
+    "end": "0x140a47829",
+    "bytes": 1289,
+    "associated_modules": [
+      "src\\commands\\dock.rs",
+      "src\\commands\\fullscreen.rs"
+    ],
+    "file": "assembly/0000000140a47320.asm"
+  },
+  {
+    "start": "0x140a4eeb0",
+    "end": "0x140a4f91d",
+    "bytes": 2669,
+    "associated_modules": [
+      "src\\commands\\fullscreen.rs"
+    ],
+    "file": "assembly/0000000140a4eeb0.asm"
+  },
+  {
+    "start": "0x140a4fce0",
+    "end": "0x140a4fe5b",
+    "bytes": 379,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/0000000140a4fce0.asm"
+  },
+  {
+    "start": "0x140a4feb0",
+    "end": "0x140a50002",
+    "bytes": 338,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/0000000140a4feb0.asm"
+  },
+  {
+    "start": "0x140a500b0",
+    "end": "0x140a50ff1",
+    "bytes": 3905,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/0000000140a500b0.asm"
+  },
+  {
+    "start": "0x140a51bf0",
+    "end": "0x140a54aa6",
+    "bytes": 11958,
+    "associated_modules": [
+      "src\\commands\\app_catalog.rs"
+    ],
+    "file": "assembly/0000000140a51bf0.asm"
+  },
+  {
+    "start": "0x140a5c220",
+    "end": "0x140a5db4d",
+    "bytes": 6445,
+    "associated_modules": [
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/0000000140a5c220.asm"
+  },
+  {
+    "start": "0x140a601b0",
+    "end": "0x140a602c3",
+    "bytes": 275,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140a601b0.asm"
+  },
+  {
+    "start": "0x140a60490",
+    "end": "0x140a6194a",
+    "bytes": 5306,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140a60490.asm"
+  },
+  {
+    "start": "0x140a62090",
+    "end": "0x140a62492",
+    "bytes": 1026,
+    "associated_modules": [
+      "src\\commands\\screenshots.rs"
+    ],
+    "file": "assembly/0000000140a62090.asm"
+  },
+  {
+    "start": "0x140a63b60",
+    "end": "0x140a65ea3",
+    "bytes": 9027,
+    "associated_modules": [
+      "src\\commands\\google_oauth.rs"
+    ],
+    "file": "assembly/0000000140a63b60.asm"
+  },
+  {
+    "start": "0x140a6a050",
+    "end": "0x140a7554a",
+    "bytes": 46330,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a6a050.asm"
+  },
+  {
+    "start": "0x140a80860",
+    "end": "0x140a82b50",
+    "bytes": 8944,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a80860.asm"
+  },
+  {
+    "start": "0x140a84a60",
+    "end": "0x140a85202",
+    "bytes": 1954,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a84a60.asm"
+  },
+  {
+    "start": "0x140a856c0",
+    "end": "0x140a865b5",
+    "bytes": 3829,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a856c0.asm"
+  },
+  {
+    "start": "0x140a87030",
+    "end": "0x140a87f24",
+    "bytes": 3828,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a87030.asm"
+  },
+  {
+    "start": "0x140a88b70",
+    "end": "0x140a88de8",
+    "bytes": 632,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a88b70.asm"
+  },
+  {
+    "start": "0x140a8e730",
+    "end": "0x140a8e883",
+    "bytes": 339,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a8e730.asm"
+  },
+  {
+    "start": "0x140a8fae0",
+    "end": "0x140a9079e",
+    "bytes": 3262,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a8fae0.asm"
+  },
+  {
+    "start": "0x140a92a90",
+    "end": "0x140a96174",
+    "bytes": 14052,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a92a90.asm"
+  },
+  {
+    "start": "0x140a977f0",
+    "end": "0x140a99d67",
+    "bytes": 9591,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a977f0.asm"
+  },
+  {
+    "start": "0x140a9b170",
+    "end": "0x140a9bce3",
+    "bytes": 2931,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a9b170.asm"
+  },
+  {
+    "start": "0x140a9c050",
+    "end": "0x140a9c427",
+    "bytes": 983,
+    "associated_modules": [
+      "src\\commands\\search_console.rs"
+    ],
+    "file": "assembly/0000000140a9c050.asm"
+  },
+  {
+    "start": "0x140a9f480",
+    "end": "0x140aa24e7",
+    "bytes": 12391,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140a9f480.asm"
+  },
+  {
+    "start": "0x140aa2ec0",
+    "end": "0x140aa31f8",
+    "bytes": 824,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa2ec0.asm"
+  },
+  {
+    "start": "0x140aa3230",
+    "end": "0x140aa371b",
+    "bytes": 1259,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa3230.asm"
+  },
+  {
+    "start": "0x140aa3750",
+    "end": "0x140aa395c",
+    "bytes": 524,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa3750.asm"
+  },
+  {
+    "start": "0x140aa3bf0",
+    "end": "0x140aa4069",
+    "bytes": 1145,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa3bf0.asm"
+  },
+  {
+    "start": "0x140aa4210",
+    "end": "0x140aa4457",
+    "bytes": 583,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa4210.asm"
+  },
+  {
+    "start": "0x140aa4490",
+    "end": "0x140aa46cd",
+    "bytes": 573,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa4490.asm"
+  },
+  {
+    "start": "0x140aa4700",
+    "end": "0x140aa48ab",
+    "bytes": 427,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa4700.asm"
+  },
+  {
+    "start": "0x140aa48b0",
+    "end": "0x140aa4b5a",
+    "bytes": 682,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa48b0.asm"
+  },
+  {
+    "start": "0x140aa4b90",
+    "end": "0x140aa50e5",
+    "bytes": 1365,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa4b90.asm"
+  },
+  {
+    "start": "0x140aa50f0",
+    "end": "0x140aa586b",
+    "bytes": 1915,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa50f0.asm"
+  },
+  {
+    "start": "0x140aa5c60",
+    "end": "0x140aa6419",
+    "bytes": 1977,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa5c60.asm"
+  },
+  {
+    "start": "0x140aa6b30",
+    "end": "0x140aa76dd",
+    "bytes": 2989,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa6b30.asm"
+  },
+  {
+    "start": "0x140aa78d0",
+    "end": "0x140aa7c4b",
+    "bytes": 891,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa78d0.asm"
+  },
+  {
+    "start": "0x140aa7ca0",
+    "end": "0x140aa9ff2",
+    "bytes": 9042,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa7ca0.asm"
+  },
+  {
+    "start": "0x140aae5e0",
+    "end": "0x140ab0d05",
+    "bytes": 10021,
+    "associated_modules": [
+      "src\\commands\\x.rs"
+    ],
+    "file": "assembly/0000000140aae5e0.asm"
+  },
+  {
+    "start": "0x140ab8730",
+    "end": "0x140abe996",
+    "bytes": 25190,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/0000000140ab8730.asm"
+  },
+  {
+    "start": "0x140ac1510",
+    "end": "0x140ac2a52",
+    "bytes": 5442,
+    "associated_modules": [
+      "src\\commands\\ics.rs"
+    ],
+    "file": "assembly/0000000140ac1510.asm"
+  },
+  {
+    "start": "0x140ac5f20",
+    "end": "0x140ac66d3",
+    "bytes": 1971,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140ac5f20.asm"
+  },
+  {
+    "start": "0x140ac6a10",
+    "end": "0x140ac80bf",
+    "bytes": 5807,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140ac6a10.asm"
+  },
+  {
+    "start": "0x140aca340",
+    "end": "0x140aca81c",
+    "bytes": 1244,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140aca340.asm"
+  },
+  {
+    "start": "0x140acde70",
+    "end": "0x140ace8af",
+    "bytes": 2623,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140acde70.asm"
+  },
+  {
+    "start": "0x140acf2d0",
+    "end": "0x140ad0eac",
+    "bytes": 7132,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140acf2d0.asm"
+  },
+  {
+    "start": "0x140ad45a0",
+    "end": "0x140ad49ff",
+    "bytes": 1119,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140ad45a0.asm"
+  },
+  {
+    "start": "0x140ad6050",
+    "end": "0x140ad6218",
+    "bytes": 456,
+    "associated_modules": [
+      "src\\commands\\apps.rs"
+    ],
+    "file": "assembly/0000000140ad6050.asm"
+  },
+  {
+    "start": "0x140ad6f10",
+    "end": "0x140ad7c22",
+    "bytes": 3346,
+    "associated_modules": [
+      "src\\commands\\dock.rs",
+      "src\\commands\\fullscreen.rs"
+    ],
+    "file": "assembly/0000000140ad6f10.asm"
+  },
+  {
+    "start": "0x140ad7ed0",
+    "end": "0x140ad850b",
+    "bytes": 1595,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ad7ed0.asm"
+  },
+  {
+    "start": "0x140ad8e00",
+    "end": "0x140ada347",
+    "bytes": 5447,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ad8e00.asm"
+  },
+  {
+    "start": "0x140ada970",
+    "end": "0x140adace6",
+    "bytes": 886,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ada970.asm"
+  },
+  {
+    "start": "0x140adacf0",
+    "end": "0x140adae38",
+    "bytes": 328,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adacf0.asm"
+  },
+  {
+    "start": "0x140adafa0",
+    "end": "0x140adb12b",
+    "bytes": 395,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adafa0.asm"
+  },
+  {
+    "start": "0x140adb130",
+    "end": "0x140adb37b",
+    "bytes": 587,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adb130.asm"
+  },
+  {
+    "start": "0x140adb380",
+    "end": "0x140adb87a",
+    "bytes": 1274,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adb380.asm"
+  },
+  {
+    "start": "0x140adb9f0",
+    "end": "0x140adbcde",
+    "bytes": 750,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adb9f0.asm"
+  },
+  {
+    "start": "0x140adbd70",
+    "end": "0x140adc09a",
+    "bytes": 810,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adbd70.asm"
+  },
+  {
+    "start": "0x140adc0a0",
+    "end": "0x140add4a7",
+    "bytes": 5127,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adc0a0.asm"
+  },
+  {
+    "start": "0x140add5f0",
+    "end": "0x140addaf4",
+    "bytes": 1284,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140add5f0.asm"
+  },
+  {
+    "start": "0x140addb00",
+    "end": "0x140adde07",
+    "bytes": 775,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140addb00.asm"
+  },
+  {
+    "start": "0x140adde40",
+    "end": "0x140ade874",
+    "bytes": 2612,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adde40.asm"
+  },
+  {
+    "start": "0x140adec10",
+    "end": "0x140adf225",
+    "bytes": 1557,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adec10.asm"
+  },
+  {
+    "start": "0x140adf520",
+    "end": "0x140adf892",
+    "bytes": 882,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adf520.asm"
+  },
+  {
+    "start": "0x140adf8e0",
+    "end": "0x140adfbe9",
+    "bytes": 777,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adf8e0.asm"
+  },
+  {
+    "start": "0x140adfc70",
+    "end": "0x140ae112b",
+    "bytes": 5307,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140adfc70.asm"
+  },
+  {
+    "start": "0x140ae1770",
+    "end": "0x140ae1af3",
+    "bytes": 899,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae1770.asm"
+  },
+  {
+    "start": "0x140ae1bc0",
+    "end": "0x140ae1d8c",
+    "bytes": 460,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae1bc0.asm"
+  },
+  {
+    "start": "0x140ae1dc0",
+    "end": "0x140ae20f1",
+    "bytes": 817,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae1dc0.asm"
+  },
+  {
+    "start": "0x140ae2160",
+    "end": "0x140ae26b1",
+    "bytes": 1361,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae2160.asm"
+  },
+  {
+    "start": "0x140ae2860",
+    "end": "0x140ae3262",
+    "bytes": 2562,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae2860.asm"
+  },
+  {
+    "start": "0x140ae35c0",
+    "end": "0x140ae388b",
+    "bytes": 715,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae35c0.asm"
+  },
+  {
+    "start": "0x140ae3900",
+    "end": "0x140ae3a11",
+    "bytes": 273,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae3900.asm"
+  },
+  {
+    "start": "0x140ae3a20",
+    "end": "0x140ae3c50",
+    "bytes": 560,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae3a20.asm"
+  },
+  {
+    "start": "0x140ae3cd0",
+    "end": "0x140ae4002",
+    "bytes": 818,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae3cd0.asm"
+  },
+  {
+    "start": "0x140ae40a0",
+    "end": "0x140ae4a62",
+    "bytes": 2498,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae40a0.asm"
+  },
+  {
+    "start": "0x140ae4e30",
+    "end": "0x140ae835b",
+    "bytes": 13611,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae4e30.asm"
+  },
+  {
+    "start": "0x140ae8d00",
+    "end": "0x140ae9555",
+    "bytes": 2133,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae8d00.asm"
+  },
+  {
+    "start": "0x140ae9750",
+    "end": "0x140ae996f",
+    "bytes": 543,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae9750.asm"
+  },
+  {
+    "start": "0x140ae99d0",
+    "end": "0x140ae9d18",
+    "bytes": 840,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae99d0.asm"
+  },
+  {
+    "start": "0x140ae9d70",
+    "end": "0x140aea213",
+    "bytes": 1187,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae9d70.asm"
+  },
+  {
+    "start": "0x140aea280",
+    "end": "0x140aea6d2",
+    "bytes": 1106,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140aea280.asm"
+  },
+  {
+    "start": "0x140aea820",
+    "end": "0x140aeacce",
+    "bytes": 1198,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140aea820.asm"
+  },
+  {
+    "start": "0x140aeadd0",
+    "end": "0x140aeb8a9",
+    "bytes": 2777,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140aeadd0.asm"
+  },
+  {
+    "start": "0x140aeba80",
+    "end": "0x140aece68",
+    "bytes": 5096,
+    "associated_modules": [
+      "src\\commands\\tray.rs"
+    ],
+    "file": "assembly/0000000140aeba80.asm"
+  },
+  {
+    "start": "0x140aef1a0",
+    "end": "0x140aefd47",
+    "bytes": 2983,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140aef1a0.asm"
+  },
+  {
+    "start": "0x140af00a0",
+    "end": "0x140af0693",
+    "bytes": 1523,
+    "associated_modules": [
+      "src\\commands\\wifi.rs"
+    ],
+    "file": "assembly/0000000140af00a0.asm"
+  },
+  {
+    "start": "0x140af6880",
+    "end": "0x140af847d",
+    "bytes": 7165,
+    "associated_modules": [
+      "src\\commands\\gmail.rs"
+    ],
+    "file": "assembly/0000000140af6880.asm"
+  },
+  {
+    "start": "0x140b003a0",
+    "end": "0x140b00807",
+    "bytes": 1127,
+    "associated_modules": [
+      "src\\commands\\badges.rs"
+    ],
+    "file": "assembly/0000000140b003a0.asm"
+  },
+  {
+    "start": "0x140b00940",
+    "end": "0x140b00b80",
+    "bytes": 576,
+    "associated_modules": [
+      "src\\commands\\badges.rs"
+    ],
+    "file": "assembly/0000000140b00940.asm"
+  },
+  {
+    "start": "0x140b03470",
+    "end": "0x140b037c7",
+    "bytes": 855,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b03470.asm"
+  },
+  {
+    "start": "0x140b03930",
+    "end": "0x140b03cbc",
+    "bytes": 908,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b03930.asm"
+  },
+  {
+    "start": "0x140b042f0",
+    "end": "0x140b06fe6",
+    "bytes": 11510,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b042f0.asm"
+  },
+  {
+    "start": "0x140b07e00",
+    "end": "0x140b083e0",
+    "bytes": 1504,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b07e00.asm"
+  },
+  {
+    "start": "0x140b08500",
+    "end": "0x140b09017",
+    "bytes": 2839,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b08500.asm"
+  },
+  {
+    "start": "0x140b09350",
+    "end": "0x140b0cf84",
+    "bytes": 15412,
+    "associated_modules": [
+      "src\\commands\\claude.rs"
+    ],
+    "file": "assembly/0000000140b09350.asm"
+  },
+  {
+    "start": "0x140b178c0",
+    "end": "0x140b1cced",
+    "bytes": 21549,
+    "associated_modules": [
+      "src\\commands\\hotkey.rs"
+    ],
+    "file": "assembly/0000000140b178c0.asm"
+  },
+  {
+    "start": "0x140b21ca0",
+    "end": "0x140b22318",
+    "bytes": 1656,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/0000000140b21ca0.asm"
+  },
+  {
+    "start": "0x140b22810",
+    "end": "0x140b22a60",
+    "bytes": 592,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/0000000140b22810.asm"
+  },
+  {
+    "start": "0x140b22c50",
+    "end": "0x140b23407",
+    "bytes": 1975,
+    "associated_modules": [
+      "src\\commands\\memory.rs"
+    ],
+    "file": "assembly/0000000140b22c50.asm"
+  },
+  {
+    "start": "0x140b23700",
+    "end": "0x140b238c6",
+    "bytes": 454,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140b23700.asm"
+  },
+  {
+    "start": "0x140b23920",
+    "end": "0x140b23ce4",
+    "bytes": 964,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140b23920.asm"
+  },
+  {
+    "start": "0x140b23e60",
+    "end": "0x140b247f3",
+    "bytes": 2451,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140b23e60.asm"
+  },
+  {
+    "start": "0x140b24970",
+    "end": "0x140b24ac1",
+    "bytes": 337,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140b24970.asm"
+  },
+  {
+    "start": "0x140b26fa0",
+    "end": "0x140b271ed",
+    "bytes": 589,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b26fa0.asm"
+  },
+  {
+    "start": "0x140b27250",
+    "end": "0x140b2b233",
+    "bytes": 16355,
+    "associated_modules": [
+      "src\\commands\\page_reader.rs",
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b27250.asm"
+  },
+  {
+    "start": "0x140b2ca30",
+    "end": "0x140b2e251",
+    "bytes": 6177,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b2ca30.asm"
+  },
+  {
+    "start": "0x140b2e9a0",
+    "end": "0x140b2fa59",
+    "bytes": 4281,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b2e9a0.asm"
+  },
+  {
+    "start": "0x140b300e0",
+    "end": "0x140b332da",
+    "bytes": 12794,
+    "associated_modules": [
+      "src\\commands\\social.rs"
+    ],
+    "file": "assembly/0000000140b300e0.asm"
+  },
+  {
+    "start": "0x140b392d0",
+    "end": "0x140b3a5d4",
+    "bytes": 4868,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/0000000140b392d0.asm"
+  },
+  {
+    "start": "0x140b3b130",
+    "end": "0x140b3cde9",
+    "bytes": 7353,
+    "associated_modules": [
+      "src\\commands\\stocks.rs"
+    ],
+    "file": "assembly/0000000140b3b130.asm"
+  },
+  {
+    "start": "0x140b3e210",
+    "end": "0x140b40a41",
+    "bytes": 10289,
+    "associated_modules": [
+      "src\\commands\\appmenu.rs"
+    ],
+    "file": "assembly/0000000140b3e210.asm"
+  },
+  {
+    "start": "0x140b42ee0",
+    "end": "0x140b43063",
+    "bytes": 387,
+    "associated_modules": [
+      "src\\commands\\capture.rs"
+    ],
+    "file": "assembly/0000000140b42ee0.asm"
+  },
+  {
+    "start": "0x140b435d0",
+    "end": "0x140b4368f",
+    "bytes": 191,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b435d0.asm"
+  },
+  {
+    "start": "0x140b44680",
+    "end": "0x140b44f8f",
+    "bytes": 2319,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b44680.asm"
+  },
+  {
+    "start": "0x140b45bc0",
+    "end": "0x140b4850f",
+    "bytes": 10575,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b45bc0.asm"
+  },
+  {
+    "start": "0x140b49470",
+    "end": "0x140b4a47a",
+    "bytes": 4106,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b49470.asm"
+  },
+  {
+    "start": "0x140b4b350",
+    "end": "0x140b4be7e",
+    "bytes": 2862,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b4b350.asm"
+  },
+  {
+    "start": "0x140b4c230",
+    "end": "0x140b4d4f4",
+    "bytes": 4804,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b4c230.asm"
+  },
+  {
+    "start": "0x140b4d9b0",
+    "end": "0x140b4f3cb",
+    "bytes": 6683,
+    "associated_modules": [
+      "src\\commands\\license.rs"
+    ],
+    "file": "assembly/0000000140b4d9b0.asm"
+  },
+  {
+    "start": "0x140b545f0",
+    "end": "0x140b549ec",
+    "bytes": 1020,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140b545f0.asm"
+  },
+  {
+    "start": "0x140b54b30",
+    "end": "0x140b5604b",
+    "bytes": 5403,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140b54b30.asm"
+  },
+  {
+    "start": "0x140b56bc0",
+    "end": "0x140b56d47",
+    "bytes": 391,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140b56bc0.asm"
+  },
+  {
+    "start": "0x140b56d90",
+    "end": "0x140b5771e",
+    "bytes": 2446,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140b56d90.asm"
+  },
+  {
+    "start": "0x140b57a10",
+    "end": "0x140b587af",
+    "bytes": 3487,
+    "associated_modules": [
+      "src\\commands\\popover.rs"
+    ],
+    "file": "assembly/0000000140b57a10.asm"
+  },
+  {
+    "start": "0x140b5a040",
+    "end": "0x140b5af67",
+    "bytes": 3879,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b5a040.asm"
+  },
+  {
+    "start": "0x140b5b3a0",
+    "end": "0x140b5bcde",
+    "bytes": 2366,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b5b3a0.asm"
+  },
+  {
+    "start": "0x140b5c120",
+    "end": "0x140b5e188",
+    "bytes": 8296,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b5c120.asm"
+  },
+  {
+    "start": "0x140b5edd0",
+    "end": "0x140b5f24e",
+    "bytes": 1150,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b5edd0.asm"
+  },
+  {
+    "start": "0x140b5f250",
+    "end": "0x140b71a87",
+    "bytes": 75831,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b5f250.asm"
+  },
+  {
+    "start": "0x140b7a180",
+    "end": "0x140b7a839",
+    "bytes": 1721,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b7a180.asm"
+  },
+  {
+    "start": "0x140b7bd90",
+    "end": "0x140b7c9ae",
+    "bytes": 3102,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b7bd90.asm"
+  },
+  {
+    "start": "0x140b7cbf0",
+    "end": "0x140b7d3a3",
+    "bytes": 1971,
+    "associated_modules": [
+      "src\\commands\\revenue.rs"
+    ],
+    "file": "assembly/0000000140b7cbf0.asm"
+  },
+  {
+    "start": "0x140b84fb0",
+    "end": "0x140b8735a",
+    "bytes": 9130,
+    "associated_modules": [
+      "src\\commands\\storage.rs"
+    ],
+    "file": "assembly/0000000140b84fb0.asm"
+  },
+  {
+    "start": "0x140b88570",
+    "end": "0x140b888cd",
+    "bytes": 861,
+    "associated_modules": [
+      "src\\commands\\storage.rs"
+    ],
+    "file": "assembly/0000000140b88570.asm"
+  },
+  {
+    "start": "0x140b88dd0",
+    "end": "0x140b8a1db",
+    "bytes": 5131,
+    "associated_modules": [
+      "src\\commands\\storage.rs"
+    ],
+    "file": "assembly/0000000140b88dd0.asm"
+  },
+  {
+    "start": "0x140b8c160",
+    "end": "0x140b90f30",
+    "bytes": 19920,
+    "associated_modules": [
+      "src\\commands\\radios.rs",
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/0000000140b8c160.asm"
+  },
+  {
+    "start": "0x140b922d0",
+    "end": "0x140b93a3d",
+    "bytes": 5997,
+    "associated_modules": [
+      "src\\commands\\radios.rs",
+      "src\\commands\\toggles.rs"
+    ],
+    "file": "assembly/0000000140b922d0.asm"
+  },
+  {
+    "start": "0x140b97e90",
+    "end": "0x140b983ac",
+    "bytes": 1308,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140b97e90.asm"
+  },
+  {
+    "start": "0x140b984e0",
+    "end": "0x140b9867e",
+    "bytes": 414,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140b984e0.asm"
+  },
+  {
+    "start": "0x140b99b40",
+    "end": "0x140b9d56d",
+    "bytes": 14893,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140b99b40.asm"
+  },
+  {
+    "start": "0x140b9ef20",
+    "end": "0x140b9f19c",
+    "bytes": 636,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140b9ef20.asm"
+  },
+  {
+    "start": "0x140b9f1a0",
+    "end": "0x140b9f3e3",
+    "bytes": 579,
+    "associated_modules": [
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140b9f1a0.asm"
+  },
+  {
+    "start": "0x140ba0ec0",
+    "end": "0x140ba186a",
+    "bytes": 2474,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140ba0ec0.asm"
+  },
+  {
+    "start": "0x140ba26d0",
+    "end": "0x140ba5afb",
+    "bytes": 13355,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140ba26d0.asm"
+  },
+  {
+    "start": "0x140ba75d0",
+    "end": "0x140bab709",
+    "bytes": 16697,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140ba75d0.asm"
+  },
+  {
+    "start": "0x140bba640",
+    "end": "0x140bba88d",
+    "bytes": 589,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140bba640.asm"
+  },
+  {
+    "start": "0x140bbeb20",
+    "end": "0x140bc5a8c",
+    "bytes": 28524,
+    "associated_modules": [
+      "src\\commands\\ai_usage.rs"
+    ],
+    "file": "assembly/0000000140bbeb20.asm"
+  },
+  {
+    "start": "0x140bd3780",
+    "end": "0x140bd6bc7",
+    "bytes": 13383,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/0000000140bd3780.asm"
+  },
+  {
+    "start": "0x140bd7920",
+    "end": "0x140bd857f",
+    "bytes": 3167,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/0000000140bd7920.asm"
+  },
+  {
+    "start": "0x140bd87d0",
+    "end": "0x140bd92ef",
+    "bytes": 2847,
+    "associated_modules": [
+      "src\\commands\\datafast.rs"
+    ],
+    "file": "assembly/0000000140bd87d0.asm"
+  },
+  {
+    "start": "0x140bd9910",
+    "end": "0x140bd9cbb",
+    "bytes": 939,
+    "associated_modules": [
+      "src\\commands\\displays.rs"
+    ],
+    "file": "assembly/0000000140bd9910.asm"
+  },
+  {
+    "start": "0x140bda4c0",
+    "end": "0x140bdaa1a",
+    "bytes": 1370,
+    "associated_modules": [
+      "src\\commands\\displays.rs"
+    ],
+    "file": "assembly/0000000140bda4c0.asm"
+  },
+  {
+    "start": "0x140bdabd0",
+    "end": "0x140bdad23",
+    "bytes": 339,
+    "associated_modules": [
+      "src\\commands\\displays.rs"
+    ],
+    "file": "assembly/0000000140bdabd0.asm"
+  },
+  {
+    "start": "0x140bdae30",
+    "end": "0x140bdc959",
+    "bytes": 6953,
+    "associated_modules": [
+      "src\\commands\\displays.rs"
+    ],
+    "file": "assembly/0000000140bdae30.asm"
+  },
+  {
+    "start": "0x140bde9c0",
+    "end": "0x140be11d1",
+    "bytes": 10257,
+    "associated_modules": [
+      "src\\commands\\feedback.rs"
+    ],
+    "file": "assembly/0000000140bde9c0.asm"
+  },
+  {
+    "start": "0x140be3b30",
+    "end": "0x140be5cbc",
+    "bytes": 8588,
+    "associated_modules": [
+      "src\\commands\\jumplist.rs"
+    ],
+    "file": "assembly/0000000140be3b30.asm"
+  },
+  {
+    "start": "0x140be91c0",
+    "end": "0x140be9556",
+    "bytes": 918,
+    "associated_modules": [
+      "src\\commands\\jumplist.rs"
+    ],
+    "file": "assembly/0000000140be91c0.asm"
+  },
+  {
+    "start": "0x140be9730",
+    "end": "0x140bea098",
+    "bytes": 2408,
+    "associated_modules": [
+      "src\\commands\\jumplist.rs"
+    ],
+    "file": "assembly/0000000140be9730.asm"
+  },
+  {
+    "start": "0x140bf0fe0",
+    "end": "0x140bf2360",
+    "bytes": 4992,
+    "associated_modules": [
+      "src\\commands\\unsplash.rs"
+    ],
+    "file": "assembly/0000000140bf0fe0.asm"
+  },
+  {
+    "start": "0x140bf7550",
+    "end": "0x140bf9a59",
+    "bytes": 9481,
+    "associated_modules": [
+      "src\\commands\\whatsapp.rs"
+    ],
+    "file": "assembly/0000000140bf7550.asm"
+  },
+  {
+    "start": "0x140bfa4e0",
+    "end": "0x140bfadfb",
+    "bytes": 2331,
+    "associated_modules": [
+      "src\\commands\\whatsapp.rs"
+    ],
+    "file": "assembly/0000000140bfa4e0.asm"
+  },
+  {
+    "start": "0x140bfb1d0",
+    "end": "0x140bfb88b",
+    "bytes": 1723,
+    "associated_modules": [
+      "src\\commands\\autostart.rs",
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140bfb1d0.asm"
+  },
+  {
+    "start": "0x140bfbc30",
+    "end": "0x140bfbfd1",
+    "bytes": 929,
+    "associated_modules": [
+      "src\\commands\\radios.rs"
+    ],
+    "file": "assembly/0000000140bfbc30.asm"
+  },
+  {
+    "start": "0x140bfef60",
+    "end": "0x140c00267",
+    "bytes": 4871,
+    "associated_modules": [
+      "src\\commands\\bluetooth.rs"
+    ],
+    "file": "assembly/0000000140bfef60.asm"
+  },
+  {
+    "start": "0x140c00f90",
+    "end": "0x140c01220",
+    "bytes": 656,
+    "associated_modules": [
+      "src\\commands\\dock_drop.rs"
+    ],
+    "file": "assembly/0000000140c00f90.asm"
+  },
+  {
+    "start": "0x140c01660",
+    "end": "0x140c042e9",
+    "bytes": 11401,
+    "associated_modules": [
+      "src\\commands\\wallpaper.rs"
+    ],
+    "file": "assembly/0000000140c01660.asm"
+  },
+  {
+    "start": "0x140c0cf50",
+    "end": "0x140c0da5d",
+    "bytes": 2829,
+    "associated_modules": [
+      "src\\commands\\feedback.rs"
+    ],
+    "file": "assembly/0000000140c0cf50.asm"
+  },
+  {
+    "start": "0x140c0e0c0",
+    "end": "0x140c0e3f4",
+    "bytes": 820,
+    "associated_modules": [
+      "src\\commands\\input_lang.rs"
+    ],
+    "file": "assembly/0000000140c0e0c0.asm"
+  },
+  {
+    "start": "0x140c0e560",
+    "end": "0x140c0e62d",
+    "bytes": 205,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140c0e560.asm"
+  },
+  {
+    "start": "0x140c0e650",
+    "end": "0x140c0e91b",
+    "bytes": 715,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140c0e650.asm"
+  },
+  {
+    "start": "0x140c34c30",
+    "end": "0x140c34e74",
+    "bytes": 580,
+    "associated_modules": [
+      "src\\commands\\fullscreen.rs",
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140c34c30.asm"
+  },
+  {
+    "start": "0x140c60d60",
+    "end": "0x140c62c2d",
+    "bytes": 7885,
+    "associated_modules": [
+      "src\\commands\\updater.rs"
+    ],
+    "file": "assembly/0000000140c60d60.asm"
+  },
+  {
+    "start": "0x140c67330",
+    "end": "0x140c674f4",
+    "bytes": 452,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140c67330.asm"
+  },
+  {
+    "start": "0x140c67b10",
+    "end": "0x140c67dc0",
+    "bytes": 688,
+    "associated_modules": [
+      "src\\commands\\dock_drop.rs"
+    ],
+    "file": "assembly/0000000140c67b10.asm"
+  },
+  {
+    "start": "0x140c67e00",
+    "end": "0x140c68123",
+    "bytes": 803,
+    "associated_modules": [
+      "src\\commands\\dock_drop.rs"
+    ],
+    "file": "assembly/0000000140c67e00.asm"
+  },
+  {
+    "start": "0x140c681b0",
+    "end": "0x140c683d5",
+    "bytes": 549,
+    "associated_modules": [
+      "src\\commands\\dock_drop.rs"
+    ],
+    "file": "assembly/0000000140c681b0.asm"
+  },
+  {
+    "start": "0x140c74190",
+    "end": "0x140c77c7b",
+    "bytes": 15083,
+    "associated_modules": [
+      "src\\commands\\fullscreen.rs",
+      "src\\commands\\screen_time.rs"
+    ],
+    "file": "assembly/0000000140c74190.asm"
+  }
+]

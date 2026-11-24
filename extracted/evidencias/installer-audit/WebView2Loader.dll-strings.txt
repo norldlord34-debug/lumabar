@@ -1,0 +1,791 @@
+!This program cannot be run in DOS mode.$
+`.rdata
+@.data
+.pdata
+@.fptable
+_RDATA
+@.rsrc
+@.reloc
+AVVWSH
+([_^A^
+AVVWSH
+H[_^A^
+AWAVVWUSH
+X[]_^A^A_
+AVVWSH
+AWAVAUATVWUSH
+[]_^A\A]A^A_
+H;l$Xt
+AWAVATVWSH
+[_^A\A^A_
+AWAVVWUSH
+[]_^A^A_
+AWAVATVWSH
+[_^A\A^A_
+0w9r0H
+AVVWSH
+8[_^A^
+AWAVATVWUSH
+[]_^A\A^A_
+AWAVATVWUSH
+[]_^A\A^A_
+AWAVAUATVWUSH
+h[]_^A\A]A^A_
+h[]_^A\A]A^A_
+AWAVVWUSH
+([]_^A^A_
+AWAVAUATVWUSH
+[]_^A\A]A^A_
+AWAVAUATVWUSH
+H[]_^A\A]A^A_
+H[]_^A\A]A^A_
+AWAVVWSH
+[_^A^A_
+AWAVVWSH
+ [_^A^A_
+AWAVVWSH
+ [_^A^A_
+AWAVVWSH
+ [_^A^A_
+AWAVAUATVWUSH
+([]_^A\A]A^A_
+AVVWUSH
+`[]_^A^
+|$ AVH
+D$DDtRH
+ATAVAWH
+0A_A^A\
+|$ UATAUAVAWH
+t'HcC<
+A_A^A]A\]
+WATAUAVAWH
+A_A^A]A\_
+8T$(ua
+t$ WATAUAVAWH
+~ND;t;
+ A_A^A]A\_
+WATAUAVAWH
+A_A^A]A\_
+x ATAVAWH
+A_A^A\
+H;xXu5
+u3HcH<H
+UVWAVAWH
+0A_A^_^]
+x ATAVAWH
+< t;<	t7
+ A_A^A\
+WAVAWH
+ A_A^_
+WAVAWH
+D8|$`t
+ A_A^_
+\$8t	H
+UVWATAUAVAWH
+rsf;\$d
+r_f;\$l
+rKf;\$t
+r7f;\$|
+f;\$4r
+f;\$<r
+f;\$Dr
+rvf;\$d
+rbf;\$l
+rNf;\$t
+r:f;\$|
+A_A^A]A\_^]
+LcA<E3
+UVWATAUAVAWH
+ A_A^A]A\_^]
+D$ I;R
+D$ I9P
+SVWATAUAVAWH
+|$ Hc^
+0A_A^A]A\_^[
+@SVWATAUAVAWH
+D$0HcH
+pA_A^A]A\_^[
+SVWATAUAVAWH
+A_A^A]A\_^[
+@SVWATAUAVAWH
+A_A^A]A\_^[
+A9	upA
+B(I9A(u
+A9	u;A
+UVWATAUAVAWH
+|$hHcX
+ A_A^A]A\_^]
+WAVAWH
+ A_A^_
+x ATAVAWH
+ A_A^A\
+AUAVAWH
+u4I9}(
+9I9}(tgH
+0A_A^A]
+AUAVAWH
+u4I9}(
+9I9}(tgH
+0A_A^A]
+WAVAWH
+x ATAVAWH
+9h@u(D93t#D9
+9l$Pu	
+A_A^A\
+@USVWATAUAVAWH
+L$pHcX
+A_A^A]A\_^[]
+@USVWATAUAVAWH
+D$h;D$x
+A_A^A]A\_^[]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+UVWATAUAVAWH
+A_A^A]A\_^]
+UVWATAUAVAWH
+`A_A^A]A\_^]
+@USVWATAUAVAWH
+A_A^A]A\_^[]
+t$ WATAUAVAWH
+ A_A^A]A\_
+fD9t$b
+l$ VWATAVAWH
+L$&8\$&t,8Y
+A_A^A\_^
+D$0@8{
+t$ WATAUAVAWH
+D!|$xA
+A_A^A]A\_
+L$ VWAVH
+UVWATAUAVAWH
+PA_A^A]A\_^]
+u$D8r(t
+D81u`L9r
+uPD8r(t
+vWD8s(t
+u$D8r(t
+fD91u_L9r
+uPD8r(t
+vVD8s(t
+WATAUAVAWH
+0A_A^A]A\_
+H9>u+A
+@USVWATAUAVH
+D8t$ht
+D8t$ht
+A^A]A\_^[]
+f9)u4H9j
+u%@8j(t
+WATAUAVAWH
+ A_A^A]A\_
+WAVAWH
+ A_A^_
+@UATAUAVAWH
+e0A_A^A]A\]
+@UATAUAVAWH
+A_A^A]A\]
+@USVWATAUAVAWH
+H!D$ E
+hA_A^A]A\_^[]
+VATAUAVAWH
+0A_A^A]A\^
+UVWATAUAVAWH
+fB9<I}1L
+A_A^A]A\_^]
+VWATAVAW
+A_A^A\_^
+ATAUAVAWH
+L$ |+L;
+A_A^A]A\
+vyfffff
+vyfffff
+fD94H}aD
+@SUVWATAVAWH
+@A_A^A\_^][
+t$ WATAUAVAWH
+0A_A^A]A\_
+fffffff
+fffffff
+fffffff
+ffffff
+vKfffff
+fffffff
+fffffff
+Unknown exception
+bad allocation
+bad array new length
+AcquireSRWLockExclusive
+ReleaseSRWLockExclusive
+CorExitProcess
+bad exception
+__based(
+__cdecl
+__stdcall
+__thiscall
+__fastcall
+__vectorcall
+__preserve_none
+__clrcall
+__eabi
+__swift_1
+__swift_2
+__swift_3
+__ptr64
+__restrict
+__unaligned
+restrict(
+ delete
+operator
+`vftable'
+`vbtable'
+`vcall'
+`typeof'
+`local static guard'
+`string'
+`vbase destructor'
+`vector deleting destructor'
+`default constructor closure'
+`scalar deleting destructor'
+`vector constructor iterator'
+`vector destructor iterator'
+`vector vbase constructor iterator'
+`virtual displacement map'
+`eh vector constructor iterator'
+`eh vector destructor iterator'
+`eh vector vbase constructor iterator'
+`copy constructor closure'
+`udt returning'
+`local vftable'
+`local vftable constructor closure'
+ new[]
+ delete[]
+`omni callsig'
+`placement delete closure'
+`placement delete[] closure'
+`managed vector constructor iterator'
+`managed vector destructor iterator'
+`eh vector copy constructor iterator'
+`eh vector vbase copy constructor iterator'
+`dynamic initializer for '
+`dynamic atexit destructor for '
+`vector copy constructor iterator'
+`vector vbase copy constructor iterator'
+`managed vector copy constructor iterator'
+`local static thread guard'
+operator "" 
+operator co_await
+operator<=>
+ Type Descriptor'
+ Base Class Descriptor at (
+ Base Class Array'
+ Class Hierarchy Descriptor'
+ Complete Object Locator'
+`anonymous namespace'
+AreFileApisANSI
+FlsGetValue2
+LCMapStringEx
+LocaleNameToLCID
+AppPolicyGetProcessTerminationMethod
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+August
+September
+October
+November
+December
+MM/dd/yy
+dddd, MMMM dd, yyyy
+HH:mm:ss
+ !"#$%&'()*+,-./0123456789:;<=>?@abcdefghijklmnopqrstuvwxyz[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+ !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`ABCDEFGHIJKLMNOPQRSTUVWXYZ{|}~
+FlsAlloc
+FlsFree
+FlsGetValue
+FlsSetValue
+InitializeCriticalSectionEx
+UUUUUU
+UUUUUU
+=imb;D
+1<.	/>:
+/>58d%
+>jtm}S
+)>6{1n
+r	Vr.>T
++f)>0'
+;H9>&X
+*StO9>T
+n03>Pu
+K~Je#>!
+bp(=>?g
+BC?>6t9^	c:>
+K&>.yC
+.xJ>Hf
+y\PD>!
+|b=})>
+c [1>H'
+uzKs@>
+3>N;kU
+	kE>fvw
+V6E>`"(5
+?UUUUUU
+?7zQ6$
+WebView2: Failed to find the app exe path.
+WebView2: Failed to find the WebView2 client dll at: 
+GetFileVersionInfoSizeW
+GetFileVersionInfoW
+VerQueryValueW
+WebView2: Failed to find an installed WebView2 runtime or non-stable Microsoft Edge installation.
+WebView2: skipped inaccessible 
+WebView2: skipped an incompatible version 
+TryCreatePackageDependency
+AddPackageDependency
+GetCurrentPackageInfo
+EventRegister
+GetCurrentApplicationUserModelId
+GetCurrentProcessExplicitAppUserModelID
+0123456789ABCDEF
+CreateWebViewEnvironmentWithOptionsInternal
+DllCanUnloadNow
+CreateWebViewEnvironmentError
+HRESULT
+ClientDllFound
+InstalledRuntime
+PartA_PrivTags
+Microsoft.MSEdgeWebView.Loader
+LLD PDB.
+WebView2Loader.dll.pdb
+.text$text
+.text$mn
+.text$mn$00
+.text$mn$21
+.text$x
+.rdata$rdata
+.rdata$00
+.rdata$T
+.rdata$r
+.rdata$zETW0
+.rdata$zETW1
+.rdata$zETW2
+.rdata$zETW9
+.rdata
+.00cfg
+.CRT$XCA
+.CRT$XCZ
+.CRT$XIA
+.CRT$XIC
+.CRT$XIZ
+.CRT$XLA
+.CRT$XLZ
+.CRT$XPA
+.CRT$XPX
+.CRT$XPXA
+.CRT$XPZ
+.CRT$XTA
+.CRT$XTZ
+.idata$2
+.idata$4
+.idata$5
+.idata$6
+.idata$7
+.rtc$IAA
+.rtc$IZZ
+.rtc$TAA
+.rtc$TZZ
+.xdata
+.xdata$x
+.data$data
+.data$r
+.data$rs
+.pdata$pdata
+.pdata
+.fptable$fptable
+.tls$tls
+.tls$ZZZ
+_RDATA$RDATA
+.rsrc$01
+.rsrc$02
+EventRegister
+EventSetInformation
+EventUnregister
+EventWriteTransfer
+RegCloseKey
+RegGetValueW
+RegOpenKeyExW
+RegQueryValueExW
+CoTaskMemAlloc
+CoTaskMemFree
+ADVAPI32.dll
+ole32.dll
+WebView2Loader.dll
+CompareBrowserVersions
+CreateCoreWebView2Environment
+CreateCoreWebView2EnvironmentWithOptions
+GetAvailableCoreWebView2BrowserVersionString
+GetAvailableCoreWebView2BrowserVersionStringWithOptions
+AcquireSRWLockExclusive
+CloseHandle
+CreateFileW
+DeleteCriticalSection
+EncodePointer
+EnterCriticalSection
+ExitProcess
+FindClose
+FindFirstFileExW
+FindNextFileW
+FlsAlloc
+FlsFree
+FlsGetValue
+FlsSetValue
+FlushFileBuffers
+FreeEnvironmentStringsW
+FreeLibrary
+GetACP
+GetCPInfo
+GetCommandLineA
+GetCommandLineW
+GetConsoleMode
+GetConsoleOutputCP
+GetCurrentProcess
+GetCurrentProcessId
+GetCurrentThreadId
+GetEnvironmentStringsW
+GetEnvironmentVariableW
+GetFileAttributesW
+GetFileType
+GetLastError
+GetModuleFileNameW
+GetModuleHandleExW
+GetModuleHandleW
+GetOEMCP
+GetProcAddress
+GetProcessHeap
+GetStartupInfoW
+GetStdHandle
+GetStringTypeW
+GetSystemInfo
+GetSystemTimeAsFileTime
+HeapAlloc
+HeapFree
+HeapReAlloc
+HeapSize
+InitializeCriticalSectionAndSpinCount
+InitializeCriticalSectionEx
+InitializeSListHead
+InterlockedFlushSList
+IsDebuggerPresent
+IsProcessorFeaturePresent
+IsValidCodePage
+LCMapStringW
+LeaveCriticalSection
+LoadLibraryExA
+LoadLibraryExW
+LoadLibraryW
+MultiByteToWideChar
+OutputDebugStringA
+OutputDebugStringW
+QueryPerformanceCounter
+RaiseException
+ReleaseSRWLockExclusive
+RtlCaptureContext
+RtlLookupFunctionEntry
+RtlPcToFileHeader
+RtlUnwindEx
+RtlVirtualUnwind
+SetFilePointerEx
+SetLastError
+SetStdHandle
+SetUnhandledExceptionFilter
+SleepConditionVariableSRW
+TerminateProcess
+TlsAlloc
+TlsFree
+TlsGetValue
+TlsSetValue
+UnhandledExceptionFilter
+VirtualProtect
+VirtualQuery
+WakeAllConditionVariable
+WideCharToMultiByte
+WriteConsoleW
+WriteFile
+KERNEL32.dll
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                          
+abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+.?AVbad_alloc@std@@
+.?AVexception@std@@
+.?AVbad_array_new_length@std@@
+.?AVbad_exception@std@@
+.?AVtype_info@@
+Washington1
+Redmond1
+Microsoft Corporation1(0&
+Microsoft Code Signing PCA 20110
+250515184910Z
+260515184910Z0t1
+Washington1
+Redmond1
+Microsoft Corporation1
+Microsoft Corporation0
+6(A:V2
+.~2U#:-
+Microsoft Corporation1
+230217+5049070
+Chttp://www.microsoft.com/pkiops/crl/MicCodSigPCA2011_2011-07-08.crl0a
+Ehttp://www.microsoft.com/pkiops/certs/MicCodSigPCA2011_2011-07-08.crt0
+'W$K y
+Washington1
+Redmond1
+Microsoft Corporation1200
+)Microsoft Root Certificate Authority 20110
+110708205909Z
+260708210909Z0~1
+Washington1
+Redmond1
+Microsoft Corporation1(0&
+Microsoft Code Signing PCA 20110
+Ihttp://crl.microsoft.com/pki/crl/products/MicRooCerAut2011_2011_03_22.crl0^
+Bhttp://www.microsoft.com/pki/certs/MicRooCerAut2011_2011_03_22.crt0
+3http://www.microsoft.com/pkiops/docs/primarycps.htm0@
+*?*kXIc
+QEX82q'
+WqVNHE
+Washington1
+Redmond1
+Microsoft Corporation1(0&
+Microsoft Code Signing PCA 2011
+https://www.microsoft.com 0
+0'|	z3
+20251201093315.692Z0
+Washington1
+Redmond1
+Microsoft Corporation1%0#
+Microsoft America Operations1'0%
+nShield TSS ESN:9200-05E0-D9471%0#
+Microsoft Time-Stamp Service
+Washington1
+Redmond1
+Microsoft Corporation1&0$
+Microsoft Time-Stamp PCA 20100
+250130194255Z
+260422194255Z0
+Washington1
+Redmond1
+Microsoft Corporation1%0#
+Microsoft America Operations1'0%
+nShield TSS ESN:9200-05E0-D9471%0#
+Microsoft Time-Stamp Service0
+	w/cFj
+Nhttp://www.microsoft.com/pkiops/crl/Microsoft%20Time-Stamp%20PCA%202010(1).crl0l
+Phttp://www.microsoft.com/pkiops/certs/Microsoft%20Time-Stamp%20PCA%202010(1).crt0
+\^|o8<$
+^-Ed;DM[
+Washington1
+Redmond1
+Microsoft Corporation1200
+)Microsoft Root Certificate Authority 20100
+210930182225Z
+300930183225Z0|1
+Washington1
+Redmond1
+Microsoft Corporation1&0$
+Microsoft Time-Stamp PCA 20100
+3http://www.microsoft.com/pkiops/Docs/Repository.htm0
+Ehttp://crl.microsoft.com/pki/crl/products/MicRooCerAut_2010-06-23.crl0Z
+>http://www.microsoft.com/pki/certs/MicRooCerAut_2010-06-23.crt0
+as.,k{n?,	x
+Washington1
+Redmond1
+Microsoft Corporation1%0#
+Microsoft America Operations1'0%
+nShield TSS ESN:9200-05E0-D9471%0#
+Microsoft Time-Stamp Service
+Washington1
+Redmond1
+Microsoft Corporation1&0$
+Microsoft Time-Stamp PCA 20100
+20251130230331Z
+20251201230331Z0t0:
+Washington1
+Redmond1
+Microsoft Corporation1&0$
+Microsoft Time-Stamp PCA 2010
+UWhN3p
+Washington1
+Redmond1
+Microsoft Corporation1&0$
+Microsoft Time-Stamp PCA 2010
+
+KERNEL32.DLL
+mscoree.dll
+api-ms-win-core-datetime-l1-1-1
+api-ms-win-core-fibers-l1-1-2
+api-ms-win-core-file-l1-2-4
+api-ms-win-core-file-l1-2-2
+api-ms-win-core-file-l2-1-4
+api-ms-win-core-localization-l1-2-1
+api-ms-win-core-localization-obsolete-l1-2-0
+api-ms-win-core-processthreads-l1-1-2
+api-ms-win-core-string-l1-1-0
+api-ms-win-core-synch-l1-2-0
+api-ms-win-core-sysinfo-l1-2-1
+api-ms-win-core-winrt-l1-1-0
+api-ms-win-core-xstate-l2-1-0
+api-ms-win-rtcore-ntuser-window-l1-1-0
+api-ms-win-security-systemfunctions-l1-1-0
+ext-ms-win-ntuser-dialogbox-l1-1-0
+ext-ms-win-ntuser-windowstation-l1-1-0
+advapi32
+kernel32
+kernelbase
+api-ms-win-appmodel-runtime-l1-1-2
+user32
+api-ms-
+ext-ms-
+Sunday
+Monday
+Tuesday
+Wednesday
+Thursday
+Friday
+Saturday
+January
+February
+August
+September
+October
+November
+December
+MM/dd/yy
+dddd, MMMM dd, yyyy
+HH:mm:ss
+         (((((                  H
+         (((((                  H
+      (                          
+api-ms-win-core-fibers-l1-1-1
+zh-CHS
+az-AZ-Latn
+uz-UZ-Latn
+kok-IN
+syr-SY
+div-MV
+quz-BO
+sr-SP-Latn
+az-AZ-Cyrl
+uz-UZ-Cyrl
+quz-EC
+sr-SP-Cyrl
+quz-PE
+smj-NO
+bs-BA-Latn
+smj-SE
+sr-BA-Latn
+sma-NO
+sr-BA-Cyrl
+sma-SE
+sms-FI
+smn-FI
+zh-CHT
+az-az-cyrl
+az-az-latn
+bs-ba-latn
+div-mv
+kok-in
+quz-bo
+quz-ec
+quz-pe
+sma-no
+sma-se
+smj-no
+smj-se
+smn-fi
+sms-fi
+sr-ba-cyrl
+sr-ba-latn
+sr-sp-cyrl
+sr-sp-latn
+syr-sy
+uz-uz-cyrl
+uz-uz-latn
+zh-chs
+zh-cht
+CONOUT$
+EBWebView
+EBWebView\x64\EmbeddedBrowserWebView.dll
+{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}
+{2CD8A007-E189-409D-A2C8-9AF4EF3C72AA}
+{0D50BFEC-CD6A-4F9A-964C-C7416E3ACB10}
+{65C35B14-6C1D-4122-AC46-7148CC9D6497}
+{BE59E8FD-089A-411B-A3B0-051D9E417818}
+Software\Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}
+Software\Microsoft\EdgeUpdate\ClientState\
+canary
+internal
+\StringFileInfo\040904B0\ProductVersion
+ api-ms-win-core-version-l1-1-0.dll
+version.dll
+Microsoft.WebView2Runtime.Stable_8wekyb3d8bbwe
+Microsoft.WebView2Runtime.Beta_8wekyb3d8bbwe
+Microsoft.WebView2Runtime.Dev_8wekyb3d8bbwe
+Microsoft.WebView2Runtime.Canary_8wekyb3d8bbwe
+Microsoft.WebView2Runtime.Internal_8wekyb3d8bbwe
+location
+kernelbase.dll
+ADVAPI32.dll
+Kernel32.dll
+BrowserExecutableFolder
+WEBVIEW2_BROWSER_EXECUTABLE_FOLDER
+UserDataFolder
+WEBVIEW2_USER_DATA_FOLDER
+ReleaseChannels
+WEBVIEW2_RELEASE_CHANNELS
+ChannelSearchKind
+WEBVIEW2_CHANNEL_SEARCH_KIND
+ReleaseChannelPreference
+WEBVIEW2_RELEASE_CHANNEL_PREFERENCE
+shell32.dll
+Software\Policies\Microsoft\Edge\WebView2\
+WEBVIEW2_USE_EDGE_VIEW
+WebView2: CoreWebView2Environment failed when trying to call into EmbeddedBrowserWebView.dll. hr=0x
+wWebView2: CoreWebView2Environment failed when trying to LoadLibrary: hr=0x
+ path=
+VS_VERSION_INFO
+StringFileInfo
+040904b0
+CompanyName
+Microsoft Corporation
+FileDescription
+Microsoft Edge Embedded Browser WebView Loader
+FileVersion
+1.0.3650.58
+InternalName
+WebView2Loader.dll
+LegalCopyright
+Copyright Microsoft Corporation. All rights reserved.
+OriginalFilename
+WebView2Loader.dll
+ProductName
+Microsoft Edge Embedded Browser WebView Loader
+ProductVersion
+1.0.3650.58
+CompanyShortName
+Microsoft
+ProductShortName
+Microsoft Edge Embedded Browser WebView Loader
+LastChange
+6b67c05245bdf80e485a4258a670e253344652e4
+Official Build
+VarFileInfo
+Translation
+Legal_policy_statement
+6Microsoft Edge WebView2 SD

@@ -1,0 +1,36 @@
+{
+  "binary_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "scope": "395 selected PE runtime ranges; not the entire backend",
+  "checks": {
+    "instructions_examined": 291435,
+    "bytes_match": 291435,
+    "instruction_lengths_match": 291435,
+    "direct_control_transfers": 48255,
+    "direct_destinations_match": 48255
+  },
+  "instruction_issues": 0,
+  "tables": {
+    "tables_examined": 894,
+    "entries_examined": 4174,
+    "byte_consistent_tables": 894
+  },
+  "table_issues": 555,
+  "table_issue_categories": {
+    "extent_overlaps_other_referenced_table": 555
+  },
+  "selected_range_bytes": 1623595,
+  "ghidra_instruction_bytes": 1476957,
+  "selected_ranges_with_listing": 395,
+  "pseudocode_files_examined": 394,
+  "pseudocode_files_with_review_flags": 94,
+  "pseudocode_flag_categories": {
+    "type_propagation_unsettled": 68,
+    "unrecovered_jump_table": 30,
+    "indirect_jump_as_call": 30,
+    "infinite_loop": 1
+  },
+  "dynamic_validation": false,
+  "functional_equivalence_proven": false,
+  "table_extent_validation": "inferred only; exact bounds not proven",
+  "windows_runtime_available": false
+}

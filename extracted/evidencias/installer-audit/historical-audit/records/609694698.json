@@ -1,0 +1,370 @@
+{
+  "asset_id": 609694698,
+  "release": "v0.1.11",
+  "published": "2026-10-04T11:14:05Z",
+  "name": "lumabar-0.1.11-64-bit.msi",
+  "url": "https://github.com/Acadbek/lumabar/releases/download/v0.1.11/lumabar-0.1.11-64-bit.msi",
+  "expected_digest": "sha256:24f9875f2322d835dd80fd45ca03d0152e43daf701213a6bb1ffb3e4d869b9ed",
+  "expected_bytes": 8409088,
+  "actual_digest": "sha256:24f9875f2322d835dd80fd45ca03d0152e43daf701213a6bb1ffb3e4d869b9ed",
+  "digest_matches": true,
+  "extraction_exit_code": 0,
+  "msi_files": [
+    "PFiles/lumabar/lumabar.exe",
+    "PFiles/lumabar/WebView2Loader.dll"
+  ],
+  "msi_streams": [
+    "app.cab",
+    "Icon.ProductIcon",
+    "Binary.WixUIWixca",
+    "Binary.WixUI_Bmp_New",
+    "Binary.WixUI_Bmp_Up",
+    "Binary.WixUI_Ico_Info",
+    "Binary.WixUI_Bmp_Banner",
+    "Binary.WixUI_Bmp_Dialog",
+    "Binary.WixUI_Ico_Exclam",
+    "\u0005SummaryInformation"
+  ],
+  "files": [
+    {
+      "path": "PFiles/lumabar/WebView2Loader.dll",
+      "bytes": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c"
+    },
+    {
+      "path": "PFiles/lumabar/lumabar.exe",
+      "bytes": 21000192,
+      "sha256": "fda32b9bea3ed66900bf5804c501996b65c272e287b9f0401e3dbc987a301144"
+    }
+  ],
+  "pe_analysis": [
+    {
+      "name": "WebView2Loader.dll",
+      "size": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": 150016,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "4e21010e-241e-b4d1-4c4c-44205044422e",
+          "age": 1,
+          "pdb_path": "WebView2Loader.dll.pdb"
+        }
+      ],
+      "assets": [],
+      "source_text_candidates": [],
+      "rust_path_count": 0,
+      "command_paths": []
+    },
+    {
+      "name": "lumabar.exe",
+      "size": 21000192,
+      "sha256": "fda32b9bea3ed66900bf5804c501996b65c272e287b9f0401e3dbc987a301144",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": null,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "da312747-b568-460d-8f0a-4285311110c1",
+          "age": 1,
+          "pdb_path": "lumabar.pdb"
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/face-grin-DZ12HPA4.svg",
+          "stored_bytes": 1152,
+          "bytes": 5656,
+          "encoding": "brotli",
+          "sha256": "a003ddf7490f8adaae5d0c3bdbe7a1dac600a4f09a170d1b4b4109e14b8d684c"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYSEMIBOLDITALIC-Dj8jjjxr.OTF",
+          "stored_bytes": 77396,
+          "bytes": 159876,
+          "encoding": "brotli",
+          "sha256": "4181aac0f0a4758e1c8fef0caeedebc1709319644043131556d68ef60621c4b7"
+        },
+        {
+          "path": "/assets/app-stack-CYcdXxbl.svg",
+          "stored_bytes": 1972,
+          "bytes": 7931,
+          "encoding": "brotli",
+          "sha256": "76fbed81a7b9ec51bfbb1806be376bce3d23c20511c04e3db19787505a8b27f0"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYMEDIUM-DSttQARu.OTF",
+          "stored_bytes": 126168,
+          "bytes": 335512,
+          "encoding": "brotli",
+          "sha256": "cbfd17919856efcedabdd73781dad2984326928ae7c9635bef6227b1a7d71d21"
+        },
+        {
+          "path": "/assets/128x128-B0PwLaXm.png",
+          "stored_bytes": 8613,
+          "bytes": 8609,
+          "encoding": "brotli",
+          "sha256": "d06e2b9dd9254fedeff84af3a094154983cffd32155ddc815aca70ccdbeed6cc"
+        },
+        {
+          "path": "/assets/zai-logo-BYMvh8zI.svg",
+          "stored_bytes": 1874,
+          "bytes": 11037,
+          "encoding": "brotli",
+          "sha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7"
+        },
+        {
+          "path": "/assets/openai-logo-128-BEuQ_hrc.png",
+          "stored_bytes": 5984,
+          "bytes": 5980,
+          "encoding": "brotli",
+          "sha256": "3dd7d27d4a3d5896a97539c7789f93430bd49a9fe55606e07342fb23a8ba754a"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYREGULAR-DF_3XEGl.OTF",
+          "stored_bytes": 113105,
+          "bytes": 298944,
+          "encoding": "brotli",
+          "sha256": "71a2162c852e87baa6440c983e406283391646778c8bc74e57b00613a3412f80"
+        },
+        {
+          "path": "/assets/images-removebg-preview-CV4TpddI.png",
+          "stored_bytes": 16401,
+          "bytes": 16397,
+          "encoding": "brotli",
+          "sha256": "5ef74144eb9cc9830d1b25d9f69a8527b9b5a49f83c8a9e9ac33485c681469c8"
+        },
+        {
+          "path": "/assets/dial-D6M1YtBW.svg",
+          "stored_bytes": 1556,
+          "bytes": 7759,
+          "encoding": "brotli",
+          "sha256": "443ee5fac0afa8445014045d126fa8d4d9692630ceaa38c377a913b388e30541"
+        },
+        {
+          "path": "/assets/folders-DBtxb3rF.svg",
+          "stored_bytes": 1881,
+          "bytes": 7784,
+          "encoding": "brotli",
+          "sha256": "d9d27bddf33cee6d4f53833b49239f6d4e9d9a318af8d1d478aa9eb00438f1ff"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYLIGHTITALIC-lQTxS1hE.OTF",
+          "stored_bytes": 77567,
+          "bytes": 158892,
+          "encoding": "brotli",
+          "sha256": "2f1425b4648b772af07cb996ec9ac80aec1e61db5a388f2d0f29ea21aaa49755"
+        },
+        {
+          "path": "/assets/gauge-JE-XV_18.svg",
+          "stored_bytes": 1652,
+          "bytes": 8176,
+          "encoding": "brotli",
+          "sha256": "318f907739f551bc707ff11b10792be5f6e4811bd5ae7be5b46d351d383b421c"
+        },
+        {
+          "path": "/assets/users-Bfc_8gX7.svg",
+          "stored_bytes": 1174,
+          "bytes": 5207,
+          "encoding": "brotli",
+          "sha256": "71e50d5031dab1e4ad6c43165b04abfe00ae3ce43fae91c341908f63c153b8cc"
+        },
+        {
+          "path": "/assets/brightness-increase-CdM99-tl.svg",
+          "stored_bytes": 1374,
+          "bytes": 6667,
+          "encoding": "brotli",
+          "sha256": "f64c658945d21a824283b59b5d908782d2f72ad3effd5f64e544e2ebb00c0dd3"
+        },
+        {
+          "path": "/assets/gemini-logo-128-Da_3LCBg.png",
+          "stored_bytes": 9359,
+          "bytes": 9399,
+          "encoding": "brotli",
+          "sha256": "f882aea124c67c9fb27fec297bd0191f5c270d761066b2d5a182491d18ab593b"
+        },
+        {
+          "path": "/assets/index-vtE9yJSL.css",
+          "stored_bytes": 12756,
+          "bytes": 91806,
+          "encoding": "brotli",
+          "sha256": "3b00d07cd73e540d77090bacc23ef7d52f27de2c093e62216833f0e632e13e55",
+          "object_sha256": "3b00d07cd73e540d77090bacc23ef7d52f27de2c093e62216833f0e632e13e55"
+        },
+        {
+          "path": "/assets/index-u3O_bxN-.js",
+          "stored_bytes": 203700,
+          "bytes": 866968,
+          "encoding": "brotli",
+          "sha256": "9d3d8ef3d13ad585f178c41d21f7e472c2ef3c8ec3ac0acaeb51f31976603a71",
+          "object_sha256": "9d3d8ef3d13ad585f178c41d21f7e472c2ef3c8ec3ac0acaeb51f31976603a71",
+          "source_map_references": []
+        },
+        {
+          "path": "/assets/leetcode-BuNhsHPL.png",
+          "stored_bytes": 39404,
+          "bytes": 40735,
+          "encoding": "brotli",
+          "sha256": "3bd382b00bce9b07faf03e7b9c0fdb1e0cb276956c6fc014d3771efa5bc12c3b"
+        },
+        {
+          "path": "/assets/mail-BmgJgo9n.png",
+          "stored_bytes": 40803,
+          "bytes": 41067,
+          "encoding": "brotli",
+          "sha256": "7b790841b1ae2a5ea0822e1fcf9a048e98be168b74197102722438fa7ded0fbb"
+        },
+        {
+          "path": "/assets/inbox-D_mNyint.svg",
+          "stored_bytes": 2574,
+          "bytes": 9858,
+          "encoding": "brotli",
+          "sha256": "e3eb29fd963de35190772d8c760b8880057ffeb48bfd889b5e648cb431877b1a"
+        },
+        {
+          "path": "/assets/gear-BegaEpeA.svg",
+          "stored_bytes": 1689,
+          "bytes": 10397,
+          "encoding": "brotli",
+          "sha256": "ceb98bed69de40da516b83bff6449fac1bc43afc2b0a649a857b080a6b82da45"
+        },
+        {
+          "path": "/assets/note-logo-D3RrbcgA.png",
+          "stored_bytes": 15604,
+          "bytes": 15614,
+          "encoding": "brotli",
+          "sha256": "d6bc819d9893beac5a0876512093cfe8e90c28ed415c2096d5a7f569767cea36"
+        },
+        {
+          "path": "/assets/grok-bot-DAQ7cRbH.webp",
+          "stored_bytes": 14745,
+          "bytes": 14858,
+          "encoding": "brotli",
+          "sha256": "076be384996a2a91880d97d776ee92c712f7998eb7b46e466158dbd1af12c93f"
+        },
+        {
+          "path": "/assets/sparkle-C-ijR1K3.svg",
+          "stored_bytes": 1657,
+          "bytes": 7285,
+          "encoding": "brotli",
+          "sha256": "cd292cc4b4b593d4a88e807565937cc76decf3b06c4a0e4227027ed0d6765916"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYHEAVYITALIC-Dt8wbU-f.OTF",
+          "stored_bytes": 77064,
+          "bytes": 159628,
+          "encoding": "brotli",
+          "sha256": "f7143bcd5352283896bb041fb478fe47dcfb1f0bd7cccd5bbdf932a3c1869596"
+        },
+        {
+          "path": "/assets/grid-DgFTKPCr.svg",
+          "stored_bytes": 2549,
+          "bytes": 15506,
+          "encoding": "brotli",
+          "sha256": "9c19f7b90a7bb71e7aa80b92df9fa94dedc04d4b41dc6d46f96d6d4b2e0d8016"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYBOLD-CkqE-6tD.OTF",
+          "stored_bytes": 124383,
+          "bytes": 334728,
+          "encoding": "brotli",
+          "sha256": "a981001f6d4e70292fd26fa8e05437c4a9f0f8c5981027ff0ceead01bb30311f"
+        },
+        {
+          "path": "/assets/headphones-CHJPXrpj.svg",
+          "stored_bytes": 1084,
+          "bytes": 5282,
+          "encoding": "brotli",
+          "sha256": "3c5ca3f223a4ac950fe60b88e15b679cffb8be9fe9465aaa38a05082308898ac"
+        },
+        {
+          "path": "/assets/tasks-BNOBEUiL.svg",
+          "stored_bytes": 1780,
+          "bytes": 8475,
+          "encoding": "brotli",
+          "sha256": "38053361e9e9f8e20edfb026adb95e3757045cf17f37d156653d9f0881373871"
+        },
+        {
+          "path": "/index.html",
+          "stored_bytes": 174,
+          "bytes": 393,
+          "encoding": "brotli",
+          "sha256": "5944e173d24107b2d667ae77288f22f5ae552c4842bfa399af9c87e0c0fb409e",
+          "object_sha256": "5944e173d24107b2d667ae77288f22f5ae552c4842bfa399af9c87e0c0fb409e"
+        },
+        {
+          "path": "/assets/money-bill-BZ10HUsH.svg",
+          "stored_bytes": 1752,
+          "bytes": 8683,
+          "encoding": "brotli",
+          "sha256": "327671c0f25e7289b5d589c66122947c0c1fb6e5288c006b9ddd0eaf6194b534"
+        },
+        {
+          "path": "/assets/square-chart-line-BheSyiZ4.svg",
+          "stored_bytes": 1740,
+          "bytes": 7177,
+          "encoding": "brotli",
+          "sha256": "d37cb92e1d2f21e649268b132678ef3b3491df6cd4fda9a6362aee198805f70c"
+        }
+      ],
+      "source_text_candidates": [],
+      "rust_path_count": 532,
+      "command_paths": [
+        "src\\commands\\ai_usage.rs",
+        "src\\commands\\app_catalog.rs",
+        "src\\commands\\appmenu.rs",
+        "src\\commands\\apps.rs",
+        "src\\commands\\audio.rs",
+        "src\\commands\\autostart.rs",
+        "src\\commands\\bluetooth.rs",
+        "src\\commands\\brightness.rs",
+        "src\\commands\\capture.rs",
+        "src\\commands\\claude.rs",
+        "src\\commands\\currency.rs",
+        "src\\commands\\datafast.rs",
+        "src\\commands\\desktop_capture.rs",
+        "src\\commands\\desktop_duplication.rs",
+        "src\\commands\\dialogs.rs",
+        "src\\commands\\displays.rs",
+        "src\\commands\\dock.rs",
+        "src\\commands\\files.rs",
+        "src\\commands\\fullscreen.rs",
+        "src\\commands\\github.rs",
+        "src\\commands\\gmail.rs",
+        "src\\commands\\leetcode.rs",
+        "src\\commands\\license.rs",
+        "src\\commands\\locale.rs",
+        "src\\commands\\memory.rs",
+        "src\\commands\\metric.rs",
+        "src\\commands\\net_status.rs",
+        "src\\commands\\opencode.rs",
+        "src\\commands\\photos.rs",
+        "src\\commands\\popover.rs",
+        "src\\commands\\radios.rs",
+        "src\\commands\\revenue.rs",
+        "src\\commands\\screenshots.rs",
+        "src\\commands\\social.rs",
+        "src\\commands\\sounds.rs",
+        "src\\commands\\stocks.rs",
+        "src\\commands\\storage.rs",
+        "src\\commands\\toggles.rs",
+        "src\\commands\\unsplash.rs",
+        "src\\commands\\updater.rs",
+        "src\\commands\\voice.rs",
+        "src\\commands\\wallpaper.rs",
+        "src\\commands\\weather.rs",
+        "src\\commands\\wifi.rs",
+        "src\\commands\\windows.rs",
+        "src\\commands\\x.rs"
+      ]
+    }
+  ],
+  "status": "complete"
+}

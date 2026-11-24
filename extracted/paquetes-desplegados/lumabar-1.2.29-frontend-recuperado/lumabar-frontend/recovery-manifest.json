@@ -1,0 +1,190 @@
+{
+  "input_exe_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "method": "Read embedded phf map entries (key pointer/length, Brotli data pointer/length); decompress without running executable",
+  "files": [
+    {
+      "path": "/assets/SFPRODISPLAYBOLD-CkqE-6tD.OTF",
+      "table_offset": "0x134a4d8",
+      "data_offset": "0x123117d",
+      "compressed_bytes": 124383,
+      "extracted_bytes": 334728,
+      "sha256": "a981001f6d4e70292fd26fa8e05437c4a9f0f8c5981027ff0ceead01bb30311f"
+    },
+    {
+      "path": "/assets/zai-logo-BYMvh8zI.svg",
+      "table_offset": "0x134a4f8",
+      "data_offset": "0x124f779",
+      "compressed_bytes": 1874,
+      "extracted_bytes": 11037,
+      "sha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7"
+    },
+    {
+      "path": "/assets/gemini-logo-128-Da_3LCBg.png",
+      "table_offset": "0x134a518",
+      "data_offset": "0x124feef",
+      "compressed_bytes": 9359,
+      "extracted_bytes": 9399,
+      "sha256": "f882aea124c67c9fb27fec297bd0191f5c270d761066b2d5a182491d18ab593b"
+    },
+    {
+      "path": "/assets/front-DjLy1LyN.png",
+      "table_offset": "0x134a538",
+      "data_offset": "0x1252398",
+      "compressed_bytes": 8878,
+      "extracted_bytes": 8928,
+      "sha256": "1f362508449822a83569fed405d456fad2158e35b1b6d61321efff563663439e"
+    },
+    {
+      "path": "/assets/bin-fbr_qVUr.png",
+      "table_offset": "0x134a558",
+      "data_offset": "0x125465e",
+      "compressed_bytes": 10683,
+      "extracted_bytes": 10693,
+      "sha256": "914decb2605f4ba42c5fd3501e306498329a49bb32829c33faffd2d7e78211da"
+    },
+    {
+      "path": "/assets/SFPRODISPLAYSEMIBOLDITALIC-Dj8jjjxr.OTF",
+      "table_offset": "0x134a578",
+      "data_offset": "0x1257048",
+      "compressed_bytes": 77396,
+      "extracted_bytes": 159876,
+      "sha256": "4181aac0f0a4758e1c8fef0caeedebc1709319644043131556d68ef60621c4b7"
+    },
+    {
+      "path": "/assets/mail-BmgJgo9n.png",
+      "table_offset": "0x134a598",
+      "data_offset": "0x1269eb5",
+      "compressed_bytes": 40803,
+      "extracted_bytes": 41067,
+      "sha256": "7b790841b1ae2a5ea0822e1fcf9a048e98be168b74197102722438fa7ded0fbb"
+    },
+    {
+      "path": "/assets/SFPRODISPLAYMEDIUM-DSttQARu.OTF",
+      "table_offset": "0x134a5b8",
+      "data_offset": "0x1273e3f",
+      "compressed_bytes": 126168,
+      "extracted_bytes": 335512,
+      "sha256": "cbfd17919856efcedabdd73781dad2984326928ae7c9635bef6227b1a7d71d21"
+    },
+    {
+      "path": "/index.html",
+      "table_offset": "0x134a5d8",
+      "data_offset": "0x1292b22",
+      "compressed_bytes": 228,
+      "extracted_bytes": 559,
+      "sha256": "f7f7c1759678818ba15e76caf256b5ae7906d77d14898362e15675311cb7fd5f"
+    },
+    {
+      "path": "/assets/papers-ByzPKJS8.png",
+      "table_offset": "0x134a5f8",
+      "data_offset": "0x1292c21",
+      "compressed_bytes": 9766,
+      "extracted_bytes": 9994,
+      "sha256": "60d5579c3d0258397e20b5073cbfacf363634ec4b52e58114be731d837735549"
+    },
+    {
+      "path": "/assets/images-removebg-preview-CV4TpddI.png",
+      "table_offset": "0x134a618",
+      "data_offset": "0x1295273",
+      "compressed_bytes": 16401,
+      "extracted_bytes": 16397,
+      "sha256": "5ef74144eb9cc9830d1b25d9f69a8527b9b5a49f83c8a9e9ac33485c681469c8"
+    },
+    {
+      "path": "/assets/SFPRODISPLAYREGULAR-DF_3XEGl.OTF",
+      "table_offset": "0x134a638",
+      "data_offset": "0x12992ac",
+      "compressed_bytes": 113105,
+      "extracted_bytes": 298944,
+      "sha256": "71a2162c852e87baa6440c983e406283391646778c8bc74e57b00613a3412f80"
+    },
+    {
+      "path": "/assets/openai-logo-128-BEuQ_hrc.png",
+      "table_offset": "0x134a658",
+      "data_offset": "0x12b4ca1",
+      "compressed_bytes": 5984,
+      "extracted_bytes": 5980,
+      "sha256": "3dd7d27d4a3d5896a97539c7789f93430bd49a9fe55606e07342fb23a8ba754a"
+    },
+    {
+      "path": "/assets/SFPRODISPLAYLIGHTITALIC-lQTxS1hE.OTF",
+      "table_offset": "0x134a678",
+      "data_offset": "0x12b642d",
+      "compressed_bytes": 77567,
+      "extracted_bytes": 158892,
+      "sha256": "2f1425b4648b772af07cb996ec9ac80aec1e61db5a388f2d0f29ea21aaa49755"
+    },
+    {
+      "path": "/assets/index-Cq3B5g79.js",
+      "table_offset": "0x134a698",
+      "data_offset": "0x12c9345",
+      "compressed_bytes": 343639,
+      "extracted_bytes": 1432174,
+      "sha256": "759fb666547649f197630c0275ee5eb125819fcaf068f02ff63270b94bba0be4"
+    },
+    {
+      "path": "/assets/SFPRODISPLAYHEAVYITALIC-Dt8wbU-f.OTF",
+      "table_offset": "0x134a6b8",
+      "data_offset": "0x131d1c8",
+      "compressed_bytes": 77064,
+      "extracted_bytes": 159628,
+      "sha256": "f7143bcd5352283896bb041fb478fe47dcfb1f0bd7cccd5bbdf932a3c1869596"
+    },
+    {
+      "path": "/assets/index-CJAY1RcJ.css",
+      "table_offset": "0x134a6d8",
+      "data_offset": "0x132feea",
+      "compressed_bytes": 17749,
+      "extracted_bytes": 132241,
+      "sha256": "4e525b93e07a0d649f935990d9828f38f3063e4f1fed9773e7c3cd125930873e"
+    },
+    {
+      "path": "/assets/grok-bot-DAQ7cRbH.webp",
+      "table_offset": "0x134a6f8",
+      "data_offset": "0x133445d",
+      "compressed_bytes": 14745,
+      "extracted_bytes": 14858,
+      "sha256": "076be384996a2a91880d97d776ee92c712f7998eb7b46e466158dbd1af12c93f"
+    },
+    {
+      "path": "/assets/128x128-B0PwLaXm.png",
+      "table_offset": "0x134a718",
+      "data_offset": "0x1337e12",
+      "compressed_bytes": 8613,
+      "extracted_bytes": 8609,
+      "sha256": "d06e2b9dd9254fedeff84af3a094154983cffd32155ddc815aca70ccdbeed6cc"
+    },
+    {
+      "path": "/assets/dockEdgeStore-bDVyOMfy.js",
+      "table_offset": "0x134a738",
+      "data_offset": "0x1339fd8",
+      "compressed_bytes": 3458,
+      "extracted_bytes": 9214,
+      "sha256": "9fa68dfdfa4bbfb49666b7725dd19b5d8e1b57ae2fb32690d658bf9f90d37051"
+    },
+    {
+      "path": "/assets/leetcode-BuNhsHPL.png",
+      "table_offset": "0x134a758",
+      "data_offset": "0x133ad77",
+      "compressed_bytes": 39404,
+      "extracted_bytes": 40735,
+      "sha256": "3bd382b00bce9b07faf03e7b9c0fdb1e0cb276956c6fc014d3771efa5bc12c3b"
+    },
+    {
+      "path": "/assets/useDockDrag-NiG8jndm.js",
+      "table_offset": "0x134a778",
+      "data_offset": "0x1344782",
+      "compressed_bytes": 8254,
+      "extracted_bytes": 30065,
+      "sha256": "c2fd43dfa641314cf0f1029581d7e7462ab9836238603510d0f55d6c797de333"
+    },
+    {
+      "path": "/assets/note-logo-D3RrbcgA.png",
+      "table_offset": "0x134a798",
+      "data_offset": "0x13467de",
+      "compressed_bytes": 15604,
+      "extracted_bytes": 15614,
+      "sha256": "d6bc819d9893beac5a0876512093cfe8e90c28ed415c2096d5a7f569767cea36"
+    }
+  ]
+}

@@ -1,0 +1,591 @@
+{
+  "asset_id": 720684823,
+  "release": "v1.2.14",
+  "published": "2026-11-07T12:44:41Z",
+  "name": "lumabar-1.2.14-64-bit.msi",
+  "url": "https://github.com/Acadbek/lumabar/releases/download/v1.2.14/lumabar-1.2.14-64-bit.msi",
+  "expected_digest": "sha256:8d360f68bac6b6da4435ba3573c13351def6dd7ebac67e2c4ca24c39f5a3b6a2",
+  "expected_bytes": 9908224,
+  "actual_digest": "sha256:8d360f68bac6b6da4435ba3573c13351def6dd7ebac67e2c4ca24c39f5a3b6a2",
+  "digest_matches": true,
+  "extraction_exit_code": 0,
+  "msi_files": [
+    "PFiles/lumabar/lumabar.exe",
+    "PFiles/lumabar/WebView2Loader.dll"
+  ],
+  "msi_streams": [
+    "app.cab",
+    "Icon.ProductIcon",
+    "Binary.WixUIWixca",
+    "Binary.WixUI_Bmp_New",
+    "Binary.WixUI_Bmp_Up",
+    "Binary.WixUI_Ico_Info",
+    "Binary.WixUI_Bmp_Banner",
+    "Binary.WixUI_Bmp_Dialog",
+    "Binary.WixUI_Ico_Exclam",
+    "\u0005SummaryInformation"
+  ],
+  "files": [
+    {
+      "path": "PFiles/lumabar/WebView2Loader.dll",
+      "bytes": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c"
+    },
+    {
+      "path": "PFiles/lumabar/lumabar.exe",
+      "bytes": 25212416,
+      "sha256": "1018f137b2adead4ad34ed2744b49e3e724bc8ddfbd4f7ebeb804dda09d179e1"
+    }
+  ],
+  "pe_analysis": [
+    {
+      "name": "WebView2Loader.dll",
+      "size": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": 150016,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "4e21010e-241e-b4d1-4c4c-44205044422e",
+          "age": 1,
+          "pdb_path": "WebView2Loader.dll.pdb"
+        }
+      ],
+      "assets": [],
+      "source_text_candidates": [],
+      "rust_path_count": 0,
+      "command_paths": []
+    },
+    {
+      "name": "lumabar.exe",
+      "size": 25212416,
+      "sha256": "1018f137b2adead4ad34ed2744b49e3e724bc8ddfbd4f7ebeb804dda09d179e1",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": null,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "609a8d15-cfb1-42ff-8d55-929fcad4e4c5",
+          "age": 1,
+          "pdb_path": "lumabar.pdb"
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/images-removebg-preview-CV4TpddI.png",
+          "stored_bytes": 16401,
+          "bytes": 16397,
+          "encoding": "brotli",
+          "sha256": "5ef74144eb9cc9830d1b25d9f69a8527b9b5a49f83c8a9e9ac33485c681469c8"
+        },
+        {
+          "path": "/assets/folder-CW-J1ymb.webp",
+          "stored_bytes": 3294,
+          "bytes": 3290,
+          "encoding": "brotli",
+          "sha256": "4f67bc588b3f1d27c5788bc980dfd98850574a2868db43f9246932dc88202398"
+        },
+        {
+          "path": "/assets/note-logo-D3RrbcgA.png",
+          "stored_bytes": 15604,
+          "bytes": 15614,
+          "encoding": "brotli",
+          "sha256": "d6bc819d9893beac5a0876512093cfe8e90c28ed415c2096d5a7f569767cea36"
+        },
+        {
+          "path": "/assets/128x128-B0PwLaXm.png",
+          "stored_bytes": 8613,
+          "bytes": 8609,
+          "encoding": "brotli",
+          "sha256": "d06e2b9dd9254fedeff84af3a094154983cffd32155ddc815aca70ccdbeed6cc"
+        },
+        {
+          "path": "/assets/chrome-cGhnQvNx.webp",
+          "stored_bytes": 7866,
+          "bytes": 7862,
+          "encoding": "brotli",
+          "sha256": "842954c1899fc3da97c50d4de96f6622639a3b4a04a1385219efb10440d4b9bc"
+        },
+        {
+          "path": "/assets/wechat-D6CpTqqv.webp",
+          "stored_bytes": 7276,
+          "bytes": 7272,
+          "encoding": "brotli",
+          "sha256": "003cf68b06724c9154a35cc1af87429dee3550a615f8801d31765c12fb17183f"
+        },
+        {
+          "path": "/assets/settings-Dwbe5w0R.webp",
+          "stored_bytes": 9524,
+          "bytes": 9520,
+          "encoding": "brotli",
+          "sha256": "c6e3d6672ca76b5396e6761e77bbbd5749531a4613efb3c82c5e022137ae77fd"
+        },
+        {
+          "path": "/assets/outlook-CoQA7bfJ.webp",
+          "stored_bytes": 7234,
+          "bytes": 7230,
+          "encoding": "brotli",
+          "sha256": "6bc83342e3908620e853c2c7ed188a8beee7023b12d7f97f75cfc2ebda7bedb9"
+        },
+        {
+          "path": "/assets/terminal-BK-eeN4Y.webp",
+          "stored_bytes": 3832,
+          "bytes": 3828,
+          "encoding": "brotli",
+          "sha256": "6e6b66cc0a45f67d2a70d2638707ec1cab0d79e0d0e5fad1acc2a0a43e7a1d7e"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYBOLD-CkqE-6tD.OTF",
+          "stored_bytes": 124383,
+          "bytes": 334728,
+          "encoding": "brotli",
+          "sha256": "a981001f6d4e70292fd26fa8e05437c4a9f0f8c5981027ff0ceead01bb30311f"
+        },
+        {
+          "path": "/assets/acrobat-BxJd-wOg.webp",
+          "stored_bytes": 6354,
+          "bytes": 6350,
+          "encoding": "brotli",
+          "sha256": "84a06c6a58106089637874d392764e96fd8ede325263c498ed3d4acde276cb6f"
+        },
+        {
+          "path": "/assets/plate-CxI0OEU8.webp",
+          "stored_bytes": 3850,
+          "bytes": 3846,
+          "encoding": "brotli",
+          "sha256": "746dcb0f6bd601654abefc39caad6a1b55035df7efb6c212c3199975023a76c3"
+        },
+        {
+          "path": "/assets/zai-logo-BYMvh8zI.svg",
+          "stored_bytes": 1874,
+          "bytes": 11037,
+          "encoding": "brotli",
+          "sha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7"
+        },
+        {
+          "path": "/assets/vlc-DlijWolc.webp",
+          "stored_bytes": 5898,
+          "bytes": 5894,
+          "encoding": "brotli",
+          "sha256": "0e90670f8f69e6926b1c0aae7f67d8fc3e0a432e9ea1b377fffba7dd2e56b137"
+        },
+        {
+          "path": "/assets/claude-D7MqyO1M.webp",
+          "stored_bytes": 7788,
+          "bytes": 7784,
+          "encoding": "brotli",
+          "sha256": "cfc5f2fe345d4e9af8448b7d4d1959aef6dd7800009a8ab96d060e3f3594dc4d"
+        },
+        {
+          "path": "/assets/teams-CKI7_jvK.webp",
+          "stored_bytes": 6372,
+          "bytes": 6368,
+          "encoding": "brotli",
+          "sha256": "72ed8ad2388277a3f70cbee1a578d9c52e611bdc6c60cdebe27c1c57335a2fef"
+        },
+        {
+          "path": "/assets/brave-4hc5P57f.webp",
+          "stored_bytes": 8600,
+          "bytes": 8596,
+          "encoding": "brotli",
+          "sha256": "5f18cf132dbe9b36f57065334ffc94ec34a08d11a67e73b481d5e2f02992ab66"
+        },
+        {
+          "path": "/assets/illustrator-Djtwv92m.webp",
+          "stored_bytes": 5288,
+          "bytes": 5284,
+          "encoding": "brotli",
+          "sha256": "d9085456bd9bac19c26ec8386144867fa1817a8d36ecb2d06fc48cd2bbeb886f"
+        },
+        {
+          "path": "/assets/slack-DkzF2Bbk.webp",
+          "stored_bytes": 6548,
+          "bytes": 6544,
+          "encoding": "brotli",
+          "sha256": "152fe4cd5f0b39844aa1a90df095f4a045dc4df6f733a6d561db1bf76ecf68fe"
+        },
+        {
+          "path": "/index.html",
+          "stored_bytes": 173,
+          "bytes": 393,
+          "encoding": "brotli",
+          "sha256": "85b2f6b5d04c2479999b5601264a9688ad2c343772280b20fcd4948778528f5a",
+          "object_sha256": "85b2f6b5d04c2479999b5601264a9688ad2c343772280b20fcd4948778528f5a"
+        },
+        {
+          "path": "/assets/papers-ByzPKJS8.png",
+          "stored_bytes": 9766,
+          "bytes": 9994,
+          "encoding": "brotli",
+          "sha256": "60d5579c3d0258397e20b5073cbfacf363634ec4b52e58114be731d837735549"
+        },
+        {
+          "path": "/assets/paint-CtQkCcEo.webp",
+          "stored_bytes": 7378,
+          "bytes": 7374,
+          "encoding": "brotli",
+          "sha256": "7290566aa20d809286a47ee66f7a6ad396f80f68257ec561340fde8446eae498"
+        },
+        {
+          "path": "/assets/tor-Dx7iX3Uj.webp",
+          "stored_bytes": 7368,
+          "bytes": 7364,
+          "encoding": "brotli",
+          "sha256": "854866c7f24308aa0ea803a4a66265a7e88d27398460b690acd02e3347a069f4"
+        },
+        {
+          "path": "/assets/front-DjLy1LyN.png",
+          "stored_bytes": 8878,
+          "bytes": 8928,
+          "encoding": "brotli",
+          "sha256": "1f362508449822a83569fed405d456fad2158e35b1b6d61321efff563663439e"
+        },
+        {
+          "path": "/assets/x-C8lvKpCX.webp",
+          "stored_bytes": 6680,
+          "bytes": 6676,
+          "encoding": "brotli",
+          "sha256": "628da548c8a34a730df9503b623f27c715f8fa7d46d70a67b3dc3e1eb305b846"
+        },
+        {
+          "path": "/assets/spotify-iFxVTuyC.webp",
+          "stored_bytes": 6670,
+          "bytes": 6666,
+          "encoding": "brotli",
+          "sha256": "aa41e3fcae3450ccf8f349ad2faeee0456517b3ac0c92f4fd313612cfe2cb86c"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYSEMIBOLDITALIC-Dj8jjjxr.OTF",
+          "stored_bytes": 77396,
+          "bytes": 159876,
+          "encoding": "brotli",
+          "sha256": "4181aac0f0a4758e1c8fef0caeedebc1709319644043131556d68ef60621c4b7"
+        },
+        {
+          "path": "/assets/vscode-B-vJH31c.webp",
+          "stored_bytes": 6478,
+          "bytes": 6474,
+          "encoding": "brotli",
+          "sha256": "c3feb7157597a8178e74d44fbcc75953e1621208505e5fc0e9c85d71781a7d6d"
+        },
+        {
+          "path": "/assets/index-B6DcRjoh.js",
+          "stored_bytes": 324424,
+          "bytes": 1351332,
+          "encoding": "brotli",
+          "sha256": "32b71feee39599e05f607cedaabc25288443bf98c23f55a0e26643b573e8fe05",
+          "object_sha256": "32b71feee39599e05f607cedaabc25288443bf98c23f55a0e26643b573e8fe05",
+          "source_map_references": []
+        },
+        {
+          "path": "/assets/proton-vpn-BXsViDUh.webp",
+          "stored_bytes": 5572,
+          "bytes": 5568,
+          "encoding": "brotli",
+          "sha256": "9f5e4e92085da2d21eef3a7cc31b46474be00017a933effc71b228a1bfe3f96f"
+        },
+        {
+          "path": "/assets/notion-B9gYqzva.webp",
+          "stored_bytes": 6248,
+          "bytes": 6244,
+          "encoding": "brotli",
+          "sha256": "31a7efbb4bd04dc3e002c6e1e305819e87057654215e7704c9d846a5b259c2dc"
+        },
+        {
+          "path": "/assets/photoshop-IVAwLKSD.webp",
+          "stored_bytes": 5408,
+          "bytes": 5404,
+          "encoding": "brotli",
+          "sha256": "88a0af3c571f034f9e9bfbcfcf9eaf71a428fc556bc2cbb5061e7b20bdabc529"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYREGULAR-DF_3XEGl.OTF",
+          "stored_bytes": 113105,
+          "bytes": 298944,
+          "encoding": "brotli",
+          "sha256": "71a2162c852e87baa6440c983e406283391646778c8bc74e57b00613a3412f80"
+        },
+        {
+          "path": "/assets/gemini-logo-128-Da_3LCBg.png",
+          "stored_bytes": 9359,
+          "bytes": 9399,
+          "encoding": "brotli",
+          "sha256": "f882aea124c67c9fb27fec297bd0191f5c270d761066b2d5a182491d18ab593b"
+        },
+        {
+          "path": "/assets/after-effects-_Gzwa8Ng.webp",
+          "stored_bytes": 5186,
+          "bytes": 5182,
+          "encoding": "brotli",
+          "sha256": "6af44c39ac71831b24d27cc96d7156d993f92358aa1387feecee0392d99ad633"
+        },
+        {
+          "path": "/assets/xd-BrbIjnjx.webp",
+          "stored_bytes": 5744,
+          "bytes": 5740,
+          "encoding": "brotli",
+          "sha256": "37664e1c118c7b365bc30ac39587c5931f3fad74d0f91ea177d442f2f7869912"
+        },
+        {
+          "path": "/assets/github-UTNjrn3d.webp",
+          "stored_bytes": 6058,
+          "bytes": 6054,
+          "encoding": "brotli",
+          "sha256": "f4856cfaefeb976f0da25fa1c5bf7eb217d73e0bde6bc838e3098da20add2951"
+        },
+        {
+          "path": "/assets/calculator-Bbbads79.webp",
+          "stored_bytes": 5664,
+          "bytes": 5660,
+          "encoding": "brotli",
+          "sha256": "6d9205925c93f9b88e54e5722672b7a7366c42c374ed3b4e6d452f7f399110bc"
+        },
+        {
+          "path": "/assets/whatsapp-Cpn-bLu3.webp",
+          "stored_bytes": 7546,
+          "bytes": 7542,
+          "encoding": "brotli",
+          "sha256": "563ad5f6eaf85c60e6bfe481c340acc53b577c1b85690f9fcd879005cfd88338"
+        },
+        {
+          "path": "/assets/store-TrABGf3F.webp",
+          "stored_bytes": 5666,
+          "bytes": 5662,
+          "encoding": "brotli",
+          "sha256": "937ccce269fec4baa38ce711d2d3b14709ebcd549d2a40230ecbbbe0ff025eb6"
+        },
+        {
+          "path": "/assets/office-C03oygqQ.webp",
+          "stored_bytes": 3970,
+          "bytes": 3966,
+          "encoding": "brotli",
+          "sha256": "c845797a898635757a957036e34118cd986577be361865b9cad877a82a8ce0b1"
+        },
+        {
+          "path": "/assets/index-CyWTW0Zh.css",
+          "stored_bytes": 16188,
+          "bytes": 123093,
+          "encoding": "brotli",
+          "sha256": "71da0749717fb89f65ea16ac22aea60af39691dddc4f6d3316c8ba6e4b5c2bbe",
+          "object_sha256": "71da0749717fb89f65ea16ac22aea60af39691dddc4f6d3316c8ba6e4b5c2bbe"
+        },
+        {
+          "path": "/assets/firefox-C_NQKNSX.webp",
+          "stored_bytes": 7038,
+          "bytes": 7034,
+          "encoding": "brotli",
+          "sha256": "56a1ea59ed9828088018a51f6a0968ad206bb9b746d6ebd1e0e3023b0b321220"
+        },
+        {
+          "path": "/assets/mail-BmgJgo9n.png",
+          "stored_bytes": 40803,
+          "bytes": 41067,
+          "encoding": "brotli",
+          "sha256": "7b790841b1ae2a5ea0822e1fcf9a048e98be168b74197102722438fa7ded0fbb"
+        },
+        {
+          "path": "/assets/notepad-DTsgkYUC.webp",
+          "stored_bytes": 5408,
+          "bytes": 5404,
+          "encoding": "brotli",
+          "sha256": "e834c385e7ff2fbf3941b19e4dcd407dc519d90de340a6f2d4edad68d62ae9ed"
+        },
+        {
+          "path": "/assets/tiktok-BUimd03M.webp",
+          "stored_bytes": 5508,
+          "bytes": 5504,
+          "encoding": "brotli",
+          "sha256": "fdab0755ff7649997e40f5aa78a2987a747e9277ccc79c2da8a6e5b3586d05ab"
+        },
+        {
+          "path": "/assets/chatgpt-B_gd_0WV.webp",
+          "stored_bytes": 8024,
+          "bytes": 8020,
+          "encoding": "brotli",
+          "sha256": "d3c4b72e6de2042fe77ce0d544ce91a1172949c211f8a39b70d42bb3a1764d3e"
+        },
+        {
+          "path": "/assets/netflix-CDUgY8d0.webp",
+          "stored_bytes": 4106,
+          "bytes": 4102,
+          "encoding": "brotli",
+          "sha256": "a5a8827706990617bddb8749eaefe7c6bb97943333453569506c656e0a6db557"
+        },
+        {
+          "path": "/assets/edge-CC5fGthr.webp",
+          "stored_bytes": 5708,
+          "bytes": 5704,
+          "encoding": "brotli",
+          "sha256": "487b7380ab1c9c31c5b060a9151b3965792493bee057bde72113d3f64f5001cc"
+        },
+        {
+          "path": "/assets/figma-Ctg79Glz.webp",
+          "stored_bytes": 5968,
+          "bytes": 5964,
+          "encoding": "brotli",
+          "sha256": "69b24224c3808c67ef6b03c38d785caeee9d21edd02d3095b1017b291f531c76"
+        },
+        {
+          "path": "/assets/zoom-FmJyomUL.webp",
+          "stored_bytes": 6570,
+          "bytes": 6566,
+          "encoding": "brotli",
+          "sha256": "b22807940a380cc96665a9b79ceb406fd0fe0b2c1852f4ff0a25bc6a771dc204"
+        },
+        {
+          "path": "/assets/deepseek-jmq27rGm.webp",
+          "stored_bytes": 6638,
+          "bytes": 6634,
+          "encoding": "brotli",
+          "sha256": "2022688c05ffeb0752d0cd4fb6d2ee5bb1ed015f3c651bea85430c7ffb32ab51"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYLIGHTITALIC-lQTxS1hE.OTF",
+          "stored_bytes": 77567,
+          "bytes": 158892,
+          "encoding": "brotli",
+          "sha256": "2f1425b4648b772af07cb996ec9ac80aec1e61db5a388f2d0f29ea21aaa49755"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYMEDIUM-DSttQARu.OTF",
+          "stored_bytes": 126168,
+          "bytes": 335512,
+          "encoding": "brotli",
+          "sha256": "cbfd17919856efcedabdd73781dad2984326928ae7c9635bef6227b1a7d71d21"
+        },
+        {
+          "path": "/assets/telegram-XfIAZYaA.webp",
+          "stored_bytes": 6192,
+          "bytes": 6188,
+          "encoding": "brotli",
+          "sha256": "d8e45776b251ecbaab855979cf4dd77128432b4e25f3cc9f2ddfc47bdf14b595"
+        },
+        {
+          "path": "/assets/openai-logo-128-BEuQ_hrc.png",
+          "stored_bytes": 5984,
+          "bytes": 5980,
+          "encoding": "brotli",
+          "sha256": "3dd7d27d4a3d5896a97539c7789f93430bd49a9fe55606e07342fb23a8ba754a"
+        },
+        {
+          "path": "/assets/grok-bot-DAQ7cRbH.webp",
+          "stored_bytes": 14745,
+          "bytes": 14858,
+          "encoding": "brotli",
+          "sha256": "076be384996a2a91880d97d776ee92c712f7998eb7b46e466158dbd1af12c93f"
+        },
+        {
+          "path": "/assets/bin-fbr_qVUr.png",
+          "stored_bytes": 10683,
+          "bytes": 10693,
+          "encoding": "brotli",
+          "sha256": "914decb2605f4ba42c5fd3501e306498329a49bb32829c33faffd2d7e78211da"
+        },
+        {
+          "path": "/assets/obs-pG3ZVYJR.webp",
+          "stored_bytes": 7154,
+          "bytes": 7150,
+          "encoding": "brotli",
+          "sha256": "380b8d8a8e93547e324218e5ae56fe9dbd6bed7142c4bc5721b5da0886df40f2"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYHEAVYITALIC-Dt8wbU-f.OTF",
+          "stored_bytes": 77064,
+          "bytes": 159628,
+          "encoding": "brotli",
+          "sha256": "f7143bcd5352283896bb041fb478fe47dcfb1f0bd7cccd5bbdf932a3c1869596"
+        },
+        {
+          "path": "/assets/leetcode-BuNhsHPL.png",
+          "stored_bytes": 39404,
+          "bytes": 40735,
+          "encoding": "brotli",
+          "sha256": "3bd382b00bce9b07faf03e7b9c0fdb1e0cb276956c6fc014d3771efa5bc12c3b"
+        },
+        {
+          "path": "/assets/claude-code-axWvWpMP.webp",
+          "stored_bytes": 5784,
+          "bytes": 5780,
+          "encoding": "brotli",
+          "sha256": "68640113c6e2253e9600167f2f39cecda05680a6595f90c726f4cd006eb54dcf"
+        }
+      ],
+      "source_text_candidates": [],
+      "rust_path_count": 560,
+      "command_paths": [
+        "src\\commands\\ai_usage.rs",
+        "src\\commands\\app_catalog.rs",
+        "src\\commands\\appmenu.rs",
+        "src\\commands\\apps.rs",
+        "src\\commands\\audio.rs",
+        "src\\commands\\autostart.rs",
+        "src\\commands\\bluetooth.rs",
+        "src\\commands\\brightness.rs",
+        "src\\commands\\capture.rs",
+        "src\\commands\\claude.rs",
+        "src\\commands\\currency.rs",
+        "src\\commands\\datafast.rs",
+        "src\\commands\\desktop_capture.rs",
+        "src\\commands\\desktop_duplication.rs",
+        "src\\commands\\dialogs.rs",
+        "src\\commands\\displays.rs",
+        "src\\commands\\dock.rs",
+        "src\\commands\\dock_drop.rs",
+        "src\\commands\\drag_ghost.rs",
+        "src\\commands\\ethernet.rs",
+        "src\\commands\\feedback.rs",
+        "src\\commands\\files.rs",
+        "src\\commands\\fullscreen.rs",
+        "src\\commands\\github.rs",
+        "src\\commands\\gmail.rs",
+        "src\\commands\\google_oauth.rs",
+        "src\\commands\\hotkey.rs",
+        "src\\commands\\ics.rs",
+        "src\\commands\\input_lang.rs",
+        "src\\commands\\jumplist.rs",
+        "src\\commands\\leetcode.rs",
+        "src\\commands\\license.rs",
+        "src\\commands\\locale.rs",
+        "src\\commands\\memory.rs",
+        "src\\commands\\net_status.rs",
+        "src\\commands\\ocr.rs",
+        "src\\commands\\opencode.rs",
+        "src\\commands\\page_reader.rs",
+        "src\\commands\\peek.rs",
+        "src\\commands\\photos.rs",
+        "src\\commands\\popover.rs",
+        "src\\commands\\radios.rs",
+        "src\\commands\\revenue.rs",
+        "src\\commands\\screen_time.rs",
+        "src\\commands\\screenshots.rs",
+        "src\\commands\\search_console.rs",
+        "src\\commands\\service_stats.rs",
+        "src\\commands\\signals.rs",
+        "src\\commands\\social.rs",
+        "src\\commands\\sounds.rs",
+        "src\\commands\\stocks.rs",
+        "src\\commands\\storage.rs",
+        "src\\commands\\taskbar_keys.rs",
+        "src\\commands\\temps.rs",
+        "src\\commands\\toggles.rs",
+        "src\\commands\\tray.rs",
+        "src\\commands\\unsplash.rs",
+        "src\\commands\\updater.rs",
+        "src\\commands\\voice.rs",
+        "src\\commands\\wallpaper.rs",
+        "src\\commands\\weather.rs",
+        "src\\commands\\wifi.rs",
+        "src\\commands\\windows.rs",
+        "src\\commands\\x.rs"
+      ]
+    }
+  ],
+  "status": "complete"
+}

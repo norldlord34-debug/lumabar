@@ -1,0 +1,7 @@
+Feature	Feature_Parent	Title	Description	Display	Level	Directory_	Attributes
+s38	S38	L64	L255	I2	i2	S72	i2
+Feature	Feature
+ShortcutsFeature	MainProgram	Shortcuts		2	1		0
+MainProgram		Application	Installs lumabar.	1	1	INSTALLDIR	24
+Environment	MainProgram	PATH Environment Variable	Add the install location of the lumabar executable to the PATH system environment variable. This allows the lumabar executable to be called from any location.	4	1		0
+External				2	1		24

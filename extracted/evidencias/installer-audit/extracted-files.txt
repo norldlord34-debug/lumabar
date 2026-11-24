@@ -1,0 +1,2 @@
+PFiles/lumabar/lumabar.exe
+PFiles/lumabar/WebView2Loader.dll

@@ -1,0 +1,200 @@
+{
+  "input_bytes": 25588736,
+  "input_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "coverage_bytes": 25588736,
+  "coverage_blocks": 391,
+  "block_size": 65536,
+  "sections": [
+    {
+      "name": ".text",
+      "raw_bytes": 18439680,
+      "entropy": 6.27061
+    },
+    {
+      "name": ".rdata",
+      "raw_bytes": 6196224,
+      "entropy": 6.54839
+    },
+    {
+      "name": ".data",
+      "raw_bytes": 33792,
+      "entropy": 3.11109
+    },
+    {
+      "name": ".pdata",
+      "raw_bytes": 836608,
+      "entropy": 6.84641
+    },
+    {
+      "name": ".rsrc",
+      "raw_bytes": 40448,
+      "entropy": 7.82949
+    },
+    {
+      "name": ".reloc",
+      "raw_bytes": 40960,
+      "entropy": 5.47913
+    }
+  ],
+  "resources": [
+    {
+      "path": "3/1/1033",
+      "rva": 25531496,
+      "size": 2124,
+      "sha256": "00824391082769e046bea1c42b387834aca47fde384234cfc379c199f748c6a7"
+    },
+    {
+      "path": "3/2/1033",
+      "rva": 25533624,
+      "size": 775,
+      "sha256": "33aef7865b80534181ec036765d39714bc8f365a1f8828fcb443012c74cb00d6"
+    },
+    {
+      "path": "3/3/1033",
+      "rva": 25534400,
+      "size": 1376,
+      "sha256": "37ad2f89c749dbbbc8a48431450c5655d994881849b1147c51938eb9f312839f"
+    },
+    {
+      "path": "3/4/1033",
+      "rva": 25535776,
+      "size": 3578,
+      "sha256": "f4f081be883fd678e4db44c3be3956b0c7563718eb422089097f0670f3f14e42"
+    },
+    {
+      "path": "3/5/1033",
+      "rva": 25539360,
+      "size": 5717,
+      "sha256": "55b0fa6cbaa16fbed64531fbe611ee9160c57e93b4639737b844a798d540ec44"
+    },
+    {
+      "path": "3/6/1033",
+      "rva": 25545080,
+      "size": 24843,
+      "sha256": "56670f65730b7b1f9a8313d78b6a8d93fd0febdae8c0f3ea1a8b84c1f160877a"
+    },
+    {
+      "path": "14/32512/1033",
+      "rva": 25569928,
+      "size": 90,
+      "sha256": "c665b52a353774b5a9c56c20e560a074f297e84c825dbb184d7207ba0291be3c"
+    },
+    {
+      "path": "16/1/1033",
+      "rva": 25530912,
+      "size": 584,
+      "sha256": "0441bcb4ceec471a1e019980e22b45462737f3aa94c16327f1b836f6877cba9e"
+    },
+    {
+      "path": "24/1/1033",
+      "rva": 25570024,
+      "size": 334,
+      "sha256": "b1cb832f790c153aa0e9a66f76e75460263cf1d41971d2dbcc9a4d87ec18b7d8"
+    }
+  ],
+  "markers": {
+    "Cargo.toml": {
+      "count": 1,
+      "offsets": [
+        20692878
+      ]
+    },
+    "ZIP_local": {
+      "count": 4,
+      "offsets": [
+        830199,
+        830313,
+        830466,
+        15690718
+      ]
+    },
+    "ZIP_end": {
+      "count": 2,
+      "offsets": [
+        15692572,
+        20724488
+      ]
+    }
+  },
+  "compressed_candidate_count": 6395,
+  "complete_decoded_streams": [
+    {
+      "kind": "zlib",
+      "offset": 18989541,
+      "decoded_bytes": 1049088,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-121c1e5.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 19485393,
+      "decoded_bytes": 101919,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-12952d1.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 20151870,
+      "decoded_bytes": 65664,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-1337e3e.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25508497,
+      "decoded_bytes": 4128,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-1853a91.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25510625,
+      "decoded_bytes": 1040,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-18542e1.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25511401,
+      "decoded_bytes": 2328,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-18545e9.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25512777,
+      "decoded_bytes": 9264,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-1854b49.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25516361,
+      "decoded_bytes": 16448,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-1855949.bin"
+    },
+    {
+      "kind": "zlib",
+      "offset": 25522081,
+      "decoded_bytes": 262400,
+      "complete": true,
+      "source_markers": [],
+      "file": "decoded/zlib-1856fa1.bin"
+    }
+  ],
+  "base64_source_hits": [],
+  "limitations": [
+    "Hashes and signatures cover every byte; they do not establish semantic understanding of every byte.",
+    "Only the named signatures and bounded standard decoders were tested; arbitrary custom encodings and raw headerless compressed streams are not ruled out.",
+    "No claim of recovering original Rust, complete decompilation, or proving absence of every possible embedded source representation."
+  ]
+}

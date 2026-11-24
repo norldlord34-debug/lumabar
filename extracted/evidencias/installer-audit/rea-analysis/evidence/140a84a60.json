@@ -1,0 +1,91 @@
+{
+  "target": {
+    "start": "0x140a84a60",
+    "end": "0x140a85202",
+    "bytes": 1954,
+    "associated_modules": [
+      "src\\commands\\service_stats.rs"
+    ],
+    "file": "assembly/0000000140a84a60.asm"
+  },
+  "is_error": false,
+  "pseudocode_fragments": 1,
+  "evidence": {
+    "evidence_id": "ev_3bfb8b384e95b37c5017385a0901f181d879792b1316135bda78a45ce78fbdcc",
+    "evidence_format": 2,
+    "subject": {
+      "identity": {
+        "kind": "file",
+        "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+        "selection": null,
+        "format": "pe",
+        "architecture": "x86_64"
+      },
+      "name": "lumabar.exe",
+      "local_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.2"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.2"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "pe",
+        "architecture": "x86_64",
+        "import_mode": "existing-project-private-copy",
+        "producer": {
+          "rea_version": "6.10.1",
+          "sources_sha256": "2acc01df6e538ba5171b72dc8d8b1752a57b3dacd670979ea84a07661bd7ef1f"
+        },
+        "annotation_policy": "read-only-existing-project",
+        "selected_project_relationship_coverage": "prior-analysis-unknown",
+        "loader_relocation_semantics": "read-only-relocation-limitations",
+        "existing_project": {
+          "configured_path": "/tmp/luma-ghidra-project/luma.gpr",
+          "project_path": "/tmp/luma-ghidra-project",
+          "project_name": "luma",
+          "program_name": "lumabar.exe",
+          "sha256": "732fc8d18431b55139e2993ce282f990a9afffeefdafcc84561a39014d241caa"
+        },
+        "original_analysis": {
+          "completeness": "unknown",
+          "settings": "unknown"
+        },
+        "no_return_repair": "disabled-existing-project",
+        "process_launch": "inspected-jvm-launch-support"
+      },
+      "digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8"
+    },
+    "predicate_type": "rea.analysis",
+    "operation": "procedure_pseudo_code",
+    "parameters": {
+      "procedure": "0x140a84a60"
+    },
+    "raw_result": null,
+    "normalized_result": "\nvoid FUN_140a84a60(longlong *param_1,undefined8 *param_2,longlong param_3,undefined8 *param_4,\n                  double param_5,undefined8 param_6)\n\n{\n  undefined4 *puVar1;\n  ushort uVar2;\n  undefined8 uVar3;\n  code *pcVar4;\n  double dVar5;\n  int iVar6;\n  undefined8 *puVar7;\n  double dVar8;\n  undefined8 *puVar9;\n  char *pcVar10;\n  longlong lVar11;\n  longlong lVar12;\n  double dVar13;\n  ulonglong uVar14;\n  double dVar15;\n  ulonglong uVar16;\n  longlong lVar17;\n  undefined4 uVar18;\n  undefined4 extraout_XMM0_Da;\n  undefined4 extraout_XMM0_Da_00;\n  undefined4 extraout_XMM0_Da_01;\n  undefined4 uStack_1a8;\n  undefined4 uStack_1a4;\n  undefined4 uStack_1a0;\n  undefined4 uStack_19c;\n  undefined4 uStack_198;\n  undefined4 uStack_194;\n  undefined4 uStack_190;\n  undefined4 uStack_18c;\n  longlong lStack_188;\n  longlong lStack_180;\n  longlong lStack_178;\n  longlong lStack_170;\n  undefined8 uStack_150;\n  ulonglong uStack_140;\n  undefined8 *puStack_138;\n  undefined8 *puStack_130;\n  double dStack_128;\n  undefined4 uStack_120;\n  undefined4 uStack_11c;\n  double dStack_118;\n  longlong lStack_110;\n  longlong lStack_108;\n  longlong *plStack_100;\n  undefined8 uStack_f8;\n  undefined8 *puStack_f0;\n  undefined8 uStack_e8;\n  undefined8 *puStack_e0;\n  undefined8 uStack_d8;\n  double dStack_d0;\n  double dStack_c8;\n  undefined4 uStack_c0;\n  undefined4 uStack_bc;\n  undefined4 uStack_b0;\n  undefined4 uStack_ac;\n  undefined8 uStack_a8;\n  undefined8 uStack_a0;\n  undefined8 uStack_98;\n  undefined8 *puStack_90;\n  undefined1 uStack_83;\n  undefined1 uStack_82;\n  undefined1 uStack_81;\n  undefined8 uStack_80;\n  \n  uStack_80 = 0xfffffffffffffffe;\n  dStack_128 = 0.0;\n  dStack_118 = 0.0;\n  lStack_108 = param_3;\n  plStack_100 = param_1;\n  puVar7 = (undefined8 *)FUN_140e48790(param_1,0,7);\n  if (puVar7 == (undefined8 *)0x0) {\n    FUN_1411658af(1,7);\n  }\n  else {\n    *(undefined4 *)((longlong)puVar7 + 3) = 0x64695f65;\n    *(undefined4 *)puVar7 = 0x65746973;\n    uStack_f8 = 7;\n    uStack_e8 = 7;\n    dVar15 = 4.94065645841247e-324;\n    puStack_138 = param_2;\n    puStack_130 = puVar7;\n    puStack_f0 = puVar7;\n    puStack_90 = param_4;\n    if (param_2 == (undefined8 *)0x0) {\n      dVar13 = 0.0;\n    }\n    else {\n      lStack_110 = lStack_108;\n      while( true ) {\n        uVar2 = *(ushort *)((longlong)param_2 + 0x21a);\n        uStack_140 = (ulonglong)uVar2;\n        uVar16 = 0xffffffffffffffff;\n        puVar7 = param_2 + 1;\n        lVar11 = 0;\n        puStack_e0 = param_2;\n        do {\n          lVar17 = lVar11;\n          if ((ulonglong)((uint)uVar2 * 8) * 3 == lVar17) {\n            uVar16 = uStack_140;\n            goto LAB_140a84bb4;\n          }\n          uVar14 = puVar7[2];\n          lVar11 = uVar14 - 4;\n          if (3 < uVar14) {\n            uVar14 = 4;\n          }\n          iVar6 = FUN_141165450(&UNK_14120a6fa,puVar7[1],uVar14);\n          lVar12 = -lVar11;\n          if (iVar6 != 0) {\n            lVar12 = (longlong)iVar6;\n          }\n          uVar16 = uVar16 + 1;\n          puVar7 = puVar7 + 3;\n          lVar11 = lVar17 + 0x18;\n        } while ((char)((0 < lVar12) - (lVar12 < 0)) == '\\x01');\n        if (0 < lVar12 == lVar12 < 0) break;\nLAB_140a84bb4:\n        if (lStack_110 == 0) goto LAB_140a84c16;\n        param_2 = (undefined8 *)puStack_e0[uVar16 + 0x44];\n        lStack_110 = lStack_110 + -1;\n      }\n      dVar13 = *(double *)((longlong)puStack_e0 + lVar17 + 0x120);\n      if (dVar13 != 0.0) {\n        uVar3 = *(undefined8 *)((longlong)puStack_e0 + lVar17 + 0x118);\n        dVar15 = (double)FUN_140e48790(0,0,dVar13);\n        if (dVar15 == 0.0) {\n          uStack_83 = 1;\n          FUN_1411658af(1,dVar13);\n          goto LAB_140a85200;\n        }\n        FUN_141164a10(dVar15,uVar3,dVar13);\n        goto LAB_140a84c1e;\n      }\nLAB_140a84c16:\n      dVar13 = 0.0;\n      dVar15 = 4.94065645841247e-324;\n    }\nLAB_140a84c1e:\n    uStack_b0 = CONCAT31(uStack_b0._1_3_,3);\n    uStack_83 = 0;\n    uStack_a8 = dVar13;\n    uStack_a0 = dVar15;\n    uStack_98 = dVar13;\n    uVar18 = FUN_140a3ca80(&uStack_d8,&dStack_128,&uStack_f8,&uStack_b0);\n    if ((char)uStack_d8 != -1) {\n      uVar18 = FUN_1401dca60(&uStack_d8);\n    }\n    puVar7 = (undefined8 *)FUN_140e48790(uVar18,0,7);\n    if (puVar7 == (undefined8 *)0x0) {\n      FUN_1411658af(1,7);\n    }\n    else {\n      *(undefined4 *)((longlong)puVar7 + 3) = 0x73636972;\n      *(undefined4 *)puVar7 = 0x7274656d;\n      uStack_f8 = 7;\n      uStack_e8 = 7;\n      puStack_f0 = puVar7;\n      puStack_e0 = puVar7;\n      dVar15 = (double)FUN_140e48790(extraout_XMM0_Da,0,(longlong)param_5 << 5);\n      if (dVar15 == 0.0) {\n        uStack_81 = 1;\n        FUN_1411658af(8,(longlong)param_5 << 5);\n      }\n      else {\n        puVar9 = puStack_90 + (longlong)param_5 * 2;\n        uStack_d8 = param_5;\n        dStack_c8 = 0.0;\n        puVar7 = puStack_90;\n        lVar11 = 0;\n        uVar18 = extraout_XMM0_Da_00;\n        dStack_d0 = dVar15;\n        do {\n          dVar5 = dStack_c8;\n          dVar13 = *(double *)((longlong)puVar7 + lVar11 + 8);\n          if (dVar13 == 0.0) {\n            dVar8 = 4.94065645841247e-324;\n          }\n          else {\n            uVar3 = *(undefined8 *)((longlong)puVar7 + lVar11);\n            dVar8 = (double)FUN_140e48790(uVar18,0,dVar13);\n            if (dVar8 == 0.0) {\n              FUN_1411658af(1,dVar13);\n              goto LAB_140a85200;\n            }\n            FUN_141164a10(dVar8,uVar3,dVar13);\n            puVar7 = puStack_90;\n          }\n          uStack_b0 = CONCAT31(uStack_b0._1_3_,3);\n          uStack_a8 = dVar13;\n          uStack_a0 = dVar8;\n          uStack_98 = dVar13;\n          if (dVar5 == uStack_d8) {\n            FUN_141168020(&uStack_d8);\n            dVar15 = dStack_d0;\n          }\n          puVar1 = (undefined4 *)((longlong)dVar15 + 0x10 + lVar11 * 2);\n          *puVar1 = (undefined4)uStack_a0;\n          puVar1[1] = uStack_a0._4_4_;\n          puVar1[2] = (undefined4)uStack_98;\n          puVar1[3] = uStack_98._4_4_;\n          puVar1 = (undefined4 *)((longlong)dVar15 + lVar11 * 2);\n          *puVar1 = uStack_b0;\n          puVar1[1] = uStack_ac;\n          puVar1[2] = (undefined4)uStack_a8;\n          puVar1[3] = uStack_a8._4_4_;\n          dStack_c8 = (double)((longlong)dVar5 + 1);\n          lVar17 = lVar11 + 0x10;\n          lVar11 = lVar11 + 0x10;\n          uVar18 = uStack_b0;\n        } while ((undefined8 *)((longlong)puVar7 + lVar17) != puVar9);\n        uStack_a0 = dStack_d0;\n        uStack_b0 = CONCAT31(uStack_b0._1_3_,4);\n        uStack_a8 = uStack_d8;\n        uStack_81 = 0;\n        uStack_98 = dStack_c8;\n        uVar18 = FUN_140a3ca80(&uStack_d8,&dStack_128,&uStack_f8,&uStack_b0);\n        puVar7 = puStack_138;\n        if ((char)uStack_d8 != -1) {\n          uVar18 = FUN_1401dca60(&uStack_d8);\n        }\n        puVar9 = (undefined8 *)FUN_140e48790(uVar18,0,10);\n        if (puVar9 == (undefined8 *)0x0) {\n          FUN_1411658af(1,10);\n        }\n        else {\n          *puVar9 = 0x6e61725f65746164;\n          *(undefined2 *)(puVar9 + 1) = 0x6567;\n          uStack_f8 = 10;\n          uStack_e8 = 10;\n          uStack_82 = 1;\n          puStack_f0 = puVar9;\n          puStack_90 = puVar9;\n          FUN_140517b60(&uStack_b0,param_6);\n          if ((char)uStack_b0 != -1) {\n            dStack_c8 = uStack_a0;\n            uStack_c0 = (undefined4)uStack_98;\n            uStack_bc = uStack_98._4_4_;\n            uStack_d8 = (double)CONCAT44(uStack_ac,uStack_b0);\n            dStack_d0 = uStack_a8;\n            uStack_82 = 0;\n            FUN_140a3ca80(&uStack_b0,&dStack_128,&uStack_f8,&uStack_d8);\n            if ((char)uStack_b0 != -1) {\n              FUN_1401dca60(&uStack_b0);\n            }\n            uStack_a8 = dStack_128;\n            uStack_a0 = (double)CONCAT44(uStack_11c,uStack_120);\n            uStack_98 = dStack_118;\n            uStack_b0 = CONCAT31(uStack_b0._1_3_,5);\n            FUN_140a7fd00(&uStack_1a8,puVar7,lStack_108,&uStack_b0);\n            uStack_150 = lStack_188;\n            lVar11 = uStack_150;\n            if (CONCAT44(uStack_1a4,uStack_1a8) == -1) {\n              uStack_150._0_4_ = (undefined4)lStack_188;\n              uStack_150._4_4_ = (undefined4)((ulonglong)lStack_188 >> 0x20);\n              uStack_1a8 = uStack_1a0;\n              uStack_1a4 = uStack_19c;\n              uStack_1a0 = uStack_198;\n              uStack_19c = uStack_194;\n              uStack_198 = uStack_190;\n              uStack_194 = uStack_18c;\n              uStack_190 = (undefined4)uStack_150;\n              uStack_18c = uStack_150._4_4_;\n              uStack_150 = lVar11;\n              pcVar10 = (char *)FUN_140e15640(&uStack_1a8,&UNK_14135f690,0x12);\n              if ((pcVar10 == (char *)0x0) || (*pcVar10 != '\\x04')) {\n                puVar7 = (undefined8 *)FUN_140e48790(extraout_XMM0_Da_01,8,(longlong)param_5 * 8);\n                if (puVar7 == (undefined8 *)0x0) {\n                  FUN_1411658af(8,(longlong)param_5 * 8);\n                  goto LAB_140a85200;\n                }\n              }\n              else {\n                param_5 = *(double *)(pcVar10 + 0x18);\n                if (param_5 == 0.0) {\n                  puVar7 = (undefined8 *)0x8;\n                  param_5 = 0.0;\n                }\n                else {\n                  lVar11 = *(longlong *)(pcVar10 + 0x10);\n                  puVar7 = (undefined8 *)FUN_140e48790(extraout_XMM0_Da_01,0,(longlong)param_5 * 8);\n                  if (puVar7 == (undefined8 *)0x0) {\n                    FUN_1411658af(8,(longlong)param_5 * 8);\n                    goto LAB_140a85200;\n                  }\n                  puVar9 = (undefined8 *)(lVar11 + 0x18);\n                  dVar15 = 0.0;\n                  puStack_90 = puVar7;\n                  do {\n                    if (*(char *)(puVar9 + -3) == '\\x02') {\n                      if (puVar9[-2] == 0) {\n                        dVar13 = ((double)CONCAT44(0x45300000,(int)((ulonglong)puVar9[-1] >> 0x20))\n                                 - 1.9342813113834067e+25) +\n                                 ((double)CONCAT44(0x43300000,(int)puVar9[-1]) - 4503599627370496.0)\n                        ;\n                      }\n                      else if ((int)puVar9[-2] == 1) {\n                        dVar13 = (double)(longlong)puVar9[-1];\n                      }\n                      else {\n                        dVar13 = (double)puVar9[-1];\n                      }\n                    }\n                    else {\n                      dVar13 = 0.0;\n                      if (*(char *)(puVar9 + -3) == '\\x03') {\n                        FUN_140019a40(&uStack_b0,puVar9[-1],*puVar9);\n                        puVar7 = puStack_90;\n                        dVar13 = 0.0;\n                        if ((char)uStack_b0 == '\\0') {\n                          dVar13 = uStack_a8;\n                        }\n                      }\n                    }\n                    puVar7[(longlong)dVar15] = dVar13;\n                    dVar15 = (double)((longlong)dVar15 + 1);\n                    puVar9 = puVar9 + 4;\n                  } while (param_5 != dVar15);\n                }\n              }\n              plStack_100[1] = (longlong)param_5;\n              plStack_100[2] = (longlong)puVar7;\n              plStack_100[3] = (longlong)param_5;\n              *plStack_100 = -1;\n              FUN_1401dca60(&uStack_1a8);\n            }\n            else {\n              plStack_100[7] = lStack_170;\n              plStack_100[5] = lStack_180;\n              plStack_100[6] = lStack_178;\n              plStack_100[3] = CONCAT44(uStack_18c,uStack_190);\n              plStack_100[4] = lStack_188;\n              *(undefined4 *)(plStack_100 + 1) = uStack_1a0;\n              *(undefined4 *)((longlong)plStack_100 + 0xc) = uStack_19c;\n              *(undefined4 *)(plStack_100 + 2) = uStack_198;\n              *(undefined4 *)((longlong)plStack_100 + 0x14) = uStack_194;\n              *plStack_100 = CONCAT44(uStack_1a4,uStack_1a8);\n            }\n            FUN_1401dca60(param_6);\n            return;\n          }\n          uStack_d8 = uStack_a8;\n          FUN_1411667f0(&UNK_14134b999,0x2b,&uStack_d8,&UNK_14134ba88,&UNK_14135f678);\n        }\n      }\n    }\n  }\nLAB_140a85200:\n                    /* WARNING: Does not return */\n  pcVar4 = (code *)invalidInstructionException();\n  (*pcVar4)();\n}\n\n",
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "This session opens a caller-selected existing Ghidra project through a private copy, without import, auto-analysis or repair scripts. Original analysis completeness and settings are unknown.",
+      "The original project is never opened by Ghidra or modified. The private copy is read-only to bridge operations and deleted on close; original executable bytes are never written.",
+      "The analysis profile records the selected project content fingerprint and program name. The imported program SHA-256 must match the admitted target; the project may contain caller annotations or earlier edits, which are not fresh REA discoveries.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+      "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+      "The Ghidra Program references PDB lumabar.pdb (GUID 84ce8363-80ab-4301-b08d-5bb3dcbcdbcc, age (hex) 1, signature unknown, version RSDS); Ghidra reports load state unknown. Original names and types may be missing; an empty name search does not prove a procedure is absent. Use list_procedures and address-based analysis to inspect recovered functions. REA does not admit a caller-selected PDB companion.",
+      "Known provider defect ghidra-9996 (jump-table-flow-references-omitted): Ghidra 12.2 can omit jump-table flow references and emit incorrect decompiler output for clang -O0 x86-64 switches whose case labels start above zero. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/9996 is closed by c93917a622211349998f641de54cfdbe0e0e5bee, milestone 12.2.1, which is not yet released. This limitation is recorded for parsed 12.2 releases whose patch is below 12.2.1, including a zero patch and a suffix, and clears on 12.2.1. REA's verified switch lane compiles with -O2 and does not cover this shape.",
+      "Known provider defect ghidra-10154 (jump-table-unrecovered-function-truncated): Ghidra 12.2 leaves an aarch64 switch unrecovered when it is a byte-offset bounded by and-0xff. The function body stops at the indirect branch. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/10154 is open and names a Swift -O swift-enum switch; it has no fix commit and no milestone. REA reproduced the unrecovered jump table on the exact 12.2 build with an AArch64 ELF object of that instruction shape. A compare-bounded byte table still recovers. This record stays on every admitted build until a release is known to clear it."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

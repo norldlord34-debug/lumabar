@@ -1,0 +1,32 @@
+Action	Condition	Sequence
+s72	S255	I2
+InstallExecuteSequence	Action
+AppSearch		50
+CostInitialize		800
+FileCost		900
+CostFinalize		1000
+InstallValidate		1400
+InstallInitialize		1500
+InstallFiles		4000
+InstallFinalize		6600
+CreateShortcuts		4500
+PublishFeatures		6300
+PublishProduct		6400
+LaunchApplication	AUTOLAUNCHAPP AND NOT Installed	6601
+SetARPNOMODIFY		1401
+DownloadAndInvokeBootstrapper	NOT(REMOVE OR INSTALLED_WEBVIEW2_VERSION)	6599
+SetARPINSTALLLOCATION		1001
+FindRelatedProducts		25
+ValidateProductID		700
+MigrateFeatureStates		1200
+ProcessComponents		1600
+UnpublishFeatures		1800
+RemoveRegistryValues		2600
+RemoveShortcuts	Installed AND NOT UPGRADINGPRODUCTCODE	3200
+RemoveFiles		3500
+RemoveFolders		3600
+CreateFolders		3700
+WriteRegistryValues		5000
+RegisterUser		6000
+RegisterProduct		6100
+RemoveExistingProducts		1501

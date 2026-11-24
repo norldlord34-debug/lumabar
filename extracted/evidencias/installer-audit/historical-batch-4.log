@@ -1,0 +1,18 @@
+{"total_installers": 82, "pending_before": 30, "selected": 16}
+{"release": "v1.2.15", "name": "lumabar-1.2.15-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.16", "name": "lumabar-1.2.16-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.15", "name": "lumabar-1.2.15-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.16", "name": "lumabar-1.2.16-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.17", "name": "lumabar-1.2.17-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.18", "name": "lumabar-1.2.18-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.19", "name": "lumabar-1.2.19-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.17", "name": "lumabar-1.2.17-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.18", "name": "lumabar-1.2.18-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.20", "name": "lumabar-1.2.20-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.19", "name": "lumabar-1.2.19-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.21", "name": "lumabar-1.2.21-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.20", "name": "lumabar-1.2.20-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.22", "name": "lumabar-1.2.22-32-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.21", "name": "lumabar-1.2.21-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+{"release": "v1.2.22", "name": "lumabar-1.2.22-64-bit.msi", "status": "complete", "error": null, "assets": 21}
+PROGRESS {"expected_installers": 82, "completed": 68, "errors": [], "bytes_verified": 590987264, "recovered_asset_instances": 1606, "unique_recovered_text_objects": 158}

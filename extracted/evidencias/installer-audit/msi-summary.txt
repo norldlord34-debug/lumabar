@@ -1,0 +1,13 @@
+Title: Installation Database
+Subject: lumabar
+Author: lumabar
+Keywords: Installer
+Comments: This installer database contains the logic and data required to install lumabar.
+Template: x64;0
+Revision number (UUID): {FB8326B8-1501-4C2E-9624-DF1D7BBF2063}
+Created: Mon Nov 23 18:12:04 2026
+Last saved: Mon Nov 23 18:12:04 2026
+Version: 450 (1c2)
+Source: 2 (2)
+Application: Windows Installer XML Toolset (3.14.1.8722)
+Security: 2 (2)

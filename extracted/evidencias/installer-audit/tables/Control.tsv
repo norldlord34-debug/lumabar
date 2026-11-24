@@ -1,0 +1,222 @@
+Dialog_	Control	Type	X	Y	Width	Height	Attributes	Property	Text	Control_Next	Help
+s72	s50	s20	i2	i2	i2	i2	I4	S72	L0	S50	L50
+Control	Dialog_	Control
+FatalError	Description	Text	135	70	220	80	196611		[ProductName] Setup Wizard ended prematurely because of an error. Your system has not been modified. To install this program at a later time, run Setup Wizard again. Click the Finish button to exit the Setup Wizard.		
+FatalError	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}[ProductName] Setup Wizard ended prematurely		
+FatalError	Finish	PushButton	236	243	56	17	3		&Finish	Cancel	
+FatalError	Cancel	PushButton	304	243	56	17	1		Cancel	Bitmap	
+FatalError	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+FatalError	Back	PushButton	180	243	56	17	1		&Back	Finish	
+FatalError	BottomLine	Line	0	234	370	0	1				
+UserExit	Description	Text	135	80	220	80	196611		[ProductName] setup was interrupted. Your system has not been modified. To install this program at a later time, please run the installation again. Click the Finish button to exit the Setup Wizard.		
+UserExit	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}[ProductName] Setup Wizard was interrupted		
+UserExit	Finish	PushButton	236	243	56	17	3		&Finish	Cancel	
+UserExit	Cancel	PushButton	304	243	56	17	1		Cancel	Bitmap	
+UserExit	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+UserExit	Back	PushButton	180	243	56	17	1		&Back	Finish	
+UserExit	BottomLine	Line	0	234	370	0	1				
+ExitDialog	Description	Text	135	70	220	40	196611		Click the Finish button to exit the Setup Wizard.		
+ExitDialog	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}Completed the [ProductName] Setup Wizard		
+ExitDialog	Finish	PushButton	236	243	56	17	3		&Finish	Cancel	
+ExitDialog	Cancel	PushButton	304	243	56	17	1		Cancel	Bitmap	
+ExitDialog	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+ExitDialog	Back	PushButton	180	243	56	17	1		&Back	OptionalCheckBox	
+ExitDialog	OptionalCheckBox	CheckBox	135	190	220	40	2	WIXUI_EXITDIALOGOPTIONALCHECKBOX	[WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT]	Finish	
+ExitDialog	BottomLine	Line	0	234	370	0	1				
+ExitDialog	OptionalText	Text	135	110	220	80	196610		[WIXUI_EXITDIALOGOPTIONALTEXT]		
+BrowseDlg	Description	Text	25	23	280	15	196611		Browse to the destination folder		
+BrowseDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Change destination folder		
+BrowseDlg	WixUI_Bmp_Up	PushButton	298	55	19	19	3670019		WixUI_Bmp_Up	NewFolder	Up one level|
+BrowseDlg	Cancel	PushButton	304	243	56	17	3		Cancel	ComboLabel	
+BrowseDlg	BottomLine	Line	0	234	370	0	1				
+BrowseDlg	PathEdit	PathEdit	25	202	320	18	11	_BrowseProperty		OK	
+BrowseDlg	OK	PushButton	240	243	56	17	3		OK	Cancel	
+BrowseDlg	ComboLabel	Text	25	58	44	10	3		&Look in:	DirectoryCombo	
+BrowseDlg	DirectoryCombo	DirectoryCombo	70	55	220	80	393227	_BrowseProperty		WixUI_Bmp_Up	
+BrowseDlg	NewFolder	PushButton	325	55	19	19	3670019		WixUI_Bmp_New	DirectoryList	Create a new folder|
+BrowseDlg	DirectoryList	DirectoryList	25	83	320	98	15	_BrowseProperty		PathLabel	
+BrowseDlg	PathLabel	Text	25	190	320	10	3		&Folder name:	BannerBitmap	
+BrowseDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	PathEdit	
+BrowseDlg	BannerLine	Line	0	44	370	0	1				
+DiskCostDlg	Description	Text	20	20	280	20	196611		The disk space required for the installation of the selected features.		
+DiskCostDlg	Text	Text	20	53	330	50	3		Highlighted volumes do not have enough disk space available for selected features. You can either remove some files from the highlighted volumes, install fewer features, or select different destination drives.		
+DiskCostDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Disk Space Requirements		
+DiskCostDlg	BottomLine	Line	0	234	370	0	1				
+DiskCostDlg	OK	PushButton	304	243	56	17	3		OK	BannerBitmap	
+DiskCostDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	OK	
+DiskCostDlg	BannerLine	Line	0	44	370	0	1				
+DiskCostDlg	VolumeList	VolumeCostList	20	100	330	120	393223		{120}{70}{70}{70}{70}		
+ErrorDlg	N	PushButton	100	80	56	17	3		&No		
+ErrorDlg	Y	PushButton	100	80	56	17	3		&Yes		
+ErrorDlg	ErrorText	Text	48	15	205	60	131075		Information text		
+ErrorDlg	A	PushButton	100	80	56	17	3		Cancel		
+ErrorDlg	C	PushButton	100	80	56	17	3		Cancel		
+ErrorDlg	ErrorIcon	Icon	15	15	24	24	5242881		WixUI_Ico_Info		Information icon|
+ErrorDlg	I	PushButton	100	80	56	17	3		&Ignore		
+ErrorDlg	O	PushButton	100	80	56	17	3		OK		
+ErrorDlg	R	PushButton	100	80	56	17	3		&Retry		
+FilesInUse	Description	Text	20	23	280	20	196611		Some files that need to be updated are currently in use.		
+FilesInUse	Text	Text	20	55	330	30	3		The following applications are using files that need to be updated by this setup. Close these applications and then click &Retry to continue setup or Exit to exit it.		
+FilesInUse	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Files in Use		
+FilesInUse	BottomLine	Line	0	234	370	0	1				
+FilesInUse	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	Retry	
+FilesInUse	BannerLine	Line	0	44	370	0	1				
+FilesInUse	Retry	PushButton	304	243	56	17	3		&Retry	Ignore	
+FilesInUse	Ignore	PushButton	235	243	56	17	3		&Ignore	Exit	
+FilesInUse	Exit	PushButton	166	243	56	17	3		E&xit	BannerBitmap	
+FilesInUse	List	ListBox	20	87	330	130	7	FileInUseProcess			
+MsiRMFilesInUse	Description	Text	20	23	280	20	196611		Some files that need to be updated are currently in use.		
+MsiRMFilesInUse	Text	Text	20	55	330	45	3		The following applications are using files that need to be updated by this setup. You can let Setup Wizard close them and attempt to restart them or reboot the machine later.		
+MsiRMFilesInUse	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Files in Use		
+MsiRMFilesInUse	Cancel	PushButton	304	243	56	17	3		Cancel	ShutdownOption	
+MsiRMFilesInUse	BottomLine	Line	0	234	370	0	1				
+MsiRMFilesInUse	OK	PushButton	240	243	56	17	3		OK	Cancel	
+MsiRMFilesInUse	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	OK	
+MsiRMFilesInUse	BannerLine	Line	0	44	370	0	1				
+MsiRMFilesInUse	List	ListBox	20	100	330	80	7	FileInUseProcess			
+MsiRMFilesInUse	ShutdownOption	RadioButtonGroup	26	190	305	45	3	WixUIRMOption		BannerBitmap	
+PrepareDlg	Description	Text	135	70	220	20	196611		Please wait while the Setup Wizard prepares to guide you through the installation.		
+PrepareDlg	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}Welcome to the [ProductName] Setup Wizard		
+PrepareDlg	Cancel	PushButton	304	243	56	17	3		Cancel	Bitmap	
+PrepareDlg	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Cancel	
+PrepareDlg	Back	PushButton	180	243	56	17	1		&Back		
+PrepareDlg	BottomLine	Line	0	234	370	0	1				
+PrepareDlg	Next	PushButton	236	243	56	17	1		&Next		
+PrepareDlg	ActionData	Text	135	125	220	30	196611				
+PrepareDlg	ActionText	Text	135	100	220	20	196611				
+CancelDlg	Text	Text	48	15	194	30	131075		Are you sure you want to cancel [ProductName] installation?		
+CancelDlg	Icon	Icon	15	15	24	24	5242881		WixUI_Ico_Info		Information icon|
+CancelDlg	No	PushButton	132	57	56	17	3		&No	Yes	
+CancelDlg	Yes	PushButton	72	57	56	17	3		&Yes	No	
+ProgressDlg	Cancel	PushButton	304	243	56	17	3		Cancel	BannerBitmap	
+ProgressDlg	Back	PushButton	180	243	56	17	1		&Back	Next	
+ProgressDlg	BottomLine	Line	0	234	370	0	1				
+ProgressDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	Back	
+ProgressDlg	BannerLine	Line	0	44	370	0	1				
+ProgressDlg	Next	PushButton	236	243	56	17	1		&Next	Cancel	
+ProgressDlg	ActionText	Text	70	100	285	10	3				
+ProgressDlg	TextInstalling	Text	20	65	330	35	131074		Please wait while the Setup Wizard installs [ProductName].		
+ProgressDlg	TitleInstalling	Text	20	15	330	15	196610		{\WixUI_Font_Title}Installing [ProductName]		
+ProgressDlg	TextChanging	Text	20	65	330	35	131074		Please wait while the Setup Wizard changes [ProductName].		
+ProgressDlg	TitleChanging	Text	20	15	330	15	196610		{\WixUI_Font_Title}Changing [ProductName]		
+ProgressDlg	TextRepairing	Text	20	65	330	35	131074		Please wait while the Setup Wizard repairs [ProductName].		
+ProgressDlg	TitleRepairing	Text	20	15	330	15	196610		{\WixUI_Font_Title}Repairing [ProductName]		
+ProgressDlg	TextRemoving	Text	20	65	330	35	131074		Please wait while the Setup Wizard removes [ProductName].		
+ProgressDlg	TitleRemoving	Text	20	15	330	15	196610		{\WixUI_Font_Title}Removing [ProductName]		
+ProgressDlg	TextUpdating	Text	20	65	330	35	131074		Please wait while the Setup Wizard updates [ProductName].		
+ProgressDlg	TitleUpdating	Text	20	15	330	15	196610		{\WixUI_Font_Title}Updating [ProductName]		
+ProgressDlg	ProgressBar	ProgressBar	20	115	330	10	65537		Progress done		
+ProgressDlg	StatusLabel	Text	20	100	50	10	3		Status:		
+ResumeDlg	Description	Text	135	80	220	60	196611		The Setup Wizard will complete the installation of [ProductName] on your computer. Click Install to continue or Cancel to exit the Setup Wizard.		
+ResumeDlg	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}Resuming the [ProductName] Setup Wizard		
+ResumeDlg	Cancel	PushButton	304	243	56	17	3		Cancel	Bitmap	
+ResumeDlg	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+ResumeDlg	Back	PushButton	156	243	56	17	1		&Back	Install	
+ResumeDlg	BottomLine	Line	0	234	370	0	1				
+ResumeDlg	Install	PushButton	212	243	80	17	8388610		&Install	InstallNoShield	
+ResumeDlg	InstallNoShield	PushButton	212	243	80	17	2		&Install	Cancel	
+WaitForCostingDlg	Text	Text	48	15	194	30	3		Please wait while the installer finishes determining your disk space requirements.		
+WaitForCostingDlg	Icon	Icon	15	15	24	24	5242881		WixUI_Ico_Exclam		Exclamation icon|
+WaitForCostingDlg	Return	PushButton	102	57	56	17	3		&Return		
+OutOfRbDiskDlg	Description	Text	20	20	280	20	196611		Disk space required for the installation exceeds available disk space.		
+OutOfRbDiskDlg	Text	Text	20	53	330	90	3		The highlighted volumes do not have enough disk space available for the currently selected features. You can remove some files from the highlighted volumes, install fewer features, or select a different destination drive. Alternatively, you may choose to disable the installer's rollback functionality. Disabling rollback prevents the installer from restoring your computer's original state should the installation be interrupted in any way. Click Yes if you wish to take the risk of disabling rollback.		
+OutOfRbDiskDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Out of Disk Space		
+OutOfRbDiskDlg	BottomLine	Line	0	234	370	0	1				
+OutOfRbDiskDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	No	
+OutOfRbDiskDlg	BannerLine	Line	0	44	370	0	1				
+OutOfRbDiskDlg	VolumeList	VolumeCostList	20	150	330	70	4587527		{120}{70}{70}{70}{70}		
+OutOfRbDiskDlg	No	PushButton	304	243	56	17	3		&No	Yes	
+OutOfRbDiskDlg	Yes	PushButton	240	243	56	17	3		&Yes	BannerBitmap	
+OutOfDiskDlg	Description	Text	20	20	280	20	196611		Disk space required for the installation exceeds available disk space.		
+OutOfDiskDlg	Text	Text	20	53	330	60	3		The highlighted volumes do not have enough disk space available for the currently selected features. You can remove some files from the highlighted volumes, install fewer features, or select a different destination drive.		
+OutOfDiskDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Out of Disk Space		
+OutOfDiskDlg	BottomLine	Line	0	234	370	0	1				
+OutOfDiskDlg	OK	PushButton	304	243	56	17	3		OK	BannerBitmap	
+OutOfDiskDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	OK	
+OutOfDiskDlg	BannerLine	Line	0	44	370	0	1				
+OutOfDiskDlg	VolumeList	VolumeCostList	20	120	330	100	393223		{120}{70}{70}{70}{70}		
+InvalidDirDlg	Text	Text	48	22	194	30	3		Installation directory must be on a local hard drive.		
+InvalidDirDlg	Icon	Icon	15	15	24	24	5242881		WixUI_Ico_Info		Information icon|
+InvalidDirDlg	OK	PushButton	102	57	56	17	3		OK		
+WelcomeDlg	Description	Text	135	80	220	60	196611		The Setup Wizard will install [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard.		
+WelcomeDlg	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}Welcome to the [ProductName] Setup Wizard		
+WelcomeDlg	Cancel	PushButton	304	243	56	17	3		Cancel	Bitmap	
+WelcomeDlg	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+WelcomeDlg	Back	PushButton	180	243	56	17	1		&Back	Next	
+WelcomeDlg	BottomLine	Line	0	234	370	0	1				
+WelcomeDlg	Next	PushButton	236	243	56	17	3		&Next	Cancel	
+WelcomeDlg	PatchDescription	Text	135	80	220	60	196611		The Setup Wizard will update [ProductName] on your computer. Click Next to continue or Cancel to exit the Setup Wizard.		
+LicenseAgreementDlg	Description	Text	25	23	340	15	196611		Please read the following license agreement carefully		
+LicenseAgreementDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}End-User License Agreement		
+LicenseAgreementDlg	Cancel	PushButton	304	243	56	17	3		Cancel	LicenseText	
+LicenseAgreementDlg	Back	PushButton	180	243	56	17	3		&Back	Next	
+LicenseAgreementDlg	BottomLine	Line	0	234	370	0	1				
+LicenseAgreementDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	LicenseAcceptedCheckBox	
+LicenseAgreementDlg	BannerLine	Line	0	44	370	0	1				
+LicenseAgreementDlg	Next	PushButton	236	243	56	17	3		&Next	Cancel	
+LicenseAgreementDlg	LicenseAcceptedCheckBox	CheckBox	20	207	330	18	3	LicenseAccepted	I &accept the terms in the License Agreement	Print	
+LicenseAgreementDlg	Print	PushButton	112	243	56	17	3		&Print	Back	
+LicenseAgreementDlg	LicenseText	ScrollableText	20	60	330	140	7		{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss\fcharset0 Segoe UI;}}\par \viewkind4\uc1\pard\sa120\f0\fs18\par {\b\fs22 lumabar End User License Agreement}\par\par Last updated: November 2026\par\par By installing or using lumabar ("the app") you agree to these terms. If you do not agree, do not install it.\par\par {\b 1. License.} Each purchase gives you a personal, non-exclusive, non-transferable license to install and use the app on one PC at a time. Your license key activates one PC; to move it to another, press Deactivate in the app's Settings on the old PC first.\par\par {\b 2. What you may not do.} You may not, and may not let anyone else:\par\par \pard\li360\sa60 - copy, share, sell, rent or give away the app, its installer or its license keys;\par\par - modify, rename or rebrand the app, or publish a changed copy of it;\par\par - take the app's code, interface, design, images or other files out of it and use them in any other software or website;\par\par \pard\li360\sa120 - remove or get around the license check, or reverse engineer the app, except where the law allows it regardless of this agreement.\par\par \pard\sa120{\b 3. Ownership.} The app, its code, design and assets belong to its developer and are protected by copyright law. This agreement gives you a license to use the app, not ownership of it.\par\par {\b 4. Updates.} Updates within the 1.x line are included. Features may change between versions.\par\par {\b 5. Refunds.} lumabar comes with a 14-day money-back guarantee: email hello@lumabar.xyz from the address you bought with, and the payment is refunded in full through Polar.\par\par {\b 6. Other services.} Widgets that connect to other services (Google, Microsoft, GitHub and others) use them under their own terms. What the app keeps and sends is described at lumabar.xyz/privacy.\par\par {\b 7. Bugs.} lumabar is built and tested with care, and every bug you report gets fixed - but no software is perfect. If something goes wrong, the remedy is a fix or your money back (point 5); to the extent the law allows, the developer is not liable for other damage arising from its use.\par\par {\b 8. Termination.} This license ends automatically if you break these terms. You must then stop using the app and delete it.\par\par Questions: hello@lumabar.xyz\par\par }\par \par
+}
+	BannerBitmap	
+VerifyReadyDlg	Remove	PushButton	212	243	80	17	8388608		&Remove	RemoveNoShield	
+VerifyReadyDlg	Cancel	PushButton	304	243	56	17	3		Cancel	Back	
+VerifyReadyDlg	Back	PushButton	156	243	56	17	3		&Back	BannerBitmap	
+VerifyReadyDlg	BottomLine	Line	0	234	370	0	1				
+VerifyReadyDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	Install	
+VerifyReadyDlg	BannerLine	Line	0	44	370	0	1				
+VerifyReadyDlg	Install	PushButton	212	243	80	17	8388608		&Install	InstallNoShield	
+VerifyReadyDlg	InstallNoShield	PushButton	212	243	80	17	0		&Install	Change	
+VerifyReadyDlg	Change	PushButton	212	243	80	17	8388608		&Change	ChangeNoShield	
+VerifyReadyDlg	ChangeNoShield	PushButton	212	243	80	17	0		&Change	Repair	
+VerifyReadyDlg	Repair	PushButton	212	243	80	17	0		Re&pair	Remove	
+VerifyReadyDlg	RemoveNoShield	PushButton	212	243	80	17	0		&Remove	Update	
+VerifyReadyDlg	Update	PushButton	212	243	80	17	8388608		&Update	UpdateNoShield	
+VerifyReadyDlg	UpdateNoShield	PushButton	212	243	80	17	0		&Update	Cancel	
+VerifyReadyDlg	InstallTitle	Text	15	15	300	15	196610		{\WixUI_Font_Title}Ready to install [ProductName]		
+VerifyReadyDlg	InstallText	Text	25	70	320	80	2		Click Install to begin the installation. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard.		
+VerifyReadyDlg	ChangeTitle	Text	15	15	300	15	196610		{\WixUI_Font_Title}Ready to change [ProductName]		
+VerifyReadyDlg	ChangeText	Text	25	70	320	80	2		Click Change to begin the installation. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard.		
+VerifyReadyDlg	RepairTitle	Text	15	15	300	15	196610		{\WixUI_Font_Title}Ready to repair [ProductName]		
+VerifyReadyDlg	RepairText	Text	25	70	320	80	131074		Click Repair to repair the installation of [ProductName]. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard.		
+VerifyReadyDlg	RemoveTitle	Text	15	15	300	15	196610		{\WixUI_Font_Title}Ready to remove [ProductName]		
+VerifyReadyDlg	RemoveText	Text	25	70	320	80	131074		Click Remove to remove [ProductName] from your computer. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard.		
+VerifyReadyDlg	UpdateTitle	Text	15	15	300	15	196610		{\WixUI_Font_Title}Ready to update [ProductName]		
+VerifyReadyDlg	UpdateText	Text	25	70	320	80	131074		Click Update to update [ProductName] from your computer. Click Back to review or change any of your installation settings. Click Cancel to exit the wizard.		
+InstallDirDlg	Description	Text	25	23	280	15	196611		Click Next to install to the default folder or click Change to choose another.		
+InstallDirDlg	Title	Text	15	6	200	15	196611		{\WixUI_Font_Title}Destination Folder		
+InstallDirDlg	Cancel	PushButton	304	243	56	17	3		Cancel	BannerBitmap	
+InstallDirDlg	Back	PushButton	180	243	56	17	3		&Back	Cancel	
+InstallDirDlg	BottomLine	Line	0	234	370	0	1				
+InstallDirDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	Folder	
+InstallDirDlg	BannerLine	Line	0	44	370	0	1				
+InstallDirDlg	Next	PushButton	236	243	56	17	3		&Next	Back	
+InstallDirDlg	Folder	PathEdit	20	100	320	18	11	WIXUI_INSTALLDIR		ChangeFolder	
+InstallDirDlg	FolderLabel	Text	20	60	290	30	131075		Install [ProductName] to:		
+InstallDirDlg	ChangeFolder	PushButton	20	120	56	17	3		&Change...	Next	
+MaintenanceTypeDlg	Description	Text	25	23	340	20	196611		Select the operation you wish to perform.		
+MaintenanceTypeDlg	Title	Text	15	6	340	15	196611		{\WixUI_Font_Title}Change, repair, or remove installation		
+MaintenanceTypeDlg	Cancel	PushButton	304	243	56	17	3		Cancel	BannerBitmap	
+MaintenanceTypeDlg	Back	PushButton	180	243	56	17	3		&Back	Next	
+MaintenanceTypeDlg	BottomLine	Line	0	234	370	0	1				
+MaintenanceTypeDlg	BannerBitmap	Bitmap	0	0	370	44	1		WixUI_Bmp_Banner	ChangeButton	
+MaintenanceTypeDlg	BannerLine	Line	0	44	370	0	1				
+MaintenanceTypeDlg	Next	PushButton	236	243	56	17	1		&Next	Cancel	
+MaintenanceTypeDlg	ChangeText	Text	60	85	280	20	3		Lets you change the way features are installed.		
+MaintenanceTypeDlg	RepairText	Text	60	138	280	30	3		Repairs errors in the most recent installation by fixing missing and corrupt files, shortcuts, and registry entries.		
+MaintenanceTypeDlg	RemoveText	Text	60	191	280	20	131075		Removes [ProductName] from your computer.		
+MaintenanceTypeDlg	ChangeButton	PushButton	40	65	80	17	3		&Change	RepairButton	Change Installation|
+MaintenanceTypeDlg	RepairButton	PushButton	40	118	80	17	3		Re&pair	RemoveButton	Repair Installation|
+MaintenanceTypeDlg	ChangeDisabledText	Text	60	85	280	20	131074		[ProductName] has no independently selectable features.		
+MaintenanceTypeDlg	RemoveButton	PushButton	40	171	80	17	3		&Remove	Back	Remove Installation|
+MaintenanceTypeDlg	RepairDisabledText	Text	60	138	280	30	131074		[ProductName] cannot be repaired.		
+MaintenanceTypeDlg	RemoveDisabledText	Text	60	191	280	20	131074		[ProductName] cannot be removed.		
+MaintenanceWelcomeDlg	Description	Text	135	70	220	60	196611		The Setup Wizard allows you to change the way [ProductName] features are installed on your computer or to remove it from your computer. Click Next to continue or Cancel to exit the Setup Wizard.		
+MaintenanceWelcomeDlg	Title	Text	135	20	220	60	196611		{\WixUI_Font_Bigger}Welcome to the [ProductName] Setup Wizard		
+MaintenanceWelcomeDlg	Cancel	PushButton	304	243	56	17	3		Cancel	Bitmap	
+MaintenanceWelcomeDlg	Bitmap	Bitmap	0	0	370	234	1		WixUI_Bmp_Dialog	Back	
+MaintenanceWelcomeDlg	Back	PushButton	180	243	56	17	1		&Back	Next	
+MaintenanceWelcomeDlg	BottomLine	Line	0	234	370	0	1				
+MaintenanceWelcomeDlg	Next	PushButton	236	243	56	17	3		&Next	Cancel	

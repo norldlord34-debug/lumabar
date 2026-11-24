@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-11-24T10:13:25.975483+00:00",
+  "target_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "rea_version": "6.10.1",
+  "ghidra_version": "12.2",
+  "attempted_ranges": 395,
+  "pseudocode_files": 254,
+  "pseudocode_lines_including_headers": 155596,
+  "associated_modules_with_output": 51,
+  "failures": 141,
+  "failure_categories": {
+    "bad_instruction_or_pcode": 138,
+    "timeout": 3
+  },
+  "analysis_mode": "Existing project seeded from 395 previously recovered PE ranges; default auto-analysis NOT completed. Module associations are heuristics, not recovered function names.",
+  "original_source_recovered": false,
+  "recompilable_project_recovered": false
+}

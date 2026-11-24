@@ -1,0 +1,306 @@
+{
+  "asset_id": 708265169,
+  "release": "v1.2.12",
+  "published": "2026-11-04T04:46:34Z",
+  "name": "lumabar-1.2.12-64-bit.msi",
+  "url": "https://github.com/Acadbek/lumabar/releases/download/v1.2.12/lumabar-1.2.12-64-bit.msi",
+  "expected_digest": "sha256:383c15dcf13babf47bc47b8ae6cd070e97d6397025519e26ea9f82e292960ccb",
+  "expected_bytes": 9715712,
+  "actual_digest": "sha256:383c15dcf13babf47bc47b8ae6cd070e97d6397025519e26ea9f82e292960ccb",
+  "digest_matches": true,
+  "extraction_exit_code": 0,
+  "msi_files": [
+    "PFiles/lumabar/lumabar.exe",
+    "PFiles/lumabar/WebView2Loader.dll"
+  ],
+  "msi_streams": [
+    "app.cab",
+    "Icon.ProductIcon",
+    "Binary.WixUIWixca",
+    "Binary.WixUI_Bmp_New",
+    "Binary.WixUI_Bmp_Up",
+    "Binary.WixUI_Ico_Info",
+    "Binary.WixUI_Bmp_Banner",
+    "Binary.WixUI_Bmp_Dialog",
+    "Binary.WixUI_Ico_Exclam",
+    "\u0005SummaryInformation"
+  ],
+  "files": [
+    {
+      "path": "PFiles/lumabar/WebView2Loader.dll",
+      "bytes": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c"
+    },
+    {
+      "path": "PFiles/lumabar/lumabar.exe",
+      "bytes": 25012736,
+      "sha256": "c38827d417a195128f3b012e1ec72ded8954c08231f2d359edcbd655915d4cb2"
+    }
+  ],
+  "pe_analysis": [
+    {
+      "name": "WebView2Loader.dll",
+      "size": 160320,
+      "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": 150016,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "4e21010e-241e-b4d1-4c4c-44205044422e",
+          "age": 1,
+          "pdb_path": "WebView2Loader.dll.pdb"
+        }
+      ],
+      "assets": [],
+      "source_text_candidates": [],
+      "rust_path_count": 0,
+      "command_paths": []
+    },
+    {
+      "name": "lumabar.exe",
+      "size": 25012736,
+      "sha256": "c38827d417a195128f3b012e1ec72ded8954c08231f2d359edcbd655915d4cb2",
+      "bits": 64,
+      "coff_symbol_count": 0,
+      "overlay_offset": null,
+      "embedded_pdb_header": false,
+      "dwarf_info_marker": false,
+      "debug": [
+        {
+          "format": "RSDS",
+          "pdb_guid": "7dd26854-c201-4fe1-9283-944e8e279553",
+          "age": 1,
+          "pdb_path": "lumabar.pdb"
+        }
+      ],
+      "assets": [
+        {
+          "path": "/assets/128x128-B0PwLaXm.png",
+          "stored_bytes": 8613,
+          "bytes": 8609,
+          "encoding": "brotli",
+          "sha256": "d06e2b9dd9254fedeff84af3a094154983cffd32155ddc815aca70ccdbeed6cc"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYBOLD-CkqE-6tD.OTF",
+          "stored_bytes": 124383,
+          "bytes": 334728,
+          "encoding": "brotli",
+          "sha256": "a981001f6d4e70292fd26fa8e05437c4a9f0f8c5981027ff0ceead01bb30311f"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYREGULAR-DF_3XEGl.OTF",
+          "stored_bytes": 113105,
+          "bytes": 298944,
+          "encoding": "brotli",
+          "sha256": "71a2162c852e87baa6440c983e406283391646778c8bc74e57b00613a3412f80"
+        },
+        {
+          "path": "/assets/note-logo-D3RrbcgA.png",
+          "stored_bytes": 15604,
+          "bytes": 15614,
+          "encoding": "brotli",
+          "sha256": "d6bc819d9893beac5a0876512093cfe8e90c28ed415c2096d5a7f569767cea36"
+        },
+        {
+          "path": "/assets/openai-logo-128-BEuQ_hrc.png",
+          "stored_bytes": 5984,
+          "bytes": 5980,
+          "encoding": "brotli",
+          "sha256": "3dd7d27d4a3d5896a97539c7789f93430bd49a9fe55606e07342fb23a8ba754a"
+        },
+        {
+          "path": "/assets/grok-bot-DAQ7cRbH.webp",
+          "stored_bytes": 14745,
+          "bytes": 14858,
+          "encoding": "brotli",
+          "sha256": "076be384996a2a91880d97d776ee92c712f7998eb7b46e466158dbd1af12c93f"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYLIGHTITALIC-lQTxS1hE.OTF",
+          "stored_bytes": 77567,
+          "bytes": 158892,
+          "encoding": "brotli",
+          "sha256": "2f1425b4648b772af07cb996ec9ac80aec1e61db5a388f2d0f29ea21aaa49755"
+        },
+        {
+          "path": "/assets/gemini-logo-128-Da_3LCBg.png",
+          "stored_bytes": 9359,
+          "bytes": 9399,
+          "encoding": "brotli",
+          "sha256": "f882aea124c67c9fb27fec297bd0191f5c270d761066b2d5a182491d18ab593b"
+        },
+        {
+          "path": "/assets/papers-ByzPKJS8.png",
+          "stored_bytes": 9766,
+          "bytes": 9994,
+          "encoding": "brotli",
+          "sha256": "60d5579c3d0258397e20b5073cbfacf363634ec4b52e58114be731d837735549"
+        },
+        {
+          "path": "/assets/bin-fbr_qVUr.png",
+          "stored_bytes": 10683,
+          "bytes": 10693,
+          "encoding": "brotli",
+          "sha256": "914decb2605f4ba42c5fd3501e306498329a49bb32829c33faffd2d7e78211da"
+        },
+        {
+          "path": "/assets/front-DjLy1LyN.png",
+          "stored_bytes": 8878,
+          "bytes": 8928,
+          "encoding": "brotli",
+          "sha256": "1f362508449822a83569fed405d456fad2158e35b1b6d61321efff563663439e"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYSEMIBOLDITALIC-Dj8jjjxr.OTF",
+          "stored_bytes": 77396,
+          "bytes": 159876,
+          "encoding": "brotli",
+          "sha256": "4181aac0f0a4758e1c8fef0caeedebc1709319644043131556d68ef60621c4b7"
+        },
+        {
+          "path": "/assets/images-removebg-preview-CV4TpddI.png",
+          "stored_bytes": 16401,
+          "bytes": 16397,
+          "encoding": "brotli",
+          "sha256": "5ef74144eb9cc9830d1b25d9f69a8527b9b5a49f83c8a9e9ac33485c681469c8"
+        },
+        {
+          "path": "/assets/leetcode-BuNhsHPL.png",
+          "stored_bytes": 39404,
+          "bytes": 40735,
+          "encoding": "brotli",
+          "sha256": "3bd382b00bce9b07faf03e7b9c0fdb1e0cb276956c6fc014d3771efa5bc12c3b"
+        },
+        {
+          "path": "/assets/zai-logo-BYMvh8zI.svg",
+          "stored_bytes": 1874,
+          "bytes": 11037,
+          "encoding": "brotli",
+          "sha256": "07a45e8e35b0b631ed2c68cd1cb041f9721b1ceeb0bd0e34f1459b0304a741c7"
+        },
+        {
+          "path": "/assets/mail-BmgJgo9n.png",
+          "stored_bytes": 40803,
+          "bytes": 41067,
+          "encoding": "brotli",
+          "sha256": "7b790841b1ae2a5ea0822e1fcf9a048e98be168b74197102722438fa7ded0fbb"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYMEDIUM-DSttQARu.OTF",
+          "stored_bytes": 126168,
+          "bytes": 335512,
+          "encoding": "brotli",
+          "sha256": "cbfd17919856efcedabdd73781dad2984326928ae7c9635bef6227b1a7d71d21"
+        },
+        {
+          "path": "/index.html",
+          "stored_bytes": 173,
+          "bytes": 393,
+          "encoding": "brotli",
+          "sha256": "f9d79629c9e60facf9710f4d09bff5480e78d175006cc9cca1a0dc522430cdba",
+          "object_sha256": "f9d79629c9e60facf9710f4d09bff5480e78d175006cc9cca1a0dc522430cdba"
+        },
+        {
+          "path": "/assets/index-C4VA9n2B.css",
+          "stored_bytes": 15365,
+          "bytes": 118688,
+          "encoding": "brotli",
+          "sha256": "6d094aca0dc1bee81d3fd6e9c82f37f2de1eaf0718c54fa2c9b08b7b1e603abd",
+          "object_sha256": "6d094aca0dc1bee81d3fd6e9c82f37f2de1eaf0718c54fa2c9b08b7b1e603abd"
+        },
+        {
+          "path": "/assets/SFPRODISPLAYHEAVYITALIC-Dt8wbU-f.OTF",
+          "stored_bytes": 77064,
+          "bytes": 159628,
+          "encoding": "brotli",
+          "sha256": "f7143bcd5352283896bb041fb478fe47dcfb1f0bd7cccd5bbdf932a3c1869596"
+        },
+        {
+          "path": "/assets/index-GXz3g1Fv.js",
+          "stored_bytes": 314581,
+          "bytes": 1322091,
+          "encoding": "brotli",
+          "sha256": "6e4bcb43e882e88d7546e7f33767efd7280e8c2a0e9ec233bcc3b3ee735f7f8a",
+          "object_sha256": "6e4bcb43e882e88d7546e7f33767efd7280e8c2a0e9ec233bcc3b3ee735f7f8a",
+          "source_map_references": []
+        }
+      ],
+      "source_text_candidates": [],
+      "rust_path_count": 561,
+      "command_paths": [
+        "src\\commands\\ai_usage.rs",
+        "src\\commands\\app_catalog.rs",
+        "src\\commands\\appmenu.rs",
+        "src\\commands\\apps.rs",
+        "src\\commands\\audio.rs",
+        "src\\commands\\autostart.rs",
+        "src\\commands\\bluetooth.rs",
+        "src\\commands\\brightness.rs",
+        "src\\commands\\capture.rs",
+        "src\\commands\\claude.rs",
+        "src\\commands\\currency.rs",
+        "src\\commands\\datafast.rs",
+        "src\\commands\\desktop_capture.rs",
+        "src\\commands\\desktop_duplication.rs",
+        "src\\commands\\dialogs.rs",
+        "src\\commands\\displays.rs",
+        "src\\commands\\dock.rs",
+        "src\\commands\\dock_drop.rs",
+        "src\\commands\\drag_ghost.rs",
+        "src\\commands\\ethernet.rs",
+        "src\\commands\\feedback.rs",
+        "src\\commands\\files.rs",
+        "src\\commands\\fullscreen.rs",
+        "src\\commands\\github.rs",
+        "src\\commands\\gmail.rs",
+        "src\\commands\\google_oauth.rs",
+        "src\\commands\\hotkey.rs",
+        "src\\commands\\ics.rs",
+        "src\\commands\\input_lang.rs",
+        "src\\commands\\jumplist.rs",
+        "src\\commands\\leetcode.rs",
+        "src\\commands\\license.rs",
+        "src\\commands\\locale.rs",
+        "src\\commands\\memory.rs",
+        "src\\commands\\metric.rs",
+        "src\\commands\\net_status.rs",
+        "src\\commands\\ocr.rs",
+        "src\\commands\\opencode.rs",
+        "src\\commands\\page_reader.rs",
+        "src\\commands\\peek.rs",
+        "src\\commands\\photos.rs",
+        "src\\commands\\popover.rs",
+        "src\\commands\\radios.rs",
+        "src\\commands\\revenue.rs",
+        "src\\commands\\satellite.rs",
+        "src\\commands\\screen_time.rs",
+        "src\\commands\\screenshots.rs",
+        "src\\commands\\search_console.rs",
+        "src\\commands\\service_stats.rs",
+        "src\\commands\\signals.rs",
+        "src\\commands\\social.rs",
+        "src\\commands\\sounds.rs",
+        "src\\commands\\stocks.rs",
+        "src\\commands\\storage.rs",
+        "src\\commands\\taskbar_keys.rs",
+        "src\\commands\\temps.rs",
+        "src\\commands\\toggles.rs",
+        "src\\commands\\tray.rs",
+        "src\\commands\\unsplash.rs",
+        "src\\commands\\updater.rs",
+        "src\\commands\\voice.rs",
+        "src\\commands\\wallpaper.rs",
+        "src\\commands\\weather.rs",
+        "src\\commands\\wifi.rs",
+        "src\\commands\\windows.rs",
+        "src\\commands\\x.rs"
+      ]
+    }
+  ],
+  "status": "complete"
+}

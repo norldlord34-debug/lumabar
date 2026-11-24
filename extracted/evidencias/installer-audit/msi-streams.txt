@@ -1,0 +1,10 @@
+app.cab
+Icon.ProductIcon
+Binary.WixUIWixca
+Binary.WixUI_Bmp_New
+Binary.WixUI_Bmp_Up
+Binary.WixUI_Ico_Info
+Binary.WixUI_Bmp_Banner
+Binary.WixUI_Bmp_Dialog
+Binary.WixUI_Ico_Exclam
+SummaryInformation

@@ -1,0 +1,171 @@
+[
+  {
+    "file": "/tmp/lumabar-msi-extracted/PFiles/lumabar/WebView2Loader.dll",
+    "bytes": 160320,
+    "sha256": "8427b1fc58ec707813e5c0a51eb5d69397bb333250a7b891be4d3b123f1e0f1c",
+    "signature_exit": 1,
+    "signature_summary": "PE checksum   : 0002DF92\n\nSignature Index: 0  (Primary Signature)\n\nMessage digest algorithm  : SHA256\nCurrent message digest    : 200A0B1D57672C96ED25EB8BAC94717CB9EF20B6A5C921F6FB30B07247EFA771 \nCalculated message digest : 200A0B1D57672C96ED25EB8BAC94717CB9EF20B6A5C921F6FB30B07247EFA771 \n\nSigner's certificate:\n\t------------------\n\tSigner #0:\n\t\tSubject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation\n\t\tIssuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Code Signing PCA 2011\n\t\tSerial : 330000047F2F422A735308DEEA00000000047F\n\t\tCertificate expiration date:\n\t\t\tnotBefore : May 15 18:49:10 2025 GMT\n\t\t\tnotAfter : May 15 18:49:10 2026 GMT\n\nMessage digest algorithm: SHA256\n\nAuthenticated attributes:\n\tMicrosoft Individual Code Signing purpose\n\tMessage digest: 6626CAB016A3672A12529D2FE2F62FD880F978004036E554A7C28E57F1A9974A \n\tURL description: https://www.microsoft.com \n\tText description: Microsoft Edge WebView2 SDK\n\nCountersignatures:\n\tTimestamp time: Dec  1 09:33:15 2025 GMT\n\tSigning time: N/A\n\tHash Algorithm: sha256\n\tIssuer: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010\n\tSerial: 33000002090807E0F95C8CE655000100000209\n\nCAfile: /etc/ssl/certs/ca-certificates.crt\nTSA's certificates file: /etc/ssl/certs/ca-certificates.crt\n\nTimestamp verified using:\n\t------------------\n\tSigner #1:\n\t\tSubject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010\n\t\tIssuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Root Certificate Authority 2010\n\t\tSerial : 3300000015C5E76B9E029B4999000000000015\n\t\tCertificate expiration date:\n\t\t\tnotBefore : Sep 30 18:22:25 2021 GMT\n\t\t\tnotAfter : Sep 30 18:32:25 2030 GMT\n\n\tError: unable to get local issuer certificate\n\nCMS_verify error\n\nFailed timestamp certificate chain retrieved from the signature:\n\t------------------\n\tSigner #0:\n\t\tSubject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/OU=Microsoft Amer",
+    "urls_count": 11,
+    "interesting_snippets": 1,
+    "dll_imports": [
+      "KERNEL32.dll"
+    ]
+  },
+  {
+    "file": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe",
+    "bytes": 25588736,
+    "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+    "signature_exit": 1,
+    "signature_summary": "Current PE checksum   : 00000000\nCalculated PE checksum: 0186D05B\nWarning: invalid PE checksum\nFailed\nNo signature found\nUnable to extract existing signature\n",
+    "urls_count": 135,
+    "interesting_snippets": 1294,
+    "dll_imports": [
+      "ntdll.dll",
+      "bcryptprimitives.dll",
+      "kernel32.dll",
+      "advapi32.dll",
+      "ole32.dll",
+      "oleaut32.dll",
+      "api-ms-win-core-synch-l1-2-0.dll",
+      "combase.dll",
+      "mmdevapi.dll",
+      "shell32.dll",
+      "bcrypt.dll",
+      "user32.dll",
+      "gdi32.dll",
+      "dwmapi.dll",
+      "comctl32.dll",
+      "icuin.dll",
+      "propsys.dll",
+      "winmm.dll",
+      "iphlpapi.dll",
+      "shlwapi.dll",
+      "powrprof.dll",
+      "wtsapi32.dll",
+      "dxva2.dll",
+      "dxgi.dll",
+      "d3d11.dll",
+      "pdh.dll",
+      "cfgmgr32.dll",
+      "version.dll",
+      "crypt32.dll",
+      "api-ms-win-devices-query-l1-1-0.dll",
+      "api-ms-win-core-winrt-l1-1-0.dll",
+      "api-ms-win-core-winrt-error-l1-1-0.dll",
+      "ws2_32.dll",
+      "msi.dll",
+      "KERNEL32.dll",
+      "api-ms-win-crt-math-l1-1-0.dll",
+      "api-ms-win-crt-string-l1-1-0.dll",
+      "api-ms-win-crt-convert-l1-1-0.dll",
+      "api-ms-win-crt-heap-l1-1-0.dll",
+      "api-ms-win-crt-utility-l1-1-0.dll",
+      "api-ms-win-crt-time-l1-1-0.dll",
+      "api-ms-win-crt-runtime-l1-1-0.dll",
+      "api-ms-win-crt-stdio-l1-1-0.dll",
+      "api-ms-win-crt-locale-l1-1-0.dll"
+    ]
+  }
+]
+
+### TABLE Property 
+Property	Value
+s72	l0
+Property	Property
+UpgradeCode	{3C65DD39-9856-5F3A-A820-D1F8D3641505}
+WIXUI_EXITDIALOGOPTIONALCHECKBOX	1
+WixUIRMOption	UseRM
+WIXUI_INSTALLDIR	INSTALLDIR
+ALLUSERS	1
+ARPNOMODIFY	1
+ARPNOREPAIR	yes
+REINSTALLMODE	amus
+ARPPRODUCTICON	ProductIcon
+WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT	Launch lumabar
+Manufacturer	lumabar
+ProductCode	{D612891B-44C0-46CC-A04E-F8E0E6E78472}
+ProductLanguage	1033
+ProductName	lumabar
+ProductVersion	1.2.29
+DefaultUIFont	WixUI_Font_Normal
+WixUI_Mode	InstallDir
+ErrorDialog	ErrorDlg
+SecureCustomProperties	ARPNOREPAIR;AUTOLAUNCHAPP;LAUNCHAPPARGS;WIX_UPGRADE_DETECTED
+
+
+### TABLE CustomAction 
+Action	Type	Source	Target	ExtendedType
+s72	i2	S72	S255	I4
+CustomAction	Action
+LaunchApplication	210	Path	[LAUNCHAPPARGS]	
+WixUIValidatePath	65	WixUIWixca	ValidatePath	
+WixUIPrintEula	65	WixUIWixca	PrintEula	
+SetARPNOMODIFY	51	ARPNOMODIFY	1	
+DownloadAndInvokeBootstrapper	1058	INSTALLDIR	powershell.exe -NoProfile -windowstyle hidden try [\{] [\[]Net.ServicePointManager[\]]::SecurityProtocol = [\[]Net.SecurityProtocolType[\]]::Tls12 [\}] catch [\{][\}]; Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2124703" -OutFile "$env:TEMP\MicrosoftEdgeWebview2Setup.exe" ; Start-Process -FilePath "$env:TEMP\MicrosoftEdgeWebview2Setup.exe" -ArgumentList ('/silent', '/install') -Wait	
+SetARPINSTALLLOCATION	51	ARPINSTALLLOCATION	[INSTALLDIR]	
+
+
+### TABLE InstallExecuteSequence 
+Action	Condition	Sequence
+s72	S255	I2
+InstallExecuteSequence	Action
+AppSearch		50
+CostInitialize		800
+FileCost		900
+CostFinalize		1000
+InstallValidate		1400
+InstallInitialize		1500
+InstallFiles		4000
+InstallFinalize		6600
+CreateShortcuts		4500
+PublishFeatures		6300
+PublishProduct		6400
+LaunchApplication	AUTOLAUNCHAPP AND NOT Installed	6601
+SetARPNOMODIFY		1401
+DownloadAndInvokeBootstrapper	NOT(REMOVE OR INSTALLED_WEBVIEW2_VERSION)	6599
+SetARPINSTALLLOCATION		1001
+FindRelatedProducts		25
+ValidateProductID		700
+MigrateFeatureStates		1200
+ProcessComponents		1600
+UnpublishFeatures		1800
+RemoveRegistryValues		2600
+RemoveShortcuts	Installed AND NOT UPGRADINGPRODUCTCODE	3200
+RemoveFiles		3500
+RemoveFolders		3600
+CreateFolders		3700
+WriteRegistryValues		5000
+RegisterUser		6000
+RegisterProduct		6100
+RemoveExistingProducts		1501
+
+
+### TABLE Registry 
+Registry	Root	Key	Name	Value	Component_
+s72	i2	l255	L255	L0	s72
+Registry	Registry
+regD973AF7C25B0E2C3A8082EB3AF5AFC3E	1	Software\lumabar\lumabar	Desktop Shortcut	#1	ApplicationShortcutDesktop
+regFCACD62840B54A62EA84C079E5010799	1	Software\lumabar\lumabar	InstallDir	[INSTALLDIR]	RegistryEntries
+regD2CF8E94B698BAD2035F8DEE72CD71D8	1	Software\lumabar\lumabar	Uninstaller Shortcut	#1	CMP_UninstallShortcut
+reg224E6AF6834954AEC151AD0EFE3A6E80	1	Software\lumabar\lumabar	Start Menu Shortcut	#1	ApplicationShortcut
+
+
+### TABLE RegLocator 
+Signature_	Root	Key	Name	Type
+s72	i2	s255	S255	I2
+RegLocator	Signature_
+PrevInstallDirNoName	1	Software\lumabar\lumabar		18
+PrevInstallDirWithName	1	Software\lumabar\lumabar	InstallDir	18
+Webview2VersionSystemx64	2	SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18
+Webview2VersionSystemx86	2	SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18
+Webview2VersionUser	1	SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}	pv	18
+
+
+### TABLE RemoveFile 
+FileKey	Component_	FileName	DirProperty	InstallMode
+s72	s72	L255	s72	i2
+RemoveFile	FileKey
+INSTALLDIR	CMP_UninstallShortcut		INSTALLDIR	2
+DesktopFolder	ApplicationShortcutDesktop		DesktopFolder	2
+ApplicationProgramsFolder	ApplicationShortcut		ApplicationProgramsFolder	2
+

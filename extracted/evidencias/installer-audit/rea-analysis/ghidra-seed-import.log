@@ -1,0 +1,287 @@
+Picked up JAVA_TOOL_OPTIONS: -XX:ActiveProcessorCount=2
+Picked up JAVA_TOOL_OPTIONS: -XX:ActiveProcessorCount=2
+Picked up JAVA_TOOL_OPTIONS: -XX:ActiveProcessorCount=2
+Picked up JAVA_TOOL_OPTIONS: -XX:ActiveProcessorCount=2
+openjdk version "25.0.5.1" 2026-11-17
+OpenJDK Runtime Environment (build 25.0.5.1+2-1-deb13u1-Debian)
+OpenJDK 64-Bit Server VM (build 25.0.5.1+2-1-deb13u1-Debian, mixed mode)
+INFO  Using log config file: jar:file:/tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /root/.config/ghidra/ghidra_12.2_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /root/.config/ghidra/ghidra_12.2_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (897 ms) (ClassSearcher)  
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Loaded 148 trusted CA certificate(s) from /etc/ssl/certs/ca-certificates.crt (UnixSystemTrustKeyStoreUtil)  
+INFO  Loaded 148 trusted CA certificates from the OS trust store. (DefaultTrustManagerFactory)  
+INFO  Loaded 148 trusted CA certificates from the Java default trust store. (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (2122 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 60 extension points (19 false positives) (ClassSearcher)  
+INFO  HEADLESS Script Paths:
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /tasklet/threads/a_bnfwv9mhsbkxbnm96q4d/work/scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Swift/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /tmp/luma-ghidra-project/luma (HeadlessAnalyzer)  
+INFO  Opening project: /tmp/luma-ghidra-project/luma (HeadlessProject)  
+INFO  REPORT: Processing input files:  (HeadlessAnalyzer)  
+INFO       project: /tmp/luma-ghidra-project/luma (HeadlessAnalyzer)  
+INFO  IMPORTING: file:///tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe (HeadlessAnalyzer)  
+INFO  Using Loader: Portable Executable (PE) (ProgramLoader)  
+INFO  Using Language/Compiler: x86:LE:64:default:windows (ProgramLoader)  
+INFO  Using Library Search Path: [., /bin, /lib, /lib64, /lib/x86_64-linux-gnu, /lib/aarch64-linux-gnu, /usr/bin, /usr/lib, /usr/X11R6/bin, /usr/X11R6/lib, /usr/java/packages/lib, /usr/lib/x86_64-linux-gnu/jni, /usr/lib/x86_64-linux-gnu, /usr/lib/jni] (ProgramLoader)  
+INFO  TLS callbacks at 1411984f8 (TLSDirectory)  
+INFO  Additional info:
+Loading file:///tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe?MD5=3c4ffa32a366f76fe0a3edaead1475c2...
+------------------------------------------------
+
+Searching 8 paths for library ADVAPI32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CORE-SYNCH-L1-2-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CORE-WINRT-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-CONVERT-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-HEAP-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-LOCALE-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-MATH-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-STDIO-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-STRING-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-TIME-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-CRT-UTILITY-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library API-MS-WIN-DEVICES-QUERY-L1-1-0.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library BCRYPT.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library BCRYPTPRIMITIVES.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library CFGMGR32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library COMBASE.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library COMCTL32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library CRYPT32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library D3D11.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library DWMAPI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library DXGI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library DXVA2.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library GDI32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library ICUIN.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library IPHLPAPI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library KERNEL32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library MMDEVAPI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library MSI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library NTDLL.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library OLE32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library OLEAUT32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library PDH.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library POWRPROF.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library PROPSYS.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library SHELL32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library SHLWAPI.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library USER32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library VERSION.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library WINMM.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library WS2_32.DLL...
+Library not found.
+------------------------------------------------
+
+Searching 8 paths for library WTSAPI32.DLL...
+Library not found.
+------------------------------------------------
+
+Linking the External Programs of 'lumabar.exe' to imported libraries...
+  [NTDLL.DLL] -> not found in project
+  [BCRYPTPRIMITIVES.DLL] -> not found in project
+  [KERNEL32.DLL] -> not found in project
+  [ADVAPI32.DLL] -> not found in project
+  [OLE32.DLL] -> not found in project
+  [OLEAUT32.DLL] -> not found in project
+  [API-MS-WIN-CORE-SYNCH-L1-2-0.DLL] -> not found in project
+  [COMBASE.DLL] -> not found in project
+  [MMDEVAPI.DLL] -> not found in project
+  [SHELL32.DLL] -> not found in project
+  [BCRYPT.DLL] -> not found in project
+  [USER32.DLL] -> not found in project
+  [GDI32.DLL] -> not found in project
+  [DWMAPI.DLL] -> not found in project
+  [COMCTL32.DLL] -> not found in project
+  [ICUIN.DLL] -> not found in project
+  [PROPSYS.DLL] -> not found in project
+  [WINMM.DLL] -> not found in project
+  [IPHLPAPI.DLL] -> not found in project
+  [SHLWAPI.DLL] -> not found in project
+  [POWRPROF.DLL] -> not found in project
+  [WTSAPI32.DLL] -> not found in project
+  [DXVA2.DLL] -> not found in project
+  [DXGI.DLL] -> not found in project
+  [D3D11.DLL] -> not found in project
+  [PDH.DLL] -> not found in project
+  [CFGMGR32.DLL] -> not found in project
+  [VERSION.DLL] -> not found in project
+  [CRYPT32.DLL] -> not found in project
+  [API-MS-WIN-DEVICES-QUERY-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CORE-WINRT-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CORE-WINRT-ERROR-L1-1-0.DLL] -> not found in project
+  [WS2_32.DLL] -> not found in project
+  [MSI.DLL] -> not found in project
+  [API-MS-WIN-CRT-MATH-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-STRING-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-CONVERT-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-HEAP-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-UTILITY-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-TIME-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-STDIO-L1-1-0.DLL] -> not found in project
+  [API-MS-WIN-CRT-LOCALE-L1-1-0.DLL] -> not found in project
+------------------------------------------------
+
+ (ProgramLoader)  
+INFO  IMPORTING: Loaded 0 additional files (HeadlessAnalyzer)  
+INFO  /lumabar.exe: file deleted (root) (LocalFileSystem)  
+INFO  Deleted local file lumabar.exe (GhidraFileData)  
+WARN  REPORT: Removed conflicting program file from project: /lumabar.exe (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: LumaSeed.java '/tmp/luma-targets.txt'  (HeadlessAnalyzer)  
+INFO  SCRIPT: /tasklet/threads/a_bnfwv9mhsbkxbnm96q4d/work/scripts/LumaSeed.java (HeadlessAnalyzer)  
+INFO  LumaSeed.java> LUMA_SEED completed=395 failed=0; not full auto-analysis (GhidraScript)  
+INFO  /lumabar.exe: file created (root) (LocalFileSystem)  
+INFO  REPORT: Save succeeded for: /lumabar.exe (luma:/lumabar.exe) (HeadlessAnalyzer)  
+INFO  REPORT: Import succeeded (HeadlessAnalyzer)  

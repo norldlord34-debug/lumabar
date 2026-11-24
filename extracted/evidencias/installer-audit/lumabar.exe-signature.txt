@@ -1,0 +1,6 @@
+Current PE checksum   : 00000000
+Calculated PE checksum: 0186D05B
+Warning: invalid PE checksum
+Failed
+No signature found
+Unable to extract existing signature

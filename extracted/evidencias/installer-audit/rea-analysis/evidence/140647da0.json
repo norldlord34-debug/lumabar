@@ -1,0 +1,102 @@
+{
+  "target": {
+    "start": "0x140647da0",
+    "end": "0x140648bd9",
+    "bytes": 3641,
+    "associated_modules": [
+      "src\\commands\\github.rs"
+    ],
+    "file": "assembly/0000000140647da0.asm"
+  },
+  "is_error": true,
+  "pseudocode_fragments": 0,
+  "evidence": {
+    "error": {
+      "code": "execution_failure",
+      "category": "execution_failure",
+      "message": "Ghidra decompilation failed: Low-level Error: Bad instruction count exceeded:     ...     Instruction at (ram,0x00014065bca1) overlaps instruction at (ram,0x00014065bca0) . The effective native decompiler payload allowance is 50 MiB. If the diagnostic reports payload exhaustion, in MCP raise ghidra.decompile_max_payload_mib with update_analysis_settings (integer MiB from 1 to 2047) and repeat the selected operation on this Program without restarting REA. For a one-shot CLI retry, set REA_GHIDRA_DECOMPILE_MAX_PAYLOAD_MIB to a larger MiB value in the environment that starts the next rea invocation, then repeat the selected operation; the previous invocation's Program is no longer active. Runtime null or an omitted launch seed restores the installed Ghidra default. This does not raise the decompile deadline, high-pcode projection budgets or MCP client limits. Only the decompiler failed for this procedure. The Ghidra session remains usable.",
+      "retryable": false,
+      "remediation": {
+        "action": "Call analyze_function for the same procedure. It returns assembly, callers, callees, references and basic blocks from the Ghidra listing and records this decompiler failure under facet_availability.pseudocode. Repeating the unchanged decompile request is not expected to succeed."
+      },
+      "details": {
+        "provider_id": "ghidra",
+        "operation": "procedure_pseudo_code",
+        "related_operations": [
+          "analyze_function"
+        ],
+        "diagnostics": {
+          "target_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe",
+          "target_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+          "transport": "unix-socket",
+          "provider_version": "12.2",
+          "profile_digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8",
+          "run_id": "3f7ae722-2e23-45c9-94b3-38dee4965c38",
+          "runtime_root": "/tmp/rea-ghidra-qT9d9V",
+          "endpoint_path": "/tmp/rea-ghidra-qT9d9V/bridge.sock",
+          "project_root": "/tmp/rea-ghidra-qT9d9V/project",
+          "ghidra_log_path": "/tmp/rea-ghidra-qT9d9V/ghidra.log",
+          "script_log_path": "/tmp/rea-ghidra-qT9d9V/script.log",
+          "process_id": 9906,
+          "launch_support": [
+            {
+              "mode": "-envvars",
+              "stderr": "NOTE: Picked up JDK_JAVA_OPTIONS: \nPicked up JAVA_TOOL_OPTIONS: \nPicked up _JAVA_OPTIONS: \n",
+              "stderr_bytes": 91,
+              "stderr_truncated": false
+            },
+            {
+              "mode": "-vmargs",
+              "stderr": "NOTE: Picked up JDK_JAVA_OPTIONS: \nPicked up JAVA_TOOL_OPTIONS: \nPicked up _JAVA_OPTIONS: \n",
+              "stderr_bytes": 91,
+              "stderr_truncated": false
+            }
+          ],
+          "configured_jvm_max_heap": "2G",
+          "exit_code": null,
+          "exit_signal": null,
+          "stop_requested": false,
+          "diagnostic_truncated": false,
+          "output_incomplete": false,
+          "stdout": {
+            "text": "INFO  Using log config file: jar:file:/tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  \nINFO  Using log file: /tmp/rea-ghidra-qT9d9V/ghidra.log (LoggingInitialization)  \nINFO  Loading user preferences: /tmp/rea-ghidra-qT9d9V/config/root-ghidra/ghidra_12.2_PUBLIC/preferences (Preferences)  \nINFO  Searching for classes... (ClassSearcher)  \nINFO  Class search complete (893 ms) (ClassSearcher)  \nINFO  Initializing SSL Context (DefaultSSLContextInitializer)  \nINFO  Initializing Random Number Generator... (SecureRandomFactory)  \nINFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  \nINFO  Loaded 148 trusted CA certificate(s) from /etc/ssl/certs/ca-certificates.crt (UnixSystemTrustKeyStoreUtil)  \nINFO  Loaded 148 trusted CA certificates from the OS trust store. (DefaultTrustManagerFactory)  \nINFO  Loaded 148 trusted CA certificates from the Java default trust store. (DefaultTrustManagerFactory)  \nINFO  Starting cache cleanup: /tmp/rea-ghidra-qT9d9V/cache/root-ghidra/fscache2 (FileCacheMaintenanceDaemon)  \nINFO  Finished cache cleanup, estimated storage used: 0 (FileCacheMaintenanceDaemon)  \nINFO  Headless startup complete (2140 ms) (AnalyzeHeadless)  \nINFO  Class searcher loaded 60 extension points (19 false positives) (ClassSearcher)  \nINFO  HEADLESS Script Paths:\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/BSim/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts\n    /tmp/rea-runtime/node_modules/rea-agents/bridge/ghidra\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Base/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/8051/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/Swift/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/PDB/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts\n    /tmp/ghidra-runtime/ghidra_12.2_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts (HeadlessAnalyzer)  \nINFO  HEADLESS: execution starts (HeadlessAnalyzer)  \nINFO  Opening existing project: /tmp/rea-ghidra-qT9d9V/project/luma (HeadlessAnalyzer)  \nINFO  Opening project: /tmp/rea-ghidra-qT9d9V/project/luma (HeadlessProject)  \nINFO  REPORT: Processing read-only project file: /lumabar.exe (HeadlessAnalyzer)  \nINFO  REPORT: Execute script: /tmp/rea-runtime/node_modules/rea-agents/bridge/ghidra/ReaGhidraBridge.java '/tmp/rea-ghidra-qT9d9V/session.json'  (HeadlessAnalyzer)  \nINFO  SCRIPT: /tmp/rea-runtime/node_modules/rea-agents/bridge/ghidra/ReaGhidraBridge.java (HeadlessAnalyzer)  \nWARN  Decompiling 140620920, pcode error at 83900080: Could not follow disassembly flow into non-existing memory at 83900080 (DecompileCallback)  \nWARN  Decompiling 140623e00, pcode error at 140636ae7: Unable to resolve constructor at 140636ae7 (DecompileCallback)  \nWARN  Decompiling 140624f80, pcode error at 140638d38: Unable to resolve constructor at 140638d38 (DecompileCallback)  \nWARN  Decompiling 140624f80, pcode error at 140637ff4: Unable to resolve constructor at 140637ff4 (DecompileCallback)  \nWARN  Decompiling 140626380, pcode error at 140639fe3: Unable to resolve constructor at 140639fe3 (DecompileCallback)  \nWARN  Decompiling 140627b40, pcode error at 14063b75a: Unable to resolve constructor at 14063b75a (DecompileCallback)  \nWARN  Decompiling 140629510, pcode error at 14063d8e9: Unable to resolve constructor at 14063d8e9 (DecompileCallback)  \nWARN  Decompiling 14062b5a0, pcode error at 14063df44: Unable to resolve constructor at 14063df44 (DecompileCallback)  \nWARN  Decompiling 14062b5a0, pcode error at 14063de3e: Unable to resolve constructor at 14063de3e (DecompileCallback)  \nWARN  Decompiling 14062de00, pcode error at 14064141b: Unable to resolve constructor at 14064141b (DecompileCallback)  \nWARN  Decompiling 1406305a0, pcode error at 1406453d0: Unable to resolve constructor at 1406453d0 (DecompileCallback)  \nWARN  Decompiling 140633ac0, pcode error at 140648707: Unable to resolve constructor at 140648707 (DecompileCallback)  \nWARN  Decompiling 140635c40, pcode error at 14064aab9: Unable to resolve constructor at 14064aab9 (DecompileCallback)  \nWARN  Decompiling 140636ab0, pcode error at 14064c1f7: Unable to resolve constructor at 14064c1f7 (DecompileCallback)  \nWARN  Decompiling 1406390d0, pcode error at 14064df89: Unable to resolve constructor at 14064df89 (DecompileCallback)  \nWARN  Decompiling 14063b160, pcode error at 1406512ed: Unable to resolve constructor at 1406512ed (DecompileCallback)  \nWARN  Decompiling 14063e0e0, pcode error at 140654248: Unable to resolve constructor at 140654248 (DecompileCallback)  \nWARN  Decompiling 140641fe0, pcode error at 1406577fc: Unable to resolve constructor at 1406577fc (DecompileCallback)  \nWARN  Decompiling 1406456b0, pcode error at 140659076: Unable to resolve constructor at 140659076 (DecompileCallback)  \nWARN  Decompiling 1406456b0, pcode error at 14065891c: Unable to resolve constructor at 14065891c (DecompileCallback)  \nWARN  Decompiling 1406456b0, pcode error at 140657cf0: Unable to resolve constructor at 140657cf0 (DecompileCallback)  \n",
+            "bytes": 6474,
+            "retained_bytes": 6474
+          },
+          "stderr": {
+            "text": "NOTE: Picked up JDK_JAVA_OPTIONS: \nPicked up JAVA_TOOL_OPTIONS: \nPicked up _JAVA_OPTIONS: \nopenjdk version \"25.0.5.1\" 2026-11-17\nOpenJDK Runtime Environment (build 25.0.5.1+2-1-deb13u1-Debian)\nOpenJDK 64-Bit Server VM (build 25.0.5.1+2-1-deb13u1-Debian, mixed mode)\n",
+            "bytes": 266,
+            "retained_bytes": 266
+          },
+          "failure_output": {
+            "stdout": {
+              "text": "",
+              "bytes": 0,
+              "retained_bytes": 0
+            },
+            "stderr": {
+              "text": "",
+              "bytes": 0,
+              "retained_bytes": 0
+            },
+            "complete": true,
+            "launcher_failures": {
+              "failures": [],
+              "truncated": false
+            },
+            "observed_oome": []
+          },
+          "failure_cause": {
+            "name": "GhidraRemoteError",
+            "message": "Ghidra decompilation failed: Low-level Error: Bad instruction count exceeded:     ...     Instruction at (ram,0x00014065bca1) overlaps instruction at (ram,0x00014065bca0) . The effective native decompiler payload allowance is 50 MiB. If the diagnostic reports payload exhaustion, in MCP raise ghidra.decompile_max_payload_mib with update_analysis_settings (integer MiB from 1 to 2047) and repeat the selected operation on this Program without restarting REA. For a one-shot CLI retry, set REA_GHIDRA_DECOMPILE_MAX_PAYLOAD_MIB to a larger MiB value in the environment that starts the next rea invocation, then repeat the selected operation; the previous invocation's Program is no longer active. Runtime null or an omitted launch seed restores the installed Ghidra default. This does not raise the decompile deadline, high-pcode projection budgets or MCP client limits.",
+            "code": "decompile_failed"
+          },
+          "failure_kind": "remote",
+          "failure_message": "Ghidra decompilation failed: Low-level Error: Bad instruction count exceeded:     ...     Instruction at (ram,0x00014065bca1) overlaps instruction at (ram,0x00014065bca0) . The effective native decompiler payload allowance is 50 MiB. If the diagnostic reports payload exhaustion, in MCP raise ghidra.decompile_max_payload_mib with update_analysis_settings (integer MiB from 1 to 2047) and repeat the selected operation on this Program without restarting REA. For a one-shot CLI retry, set REA_GHIDRA_DECOMPILE_MAX_PAYLOAD_MIB to a larger MiB value in the environment that starts the next rea invocation, then repeat the selected operation; the previous invocation's Program is no longer active. Runtime null or an omitted launch seed restores the installed Ghidra default. This does not raise the decompile deadline, high-pcode projection budgets or MCP client limits.",
+          "remote_code": "decompile_failed",
+          "remote_message": "Ghidra decompilation failed: Low-level Error: Bad instruction count exceeded:     ...     Instruction at (ram,0x00014065bca1) overlaps instruction at (ram,0x00014065bca0) . The effective native decompiler payload allowance is 50 MiB. If the diagnostic reports payload exhaustion, in MCP raise ghidra.decompile_max_payload_mib with update_analysis_settings (integer MiB from 1 to 2047) and repeat the selected operation on this Program without restarting REA. For a one-shot CLI retry, set REA_GHIDRA_DECOMPILE_MAX_PAYLOAD_MIB to a larger MiB value in the environment that starts the next rea invocation, then repeat the selected operation; the previous invocation's Program is no longer active. Runtime null or an omitted launch seed restores the installed Ghidra default. This does not raise the decompile deadline, high-pcode projection budgets or MCP client limits."
+        }
+      }
+    }
+  }
+}

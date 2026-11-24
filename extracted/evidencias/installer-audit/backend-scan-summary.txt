@@ -1,0 +1,396 @@
+{
+  "instructions_scanned": 4600441,
+  "pe_runtime_function_ranges": 69691,
+  "source_path_targets": 637,
+  "xref_count": 1058,
+  "xref_sources": {
+    "src\\commands\\ai_usage.rs": 18,
+    "src\\commands\\radios.rs": 24,
+    "src\\commands\\gmail.rs": 13,
+    "src\\commands\\toggles.rs": 31,
+    "src\\commands\\net_status.rs": 1,
+    "src\\commands\\screen_time.rs": 14,
+    "src\\commands\\taskbar_keys.rs": 2,
+    "src\\commands\\desktop_capture.rs": 57,
+    "src\\commands\\dock.rs": 178,
+    "src\\commands\\tray.rs": 16,
+    "src\\commands\\badges.rs": 4,
+    "src\\commands\\audio.rs": 12,
+    "src\\commands\\memory.rs": 7,
+    "src\\commands\\popover.rs": 30,
+    "src\\commands\\revenue.rs": 47,
+    "src\\commands\\windows.rs": 26,
+    "src\\commands\\autostart.rs": 16,
+    "src\\commands\\apps.rs": 32,
+    "src\\commands\\drag_ghost.rs": 4,
+    "src\\commands\\screenshots.rs": 34,
+    "src\\commands\\wifi.rs": 17,
+    "src\\commands\\social.rs": 39,
+    "src\\commands\\stocks.rs": 27,
+    "src\\commands\\input_lang.rs": 10,
+    "src\\commands\\claude.rs": 36,
+    "src\\commands\\ocr.rs": 2,
+    "src\\commands\\weather.rs": 6,
+    "src\\commands\\crypto.rs": 3,
+    "src\\commands\\locale.rs": 7,
+    "src\\commands\\wallpaper.rs": 6,
+    "src\\commands\\unsplash.rs": 13,
+    "src\\commands\\github.rs": 15,
+    "src\\commands\\top_processes.rs": 3,
+    "src\\commands\\bluetooth.rs": 10,
+    "src\\commands\\x.rs": 7,
+    "src\\commands\\leetcode.rs": 3,
+    "src\\commands\\license.rs": 39,
+    "src\\commands\\brightness.rs": 4,
+    "src\\commands\\outlook.rs": 20,
+    "src\\commands\\search_console.rs": 23,
+    "src\\commands\\opencode.rs": 3,
+    "src\\commands\\whatsapp.rs": 17,
+    "src\\commands\\updater.rs": 4,
+    "src\\commands\\hotkey.rs": 6,
+    "src\\commands\\feedback.rs": 6,
+    "src\\commands\\dialogs.rs": 4,
+    "src\\commands\\sounds.rs": 5,
+    "src\\commands\\ethernet.rs": 3,
+    "src\\commands\\peek.rs": 3,
+    "src\\commands\\currency.rs": 3,
+    "src\\commands\\photos.rs": 3,
+    "src\\commands\\jumplist.rs": 8,
+    "src\\commands\\signals.rs": 18,
+    "src\\commands\\service_stats.rs": 23,
+    "src\\commands\\app_catalog.rs": 3,
+    "src\\commands\\storage.rs": 10,
+    "src\\commands\\files.rs": 6,
+    "src\\commands\\ics.rs": 12,
+    "src\\commands\\temps.rs": 4,
+    "src\\commands\\datafast.rs": 18,
+    "src\\commands\\capture.rs": 5,
+    "src\\commands\\appmenu.rs": 5,
+    "src\\commands\\theme.rs": 1,
+    "src\\commands\\fullscreen.rs": 9,
+    "src\\commands\\displays.rs": 9,
+    "src\\commands\\dock_drop.rs": 9,
+    "src\\commands\\voice.rs": 2,
+    "src\\commands\\google_oauth.rs": 1,
+    "src\\commands\\page_reader.rs": 2
+  },
+  "examples": [
+    {
+      "instruction": "0x140111892",
+      "assembly": "lea rax, [rip + 0x1258e5f]",
+      "target": "0x14136a6f8",
+      "source": "src\\commands\\ai_usage.rs",
+      "kind": "location-structure",
+      "function_start": "0x140111870",
+      "function_end": "0x1401118be"
+    },
+    {
+      "instruction": "0x1402a689e",
+      "assembly": "lea r8, [rip + 0xf6119b]",
+      "target": "0x141207a40",
+      "source": "src\\commands\\radios.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402a6610",
+      "function_end": "0x1402a68c2"
+    },
+    {
+      "instruction": "0x1402a6b42",
+      "assembly": "lea r8, [rip + 0xf60ef7]",
+      "target": "0x141207a40",
+      "source": "src\\commands\\radios.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402a68d0",
+      "function_end": "0x1402a6b66"
+    },
+    {
+      "instruction": "0x1402a7edc",
+      "assembly": "lea rcx, [rip + 0xf7202d]",
+      "target": "0x141219f10",
+      "source": "src\\commands\\gmail.rs",
+      "kind": "source-path",
+      "function_start": "0x1402a7b70",
+      "function_end": "0x1402a8efb"
+    },
+    {
+      "instruction": "0x1402a83d4",
+      "assembly": "lea rax, [rip + 0x10bb78d]",
+      "target": "0x141363b68",
+      "source": "src\\commands\\gmail.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402a7b70",
+      "function_end": "0x1402a8efb"
+    },
+    {
+      "instruction": "0x1402a84f7",
+      "assembly": "lea rax, [rip + 0x10bb682]",
+      "target": "0x141363b80",
+      "source": "src\\commands\\gmail.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402a7b70",
+      "function_end": "0x1402a8efb"
+    },
+    {
+      "instruction": "0x1402acd0f",
+      "assembly": "lea rcx, [rip + 0xf6eb4a]",
+      "target": "0x14121b860",
+      "source": "src\\commands\\toggles.rs",
+      "kind": "source-path",
+      "function_start": "0x1402abc50",
+      "function_end": "0x1402ad9d4"
+    },
+    {
+      "instruction": "0x1402acf55",
+      "assembly": "lea rcx, [rip + 0xf6e904]",
+      "target": "0x14121b860",
+      "source": "src\\commands\\toggles.rs",
+      "kind": "source-path",
+      "function_start": "0x1402abc50",
+      "function_end": "0x1402ad9d4"
+    },
+    {
+      "instruction": "0x1402ad0d8",
+      "assembly": "lea rcx, [rip + 0xf6e781]",
+      "target": "0x14121b860",
+      "source": "src\\commands\\toggles.rs",
+      "kind": "source-path",
+      "function_start": "0x1402abc50",
+      "function_end": "0x1402ad9d4"
+    },
+    {
+      "instruction": "0x1402ad21a",
+      "assembly": "lea rcx, [rip + 0xf6e63f]",
+      "target": "0x14121b860",
+      "source": "src\\commands\\toggles.rs",
+      "kind": "source-path",
+      "function_start": "0x1402abc50",
+      "function_end": "0x1402ad9d4"
+    },
+    {
+      "instruction": "0x1402ad746",
+      "assembly": "lea rcx, [rip + 0xf6e113]",
+      "target": "0x14121b860",
+      "source": "src\\commands\\toggles.rs",
+      "kind": "source-path",
+      "function_start": "0x1402abc50",
+      "function_end": "0x1402ad9d4"
+    },
+    {
+      "instruction": "0x1402b145d",
+      "assembly": "lea rax, [rip + 0xf67264]",
+      "target": "0x1412186c8",
+      "source": "src\\commands\\net_status.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b0de0",
+      "function_end": "0x1402b1ca6"
+    },
+    {
+      "instruction": "0x1402b24b3",
+      "assembly": "lea rcx, [rip + 0xf635f5]",
+      "target": "0x141215aaf",
+      "source": "src\\commands\\screen_time.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b21d0",
+      "function_end": "0x1402b33e5"
+    },
+    {
+      "instruction": "0x1402b3155",
+      "assembly": "lea rcx, [rip + 0xf65774]",
+      "target": "0x1412188d0",
+      "source": "src\\commands\\screen_time.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b21d0",
+      "function_end": "0x1402b33e5"
+    },
+    {
+      "instruction": "0x1402b3a84",
+      "assembly": "lea rcx, [rip + 0xf65150]",
+      "target": "0x141218bdb",
+      "source": "src\\commands\\taskbar_keys.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b39b0",
+      "function_end": "0x1402b53bf"
+    },
+    {
+      "instruction": "0x1402b51dd",
+      "assembly": "lea rcx, [rip + 0xf639f7]",
+      "target": "0x141218bdb",
+      "source": "src\\commands\\taskbar_keys.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b39b0",
+      "function_end": "0x1402b53bf"
+    },
+    {
+      "instruction": "0x1402b5bc7",
+      "assembly": "lea rcx, [rip + 0xf60228]",
+      "target": "0x141215df6",
+      "source": "src\\commands\\desktop_capture.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b5a40",
+      "function_end": "0x1402b5c86"
+    },
+    {
+      "instruction": "0x1402b6884",
+      "assembly": "lea rcx, [rip + 0xf6300f]",
+      "target": "0x14121989a",
+      "source": "src\\commands\\dock.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6480",
+      "function_end": "0x1402b6a3a"
+    },
+    {
+      "instruction": "0x1402b6b5b",
+      "assembly": "lea rax, [rip + 0xf62f06]",
+      "target": "0x141219a68",
+      "source": "src\\commands\\dock.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b6a40",
+      "function_end": "0x1402b6bd7"
+    },
+    {
+      "instruction": "0x1402b6f40",
+      "assembly": "lea rcx, [rip + 0xf5f159]",
+      "target": "0x1412160a0",
+      "source": "src\\commands\\tray.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b6fd6",
+      "assembly": "lea rcx, [rip + 0xf5f0c3]",
+      "target": "0x1412160a0",
+      "source": "src\\commands\\tray.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b70e9",
+      "assembly": "lea rcx, [rip + 0x10acf73]",
+      "target": "0x141364063",
+      "source": "src\\commands\\badges.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b721e",
+      "assembly": "lea rcx, [rip + 0xf5ee7b]",
+      "target": "0x1412160a0",
+      "source": "src\\commands\\tray.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b756e",
+      "assembly": "lea rcx, [rip + 0xf5eb2b]",
+      "target": "0x1412160a0",
+      "source": "src\\commands\\tray.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b7683",
+      "assembly": "lea rax, [rip + 0x10ac0ee]",
+      "target": "0x141363778",
+      "source": "src\\commands\\tray.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b6cd0",
+      "function_end": "0x1402b76ae"
+    },
+    {
+      "instruction": "0x1402b8da0",
+      "assembly": "lea rax, [rip + 0x10aa949]",
+      "target": "0x1413636f0",
+      "source": "src\\commands\\tray.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b76f0",
+      "function_end": "0x1402b8f46"
+    },
+    {
+      "instruction": "0x1402b8e1d",
+      "assembly": "lea rax, [rip + 0x10aa8e4]",
+      "target": "0x141363708",
+      "source": "src\\commands\\tray.rs",
+      "kind": "location-structure",
+      "function_start": "0x1402b76f0",
+      "function_end": "0x1402b8f46"
+    },
+    {
+      "instruction": "0x1402b9ec3",
+      "assembly": "lea rcx, [rip + 0xf5ff27]",
+      "target": "0x141219df1",
+      "source": "src\\commands\\audio.rs",
+      "kind": "source-path",
+      "function_start": "0x1402b99d0",
+      "function_end": "0x1402ba695"
+    },
+    {
+      "instruction": "0x1402bafde",
+      "assembly": "lea rcx, [rip + 0xf5b2d0]",
+      "target": "0x1412162b5",
+      "source": "src\\commands\\memory.rs",
+      "kind": "source-path",
+      "function_start": "0x1402bad20",
+      "function_end": "0x1402bb639"
+    },
+    {
+      "instruction": "0x1402bc432",
+      "assembly": "lea rcx, [rip + 0xf59e7c]",
+      "target": "0x1412162b5",
+      "source": "src\\commands\\memory.rs",
+      "kind": "source-path",
+      "function_start": "0x1402bb800",
+      "function_end": "0x1402bc855"
+    },
+    {
+      "instruction": "0x1402bd583",
+      "assembly": "lea rcx, [rip + 0xf5db0e]",
+      "target": "0x14121b098",
+      "source": "src\\commands\\popover.rs",
+      "kind": "source-path",
+      "function_start": "0x1402bd4d0",
+      "function_end": "0x1402bd794"
+    },
+    {
+      "instruction": "0x1402bdbd3",
+      "assembly": "lea rcx, [rip + 0xf5d672]",
+      "target": "0x14121b24c",
+      "source": "src\\commands\\revenue.rs",
+      "kind": "source-path",
+      "function_start": "0x1402bda00",
+      "function_end": "0x1402c09d7"
+    },
+    {
+      "instruction": "0x1402c07ab",
+      "assembly": "lea rcx, [rip + 0xf5aa9a]",
+      "target": "0x14121b24c",
+      "source": "src\\commands\\revenue.rs",
+      "kind": "source-path",
+      "function_start": "0x1402bda00",
+      "function_end": "0x1402c09d7"
+    },
+    {
+      "instruction": "0x1402c177d",
+      "assembly": "lea rcx, [rip + 0xf5a3ba]",
+      "target": "0x14121bb3e",
+      "source": "src\\commands\\windows.rs",
+      "kind": "source-path",
+      "function_start": "0x1402c15b0",
+      "function_end": "0x1402c2535"
+    },
+    {
+      "instruction": "0x1402c1872",
+      "assembly": "lea rcx, [rip + 0xf5a2c5]",
+      "target": "0x14121bb3e",
+      "source": "src\\commands\\windows.rs",
+      "kind": "source-path",
+      "function_start": "0x1402c15b0",
+      "function_end": "0x1402c2535"
+    }
+  ]
+}
+CALL CANDIDATE COUNTS [('L', 237), ('u', 15), ('getItem', 3), ('setItem', 2)]
+BRIGHTNESS EXAMPLES [{'file': 'index-Cq3B5g79.js', 'line': 39539, 'callee': 'L', 'command': 'get_brightness', 'context': 'k = `/assets/papers-ByzPKJS8.png`;\nfunction ok() {\n  return L(`get_brightness`);\n}\nfunction sk(e) {\n  return L(`set_brightness`, { percent: Math.round(e) });\n}\nfunction ck(e) {\n  return z(`brightness-changed`, (t) => e(t.payload));\n}\nvar lk = `nightlight-changed`,\n  uk = i()(\n    P(\n      (e, t) => ({\n        on: !1,\n '}, {'file': 'index-Cq3B5g79.js', 'line': 39542, 'callee': 'L', 'command': 'set_brightness', 'context': '{\n  return L(`get_brightness`);\n}\nfunction sk(e) {\n  return L(`set_brightness`, { percent: Math.round(e) });\n}\nfunction ck(e) {\n  return z(`brightness-changed`, (t) => e(t.payload));\n}\nvar lk = `nightlight-changed`,\n  uk = i()(\n    P(\n      (e, t) => ({\n        on: !1,\n        error: null,\n        setOn: async (t) => {'}]

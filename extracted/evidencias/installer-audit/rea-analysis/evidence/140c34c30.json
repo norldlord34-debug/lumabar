@@ -1,0 +1,92 @@
+{
+  "target": {
+    "start": "0x140c34c30",
+    "end": "0x140c34e74",
+    "bytes": 580,
+    "associated_modules": [
+      "src\\commands\\fullscreen.rs",
+      "src\\commands\\windows.rs"
+    ],
+    "file": "assembly/0000000140c34c30.asm"
+  },
+  "is_error": false,
+  "pseudocode_fragments": 1,
+  "evidence": {
+    "evidence_id": "ev_50419980ae48c8132292068d179fa05754c0517fa781bff31193cba049c088ef",
+    "evidence_format": 2,
+    "subject": {
+      "identity": {
+        "kind": "file",
+        "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+        "selection": null,
+        "format": "pe",
+        "architecture": "x86_64"
+      },
+      "name": "lumabar.exe",
+      "local_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.2"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.2"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "pe",
+        "architecture": "x86_64",
+        "import_mode": "existing-project-private-copy",
+        "producer": {
+          "rea_version": "6.10.1",
+          "sources_sha256": "2acc01df6e538ba5171b72dc8d8b1752a57b3dacd670979ea84a07661bd7ef1f"
+        },
+        "annotation_policy": "read-only-existing-project",
+        "selected_project_relationship_coverage": "prior-analysis-unknown",
+        "loader_relocation_semantics": "read-only-relocation-limitations",
+        "existing_project": {
+          "configured_path": "/tmp/luma-ghidra-project/luma.gpr",
+          "project_path": "/tmp/luma-ghidra-project",
+          "project_name": "luma",
+          "program_name": "lumabar.exe",
+          "sha256": "732fc8d18431b55139e2993ce282f990a9afffeefdafcc84561a39014d241caa"
+        },
+        "original_analysis": {
+          "completeness": "unknown",
+          "settings": "unknown"
+        },
+        "no_return_repair": "disabled-existing-project",
+        "process_launch": "inspected-jvm-launch-support"
+      },
+      "digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8"
+    },
+    "predicate_type": "rea.analysis",
+    "operation": "procedure_pseudo_code",
+    "parameters": {
+      "procedure": "0x140c34c30"
+    },
+    "raw_result": null,
+    "normalized_result": "\nvoid FUN_140c34c30(undefined8 *param_1,longlong *param_2)\n\n{\n  undefined8 *puVar1;\n  longlong lVar2;\n  longlong lVar3;\n  code *pcVar4;\n  longlong *plVar5;\n  uint uVar6;\n  undefined8 uVar7;\n  ulonglong uVar8;\n  undefined8 *puVar9;\n  undefined8 *puVar10;\n  undefined1 *puStack_480;\n  longlong *plStack_478;\n  undefined2 uStack_470;\n  undefined6 uStack_46e;\n  undefined8 *puStack_468;\n  undefined1 *puStack_460;\n  undefined1 *puStack_458;\n  undefined2 uStack_450;\n  undefined6 uStack_44e;\n  undefined8 uStack_448;\n  undefined1 auStack_440 [1024];\n  \n  puVar1 = (undefined8 *)param_2[1];\n  puStack_468 = param_1;\n  if ((undefined8 *)*param_2 != puVar1) {\n    puVar9 = (undefined8 *)*param_2;\n    do {\n      puVar10 = puVar9 + 2;\n      *param_2 = (longlong)puVar10;\n      uVar7 = *puVar9;\n      FUN_1411650b0(auStack_440,0,0x200);\n      uVar6 = GetClassNameW(uVar7,auStack_440,0x100);\n      if (0 < (int)uVar6) {\n        if (0x100 < uVar6) {\n          FUN_141166a80(0,(ulonglong)uVar6,0x100,&UNK_14135da50);\n                    /* WARNING: Does not return */\n          pcVar4 = (code *)invalidInstructionException();\n          (*pcVar4)();\n        }\n        puStack_458 = auStack_440 + (ulonglong)uVar6 * 2;\n        uStack_450 = 0;\n        puStack_460 = auStack_440;\n        FUN_1405690a0(&puStack_480);\n        plVar5 = plStack_478;\n        if (CONCAT62(uStack_46e,uStack_470) == 0xd) {\n          lVar2 = *plStack_478;\n          lVar3 = *(longlong *)((longlong)plStack_478 + 5);\n          if (puStack_480 != (undefined1 *)0x0) {\n            uVar7 = GetProcessHeap();\n            HeapFree(uVar7,0,plVar5);\n          }\n          if (lVar3 == 0x7373616c43577465 && lVar2 == 0x5774656e69626143) {\n            uVar7 = *puVar9;\n            FUN_1411650b0(auStack_440,0,0x400);\n            uVar6 = GetWindowTextW(uVar7,auStack_440,0x200);\n            uVar8 = 0;\n            if (0 < (int)uVar6) {\n              uVar8 = (ulonglong)uVar6;\n            }\n            if (0x200 < (int)uVar6) {\n              FUN_141166a80(0,uVar8,0x200,&UNK_14121bcb8);\n                    /* WARNING: Does not return */\n              pcVar4 = (code *)invalidInstructionException();\n              (*pcVar4)();\n            }\n            plStack_478 = (longlong *)(auStack_440 + uVar8 * 2);\n            uStack_470 = 0;\n            puStack_480 = auStack_440;\n            FUN_1405690a0(&puStack_458,&puStack_480);\n            puStack_468[2] = CONCAT62(uStack_44e,uStack_450);\n            puStack_468[3] = uStack_448;\n            *puStack_468 = uVar7;\n            puStack_468[1] = puStack_458;\n            return;\n          }\n        }\n        else if (puStack_480 != (undefined1 *)0x0) {\n          uVar7 = GetProcessHeap();\n          HeapFree(uVar7,0,plVar5);\n        }\n      }\n      puVar9 = puVar10;\n    } while (puVar10 != puVar1);\n  }\n  puStack_468[1] = 0xffffffffffffffff;\n  return;\n}\n\n",
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "This session opens a caller-selected existing Ghidra project through a private copy, without import, auto-analysis or repair scripts. Original analysis completeness and settings are unknown.",
+      "The original project is never opened by Ghidra or modified. The private copy is read-only to bridge operations and deleted on close; original executable bytes are never written.",
+      "The analysis profile records the selected project content fingerprint and program name. The imported program SHA-256 must match the admitted target; the project may contain caller annotations or earlier edits, which are not fresh REA discoveries.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+      "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+      "The Ghidra Program references PDB lumabar.pdb (GUID 84ce8363-80ab-4301-b08d-5bb3dcbcdbcc, age (hex) 1, signature unknown, version RSDS); Ghidra reports load state unknown. Original names and types may be missing; an empty name search does not prove a procedure is absent. Use list_procedures and address-based analysis to inspect recovered functions. REA does not admit a caller-selected PDB companion.",
+      "Known provider defect ghidra-9996 (jump-table-flow-references-omitted): Ghidra 12.2 can omit jump-table flow references and emit incorrect decompiler output for clang -O0 x86-64 switches whose case labels start above zero. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/9996 is closed by c93917a622211349998f641de54cfdbe0e0e5bee, milestone 12.2.1, which is not yet released. This limitation is recorded for parsed 12.2 releases whose patch is below 12.2.1, including a zero patch and a suffix, and clears on 12.2.1. REA's verified switch lane compiles with -O2 and does not cover this shape.",
+      "Known provider defect ghidra-10154 (jump-table-unrecovered-function-truncated): Ghidra 12.2 leaves an aarch64 switch unrecovered when it is a byte-offset bounded by and-0xff. The function body stops at the indirect branch. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/10154 is open and names a Swift -O swift-enum switch; it has no fix commit and no milestone. REA reproduced the unrecovered jump table on the exact 12.2 build with an AArch64 ELF object of that instruction shape. A compare-bounded byte table still recovers. This record stays on every admitted build until a release is known to clear it."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "binary_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "all_runtime_function_ranges": 69691,
+  "retry_targets": 141,
+  "method": "Fresh PE import without full autoanalysis; define PE runtime function boundaries before bounded target disassembly and decompilation; 45 second timeout per function.",
+  "limits": "Runtime ranges are not a complete semantic function model. Pseudocode remains unvalidated; no original source recovery claimed."
+}

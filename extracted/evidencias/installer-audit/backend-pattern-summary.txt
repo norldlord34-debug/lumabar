@@ -1,0 +1,188 @@
+{
+  "original_source_checks": {
+    "exe_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+    "debug_directories": [
+      {
+        "type": 2,
+        "size": 36,
+        "offset": "0x143f1c4",
+        "first_bytes": "525344536383ce84ab800143b08d5bb3dcbcdbcc010000006c756d616261722e70646200",
+        "format": "CodeView RSDS",
+        "pdb_guid": "84ce8363-80ab-4301-b08d-5bb3dcbcdbcc",
+        "age": 1,
+        "pdb_path": "lumabar.pdb"
+      },
+      {
+        "type": 12,
+        "size": 20,
+        "offset": "0x143f1e8",
+        "first_bytes": "030100004b0000004b000000000000003e000000"
+      },
+      {
+        "type": 13,
+        "size": 1048,
+        "offset": "0x143f1fc",
+        "first_bytes": "000000000010000070cf00012e7465787400000070df0001306a15002e74657874246d6e00000000"
+      }
+    ],
+    "coff_symbol_count": 0,
+    "coff_symbol_table_pointer": "0x0",
+    "overlay_offset": null,
+    "markers": {
+      "RSDS": [
+        "0x143f1c4"
+      ],
+      "PDB7": [],
+      "PDB2": [],
+      "DWARF_debug_info": [],
+      "DWARF_debug_line": [],
+      "Rust_function_text": [],
+      "Rust_async_function_text": [],
+      "Rust_impl_text": [],
+      "Cargo_package_section": [],
+      "Git_bundle": []
+    },
+    "native_source_path_count": 565
+  },
+  "source_related_function_ranges": 395,
+  "modules_with_disassembly": 69,
+  "tauri_call_sites": 237,
+  "distinct_command_names": 236,
+  "short_nonlicense_functions": [
+    {
+      "start": "0x140111870",
+      "end": "0x1401118be",
+      "bytes": 78,
+      "associated_modules": [
+        "src\\commands\\ai_usage.rs"
+      ],
+      "file": "assembly/0000000140111870.asm"
+    },
+    {
+      "start": "0x140c0e560",
+      "end": "0x140c0e62d",
+      "bytes": 205,
+      "associated_modules": [
+        "src\\commands\\desktop_capture.rs"
+      ],
+      "file": "assembly/0000000140c0e560.asm"
+    },
+    {
+      "start": "0x140ae3900",
+      "end": "0x140ae3a11",
+      "bytes": 273,
+      "associated_modules": [
+        "src\\commands\\dock.rs"
+      ],
+      "file": "assembly/0000000140ae3900.asm"
+    },
+    {
+      "start": "0x140a601b0",
+      "end": "0x140a602c3",
+      "bytes": 275,
+      "associated_modules": [
+        "src\\commands\\screenshots.rs"
+      ],
+      "file": "assembly/0000000140a601b0.asm"
+    },
+    {
+      "start": "0x14058df10",
+      "end": "0x14058e027",
+      "bytes": 279,
+      "associated_modules": [
+        "src\\commands\\ai_usage.rs"
+      ],
+      "file": "assembly/000000014058df10.asm"
+    },
+    {
+      "start": "0x1409151e0",
+      "end": "0x140915301",
+      "bytes": 289,
+      "associated_modules": [
+        "src\\commands\\voice.rs"
+      ],
+      "file": "assembly/00000001409151e0.asm"
+    },
+    {
+      "start": "0x140947170",
+      "end": "0x14094729d",
+      "bytes": 301,
+      "associated_modules": [
+        "src\\commands\\voice.rs"
+      ],
+      "file": "assembly/0000000140947170.asm"
+    },
+    {
+      "start": "0x140adacf0",
+      "end": "0x140adae38",
+      "bytes": 328,
+      "associated_modules": [
+        "src\\commands\\dock.rs"
+      ],
+      "file": "assembly/0000000140adacf0.asm"
+    },
+    {
+      "start": "0x140b24970",
+      "end": "0x140b24ac1",
+      "bytes": 337,
+      "associated_modules": [
+        "src\\commands\\radios.rs"
+      ],
+      "file": "assembly/0000000140b24970.asm"
+    },
+    {
+      "start": "0x140a4feb0",
+      "end": "0x140a50002",
+      "bytes": 338,
+      "associated_modules": [
+        "src\\commands\\input_lang.rs"
+      ],
+      "file": "assembly/0000000140a4feb0.asm"
+    },
+    {
+      "start": "0x140a8e730",
+      "end": "0x140a8e883",
+      "bytes": 339,
+      "associated_modules": [
+        "src\\commands\\search_console.rs"
+      ],
+      "file": "assembly/0000000140a8e730.asm"
+    },
+    {
+      "start": "0x140bdabd0",
+      "end": "0x140bdad23",
+      "bytes": 339,
+      "associated_modules": [
+        "src\\commands\\displays.rs"
+      ],
+      "file": "assembly/0000000140bdabd0.asm"
+    },
+    {
+      "start": "0x140916d60",
+      "end": "0x140916ed8",
+      "bytes": 376,
+      "associated_modules": [
+        "src\\commands\\toggles.rs"
+      ],
+      "file": "assembly/0000000140916d60.asm"
+    },
+    {
+      "start": "0x140a4fce0",
+      "end": "0x140a4fe5b",
+      "bytes": 379,
+      "associated_modules": [
+        "src\\commands\\input_lang.rs"
+      ],
+      "file": "assembly/0000000140a4fce0.asm"
+    },
+    {
+      "start": "0x140b42ee0",
+      "end": "0x140b43063",
+      "bytes": 387,
+      "associated_modules": [
+        "src\\commands\\capture.rs"
+      ],
+      "file": "assembly/0000000140b42ee0.asm"
+    }
+  ]
+}

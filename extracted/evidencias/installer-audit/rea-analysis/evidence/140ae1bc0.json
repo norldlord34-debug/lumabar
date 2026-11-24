@@ -1,0 +1,91 @@
+{
+  "target": {
+    "start": "0x140ae1bc0",
+    "end": "0x140ae1d8c",
+    "bytes": 460,
+    "associated_modules": [
+      "src\\commands\\dock.rs"
+    ],
+    "file": "assembly/0000000140ae1bc0.asm"
+  },
+  "is_error": false,
+  "pseudocode_fragments": 1,
+  "evidence": {
+    "evidence_id": "ev_d406bd3db693f78c78d34e53cebfab9983bca8f4134259c48d8fddb80944f246",
+    "evidence_format": 2,
+    "subject": {
+      "identity": {
+        "kind": "file",
+        "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+        "selection": null,
+        "format": "pe",
+        "architecture": "x86_64"
+      },
+      "name": "lumabar.exe",
+      "local_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.2"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.2"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "pe",
+        "architecture": "x86_64",
+        "import_mode": "existing-project-private-copy",
+        "producer": {
+          "rea_version": "6.10.1",
+          "sources_sha256": "2acc01df6e538ba5171b72dc8d8b1752a57b3dacd670979ea84a07661bd7ef1f"
+        },
+        "annotation_policy": "read-only-existing-project",
+        "selected_project_relationship_coverage": "prior-analysis-unknown",
+        "loader_relocation_semantics": "read-only-relocation-limitations",
+        "existing_project": {
+          "configured_path": "/tmp/luma-ghidra-project/luma.gpr",
+          "project_path": "/tmp/luma-ghidra-project",
+          "project_name": "luma",
+          "program_name": "lumabar.exe",
+          "sha256": "732fc8d18431b55139e2993ce282f990a9afffeefdafcc84561a39014d241caa"
+        },
+        "original_analysis": {
+          "completeness": "unknown",
+          "settings": "unknown"
+        },
+        "no_return_repair": "disabled-existing-project",
+        "process_launch": "inspected-jvm-launch-support"
+      },
+      "digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8"
+    },
+    "predicate_type": "rea.analysis",
+    "operation": "procedure_pseudo_code",
+    "parameters": {
+      "procedure": "0x140ae1bc0"
+    },
+    "raw_result": null,
+    "normalized_result": "\n/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */\n\nvoid FUN_140ae1bc0(longlong param_1)\n\n{\n  code *pcVar1;\n  undefined8 uVar2;\n  char cVar3;\n  int iVar4;\n  longlong lVar5;\n  bool bVar6;\n  undefined *puStack_30;\n  byte bStack_28;\n  undefined8 uStack_20;\n  \n  uStack_20 = 0xfffffffffffffffe;\n  LOCK();\n  bVar6 = DAT_14178a5a8 == '\\0';\n  if (bVar6) {\n    DAT_14178a5a8 = '\\x01';\n  }\n  UNLOCK();\n  if (!bVar6) {\n    FUN_141189320(&DAT_14178a5a8);\n  }\n  if ((_DAT_14178ab20 & 0x7fffffffffffffff) == 0) {\n    bStack_28 = 0;\n    uVar2 = _DAT_14178a5b8;\n  }\n  else {\n    bStack_28 = func_0x00014118a060();\n    bStack_28 = bStack_28 ^ 1;\n    uVar2 = _DAT_14178a5b8;\n  }\n  _DAT_14178a5b8 = uVar2;\n  if (DAT_14178a5a9 != '\\0') {\n    puStack_30 = &DAT_14178a5a8;\n    FUN_1411667f0(&UNK_14134b999,0x2b,&puStack_30,&UNK_14134be28,&UNK_141362590);\n                    /* WARNING: Does not return */\n    pcVar1 = (code *)invalidInstructionException();\n    (*pcVar1)();\n  }\n  iVar4 = _DAT_14178a5b0;\n  _DAT_14178a5b0 = 0;\n  if (iVar4 == 1) {\n    if (((bStack_28 == 0) && ((_DAT_14178ab20 & 0x7fffffffffffffff) != 0)) &&\n       (cVar3 = func_0x00014118a060(), cVar3 == '\\0')) {\n      DAT_14178a5a9 = '\\x01';\n    }\n    cVar3 = DAT_14178a5a8;\n    LOCK();\n    DAT_14178a5a8 = 0;\n    UNLOCK();\n    if (cVar3 == '\\x02') {\n      WakeByAddressSingle(&DAT_14178a5a8);\n      lVar5 = GetForegroundWindow();\n    }\n    else {\n      lVar5 = GetForegroundWindow();\n    }\n    if (((lVar5 == param_1) && (iVar4 = IsWindowVisible(uVar2), iVar4 != 0)) &&\n       (iVar4 = IsIconic(uVar2), iVar4 == 0)) {\n                    /* WARNING: Could not recover jumptable at 0x000140ae1c80. Too many branches */\n                    /* WARNING: Treating indirect jump as call */\n      SetForegroundWindow(uVar2);\n      return;\n    }\n  }\n  else {\n    if (((bStack_28 == 0) && ((_DAT_14178ab20 & 0x7fffffffffffffff) != 0)) &&\n       (cVar3 = func_0x00014118a060(), cVar3 == '\\0')) {\n      DAT_14178a5a9 = '\\x01';\n    }\n    cVar3 = DAT_14178a5a8;\n    LOCK();\n    DAT_14178a5a8 = 0;\n    UNLOCK();\n    if (cVar3 == '\\x02') {\n                    /* WARNING: Could not recover jumptable at 0x000140ae1d53. Too many branches */\n                    /* WARNING: Treating indirect jump as call */\n      WakeByAddressSingle(&DAT_14178a5a8);\n      return;\n    }\n  }\n  return;\n}\n\n",
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "This session opens a caller-selected existing Ghidra project through a private copy, without import, auto-analysis or repair scripts. Original analysis completeness and settings are unknown.",
+      "The original project is never opened by Ghidra or modified. The private copy is read-only to bridge operations and deleted on close; original executable bytes are never written.",
+      "The analysis profile records the selected project content fingerprint and program name. The imported program SHA-256 must match the admitted target; the project may contain caller annotations or earlier edits, which are not fresh REA discoveries.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+      "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+      "The Ghidra Program references PDB lumabar.pdb (GUID 84ce8363-80ab-4301-b08d-5bb3dcbcdbcc, age (hex) 1, signature unknown, version RSDS); Ghidra reports load state unknown. Original names and types may be missing; an empty name search does not prove a procedure is absent. Use list_procedures and address-based analysis to inspect recovered functions. REA does not admit a caller-selected PDB companion.",
+      "Known provider defect ghidra-9996 (jump-table-flow-references-omitted): Ghidra 12.2 can omit jump-table flow references and emit incorrect decompiler output for clang -O0 x86-64 switches whose case labels start above zero. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/9996 is closed by c93917a622211349998f641de54cfdbe0e0e5bee, milestone 12.2.1, which is not yet released. This limitation is recorded for parsed 12.2 releases whose patch is below 12.2.1, including a zero patch and a suffix, and clears on 12.2.1. REA's verified switch lane compiles with -O2 and does not cover this shape.",
+      "Known provider defect ghidra-10154 (jump-table-unrecovered-function-truncated): Ghidra 12.2 leaves an aarch64 switch unrecovered when it is a byte-offset bounded by and-0xff. The function body stops at the indirect branch. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/10154 is open and names a Swift -O swift-enum switch; it has no fix commit and no milestone. REA reproduced the unrecovered jump table on the exact 12.2 build with an AArch64 ELF object of that instruction shape. A compare-bounded byte table still recovers. This record stays on every admitted build until a release is known to clear it."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

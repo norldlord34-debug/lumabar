@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "provenance": {
+      "untrusted_content": true,
+      "source": "analysis_target"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"error\":{\"code\":\"resource_constraint\",\"category\":\"resource_constraint\",\"message\":\"The operation completed, but its complete MCP response exceeds the stdio response budget. The analysis result was not truncated. The effective REA_MCP_MAX_RESPONSE_BYTES value is 10485760 bytes (floor 10485760 bytes, 10 MiB). A change requires restarting the REA process and a matching client receive buffer. It does not raise REA's reserved single-string limit of 536869864 UTF-16 code units or Node's single-string ceiling of 536870888 UTF-16 code units. This release has no runtime override for either limit. Call inspect_analysis_view with the supplied continuation arguments to read retained analysis. Follow coverage.next_offset for subsequent pages; reduce the page limit if needed, or export the complete retained Evidence.\",\"retryable\":false,\"remediation\":{\"action\":\"Call inspect_analysis_view with the supplied continuation arguments to read retained analysis. Follow coverage.next_offset for subsequent pages; reduce the page limit if needed, or export the complete retained Evidence. The effective REA_MCP_MAX_RESPONSE_BYTES value is 10485760 bytes (floor 10485760 bytes, 10 MiB). A change requires restarting the REA process and a matching client receive buffer. It does not raise REA's reserved single-string limit of 536869864 UTF-16 code units or Node's single-string ceiling of 536870888 UTF-16 code units. This release has no runtime override for either limit.\"},\"details\":{\"operation\":\"list_procedures\",\"resource\":\"transport\",\"reason\":\"The operation completed, but its complete MCP response exceeds the stdio response budget. The analysis result was not truncated. The effective REA_MCP_MAX_RESPONSE_BYTES value is 10485760 bytes (floor 10485760 bytes, 10 MiB). A change requires restarting the REA process and a matching client receive buffer. It does not raise REA's reserved single-string limit of 536869864 UTF-16 code units or Node's single-string ceiling of 536870888 UTF-16 code units. This release has no runtime override for either limit. Call inspect_analysis_view with the supplied continuation arguments to read retained analysis. Follow coverage.next_offset for subsequent pages; reduce the page limit if needed, or export the complete retained Evidence.\",\"reported_limits\":{\"boundary\":\"mcp-response\",\"default_receive_buffer_bytes\":10485760,\"result_budget_bytes\":10484736,\"max_string_code_units\":536869864,\"response_bytes_at_least\":10578399,\"response_code_units_at_least\":10578399,\"constraint\":\"receive-buffer\",\"evidence_id\":\"ev_68f338cf6e23a729cab1f29cd27d47c9bc1ae9b6c3dc2f8b233e3f9730a624a0\",\"evidence_reference\":{\"kind\":\"retained-evidence\",\"evidence_id\":\"ev_68f338cf6e23a729cab1f29cd27d47c9bc1ae9b6c3dc2f8b233e3f9730a624a0\"},\"continuation\":{\"name\":\"inspect_analysis_view\",\"arguments\":{\"source\":{\"kind\":\"retained-evidence\",\"evidence_id\":\"ev_68f338cf6e23a729cab1f29cd27d47c9bc1ae9b6c3dc2f8b233e3f9730a624a0\"},\"view\":{\"kind\":\"native-inventory\",\"offset\":0,\"limit\":64}}},\"next_operation\":\"inspect_analysis_view\"}}}}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structured_content": null,
+  "is_error": true,
+  "result_type": "complete"
+}

@@ -1,0 +1,7 @@
+Registry	Root	Key	Name	Value	Component_
+s72	i2	l255	L255	L0	s72
+Registry	Registry
+regD973AF7C25B0E2C3A8082EB3AF5AFC3E	1	Software\lumabar\lumabar	Desktop Shortcut	#1	ApplicationShortcutDesktop
+regFCACD62840B54A62EA84C079E5010799	1	Software\lumabar\lumabar	InstallDir	[INSTALLDIR]	RegistryEntries
+regD2CF8E94B698BAD2035F8DEE72CD71D8	1	Software\lumabar\lumabar	Uninstaller Shortcut	#1	CMP_UninstallShortcut
+reg224E6AF6834954AEC151AD0EFE3A6E80	1	Software\lumabar\lumabar	Start Menu Shortcut	#1	ApplicationShortcut

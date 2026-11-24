@@ -1,0 +1,3 @@
+MSI file has no signature
+Unable to extract existing signature
+Failed

@@ -1,0 +1,45 @@
+{
+  "exe_sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+  "debug_directories": [
+    {
+      "type": 2,
+      "size": 36,
+      "offset": "0x143f1c4",
+      "first_bytes": "525344536383ce84ab800143b08d5bb3dcbcdbcc010000006c756d616261722e70646200",
+      "format": "CodeView RSDS",
+      "pdb_guid": "84ce8363-80ab-4301-b08d-5bb3dcbcdbcc",
+      "age": 1,
+      "pdb_path": "lumabar.pdb"
+    },
+    {
+      "type": 12,
+      "size": 20,
+      "offset": "0x143f1e8",
+      "first_bytes": "030100004b0000004b000000000000003e000000"
+    },
+    {
+      "type": 13,
+      "size": 1048,
+      "offset": "0x143f1fc",
+      "first_bytes": "000000000010000070cf00012e7465787400000070df0001306a15002e74657874246d6e00000000"
+    }
+  ],
+  "coff_symbol_count": 0,
+  "coff_symbol_table_pointer": "0x0",
+  "overlay_offset": null,
+  "markers": {
+    "RSDS": [
+      "0x143f1c4"
+    ],
+    "PDB7": [],
+    "PDB2": [],
+    "DWARF_debug_info": [],
+    "DWARF_debug_line": [],
+    "Rust_function_text": [],
+    "Rust_async_function_text": [],
+    "Rust_impl_text": [],
+    "Cargo_package_section": [],
+    "Git_bundle": []
+  },
+  "native_source_path_count": 565
+}

@@ -1,0 +1,91 @@
+{
+  "target": {
+    "start": "0x140aa78d0",
+    "end": "0x140aa7c4b",
+    "bytes": 891,
+    "associated_modules": [
+      "src\\commands\\desktop_capture.rs"
+    ],
+    "file": "assembly/0000000140aa78d0.asm"
+  },
+  "is_error": false,
+  "pseudocode_fragments": 1,
+  "evidence": {
+    "evidence_id": "ev_c3d3b73f05fbc546dd3f183404908c4c66fb6395f1375ddaa78a1993573ef65f",
+    "evidence_format": 2,
+    "subject": {
+      "identity": {
+        "kind": "file",
+        "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+        "selection": null,
+        "format": "pe",
+        "architecture": "x86_64"
+      },
+      "name": "lumabar.exe",
+      "local_path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe"
+    },
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.2"
+    },
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.2"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "pe",
+        "architecture": "x86_64",
+        "import_mode": "existing-project-private-copy",
+        "producer": {
+          "rea_version": "6.10.1",
+          "sources_sha256": "2acc01df6e538ba5171b72dc8d8b1752a57b3dacd670979ea84a07661bd7ef1f"
+        },
+        "annotation_policy": "read-only-existing-project",
+        "selected_project_relationship_coverage": "prior-analysis-unknown",
+        "loader_relocation_semantics": "read-only-relocation-limitations",
+        "existing_project": {
+          "configured_path": "/tmp/luma-ghidra-project/luma.gpr",
+          "project_path": "/tmp/luma-ghidra-project",
+          "project_name": "luma",
+          "program_name": "lumabar.exe",
+          "sha256": "732fc8d18431b55139e2993ce282f990a9afffeefdafcc84561a39014d241caa"
+        },
+        "original_analysis": {
+          "completeness": "unknown",
+          "settings": "unknown"
+        },
+        "no_return_repair": "disabled-existing-project",
+        "process_launch": "inspected-jvm-launch-support"
+      },
+      "digest": "e05e75f9c6bf51fe9973f597fc7d9d56e58ead0dd442f7f45ed4fc4d9e1f76c8"
+    },
+    "predicate_type": "rea.analysis",
+    "operation": "procedure_pseudo_code",
+    "parameters": {
+      "procedure": "0x140aa78d0"
+    },
+    "raw_result": null,
+    "normalized_result": "\nvoid FUN_140aa78d0(ulonglong *param_1,longlong param_2,ulonglong param_3,uint param_4,uint param_5,\n                  uint param_6)\n\n{\n  ulonglong uVar1;\n  ulonglong uVar2;\n  code *pcVar3;\n  uint uVar4;\n  uint uVar5;\n  ulonglong uVar6;\n  ulonglong uVar7;\n  ulonglong uVar8;\n  ulonglong uVar9;\n  ulonglong uVar10;\n  ulonglong uVar11;\n  ulonglong uVar12;\n  ulonglong uVar13;\n  ulonglong uVar14;\n  ulonglong uVar15;\n  ulonglong uVar16;\n  uint uVar17;\n  uint uVar18;\n  uint uVar19;\n  ulonglong uVar20;\n  uint uVar21;\n  ulonglong uVar22;\n  ulonglong uVar23;\n  ulonglong uVar24;\n  uint uVar25;\n  ulonglong uVar26;\n  ulonglong uStack_80;\n  \n  uVar23 = (ulonglong)param_4;\n  uVar18 = param_4 / param_6 + (uint)(param_4 / param_6 == 0);\n  uVar9 = (ulonglong)uVar18;\n  uVar4 = param_5 / param_6 + (uint)(param_5 / param_6 == 0);\n  uVar14 = uVar9 * uVar4 * 4;\n  if ((longlong)uVar14 < 0) {\n    FUN_1411658af(0,uVar14);\n                    /* WARNING: Does not return */\n    pcVar3 = (code *)invalidInstructionException();\n    (*pcVar3)();\n  }\n  uVar6 = FUN_140e48790(0,8);\n  if (uVar6 == 0) {\n    FUN_1411658af(1,uVar14);\n                    /* WARNING: Does not return */\n    pcVar3 = (code *)invalidInstructionException();\n    (*pcVar3)();\n  }\n  uVar25 = param_6 * param_6;\n  uVar10 = (ulonglong)param_5 - 1;\n  uVar1 = uVar23 - 1;\n  if (uVar25 != 0) {\n    uVar20 = 0;\n    do {\n      uVar7 = uVar20 + 1;\n      uStack_80 = 0;\n      uVar12 = 0;\n      do {\n        uVar8 = uVar12 + 1;\n        uVar5 = 0;\n        uVar21 = 0;\n        uVar19 = 0;\n        uVar17 = 0;\n        uVar15 = 0;\n        do {\n          uVar16 = (ulonglong)param_6;\n          uVar2 = uVar15 + 1;\n          uVar15 = uVar15 + uVar20 * param_6;\n          if (uVar10 < uVar15) {\n            uVar15 = uVar10;\n          }\n          uVar26 = uStack_80;\n          do {\n            uVar13 = uVar26;\n            if (uVar1 < uVar26) {\n              uVar13 = uVar1;\n            }\n            uVar13 = (uVar13 + uVar15 * uVar23) * 4;\n            if (param_3 <= uVar13) goto LAB_140aa7b82;\n            uVar11 = uVar13 | 1;\n            if (param_3 <= uVar11) {\n              uVar13 = uVar11;\n              goto LAB_140aa7b82;\n            }\n            uVar24 = uVar13 | 2;\n            if (param_3 <= uVar24) {\n              uVar13 = uVar24;\n              goto LAB_140aa7b82;\n            }\n            uVar22 = uVar13 | 3;\n            if (param_3 <= uVar22) {\n              uVar13 = uVar22;\n              goto LAB_140aa7b82;\n            }\n            uVar5 = uVar5 + *(byte *)(param_2 + uVar13);\n            uVar21 = uVar21 + *(byte *)(param_2 + uVar11);\n            uVar19 = uVar19 + *(byte *)(param_2 + uVar24);\n            uVar17 = uVar17 + *(byte *)(param_2 + uVar22);\n            uVar26 = uVar26 + 1;\n            uVar16 = uVar16 - 1;\n          } while (uVar16 != 0);\n          uVar15 = uVar2;\n        } while (uVar2 != param_6);\n        uVar13 = (uVar12 + uVar20 * uVar9) * 4;\n        if (uVar14 <= uVar13) {\n          uVar12 = uVar13;\nLAB_140aa7ba2:\n          FUN_141166873(uVar12,uVar14,&UNK_141360b98);\n          goto LAB_140aa7c41;\n        }\n        *(char *)(uVar6 + uVar13) = (char)(uVar5 / uVar25);\n        uVar12 = uVar13 | 1;\n        if (uVar14 <= uVar12) goto LAB_140aa7ba2;\n        *(char *)(uVar6 + uVar12) = (char)(uVar21 / uVar25);\n        uVar12 = uVar13 | 2;\n        if (uVar14 <= uVar12) {\n          goto LAB_140aa7ba2;\n        }\n        *(char *)(uVar6 + uVar12) = (char)(uVar19 / uVar25);\n        uVar12 = uVar13 | 3;\n        if (uVar14 <= uVar12) goto LAB_140aa7ba2;\n        *(char *)(uVar6 + uVar12) = (char)(uVar17 / uVar25);\n        uStack_80 = uStack_80 + param_6;\n        uVar12 = uVar8;\n      } while (uVar8 != uVar9);\n      uVar20 = uVar7;\n      if (uVar7 == uVar4) {\n        *param_1 = uVar14;\n        param_1[1] = uVar6;\n        param_1[2] = uVar14;\n        *(uint *)(param_1 + 3) = uVar18;\n        *(uint *)((longlong)param_1 + 0x1c) = uVar4;\n        return;\n      }\n    } while( true );\n  }\n  uVar14 = 0;\nLAB_140aa7bc8:\n  uVar9 = uVar14 + 1;\n  if (uVar10 < uVar14) {\n    uVar14 = uVar10;\n  }\n  uVar6 = 0;\n  while( true ) {\n    uVar20 = uVar6;\n    if (uVar1 < uVar6) {\n      uVar20 = uVar1;\n    }\n    uVar20 = (uVar20 + uVar14 * uVar23) * 4;\n    if (param_3 <= uVar20) break;\n    uVar13 = uVar20 | 1;\n    if (((param_3 <= (uVar20 | 1)) || (uVar13 = uVar20 | 2, param_3 <= (uVar20 | 2))) ||\n       (uVar13 = uVar20 | 3, param_3 <= (uVar20 | 3))) goto LAB_140aa7b82;\n    uVar6 = uVar6 + 1;\n    if (param_6 == uVar6) goto code_r0x000140aa7c2f;\n  }\n  uVar13 = uVar20;\nLAB_140aa7b82:\n  FUN_141166873(uVar13,param_3,&UNK_141360bb0);\n  goto LAB_140aa7c41;\ncode_r0x000140aa7c2f:\n  uVar14 = uVar9;\n  if (uVar9 == param_6) {\n    FUN_141166b50(&UNK_141360b80);\nLAB_140aa7c41:\n                    /* WARNING: Does not return */\n    pcVar3 = (code *)invalidInstructionException();\n    (*pcVar3)();\n  }\n  goto LAB_140aa7bc8;\n}\n\n",
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "This session opens a caller-selected existing Ghidra project through a private copy, without import, auto-analysis or repair scripts. Original analysis completeness and settings are unknown.",
+      "The original project is never opened by Ghidra or modified. The private copy is read-only to bridge operations and deleted on close; original executable bytes are never written.",
+      "The analysis profile records the selected project content fingerprint and program name. The imported program SHA-256 must match the admitted target; the project may contain caller annotations or earlier edits, which are not fresh REA discoveries.",
+      "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+      "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+      "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+      "The Ghidra Program references PDB lumabar.pdb (GUID 84ce8363-80ab-4301-b08d-5bb3dcbcdbcc, age (hex) 1, signature unknown, version RSDS); Ghidra reports load state unknown. Original names and types may be missing; an empty name search does not prove a procedure is absent. Use list_procedures and address-based analysis to inspect recovered functions. REA does not admit a caller-selected PDB companion.",
+      "Known provider defect ghidra-9996 (jump-table-flow-references-omitted): Ghidra 12.2 can omit jump-table flow references and emit incorrect decompiler output for clang -O0 x86-64 switches whose case labels start above zero. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/9996 is closed by c93917a622211349998f641de54cfdbe0e0e5bee, milestone 12.2.1, which is not yet released. This limitation is recorded for parsed 12.2 releases whose patch is below 12.2.1, including a zero patch and a suffix, and clears on 12.2.1. REA's verified switch lane compiles with -O2 and does not cover this shape.",
+      "Known provider defect ghidra-10154 (jump-table-unrecovered-function-truncated): Ghidra 12.2 leaves an aarch64 switch unrecovered when it is a byte-offset bounded by and-0xff. The function body stops at the indirect branch. Upstream issue https://github.com/NationalSecurityAgency/ghidra/issues/10154 is open and names a Swift -O swift-enum switch; it has no fix commit and no milestone. REA reproduced the unrecovered jump table on the exact 12.2 build with an AArch64 ELF object of that instruction shape. A compare-bounded byte table still recovers. This record stays on every admitted build until a release is known to clear it."
+    ],
+    "relationship_coverage": null,
+    "locations": [],
+    "evidence_links": []
+  }
+}

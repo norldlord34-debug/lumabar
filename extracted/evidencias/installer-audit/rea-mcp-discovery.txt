@@ -1,0 +1,332 @@
+TOOLS 263
+{
+  "name": "list_procedures",
+  "title": "List Procedures",
+  "description": "List every analyzed procedure as address/value pairs after provider analysis. Ghidra metadata distinguishes thunks and external functions; use returned addresses in later function operations. Select detail summary for counts and retained native-inventory pages; complete remains the default.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "document": {
+        "type": "string"
+      },
+      "detail": {
+        "type": "string",
+        "description": "complete returns the complete analysis Evidence inline. summary retains that complete Evidence in this session and returns its inspect_analysis_view summary; inspect pages, items or facets through normalized_result.parent_evidence_id.",
+        "enum": [
+          "complete",
+          "summary"
+        ]
+      }
+    },
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": false,
+    "idempotent_hint": true,
+    "open_world_hint": true
+  },
+  "meta": null
+}
+{
+  "name": "procedure_pseudo_code",
+  "title": "Procedure Pseudo Code",
+  "description": "Decompile one analyzed procedure by symbol or provider-normalized address. Returns provider-specific pseudocode or null, never original source; raw_result.pseudocode_absence distinguishes reported provider-failure from not-in-export, otherwise the cause is unknown. Use procedure_assembly for instruction precision. detail summary retains text for inspect_analysis_view native/pseudocode pages without another decompile; complete is default. analysis: independent_fresh requests a separate attempt only when binary_session advertises independent_decompile; it may use different analysis context. analysis: call_destination attempts standalone decompilation at an exact incoming direct call to an arm64 Mach-O address outside the procedure inventory when the capability declares call_destination_decompile. The result retains the call site and does not establish a discovered procedure. Ghidra accepts file-offset:0x... or unique file offsets when a 0x selector resolves to no procedure; existing analysis addresses take precedence, and space-qualified addresses avoid that fallback. Its terminal-call assumptions may truncate the analyzed body, as limitations report.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "procedure": {
+        "type": "string",
+        "minLength": 1
+      },
+      "document": {
+        "type": "string"
+      },
+      "analysis": {
+        "type": "string",
+        "enum": [
+          "independent_fresh",
+          "call_destination"
+        ]
+      },
+      "detail": {
+        "type": "string",
+        "description": "complete returns the complete analysis Evidence inline. summary retains that complete Evidence in this session and returns its inspect_analysis_view summary; inspect pages, items or facets through normalized_result.parent_evidence_id.",
+        "enum": [
+          "complete",
+          "summary"
+        ]
+      }
+    },
+    "required": [
+      "procedure"
+    ],
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": false,
+    "idempotent_hint": true,
+    "open_world_hint": true
+  },
+  "meta": null
+}
+{
+  "name": "binary_overview",
+  "title": "Binary Overview",
+  "description": "Summarize the bound document, complete provider-inventory procedure/string row counts, and segments when supported. Counts do not establish discovery of every function/string and are not comparable across providers. Omitted segments mean unavailable coverage. image_base is returned only when observed segments agree. Use search_procedures, list_procedures or analyze_function directly when the procedure is already known.",
+  "input_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": false,
+    "idempotent_hint": true,
+    "open_world_hint": true
+  },
+  "meta": null
+}
+{
+  "name": "inspect_analysis_settings",
+  "title": "Inspect Analysis Settings",
+  "description": "Inspect REA's editable runtime admission sizes, deadlines and worker heaps, their bounds, launch values and application points. No active target is required. Filters intersect. If an error already names a setting and its bounds, update_analysis_settings can be called directly. Explicit per-call arguments override runtime defaults. Active worker values are not observed by this configuration view.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "settings": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "ghidra.decompile_max_payload_mib",
+            "asar.max_listing_bytes",
+            "ghidra.value_flow_max_operations",
+            "ghidra.value_flow_max_inputs_per_operation",
+            "ghidra.value_flow_max_edges",
+            "asar.max_header_bytes",
+            "ghidra.startup_timeout_ms",
+            "hopper.startup_timeout_ms",
+            "ghidra.decompile_timeout_seconds",
+            "jadx.operation_timeout_ms",
+            "regex.matching_deadline_ms",
+            "regex.worker_heap_request_mib",
+            "capture.decoder_old_generation_mib",
+            "capture.packet_json_expansion_bytes",
+            "javascript.analysis_timeout_ms",
+            "javascript.max_heap_mb",
+            "javascript.member_mutation_alias_states",
+            "wasm.command_timeout_ms",
+            "native.matching_representation_bytes",
+            "bridge.max_request_bytes",
+            "bridge.max_reply_bytes",
+            "debugger.command_deadline_ms",
+            "debugger.max_command_output_bytes",
+            "hopper.caller_scan_budget_ms",
+            "jeb.mcp_timeout_ms",
+            "kuna.project_timeout_ms",
+            "kuna.function_timeout_ms",
+            "pwntools.max_input_bytes",
+            "windows.change_time_drift_ms",
+            "windows.change_time_settle_poll_ms",
+            "windows.change_time_settle_max_polls",
+            "zstd.max_frames"
+          ]
+        },
+        "maxItems": 32
+      },
+      "operation": {
+        "type": "string",
+        "minLength": 1
+      },
+      "provider": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": true,
+    "destructive_hint": false,
+    "idempotent_hint": true,
+    "open_world_hint": false
+  },
+  "meta": null
+}
+{
+  "name": "close_binary",
+  "title": "Close Binary",
+  "description": "Release the active engine and owned resources while retaining investigation Evidence and complete Unknown history in memory. Drains earlier requests and queues later ones. If cleanup fails, keep this connection and retry close_binary without snapshot_path after the reported condition settles. Optional snapshot_path saves a target-bound snapshot first; resource-only sessions have no snapshot binding, existing files require overwrite, and failed saves keep the engine open. Metadata edits prevent immutable snapshot saves until recreation. Ghidra checkpoint mode saves metadata on normal close and retains the Program for retry if saving fails. Closing does not persist investigation records: export_evidence_bundle to save them, or reset_investigation to clear them.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "snapshot_path": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[^\\x00]*$"
+      },
+      "overwrite": {
+        "type": "boolean"
+      }
+    },
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": true,
+    "idempotent_hint": false,
+    "open_world_hint": true
+  },
+  "meta": null
+}
+{
+  "name": "binary_session",
+  "title": "Binary Session",
+  "description": "Inspect current target, provider capabilities, analysis and server identity without starting analysis. Default summary reports Ghidra checkpoint/ephemeral mode in capabilities[].shared_limitations; detail complete adds diagnostics, candidate capabilities and tool flags. Set refresh_candidates true to recheck provider readiness without changing the active engine. analysis_provider_candidates_observed distinguishes fresh observations from selection-time facts. open_binary with provider_id can replace the engine and discard ephemeral edits; reopening without it reuses the route. release_verification is optional reported-version evidence, not executable authentication. omitted_fields names facts left out of summary.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "detail": {
+        "type": "string",
+        "description": "Start with summary (default): it keeps open state, the binding, current-route capabilities (including selected Ghidra checkpoint mode), each provider candidate's selection source, availability and target-support status, code and reason with its rejection codes, and every tool's availability, reason and remediation; omitted_fields lists what it leaves out. Request complete only when you need unavailable-candidate remediation, provider or rejection diagnostics, candidate capabilities or static tool surface, effect and annotation flags.",
+        "enum": [
+          "summary",
+          "complete"
+        ]
+      },
+      "refresh_candidates": {
+        "type": "boolean"
+      },
+      "expected_package_version": {
+        "type": "string",
+        "minLength": 1
+      },
+      "expected_catalog_digest": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "expected_server_path": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[^\\x00]*$"
+      }
+    },
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": false,
+    "idempotent_hint": true,
+    "open_world_hint": true
+  },
+  "meta": null
+}
+{
+  "name": "open_binary",
+  "title": "Open Binary",
+  "description": "Open a validated local artifact or analysis database and bind its analysis provider. Switching target/provider can discard ephemeral Ghidra edits even if the later open fails; retained investigation Evidence does not restore them. Reopening the same target/profile retains the engine and edits. provider_id selects a provider or deterministic auto routing, with no failure fallback. Omitted format uses headers; format dos-com admits 1..65280 headerless bytes, while raw-binary requires architecture and entry_point and maps file offset 0 there. Optional snapshots must match target, provider and analysis profile; close/reopen before importing into a mutated engine. For Ghidra cross-process edits, set a private absolute REA_GHIDRA_CHECKPOINT_DIR at startup (stock ELF/PE/Mach-O on Linux/macOS); normal opens/closes restore/save metadata. Failed opens report selection_at_failure and target/provider at completion; use binary_session for current state. close_binary releases engine resources; reset_investigation clears retained records.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "path": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[^\\x00]*$"
+      },
+      "format": {
+        "type": "string",
+        "enum": [
+          "dos-com",
+          "raw-binary",
+          "gamecube-dol",
+          "esp-flash-image"
+        ]
+      },
+      "architecture": {
+        "type": "string",
+        "enum": [
+          "6502",
+          "x86",
+          "x86_64",
+          "arm",
+          "arm64",
+          "m68k"
+        ]
+      },
+      "entry_point": {
+        "type": "string",
+        "pattern": "^0x[0-9A-Fa-f]{1,16}$"
+      },
+      "flash_offset": {
+        "type": "string",
+        "pattern": "^0x[0-9A-Fa-f]{1,8}$"
+      },
+      "partition_table_offset": {
+        "type": "string",
+        "pattern": "^0x[0-9A-Fa-f]{1,8}$"
+      },
+      "provider_id": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "auto"
+            ]
+          },
+          {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][\\-0-9a-z]*$"
+          }
+        ],
+        "type": "string"
+      },
+      "snapshot_path": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[^\\x00]*$"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "additionalProperties": false
+  },
+  "execution": null,
+  "output_schema": null,
+  "icons": null,
+  "annotations": {
+    "title": null,
+    "read_only_hint": false,
+    "destructive_hint": true,
+    "idempotent_hint": true,
+    "open_world_hint": true
+  },
+  "meta": null
+}

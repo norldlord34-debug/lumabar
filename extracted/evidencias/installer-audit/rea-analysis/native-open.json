@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "provenance": {
+      "untrusted_content": true,
+      "source": "analysis_target"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"result\":{\"path\":\"/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe\",\"sha256\":\"26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102\",\"kind\":\"executable\",\"format\":\"pe\",\"architecture\":\"x86_64\"}}",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structured_content": {
+    "result": {
+      "path": "/tmp/lumabar-msi-extracted/PFiles/lumabar/lumabar.exe",
+      "sha256": "26774751be0a8edc85d1e5a94c8a89fe5c3abad79c7a6cd7a592cdcd127da102",
+      "kind": "executable",
+      "format": "pe",
+      "architecture": "x86_64"
+    }
+  },
+  "is_error": false,
+  "result_type": "complete"
+}

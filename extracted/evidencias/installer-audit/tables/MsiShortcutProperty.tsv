@@ -1,0 +1,4 @@
+MsiShortcutProperty	Shortcut_	PropertyKey	PropVariantValue
+s72	s72	s0	s0
+MsiShortcutProperty	MsiShortcutProperty
+scpA928DBE89B302EBC9C3D7CA666BC5A03	ApplicationStartMenuShortcut	System.AppUserModel.ID	com.lumabar.dock

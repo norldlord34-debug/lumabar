@@ -1,0 +1,111 @@
+PE checksum   : 0002DF92
+
+Signature Index: 0  (Primary Signature)
+
+Message digest algorithm  : SHA256
+Current message digest    : 200A0B1D57672C96ED25EB8BAC94717CB9EF20B6A5C921F6FB30B07247EFA771 
+Calculated message digest : 200A0B1D57672C96ED25EB8BAC94717CB9EF20B6A5C921F6FB30B07247EFA771 
+
+Signer's certificate:
+	------------------
+	Signer #0:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Code Signing PCA 2011
+		Serial : 330000047F2F422A735308DEEA00000000047F
+		Certificate expiration date:
+			notBefore : May 15 18:49:10 2025 GMT
+			notAfter : May 15 18:49:10 2026 GMT
+
+Message digest algorithm: SHA256
+
+Authenticated attributes:
+	Microsoft Individual Code Signing purpose
+	Message digest: 6626CAB016A3672A12529D2FE2F62FD880F978004036E554A7C28E57F1A9974A 
+	URL description: https://www.microsoft.com 
+	Text description: Microsoft Edge WebView2 SDK
+
+Countersignatures:
+	Timestamp time: Dec  1 09:33:15 2025 GMT
+	Signing time: N/A
+	Hash Algorithm: sha256
+	Issuer: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010
+	Serial: 33000002090807E0F95C8CE655000100000209
+
+CAfile: /etc/ssl/certs/ca-certificates.crt
+TSA's certificates file: /etc/ssl/certs/ca-certificates.crt
+
+Timestamp verified using:
+	------------------
+	Signer #1:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Root Certificate Authority 2010
+		Serial : 3300000015C5E76B9E029B4999000000000015
+		Certificate expiration date:
+			notBefore : Sep 30 18:22:25 2021 GMT
+			notAfter : Sep 30 18:32:25 2030 GMT
+
+	Error: unable to get local issuer certificate
+
+CMS_verify error
+
+Failed timestamp certificate chain retrieved from the signature:
+	------------------
+	Signer #0:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/OU=Microsoft America Operations/OU=nShield TSS ESN:9200-05E0-D947/CN=Microsoft Time-Stamp Service
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010
+		Serial : 33000002090807E0F95C8CE655000100000209
+		Certificate expiration date:
+			notBefore : Jan 30 19:42:55 2025 GMT
+			notAfter : Apr 22 19:42:55 2026 GMT
+
+	------------------
+	Signer #1:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Time-Stamp PCA 2010
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Root Certificate Authority 2010
+		Serial : 3300000015C5E76B9E029B4999000000000015
+		Certificate expiration date:
+			notBefore : Sep 30 18:22:25 2021 GMT
+			notAfter : Sep 30 18:32:25 2030 GMT
+
+
+Timestamp Server Signature verification: failed
+Signing certificate chain verified using:
+	------------------
+	Signer #1:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Code Signing PCA 2011
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Root Certificate Authority 2011
+		Serial : 610E90D2000000000003
+		Certificate expiration date:
+			notBefore : Jul  8 20:59:09 2011 GMT
+			notAfter : Jul  8 21:09:09 2026 GMT
+
+	Error: unable to get local issuer certificate
+
+PKCS7_verify error
+Failed signing certificate chain retrieved from the signature:
+	------------------
+	Signer #0:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Corporation
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Code Signing PCA 2011
+		Serial : 330000047F2F422A735308DEEA00000000047F
+		Certificate expiration date:
+			notBefore : May 15 18:49:10 2025 GMT
+			notAfter : May 15 18:49:10 2026 GMT
+
+	------------------
+	Signer #1:
+		Subject: /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Code Signing PCA 2011
+		Issuer : /C=US/ST=Washington/L=Redmond/O=Microsoft Corporation/CN=Microsoft Root Certificate Authority 2011
+		Serial : 610E90D2000000000003
+		Certificate expiration date:
+			notBefore : Jul  8 20:59:09 2011 GMT
+			notAfter : Jul  8 21:09:09 2026 GMT
+
+Signature verification: failed
+
+Number of verified signatures: 1
+Failed
+80475097B17F0000:error:05880106:x509 certificate routines:X509at_get_attr:passed invalid argument:../crypto/x509/x509_att.c:63:
+80475097B17F0000:error:058C0102:x509 certificate routines:X509_ATTRIBUTE_get0_type:passed a null parameter:../crypto/x509/x509_att.c:442:
+80475097B17F0000:error:17000064:CMS routines:cms_signerinfo_verify_cert:certificate verify error:../crypto/cms/cms_smime.c:290:Verify error: unable to get local issuer certificate
+80475097B17F0000:error:10800075:PKCS7 routines:PKCS7_verify:certificate verify error:../crypto/pkcs7/pk7_smime.c:298:Verify error: unable to get local issuer certificate

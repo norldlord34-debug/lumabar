@@ -1,0 +1,21 @@
+{"total_installers": 82, "pending_before": 82, "selected": 28}
+{"release": "v0.1.10", "name": "lumabar-0.1.10-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.9", "name": "lumabar-0.1.9-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.9", "name": "lumabar-0.1.9-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.10", "name": "lumabar-0.1.10-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.11", "name": "lumabar-0.1.11-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.12", "name": "lumabar-0.1.12-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.11", "name": "lumabar-0.1.11-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.13", "name": "lumabar-0.1.13-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.12", "name": "lumabar-0.1.12-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.14", "name": "lumabar-0.1.14-32-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v0.1.13", "name": "lumabar-0.1.13-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v1.0.0", "name": "lumabar-1.0.0-32-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v0.1.14", "name": "lumabar-0.1.14-64-bit.msi", "status": "complete", "error": null, "assets": 33}
+{"release": "v1.0.0", "name": "lumabar-1.0.0-64-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.0.1", "name": "lumabar-1.0.1-32-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.0.2", "name": "lumabar-1.0.2-32-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.0.1", "name": "lumabar-1.0.1-64-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.1.0", "name": "lumabar-1.1.0-32-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.1.1", "name": "lumabar-1.1.1-32-bit.msi", "status": "complete", "error": null, "assets": 18}
+{"release": "v1.0.2", "name": "lumabar-1.0.2-64-bit.msi", "status": "complete", "error": null, "assets": 18}
