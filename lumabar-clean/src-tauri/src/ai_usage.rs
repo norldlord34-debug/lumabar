@@ -169,7 +169,8 @@ fn user_home_dir() -> Option<std::path::PathBuf> {
 }
 
 fn is_gemini_available() -> bool {
-    user_home_dir().map(|h| h.join(".gemini").exists()).unwrap_or(false)
+    std::env::var("GEMINI_API_KEY").map(|k| !k.trim().is_empty()).unwrap_or(false)
+        || user_home_dir().map(|h| h.join(".gemini").exists()).unwrap_or(false)
 }
 
 fn is_cursor_available() -> bool {

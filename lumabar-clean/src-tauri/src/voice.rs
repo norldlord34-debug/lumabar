@@ -184,6 +184,16 @@ pub fn voice_delete(id_or_path: &str) -> serde_json::Value {
 
     crate::win32::stop_sound();
 
+    if let Ok(mut guard) = VOICE_STATE.lock() {
+        if let Some(state) = guard.as_mut() {
+            if state.current_id.as_deref() == Some(trimmed) {
+                state.current_id = None;
+                state.current_path = None;
+                state.recording = false;
+            }
+        }
+    }
+
     let target_path = if Path::new(trimmed).exists() {
         PathBuf::from(trimmed)
     } else {

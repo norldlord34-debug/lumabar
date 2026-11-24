@@ -145,7 +145,7 @@ pub struct POINT {
     pub y: i32,
 }
 
-#[repr(C)]
+#[repr(C, packed)]
 #[derive(Default, Copy, Clone)]
 pub struct DWM_THUMBNAIL_PROPERTIES {
     pub dw_flags: u32,
@@ -161,6 +161,18 @@ pub const DWM_TNP_RECTSOURCE: u32 = 0x00000002;
 pub const DWM_TNP_OPACITY: u32 = 0x00000004;
 pub const DWM_TNP_VISIBLE: u32 = 0x00000008;
 pub const DWM_TNP_SOURCECLIENTAREAONLY: u32 = 0x00000010;
+
+pub const CF_UNICODETEXT: u32 = 13;
+pub const GMEM_MOVEABLE: u32 = 0x0002;
+pub const SM_CXSCREEN: i32 = 0;
+pub const SM_CYSCREEN: i32 = 1;
+pub const SM_XVIRTUALSCREEN: i32 = 76;
+pub const SM_YVIRTUALSCREEN: i32 = 77;
+pub const SM_CXVIRTUALSCREEN: i32 = 78;
+pub const SM_CYVIRTUALSCREEN: i32 = 79;
+pub const SND_ASYNC: u32 = 0x0001;
+pub const SND_NODEFAULT: u32 = 0x0002;
+pub const SND_FILENAME: u32 = 0x00020000;
 
 type WNDENUMPROC = unsafe extern "system" fn(HWND, isize) -> BOOL;
 
@@ -204,6 +216,11 @@ extern "system" {
     fn SetWindowRgn(hWnd: HWND, hRgn: HRGN, bRedraw: BOOL) -> i32;
     fn WindowFromPoint(point: POINT) -> HWND;
     fn GetAncestor(hwnd: HWND, gaFlags: u32) -> HWND;
+    fn GetSystemMetrics(nIndex: i32) -> i32;
+    fn OpenClipboard(hWndNewOwner: HWND) -> BOOL;
+    fn CloseClipboard() -> BOOL;
+    fn EmptyClipboard() -> BOOL;
+    fn SetClipboardData(uFormat: u32, hMem: HANDLE) -> HANDLE;
 }
 
 #[link(name = "gdi32")]
@@ -239,6 +256,9 @@ extern "system" {
         lpdwSize: *mut u32,
     ) -> BOOL;
     fn CloseHandle(hObject: HANDLE) -> BOOL;
+    fn GlobalAlloc(uFlags: u32, dwBytes: usize) -> HANDLE;
+    fn GlobalLock(hMem: HANDLE) -> *mut std::ffi::c_void;
+    fn GlobalUnlock(hMem: HANDLE) -> BOOL;
 }
 
 #[link(name = "shell32")]
@@ -1360,10 +1380,56 @@ pub fn capture_and_save_rect(x: i32, y: i32, width: i32, height: i32) -> Option<
     }
 }
 
-pub fn play_sound_file(path: &str) -> bool {
-    let wide = to_wide(path);
+pub fn get_screen_bounds() -> (i32, i32, i32, i32) {
+    let mut x = unsafe { GetSystemMetrics(SM_XVIRTUALSCREEN) };
+    let mut y = unsafe { GetSystemMetrics(SM_YVIRTUALSCREEN) };
+    let mut w = unsafe { GetSystemMetrics(SM_CXVIRTUALSCREEN) };
+    let mut h = unsafe { GetSystemMetrics(SM_CYVIRTUALSCREEN) };
+    if w <= 0 || h <= 0 {
+        x = 0;
+        y = 0;
+        w = unsafe { GetSystemMetrics(SM_CXSCREEN) };
+        h = unsafe { GetSystemMetrics(SM_CYSCREEN) };
+    }
+    if w <= 0 {
+        w = 1920;
+    }
+    if h <= 0 {
+        h = 1080;
+    }
+    (x, y, w, h)
+}
+
+pub fn set_clipboard_text(text: &str) -> bool {
+    let wide: Vec<u16> = text.encode_utf16().chain(std::iter::once(0)).collect();
+    let bytes = wide.len() * std::mem::size_of::<u16>();
     unsafe {
-        PlaySoundW(wide.as_ptr(), 0, 0x0001 | 0x00020000) != 0 // SND_ASYNC | SND_FILENAME
+        if OpenClipboard(0) == 0 {
+            return false;
+        }
+        EmptyClipboard();
+        let h_mem = GlobalAlloc(GMEM_MOVEABLE, bytes);
+        if h_mem != 0 {
+            let ptr = GlobalLock(h_mem) as *mut u16;
+            if !ptr.is_null() {
+                std::ptr::copy_nonoverlapping(wide.as_ptr(), ptr, wide.len());
+                GlobalUnlock(h_mem);
+                SetClipboardData(CF_UNICODETEXT, h_mem);
+            }
+        }
+        CloseClipboard();
+    }
+    true
+}
+
+pub fn play_sound_file(path: &str) -> bool {
+    let trimmed = path.trim();
+    if trimmed.is_empty() || !std::path::Path::new(trimmed).exists() {
+        return false;
+    }
+    let wide = to_wide(trimmed);
+    unsafe {
+        PlaySoundW(wide.as_ptr(), 0, SND_ASYNC | SND_NODEFAULT | SND_FILENAME) != 0
     }
 }
 
@@ -1487,6 +1553,7 @@ mod tests {
 
     #[test]
     fn test_dwm_thumbnails_lifecycle() {
+        assert_eq!(std::mem::size_of::<DWM_THUMBNAIL_PROPERTIES>(), 45);
         // Safe registration with dummy handles returns None
         assert!(register_dwm_thumbnail(0, 0, RECT::default()).is_none());
         clear_all_dwm_thumbnails();
@@ -1513,9 +1580,21 @@ mod tests {
     }
 
     #[test]
+    fn test_screen_bounds_and_clipboard() {
+        let (x, y, w, h) = get_screen_bounds();
+        assert!(w > 0);
+        assert!(h > 0);
+        let _ = (x, y);
+
+        let ok = set_clipboard_text("lumabar_clean_test_copy");
+        assert!(ok);
+    }
+
+    #[test]
     fn test_play_sound_file_empty() {
         // Non-existent or empty path returns false without panicking
-        let _ = play_sound_file("");
+        assert!(!play_sound_file(""));
+        assert!(!play_sound_file("C:\\invalid_dummy_path_12345.wav"));
     }
 }
 

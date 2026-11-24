@@ -89,39 +89,34 @@ pub fn get_media_state() -> serde_json::Value {
 }
 
 #[cfg(test)]
+pub static AUDIO_TEST_MUTEX: std::sync::Mutex<()> = std::sync::Mutex::new(());
+
+#[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
-    fn test_audio_state_defaults() {
+    fn test_audio_and_media_lifecycle() {
+        let _guard = AUDIO_TEST_MUTEX.lock().unwrap();
         let state = get_audio_state();
         assert!(state["volumePercent"].is_number());
         assert!(state["muted"].is_boolean());
-    }
 
-    #[test]
-    fn test_set_volume_updates_state() {
         set_volume(82);
         let state = get_audio_state();
         assert_eq!(state["volumePercent"], 82);
         assert_eq!(state["muted"], false);
-    }
 
-    #[test]
-    fn test_toggle_mute() {
         let initial = get_audio_state()["muted"].as_bool().unwrap();
         toggle_mute();
         let updated = get_audio_state()["muted"].as_bool().unwrap();
         assert_eq!(updated, !initial);
         // Toggle back
         toggle_mute();
-    }
 
-    #[test]
-    fn test_media_state_schema() {
-        let state = get_media_state();
-        assert_eq!(state["sessionActive"], false);
-        assert_eq!(state["playbackStatus"], "paused");
-        assert_eq!(state["title"], "Nothing playing");
+        let m_state = get_media_state();
+        assert_eq!(m_state["sessionActive"], false);
+        assert_eq!(m_state["playbackStatus"], "paused");
+        assert_eq!(m_state["title"], "Nothing playing");
     }
 }

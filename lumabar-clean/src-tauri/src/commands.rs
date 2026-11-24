@@ -253,6 +253,7 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             let mut rects = Vec::new();
             let dest_hwnd = app
                 .get_webview_window("popover")
+                .or_else(|| app.get_webview_window("main"))
                 .and_then(|w| w.hwnd().ok())
                 .map(|h| h.0 as win32::HWND)
                 .unwrap_or(0);
@@ -269,9 +270,21 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                     .and_then(|v| v.as_f64())
                     .unwrap_or(35.0)
                     .round() as i32;
-                let thumb_w = 232i32;
-                let thumb_h = 138i32;
-                let row_gap = 10i32;
+                let thumb_w = grid
+                    .and_then(|g| g.get("width"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(232);
+                let thumb_h = grid
+                    .and_then(|g| g.get("height"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(138);
+                let row_gap = grid
+                    .and_then(|g| g.get("gap"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(10);
 
                 for (i, h_val) in arr.iter().enumerate() {
                     if let Some(src_hwnd) = h_val.as_i64() {
@@ -316,7 +329,7 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                     }
                 }
             }
-            serde_json::Value::Null
+            serde_json::json!({ "width": target_w, "height": target_h })
         }
         "peek_window" => {
             if let Some(hwnd) = payload.get("hwnd").and_then(|h| h.as_i64()) {
@@ -338,8 +351,9 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
                 *m = Some(mode.clone());
             }
-            win32::shell_open("ms-screenclip:", None);
-            serde_json::json!({ "mode": mode, "status": "opened" })
+            let opened = win32::shell_open("ms-screenclip:", None)
+                || win32::shell_open("SnippingTool.exe", None);
+            serde_json::json!({ "mode": mode, "status": if opened { "opened" } else { "fallback" } })
         }
         "close_capture_overlay" => {
             if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
@@ -352,7 +366,8 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             serde_json::to_value(mode).unwrap_or(serde_json::Value::Null)
         }
         "capture_screenshot" => {
-            let cap = win32::capture_and_save_rect(0, 0, 1920, 1080);
+            let (x, y, w, h) = win32::get_screen_bounds();
+            let cap = win32::capture_and_save_rect(x, y, w, h);
             if let Some((path, width, height)) = cap {
                 serde_json::json!({ "path": path, "width": width, "height": height })
             } else {
@@ -386,10 +401,10 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             }
         }
         "drag_ghost_show" => {
-            let normal = payload.get("normal").and_then(|v| v.as_str()).map(String::from);
-            let remove = payload.get("remove").and_then(|v| v.as_str()).map(String::from);
-            let hot_x = payload.get("hotX").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
-            let hot_y = payload.get("hotY").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let normal = payload.get("normal").or_else(|| payload.get("normal_img")).and_then(|v| v.as_str()).map(String::from);
+            let remove = payload.get("remove").or_else(|| payload.get("remove_img")).and_then(|v| v.as_str()).map(String::from);
+            let hot_x = payload.get("hotX").or_else(|| payload.get("hot_x")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let hot_y = payload.get("hotY").or_else(|| payload.get("hot_y")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
             if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
                 g.active = true;
                 g.normal_img = normal;
@@ -705,9 +720,21 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
                     .and_then(|v| v.as_f64())
                     .unwrap_or(35.0)
                     .round() as i32;
-                let thumb_w = 232i32;
-                let thumb_h = 138i32;
-                let row_gap = 10i32;
+                let thumb_w = grid
+                    .and_then(|g| g.get("width"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(232);
+                let thumb_h = grid
+                    .and_then(|g| g.get("height"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(138);
+                let row_gap = grid
+                    .and_then(|g| g.get("gap"))
+                    .and_then(|v| v.as_f64())
+                    .map(|v| v.round() as i32)
+                    .unwrap_or(10);
 
                 for (i, _) in arr.iter().enumerate() {
                     let x = grid_x + (i as i32) * (thumb_w + row_gap);
@@ -1079,7 +1106,13 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
         | "calendar_feed_add" | "calendar_feed_remove" | "calendar_sync"
         | "tray_icon_click" | "tray_menu_state" | "tray_relay"
         | "toggle_onscreen_keyboard" | "open_notification_center" | "open_project_menu"
-        | "set_clipboard_text" | "pick_image_file" => serde_json::Value::Null,
+        | "pick_image_file" => serde_json::Value::Null,
+
+        "set_clipboard_text" => {
+            let text = payload.get("text").and_then(|v| v.as_str()).unwrap_or("");
+            let ok = win32::set_clipboard_text(text);
+            serde_json::json!({ "ok": ok })
+        }
 
         "stocks_status" | "claude_fetch_usage" => {
             serde_json::json!({
@@ -1321,6 +1354,57 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
     }
 }
 
+pub fn detect_dock_action(req: &str) -> Option<(&'static str, f64, &'static str)> {
+    let q = req.to_lowercase();
+    let t = q.trim();
+
+    if t.contains("volume up") || t.contains("louder") || t.contains("subir volumen") {
+        Some(("volume_up", 0.98, "Turning volume up."))
+    } else if t.contains("volume down") || t.contains("quieter") || t.contains("bajar volumen") {
+        Some(("volume_down", 0.98, "Turning volume down."))
+    } else if t.contains("mute") || t.contains("silence") || t.contains("mutear") {
+        Some(("mute", 0.98, "Muting sound."))
+    } else if t.contains("unmute") || t.contains("desmutear") {
+        Some(("unmute", 0.98, "Unmuting sound."))
+    } else if t.contains("volume") {
+        Some(("set_volume", 0.98, "Adjusting volume level."))
+    } else if t.contains("brighter") || t.contains("brightness up") || t.contains("subir brillo") {
+        Some(("brightness_up", 0.98, "Increasing brightness."))
+    } else if t.contains("dimmer") || t.contains("brightness down") || t.contains("bajar brillo") {
+        Some(("brightness_down", 0.98, "Decreasing brightness."))
+    } else if t.contains("brightness") {
+        Some(("set_brightness", 0.98, "Setting brightness level."))
+    } else if t.contains("desktop") || t.contains("escritorio") {
+        Some(("show_desktop", 0.98, "Showing desktop."))
+    } else if t.contains("empty trash")
+        || t.contains("empty recycle")
+        || t.contains("vaciar papelera")
+    {
+        Some(("empty_recycle_bin", 0.98, "Emptying Recycle Bin."))
+    } else if t.contains("screenshot")
+        || t.contains("screen snip")
+        || t.contains("capture")
+        || t.contains("snip")
+        || t.contains("pantallazo")
+    {
+        Some(("take_screenshot", 0.98, "Opening screen snip overlay."))
+    } else if t.contains("lock") || t.contains("bloquear") {
+        Some(("lock_pc", 0.98, "Locking workstation."))
+    } else if t.contains("sleep") || t.contains("suspender") {
+        Some(("sleep_pc", 0.98, "Putting PC to sleep."))
+    } else if t.contains("open settings") || t.contains("configuracion") || t.contains("ajustes") {
+        Some(("open_settings", 0.98, "Opening LumaBar settings."))
+    } else if t.contains("open widgets") || t.contains("add widget") || t.contains("widget picker") {
+        Some(("open_widgets", 0.98, "Opening widget picker."))
+    } else if t.contains("wifi") {
+        Some(("toggle_wifi", 0.98, "Toggling Wi-Fi connection."))
+    } else if t.contains("bluetooth") {
+        Some(("toggle_bluetooth", 0.98, "Toggling Bluetooth."))
+    } else {
+        None
+    }
+}
+
 pub fn handle_dock_ask(payload: &serde_json::Value) -> serde_json::Value {
     let req = payload
         .get("state")
@@ -1332,8 +1416,29 @@ pub fn handle_dock_ask(payload: &serde_json::Value) -> serde_json::Value {
         .unwrap_or("")
         .trim();
 
-    if let Ok(key) = std::env::var("GEMINI_API_KEY") {
-        if !key.trim().is_empty() && !req.is_empty() {
+    if let Some((choice, is_cmd, reply)) = detect_dock_action(req) {
+        return serde_json::json!({
+            "reply": reply,
+            "answers": {
+                "action": {
+                    "choice": choice,
+                    "probabilities": { choice: 0.98 }
+                },
+                "is_command": { "noul": is_cmd }
+            }
+        });
+    }
+
+    let gemini_key = std::env::var("GEMINI_API_KEY")
+        .ok()
+        .filter(|k| !k.trim().is_empty())
+        .or_else(|| {
+            let s = crate::settings::load_settings();
+            s.ai_keys.get("gemini").cloned().filter(|k| !k.trim().is_empty())
+        });
+
+    if let Some(key) = gemini_key {
+        if !req.is_empty() {
             if let Some(resp) = call_gemini_api(&key, req, payload) {
                 return resp;
             }
@@ -1486,49 +1591,8 @@ fn offline_dock_ask(req: &str, _payload: &serde_json::Value) -> serde_json::Valu
     }
 
     // 6. Action matching for dock & PC actions
-    let (choice, is_cmd, reply) = if q_trimmed.contains("volume up")
-        || q_trimmed.contains("louder")
-        || q_trimmed.contains("subir volumen")
-    {
-        ("volume_up", 0.98, "Turning volume up.")
-    } else if q_trimmed.contains("volume down")
-        || q_trimmed.contains("quieter")
-        || q_trimmed.contains("bajar volumen")
-    {
-        ("volume_down", 0.98, "Turning volume down.")
-    } else if q_trimmed.contains("mute") || q_trimmed.contains("silence") || q_trimmed.contains("mutear") {
-        ("mute", 0.98, "Muting sound.")
-    } else if q_trimmed.contains("unmute") || q_trimmed.contains("desmutear") {
-        ("unmute", 0.98, "Unmuting sound.")
-    } else if q_trimmed.contains("volume") {
-        ("set_volume", 0.98, "Adjusting volume level.")
-    } else if q_trimmed.contains("brighter") || q_trimmed.contains("brightness up") {
-        ("brightness_up", 0.98, "Increasing brightness.")
-    } else if q_trimmed.contains("dimmer") || q_trimmed.contains("brightness down") {
-        ("brightness_down", 0.98, "Decreasing brightness.")
-    } else if q_trimmed.contains("brightness") {
-        ("set_brightness", 0.98, "Setting brightness level.")
-    } else if q_trimmed.contains("desktop") || q_trimmed.contains("escritorio") {
-        ("show_desktop", 0.98, "Showing desktop.")
-    } else if q_trimmed.contains("empty trash")
-        || q_trimmed.contains("empty recycle")
-        || q_trimmed.contains("vaciar papelera")
-    {
-        ("empty_recycle_bin", 0.98, "Emptying Recycle Bin.")
-    } else if q_trimmed.contains("screenshot")
-        || q_trimmed.contains("capture")
-        || q_trimmed.contains("snip")
-        || q_trimmed.contains("pantallazo")
-    {
-        ("take_screenshot", 0.98, "Capturing screenshot.")
-    } else if q_trimmed.contains("lock") || q_trimmed.contains("bloquear") {
-        ("lock_pc", 0.98, "Locking workstation.")
-    } else if q_trimmed.contains("sleep") || q_trimmed.contains("suspender") {
-        ("sleep_pc", 0.98, "Putting PC to sleep.")
-    } else if q_trimmed.contains("wifi") {
-        ("toggle_wifi", 0.98, "Toggling Wi-Fi connection.")
-    } else if q_trimmed.contains("bluetooth") {
-        ("toggle_bluetooth", 0.98, "Toggling Bluetooth.")
+    let (choice, is_cmd, reply) = if let Some((c, cmd, r)) = detect_dock_action(req) {
+        (c, cmd, r)
     } else {
         (
             "something_else",
@@ -1929,6 +1993,7 @@ mod tests {
 
     #[test]
     fn test_media_and_audio_commands() {
+        let _guard = crate::media::AUDIO_TEST_MUTEX.lock().unwrap();
         let audio = dispatch_command("get_audio_state", &serde_json::Value::Null);
         assert!(audio["volumePercent"].is_number());
         assert!(audio["muted"].is_boolean());
@@ -2174,15 +2239,16 @@ mod tests {
     fn test_dwm_thumbnails_and_preview_commands() {
         let thumbs = dispatch_command("show_app_window_thumbnails", &serde_json::json!({
             "hwnds": [12345, 67890],
-            "grid": { "x": 10.0, "y": 40.0 }
+            "grid": { "x": 10.0, "y": 40.0, "width": 160.0, "height": 95.0, "gap": 8.0 }
         }));
         assert!(thumbs.is_array());
         let arr = thumbs.as_array().unwrap();
         assert_eq!(arr.len(), 2);
         assert_eq!(arr[0]["x"], 10);
         assert_eq!(arr[0]["y"], 40);
-        assert_eq!(arr[0]["width"], 232);
-        assert_eq!(arr[0]["height"], 138);
+        assert_eq!(arr[0]["width"], 160);
+        assert_eq!(arr[0]["height"], 95);
+        assert_eq!(arr[1]["x"], 10 + 160 + 8);
 
         let hide = dispatch_command("hide_app_window_thumbnails", &serde_json::Value::Null);
         assert!(hide.is_null());
@@ -2241,7 +2307,7 @@ mod tests {
     #[test]
     fn test_capture_overlay_and_screenshots() {
         let open_cap = dispatch_command("open_capture_overlay", &serde_json::json!({ "mode": "snip" }));
-        assert_eq!(open_cap["status"], "opened");
+        assert!(open_cap["status"] == "opened" || open_cap["status"] == "fallback");
         assert_eq!(open_cap["mode"], "snip");
 
         let mode = dispatch_command("capture_mode", &serde_json::Value::Null);
@@ -2258,6 +2324,13 @@ mod tests {
         }));
         assert!(cap_reg["width"].is_number());
         assert!(cap_reg["height"].is_number());
+
+        let cap_shot = dispatch_command("capture_screenshot", &serde_json::Value::Null);
+        assert!(cap_shot["width"].is_number());
+        assert!(cap_shot["height"].is_number());
+
+        let clip_res = dispatch_command("set_clipboard_text", &serde_json::json!({ "text": "unit_test_clipboard" }));
+        assert_eq!(clip_res["ok"], true);
     }
 
     #[test]
