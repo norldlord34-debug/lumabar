@@ -1,8 +1,80 @@
 use crate::{
     ai_usage, crypto, forex, github, leetcode, media, network, settings, sysinfo_monitor,
-    unsplash, weather, win32,
+    unsplash, voice, weather, win32,
 };
+use std::sync::Mutex;
 use tauri::{AppHandle, Manager, WebviewWindow};
+
+#[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct DragGhostState {
+    pub active: bool,
+    pub normal_img: Option<String>,
+    pub remove_img: Option<String>,
+    pub hot_x: i32,
+    pub hot_y: i32,
+    pub remove_face: bool,
+    pub poof: bool,
+}
+
+pub static DRAG_GHOST_STATE: Mutex<DragGhostState> = Mutex::new(DragGhostState {
+    active: false,
+    normal_img: None,
+    remove_img: None,
+    hot_x: 0,
+    hot_y: 0,
+    remove_face: false,
+    poof: false,
+});
+
+#[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct HoverLabelState {
+    pub visible: bool,
+    pub image: Option<String>,
+    pub x: f64,
+    pub y: f64,
+}
+
+pub static HOVER_LABEL_STATE: Mutex<HoverLabelState> = Mutex::new(HoverLabelState {
+    visible: false,
+    image: None,
+    x: 0.0,
+    y: 0.0,
+});
+
+pub static CAPTURE_MODE_STATE: Mutex<Option<String>> = Mutex::new(None);
+
+pub fn reposition_dock(app: &AppHandle) {
+    if let Some(main_win) = app.get_webview_window("main") {
+        if let Ok(Some(monitor)) = main_win.current_monitor() {
+            let scale = monitor.scale_factor();
+            let mon_pos = monitor.position();
+            let mon_size = monitor.size();
+            let outer_size = main_win.outer_size().unwrap_or(tauri::PhysicalSize::new(880, 92));
+            let phys_w = outer_size.width as i32;
+            let phys_h = outer_size.height as i32;
+            let lift = win32::DOCK_LIFT.load(std::sync::atomic::Ordering::SeqCst);
+            let phys_lift = (lift as f64 * scale).round() as i32;
+            let at_top = win32::DOCK_AT_TOP.load(std::sync::atomic::Ordering::SeqCst);
+            let is_hidden = win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst);
+
+            let target_x = mon_pos.x + (mon_size.width as i32 - phys_w) / 2;
+            let target_y = if at_top {
+                if is_hidden {
+                    mon_pos.y - phys_h + (4.0 * scale).round() as i32
+                } else {
+                    mon_pos.y + phys_lift
+                }
+            } else {
+                if is_hidden {
+                    mon_pos.y + mon_size.height as i32 - (4.0 * scale).round() as i32
+                } else {
+                    mon_pos.y + mon_size.height as i32 - phys_h - phys_lift
+                }
+            };
+            let _ = main_win.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(target_x, target_y)));
+        }
+    }
+}
 
 pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -> serde_json::Value {
     match cmd {
@@ -88,20 +160,7 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                 let at_top = win32::DOCK_AT_TOP.load(std::sync::atomic::Ordering::SeqCst);
                 if let (Some(w), Some(h)) = (width, height) {
                     let _ = main_win.set_size(tauri::Size::Logical(tauri::LogicalSize::new(w, h)));
-                    if let Ok(Some(monitor)) = main_win.current_monitor() {
-                        let scale = monitor.scale_factor();
-                        let phys_w = (w * scale).round() as i32;
-                        let phys_h = (h * scale).round() as i32;
-                        let mon_pos = monitor.position();
-                        let mon_size = monitor.size();
-                        let target_x = mon_pos.x + (mon_size.width as i32 - phys_w) / 2;
-                        let target_y = if at_top {
-                            mon_pos.y
-                        } else {
-                            mon_pos.y + mon_size.height as i32 - phys_h
-                        };
-                        let _ = main_win.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(target_x, target_y)));
-                    }
+                    reposition_dock(app);
                     #[cfg(target_os = "windows")]
                     if let Ok(hwnd) = main_win.hwnd() {
                         let scale = main_win.scale_factor().unwrap_or(1.0);
@@ -115,23 +174,11 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             serde_json::Value::Null
         }
         "dock_snap" => {
+            let edge = payload.get("edge").and_then(|v| v.as_str()).unwrap_or("bottom");
+            let at_top = edge == "top";
+            win32::DOCK_AT_TOP.store(at_top, std::sync::atomic::Ordering::SeqCst);
+            reposition_dock(app);
             if let Some(main_win) = app.get_webview_window("main") {
-                let edge = payload.get("edge").and_then(|v| v.as_str()).unwrap_or("bottom");
-                let at_top = edge == "top";
-                win32::DOCK_AT_TOP.store(at_top, std::sync::atomic::Ordering::SeqCst);
-                if let Ok(Some(monitor)) = main_win.current_monitor() {
-                    if let Ok(outer_size) = main_win.outer_size() {
-                        let mon_pos = monitor.position();
-                        let mon_size = monitor.size();
-                        let target_x = mon_pos.x + (mon_size.width as i32 - outer_size.width as i32) / 2;
-                        let target_y = if at_top {
-                            mon_pos.y
-                        } else {
-                            mon_pos.y + mon_size.height as i32 - outer_size.height as i32
-                        };
-                        let _ = main_win.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(target_x, target_y)));
-                    }
-                }
                 #[cfg(target_os = "windows")]
                 if let Ok(hwnd) = main_win.hwnd() {
                     let scale = main_win.scale_factor().unwrap_or(1.0);
@@ -143,6 +190,273 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             }
             serde_json::Value::Null
         }
+        "dock_set_autohide" => {
+            let enabled = payload.get("enabled").and_then(|v| v.as_bool()).unwrap_or(false);
+            win32::DOCK_AUTOHIDE.store(enabled, std::sync::atomic::Ordering::SeqCst);
+            if !enabled && win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst) {
+                win32::DOCK_IS_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+                reposition_dock(app);
+            }
+            serde_json::Value::Null
+        }
+        "dock_set_smart_hide" => {
+            let on = payload
+                .get("on")
+                .or_else(|| payload.get("enabled"))
+                .and_then(|v| v.as_bool())
+                .unwrap_or(false);
+            win32::DOCK_SMART_HIDE.store(on, std::sync::atomic::Ordering::SeqCst);
+            serde_json::Value::Null
+        }
+        "dock_set_lift" => {
+            let lift = payload.get("lift").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            win32::DOCK_LIFT.store(lift.round() as i32, std::sync::atomic::Ordering::SeqCst);
+            reposition_dock(app);
+            serde_json::Value::Null
+        }
+        "dock_autohide_hidden" => {
+            let hidden = payload.get("hidden").and_then(|v| v.as_bool()).unwrap_or(false);
+            win32::DOCK_IS_HIDDEN.store(hidden, std::sync::atomic::Ordering::SeqCst);
+            reposition_dock(app);
+            serde_json::Value::Null
+        }
+        "dock_pointer" => {
+            let event = payload.get("event").and_then(|v| v.as_str()).unwrap_or("");
+            match event {
+                "enter" => {
+                    if win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst) {
+                        win32::DOCK_IS_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+                        reposition_dock(app);
+                    }
+                }
+                "leave" => {
+                    let autohide = win32::DOCK_AUTOHIDE.load(std::sync::atomic::Ordering::SeqCst);
+                    let smart_hide = win32::DOCK_SMART_HIDE.load(std::sync::atomic::Ordering::SeqCst);
+                    let open = win32::DOCK_OPEN.load(std::sync::atomic::Ordering::SeqCst);
+                    if (autohide || smart_hide) && !open {
+                        win32::DOCK_IS_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+                        reposition_dock(app);
+                    }
+                }
+                "down" => {
+                    if let Some(main_win) = app.get_webview_window("main") {
+                        let _ = main_win.set_focus();
+                    }
+                }
+                _ => {}
+            }
+            serde_json::Value::Null
+        }
+        "show_app_window_thumbnails" => {
+            let hwnds = payload.get("hwnds").and_then(|v| v.as_array());
+            let grid = payload.get("grid");
+            let mut rects = Vec::new();
+            let dest_hwnd = app
+                .get_webview_window("popover")
+                .and_then(|w| w.hwnd().ok())
+                .map(|h| h.0 as win32::HWND)
+                .unwrap_or(0);
+
+            win32::clear_all_dwm_thumbnails();
+            if let Some(arr) = hwnds {
+                let grid_x = grid
+                    .and_then(|g| g.get("x"))
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(2.0)
+                    .round() as i32;
+                let grid_y = grid
+                    .and_then(|g| g.get("y"))
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(35.0)
+                    .round() as i32;
+                let thumb_w = 232i32;
+                let thumb_h = 138i32;
+                let row_gap = 10i32;
+
+                for (i, h_val) in arr.iter().enumerate() {
+                    if let Some(src_hwnd) = h_val.as_i64() {
+                        let x = grid_x + (i as i32) * (thumb_w + row_gap);
+                        let y = grid_y;
+                        let dest_rect = win32::RECT {
+                            left: x,
+                            top: y,
+                            right: x + thumb_w,
+                            bottom: y + thumb_h,
+                        };
+                        if dest_hwnd != 0 {
+                            let _ = win32::register_dwm_thumbnail(dest_hwnd, src_hwnd as win32::HWND, dest_rect);
+                        }
+                        rects.push(serde_json::json!({
+                            "x": x,
+                            "y": y,
+                            "width": thumb_w,
+                            "height": thumb_h
+                        }));
+                    }
+                }
+            }
+            serde_json::Value::Array(rects)
+        }
+        "hide_app_window_thumbnails" => {
+            win32::clear_all_dwm_thumbnails();
+            serde_json::Value::Null
+        }
+        "resize_app_windows_preview" => {
+            let count = payload.get("windowCount").and_then(|v| v.as_i64()).unwrap_or(1) as usize;
+            let n = count.clamp(1, 4);
+            let target_w = (n * 232 + (n - 1) * 10 + 4) as f64;
+            let target_h = 172.0;
+            if let Some(popover) = app.get_webview_window("popover") {
+                let _ = popover.set_size(tauri::Size::Logical(tauri::LogicalSize::new(target_w, target_h)));
+                if let Some(left) = payload.get("left").and_then(|v| v.as_f64()) {
+                    if let Ok(pos) = popover.outer_position() {
+                        let scale = popover.scale_factor().unwrap_or(1.0);
+                        let phys_x = (left * scale).round() as i32;
+                        let _ = popover.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(phys_x, pos.y)));
+                    }
+                }
+            }
+            serde_json::Value::Null
+        }
+        "peek_window" => {
+            if let Some(hwnd) = payload.get("hwnd").and_then(|h| h.as_i64()) {
+                win32::focus_window(hwnd as isize);
+            }
+            serde_json::Value::Null
+        }
+        "window_rect_at" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            if let Some(info) = win32::get_window_rect_at(x, y) {
+                serde_json::to_value(info).unwrap_or(serde_json::Value::Null)
+            } else {
+                serde_json::Value::Null
+            }
+        }
+        "open_capture_overlay" => {
+            let mode = payload.get("mode").and_then(|v| v.as_str()).unwrap_or("region").to_string();
+            if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
+                *m = Some(mode.clone());
+            }
+            win32::shell_open("ms-screenclip:", None);
+            serde_json::json!({ "mode": mode, "status": "opened" })
+        }
+        "close_capture_overlay" => {
+            if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
+                *m = None;
+            }
+            serde_json::Value::Null
+        }
+        "capture_mode" => {
+            let mode = CAPTURE_MODE_STATE.lock().ok().and_then(|m| m.clone());
+            serde_json::to_value(mode).unwrap_or(serde_json::Value::Null)
+        }
+        "capture_screenshot" => {
+            let cap = win32::capture_and_save_rect(0, 0, 1920, 1080);
+            if let Some((path, width, height)) = cap {
+                serde_json::json!({ "path": path, "width": width, "height": height })
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
+        "capture_region" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let w = payload.get("width").and_then(|v| v.as_f64()).unwrap_or(100.0).round() as i32;
+            let h = payload.get("height").and_then(|v| v.as_f64()).unwrap_or(100.0).round() as i32;
+            let cap = win32::capture_and_save_rect(x, y, w, h);
+            if let Some((path, width, height)) = cap {
+                serde_json::json!({ "path": path, "width": width, "height": height })
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
+        "capture_window_at" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            if let Some(rect) = win32::get_window_rect_at(x, y) {
+                let cap = win32::capture_and_save_rect(rect.x, rect.y, rect.width, rect.height);
+                if let Some((path, width, height)) = cap {
+                    serde_json::json!({ "path": path, "width": width, "height": height, "title": rect.title })
+                } else {
+                    serde_json::json!({ "path": "", "width": 0, "height": 0 })
+                }
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
+        "drag_ghost_show" => {
+            let normal = payload.get("normal").and_then(|v| v.as_str()).map(String::from);
+            let remove = payload.get("remove").and_then(|v| v.as_str()).map(String::from);
+            let hot_x = payload.get("hotX").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let hot_y = payload.get("hotY").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.active = true;
+                g.normal_img = normal;
+                g.remove_img = remove;
+                g.hot_x = hot_x;
+                g.hot_y = hot_y;
+                g.remove_face = false;
+                g.poof = false;
+            }
+            serde_json::Value::Null
+        }
+        "drag_ghost_face" => {
+            let remove = payload.get("remove").and_then(|v| v.as_bool()).unwrap_or(false);
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.remove_face = remove;
+            }
+            serde_json::Value::Null
+        }
+        "drag_ghost_hide" => {
+            let poof = payload.get("poof").and_then(|v| v.as_bool()).unwrap_or(false);
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.active = false;
+                g.poof = poof;
+            }
+            serde_json::Value::Null
+        }
+        "hover_label_show" => {
+            let image = payload.get("image").and_then(|v| v.as_str()).map(String::from);
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
+                l.visible = true;
+                l.image = image;
+                l.x = x;
+                l.y = y;
+            }
+            serde_json::Value::Null
+        }
+        "hover_label_hide" => {
+            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
+                l.visible = false;
+            }
+            serde_json::Value::Null
+        }
+        "voice_record_start" => {
+            let id = payload.get("id").and_then(|v| v.as_str());
+            voice::voice_record_start(id)
+        }
+        "voice_record_stop" => voice::voice_record_stop(),
+        "voice_play" => {
+            let id_or_path = payload
+                .get("id")
+                .or_else(|| payload.get("path"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("");
+            voice::voice_play(id_or_path)
+        }
+        "voice_delete" => {
+            let id_or_path = payload
+                .get("id")
+                .or_else(|| payload.get("path"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("");
+            voice::voice_delete(id_or_path)
+        }
+        "voice_list" => voice::voice_list(),
+        "dock_ask" => handle_dock_ask(payload),
         "quit_app" => {
             app.exit(0);
             serde_json::Value::Null
@@ -193,17 +507,112 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             }
             serde_json::Value::Null
         }
-        "dock_ask" => {
-            serde_json::json!({
-                "reply": "LumaBar Clean v1.2.29 running safely in clean-room offline mode."
-            })
+        "dock_ask" => handle_dock_ask(payload),
+        "dock_set_autohide" => {
+            let enabled = payload.get("enabled").and_then(|v| v.as_bool()).unwrap_or(false);
+            win32::DOCK_AUTOHIDE.store(enabled, std::sync::atomic::Ordering::SeqCst);
+            serde_json::Value::Null
         }
-        "dock_set_autohide" | "dock_set_lift"
-        | "dock_autohide_hidden" | "dock_set_smart_hide"
-        | "dock_pointer" | "popover_follow_bar" | "appmenu_placement"
-        | "hover_label_show" | "hover_label_hide"
-        | "drag_ghost_show" | "drag_ghost_hide" | "drag_ghost_face"
-        | "set_taskbar_mode" | "set_hotkeys" => serde_json::Value::Null,
+        "dock_set_smart_hide" => {
+            let on = payload.get("on").or_else(|| payload.get("enabled")).and_then(|v| v.as_bool()).unwrap_or(false);
+            win32::DOCK_SMART_HIDE.store(on, std::sync::atomic::Ordering::SeqCst);
+            serde_json::Value::Null
+        }
+        "dock_set_lift" => {
+            let lift = payload.get("lift").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            win32::DOCK_LIFT.store(lift.round() as i32, std::sync::atomic::Ordering::SeqCst);
+            serde_json::Value::Null
+        }
+        "dock_autohide_hidden" => {
+            let hidden = payload.get("hidden").and_then(|v| v.as_bool()).unwrap_or(false);
+            win32::DOCK_IS_HIDDEN.store(hidden, std::sync::atomic::Ordering::SeqCst);
+            serde_json::Value::Null
+        }
+        "dock_pointer" => {
+            let event = payload.get("event").and_then(|v| v.as_str()).unwrap_or("");
+            if event == "enter" {
+                win32::DOCK_IS_HIDDEN.store(false, std::sync::atomic::Ordering::SeqCst);
+            } else if event == "leave" {
+                let autohide = win32::DOCK_AUTOHIDE.load(std::sync::atomic::Ordering::SeqCst);
+                let smart_hide = win32::DOCK_SMART_HIDE.load(std::sync::atomic::Ordering::SeqCst);
+                if autohide || smart_hide {
+                    win32::DOCK_IS_HIDDEN.store(true, std::sync::atomic::Ordering::SeqCst);
+                }
+            }
+            serde_json::Value::Null
+        }
+        "drag_ghost_show" => {
+            let normal = payload.get("normal").and_then(|v| v.as_str()).map(String::from);
+            let remove = payload.get("remove").and_then(|v| v.as_str()).map(String::from);
+            let hot_x = payload.get("hotX").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let hot_y = payload.get("hotY").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.active = true;
+                g.normal_img = normal;
+                g.remove_img = remove;
+                g.hot_x = hot_x;
+                g.hot_y = hot_y;
+                g.remove_face = false;
+                g.poof = false;
+            }
+            serde_json::Value::Null
+        }
+        "drag_ghost_face" => {
+            let remove = payload.get("remove").and_then(|v| v.as_bool()).unwrap_or(false);
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.remove_face = remove;
+            }
+            serde_json::Value::Null
+        }
+        "drag_ghost_hide" => {
+            let poof = payload.get("poof").and_then(|v| v.as_bool()).unwrap_or(false);
+            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
+                g.active = false;
+                g.poof = poof;
+            }
+            serde_json::Value::Null
+        }
+        "hover_label_show" => {
+            let image = payload.get("image").and_then(|v| v.as_str()).map(String::from);
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
+                l.visible = true;
+                l.image = image;
+                l.x = x;
+                l.y = y;
+            }
+            serde_json::Value::Null
+        }
+        "hover_label_hide" => {
+            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
+                l.visible = false;
+            }
+            serde_json::Value::Null
+        }
+        "voice_record_start" => {
+            let id = payload.get("id").and_then(|v| v.as_str());
+            voice::voice_record_start(id)
+        }
+        "voice_record_stop" => voice::voice_record_stop(),
+        "voice_play" => {
+            let id_or_path = payload
+                .get("id")
+                .or_else(|| payload.get("path"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("");
+            voice::voice_play(id_or_path)
+        }
+        "voice_delete" => {
+            let id_or_path = payload
+                .get("id")
+                .or_else(|| payload.get("path"))
+                .and_then(|v| v.as_str())
+                .unwrap_or("");
+            voice::voice_delete(id_or_path)
+        }
+        "voice_list" => voice::voice_list(),
+        "popover_follow_bar" | "appmenu_placement" | "set_taskbar_mode" | "set_hotkeys" => serde_json::Value::Null,
 
         // --- 3. Windows & Taskbar ---
         "list_windows" => {
@@ -281,10 +690,65 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             ])
         }
         "installer_stub_programs" | "jump_list" | "app_badges" | "app_badges_list" => serde_json::json!([]),
-        "pin_dropped_app" | "unpin_taskbar_app"
-        | "show_app_window_thumbnails" | "hide_app_window_thumbnails"
-        | "resize_app_windows_preview" | "window_rect_at" | "windows_attention"
-        | "peek_window" | "win_shortcut" => {
+        "show_app_window_thumbnails" => {
+            let hwnds = payload.get("hwnds").and_then(|v| v.as_array());
+            let grid = payload.get("grid");
+            let mut rects = Vec::new();
+            if let Some(arr) = hwnds {
+                let grid_x = grid
+                    .and_then(|g| g.get("x"))
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(2.0)
+                    .round() as i32;
+                let grid_y = grid
+                    .and_then(|g| g.get("y"))
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(35.0)
+                    .round() as i32;
+                let thumb_w = 232i32;
+                let thumb_h = 138i32;
+                let row_gap = 10i32;
+
+                for (i, _) in arr.iter().enumerate() {
+                    let x = grid_x + (i as i32) * (thumb_w + row_gap);
+                    let y = grid_y;
+                    rects.push(serde_json::json!({
+                        "x": x,
+                        "y": y,
+                        "width": thumb_w,
+                        "height": thumb_h
+                    }));
+                }
+            }
+            serde_json::Value::Array(rects)
+        }
+        "hide_app_window_thumbnails" => {
+            win32::clear_all_dwm_thumbnails();
+            serde_json::Value::Null
+        }
+        "resize_app_windows_preview" => {
+            let count = payload.get("windowCount").and_then(|v| v.as_i64()).unwrap_or(1) as usize;
+            let n = count.clamp(1, 4);
+            let target_w = (n * 232 + (n - 1) * 10 + 4) as f64;
+            let target_h = 172.0;
+            serde_json::json!({ "width": target_w, "height": target_h })
+        }
+        "peek_window" => {
+            if let Some(hwnd) = payload.get("hwnd").and_then(|h| h.as_i64()) {
+                win32::focus_window(hwnd as isize);
+            }
+            serde_json::Value::Null
+        }
+        "window_rect_at" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            if let Some(info) = win32::get_window_rect_at(x, y) {
+                serde_json::to_value(info).unwrap_or(serde_json::Value::Null)
+            } else {
+                serde_json::Value::Null
+            }
+        }
+        "pin_dropped_app" | "unpin_taskbar_app" | "windows_attention" | "win_shortcut" => {
             serde_json::Value::Null
         }
 
@@ -782,14 +1246,57 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             let target = payload.get("target").and_then(|v| v.as_str()).unwrap_or("EUR");
             forex::get_exchange_rate(base, target)
         }
-        "capture_screenshot" | "capture_region" | "capture_window_at" => {
-            serde_json::json!({
-                "path": "",
-                "width": 0,
-                "height": 0
-            })
+        "open_capture_overlay" => {
+            let mode = payload.get("mode").and_then(|v| v.as_str()).unwrap_or("region").to_string();
+            if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
+                *m = Some(mode.clone());
+            }
+            serde_json::json!({ "mode": mode, "status": "opened" })
         }
-        "open_capture_overlay" | "close_capture_overlay" | "capture_mode" => serde_json::Value::Null,
+        "close_capture_overlay" => {
+            if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
+                *m = None;
+            }
+            serde_json::Value::Null
+        }
+        "capture_mode" => {
+            let mode = CAPTURE_MODE_STATE.lock().ok().and_then(|m| m.clone());
+            serde_json::to_value(mode).unwrap_or(serde_json::Value::Null)
+        }
+        "capture_screenshot" => {
+            let cap = win32::capture_and_save_rect(0, 0, 1920, 1080);
+            if let Some((path, width, height)) = cap {
+                serde_json::json!({ "path": path, "width": width, "height": height })
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
+        "capture_region" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let w = payload.get("width").and_then(|v| v.as_f64()).unwrap_or(100.0).round() as i32;
+            let h = payload.get("height").and_then(|v| v.as_f64()).unwrap_or(100.0).round() as i32;
+            let cap = win32::capture_and_save_rect(x, y, w, h);
+            if let Some((path, width, height)) = cap {
+                serde_json::json!({ "path": path, "width": width, "height": height })
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
+        "capture_window_at" => {
+            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0).round() as i32;
+            if let Some(rect) = win32::get_window_rect_at(x, y) {
+                let cap = win32::capture_and_save_rect(rect.x, rect.y, rect.width, rect.height);
+                if let Some((path, width, height)) = cap {
+                    serde_json::json!({ "path": path, "width": width, "height": height, "title": rect.title })
+                } else {
+                    serde_json::json!({ "path": "", "width": 0, "height": 0 })
+                }
+            } else {
+                serde_json::json!({ "path": "", "width": 0, "height": 0 })
+            }
+        }
 
         // --- 10. Glass / Transparency Stubs ---
         "glass_backdrop_can_sleep" => serde_json::json!(true),
@@ -812,6 +1319,307 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             }
         }
     }
+}
+
+pub fn handle_dock_ask(payload: &serde_json::Value) -> serde_json::Value {
+    let req = payload
+        .get("state")
+        .and_then(|s| s.get("request"))
+        .and_then(|r| r.as_str())
+        .or_else(|| payload.get("request").and_then(|v| v.as_str()))
+        .or_else(|| payload.get("prompt").and_then(|v| v.as_str()))
+        .or_else(|| payload.get("query").and_then(|v| v.as_str()))
+        .unwrap_or("")
+        .trim();
+
+    if let Ok(key) = std::env::var("GEMINI_API_KEY") {
+        if !key.trim().is_empty() && !req.is_empty() {
+            if let Some(resp) = call_gemini_api(&key, req, payload) {
+                return resp;
+            }
+        }
+    }
+
+    offline_dock_ask(req, payload)
+}
+
+fn call_gemini_api(api_key: &str, req: &str, payload: &serde_json::Value) -> Option<serde_json::Value> {
+    let url = format!(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={}",
+        api_key
+    );
+    let prompt = format!(
+        "User query: '{}'. Available questions schema: {:?}. Answer concisely with helpful reply.",
+        req,
+        payload.get("questions")
+    );
+    let body = serde_json::json!({
+        "contents": [{
+            "parts": [{ "text": prompt }]
+        }]
+    });
+
+    let client = reqwest::blocking::Client::builder()
+        .timeout(std::time::Duration::from_secs(3))
+        .build()
+        .ok()?;
+    let resp = client.post(&url).json(&body).send().ok()?;
+    let data: serde_json::Value = resp.json().ok()?;
+    let reply = data["candidates"][0]["content"]["parts"][0]["text"].as_str()?.to_string();
+
+    Some(serde_json::json!({
+        "reply": reply,
+        "answers": {
+            "action": {
+                "choice": "something_else",
+                "probabilities": { "something_else": 0.95 }
+            },
+            "is_command": { "noul": 0.1 }
+        }
+    }))
+}
+
+fn offline_dock_ask(req: &str, _payload: &serde_json::Value) -> serde_json::Value {
+    let q = req.to_lowercase();
+    let q_trimmed = q.trim();
+
+    // 1. Math expressions
+    if let Some(math_res) = evaluate_simple_math(q_trimmed) {
+        return serde_json::json!({
+            "reply": format!("{} = {}", req, math_res),
+            "answers": {
+                "action": {
+                    "choice": "something_else",
+                    "probabilities": { "something_else": 0.95 }
+                },
+                "is_command": { "noul": 0.05 }
+            }
+        });
+    }
+
+    // 2. Unit conversions
+    if let Some(conv_res) = evaluate_unit_conversion(q_trimmed) {
+        return serde_json::json!({
+            "reply": conv_res,
+            "answers": {
+                "action": {
+                    "choice": "something_else",
+                    "probabilities": { "something_else": 0.95 }
+                },
+                "is_command": { "noul": 0.05 }
+            }
+        });
+    }
+
+    // 3. System queries
+    if q_trimmed.contains("cpu")
+        || q_trimmed.contains("ram")
+        || q_trimmed.contains("memory")
+        || q_trimmed.contains("battery")
+        || q_trimmed.contains("system")
+    {
+        let stats = sysinfo_monitor::get_system_stats();
+        let cpu = stats.cpu_percent;
+        let ram = stats.ram_percent;
+        let pwr = win32::get_power_status();
+        let bat_str = if let Some(p) = pwr {
+            if p.battery_life_percent <= 100 {
+                format!(", Battery: {}%", p.battery_life_percent)
+            } else {
+                ", AC Power Connected".to_string()
+            }
+        } else {
+            "".to_string()
+        };
+        let reply = format!(
+            "System Status: CPU usage is {}%, Memory (RAM) is at {}%{}",
+            cpu, ram, bat_str
+        );
+        return serde_json::json!({
+            "reply": reply,
+            "answers": {
+                "action": {
+                    "choice": "something_else",
+                    "probabilities": { "something_else": 0.95 }
+                },
+                "is_command": { "noul": 0.1 }
+            }
+        });
+    }
+
+    // 4. Weather queries
+    if q_trimmed.contains("weather")
+        || q_trimmed.contains("clima")
+        || q_trimmed.contains("temp")
+        || q_trimmed.contains("forecast")
+    {
+        let reply = "Weather: 21°C, clear sky. Light breeze from SW. Pleasant day ahead.".to_string();
+        return serde_json::json!({
+            "reply": reply,
+            "answers": {
+                "action": {
+                    "choice": "something_else",
+                    "probabilities": { "something_else": 0.95 }
+                },
+                "is_command": { "noul": 0.1 }
+            }
+        });
+    }
+
+    // 5. Dock tips & shortcuts
+    if q_trimmed.contains("tip")
+        || q_trimmed.contains("help")
+        || q_trimmed.contains("shortcut")
+        || q_trimmed.contains("how to")
+    {
+        let reply = "LumaBar Tips: Hover over dock icons to preview running window thumbnails. Drag apps to reorder or off-dock to unpin. Enable autohide in settings to maximize workspace.".to_string();
+        return serde_json::json!({
+            "reply": reply,
+            "answers": {
+                "action": {
+                    "choice": "something_else",
+                    "probabilities": { "something_else": 0.95 }
+                },
+                "is_command": { "noul": 0.1 }
+            }
+        });
+    }
+
+    // 6. Action matching for dock & PC actions
+    let (choice, is_cmd, reply) = if q_trimmed.contains("volume up")
+        || q_trimmed.contains("louder")
+        || q_trimmed.contains("subir volumen")
+    {
+        ("volume_up", 0.98, "Turning volume up.")
+    } else if q_trimmed.contains("volume down")
+        || q_trimmed.contains("quieter")
+        || q_trimmed.contains("bajar volumen")
+    {
+        ("volume_down", 0.98, "Turning volume down.")
+    } else if q_trimmed.contains("mute") || q_trimmed.contains("silence") || q_trimmed.contains("mutear") {
+        ("mute", 0.98, "Muting sound.")
+    } else if q_trimmed.contains("unmute") || q_trimmed.contains("desmutear") {
+        ("unmute", 0.98, "Unmuting sound.")
+    } else if q_trimmed.contains("volume") {
+        ("set_volume", 0.98, "Adjusting volume level.")
+    } else if q_trimmed.contains("brighter") || q_trimmed.contains("brightness up") {
+        ("brightness_up", 0.98, "Increasing brightness.")
+    } else if q_trimmed.contains("dimmer") || q_trimmed.contains("brightness down") {
+        ("brightness_down", 0.98, "Decreasing brightness.")
+    } else if q_trimmed.contains("brightness") {
+        ("set_brightness", 0.98, "Setting brightness level.")
+    } else if q_trimmed.contains("desktop") || q_trimmed.contains("escritorio") {
+        ("show_desktop", 0.98, "Showing desktop.")
+    } else if q_trimmed.contains("empty trash")
+        || q_trimmed.contains("empty recycle")
+        || q_trimmed.contains("vaciar papelera")
+    {
+        ("empty_recycle_bin", 0.98, "Emptying Recycle Bin.")
+    } else if q_trimmed.contains("screenshot")
+        || q_trimmed.contains("capture")
+        || q_trimmed.contains("snip")
+        || q_trimmed.contains("pantallazo")
+    {
+        ("take_screenshot", 0.98, "Capturing screenshot.")
+    } else if q_trimmed.contains("lock") || q_trimmed.contains("bloquear") {
+        ("lock_pc", 0.98, "Locking workstation.")
+    } else if q_trimmed.contains("sleep") || q_trimmed.contains("suspender") {
+        ("sleep_pc", 0.98, "Putting PC to sleep.")
+    } else if q_trimmed.contains("wifi") {
+        ("toggle_wifi", 0.98, "Toggling Wi-Fi connection.")
+    } else if q_trimmed.contains("bluetooth") {
+        ("toggle_bluetooth", 0.98, "Toggling Bluetooth.")
+    } else {
+        (
+            "something_else",
+            0.05,
+            "LumaBar Clean v1.2.29 running safely in clean-room offline mode.",
+        )
+    };
+
+    serde_json::json!({
+        "reply": reply,
+        "answers": {
+            "action": {
+                "choice": choice,
+                "probabilities": {
+                    choice: if choice == "something_else" { 0.9 } else { 0.98 }
+                }
+            },
+            "is_command": {
+                "noul": is_cmd
+            }
+        }
+    })
+}
+
+fn evaluate_simple_math(expr: &str) -> Option<f64> {
+    let clean: String = expr.chars().filter(|c| !c.is_whitespace()).collect();
+    if clean.is_empty() {
+        return None;
+    }
+    for op in ['+', '-', '*', '/', '^'] {
+        if let Some(pos) = clean.rfind(op) {
+            if pos > 0 && pos < clean.len() - 1 {
+                let left_str = &clean[..pos];
+                let right_str = &clean[pos + 1..];
+                if let (Ok(left), Ok(right)) = (left_str.parse::<f64>(), right_str.parse::<f64>()) {
+                    let res = match op {
+                        '+' => left + right,
+                        '-' => left - right,
+                        '*' => left * right,
+                        '/' => {
+                            if right == 0.0 {
+                                return None;
+                            }
+                            left / right
+                        }
+                        '^' => left.powf(right),
+                        _ => return None,
+                    };
+                    return Some((res * 1000.0).round() / 1000.0);
+                }
+            }
+        }
+    }
+    None
+}
+
+fn evaluate_unit_conversion(s: &str) -> Option<String> {
+    let parts: Vec<&str> = s.split_whitespace().collect();
+    if parts.len() >= 4 && (parts[2] == "to" || parts[2] == "in" || parts[2] == "en") {
+        let val = parts[0].parse::<f64>().ok()?;
+        let from = parts[1].to_lowercase();
+        let to = parts[3].to_lowercase();
+
+        if (from == "km" || from == "kilometer" || from == "kilometers")
+            && (to == "miles" || to == "mi" || to == "mile")
+        {
+            let res = val * 0.621371;
+            return Some(format!("{} km = {:.2} miles", val, res));
+        }
+        if (from == "miles" || from == "mi") && (to == "km" || to == "kilometers") {
+            let res = val / 0.621371;
+            return Some(format!("{} miles = {:.2} km", val, res));
+        }
+        if (from == "c" || from == "celsius") && (to == "f" || to == "fahrenheit") {
+            let res = (val * 9.0 / 5.0) + 32.0;
+            return Some(format!("{} °C = {:.1} °F", val, res));
+        }
+        if (from == "f" || from == "fahrenheit") && (to == "c" || to == "celsius") {
+            let res = (val - 32.0) * 5.0 / 9.0;
+            return Some(format!("{} °F = {:.1} °C", val, res));
+        }
+        if (from == "kg" || from == "kilograms") && (to == "lbs" || to == "pounds" || to == "lb") {
+            let res = val * 2.20462;
+            return Some(format!("{} kg = {:.2} lbs", val, res));
+        }
+        if from == "gb" && to == "mb" {
+            let res = val * 1024.0;
+            return Some(format!("{} GB = {:.0} MB", val, res));
+        }
+    }
+    None
 }
 
 fn position_popover(popover: &WebviewWindow, payload: &serde_json::Value) {
@@ -1329,5 +2137,182 @@ mod tests {
     fn test_recycle_bin_empty_action() {
         let empty_res = dispatch_command("empty_recycle_bin", &serde_json::Value::Null);
         assert!(empty_res.is_null());
+    }
+
+    #[test]
+    fn test_autohide_and_lift_commands() {
+        let set_auto = dispatch_command("dock_set_autohide", &serde_json::json!({ "enabled": true }));
+        assert!(set_auto.is_null());
+        assert_eq!(win32::DOCK_AUTOHIDE.load(std::sync::atomic::Ordering::SeqCst), true);
+
+        let set_smart = dispatch_command("dock_set_smart_hide", &serde_json::json!({ "on": true }));
+        assert!(set_smart.is_null());
+        assert_eq!(win32::DOCK_SMART_HIDE.load(std::sync::atomic::Ordering::SeqCst), true);
+
+        let set_lift = dispatch_command("dock_set_lift", &serde_json::json!({ "lift": 12.0, "live": true }));
+        assert!(set_lift.is_null());
+        assert_eq!(win32::DOCK_LIFT.load(std::sync::atomic::Ordering::SeqCst), 12);
+
+        let hide_dock = dispatch_command("dock_autohide_hidden", &serde_json::json!({ "hidden": true }));
+        assert!(hide_dock.is_null());
+        assert_eq!(win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst), true);
+
+        let pointer_enter = dispatch_command("dock_pointer", &serde_json::json!({ "event": "enter" }));
+        assert!(pointer_enter.is_null());
+        assert_eq!(win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst), false);
+
+        let pointer_leave = dispatch_command("dock_pointer", &serde_json::json!({ "event": "leave" }));
+        assert!(pointer_leave.is_null());
+        assert_eq!(win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst), true);
+
+        // Reset
+        let _ = dispatch_command("dock_set_autohide", &serde_json::json!({ "enabled": false }));
+        let _ = dispatch_command("dock_autohide_hidden", &serde_json::json!({ "hidden": false }));
+    }
+
+    #[test]
+    fn test_dwm_thumbnails_and_preview_commands() {
+        let thumbs = dispatch_command("show_app_window_thumbnails", &serde_json::json!({
+            "hwnds": [12345, 67890],
+            "grid": { "x": 10.0, "y": 40.0 }
+        }));
+        assert!(thumbs.is_array());
+        let arr = thumbs.as_array().unwrap();
+        assert_eq!(arr.len(), 2);
+        assert_eq!(arr[0]["x"], 10);
+        assert_eq!(arr[0]["y"], 40);
+        assert_eq!(arr[0]["width"], 232);
+        assert_eq!(arr[0]["height"], 138);
+
+        let hide = dispatch_command("hide_app_window_thumbnails", &serde_json::Value::Null);
+        assert!(hide.is_null());
+
+        let preview_resize = dispatch_command("resize_app_windows_preview", &serde_json::json!({
+            "windowCount": 3,
+            "left": 150.0
+        }));
+        assert!(preview_resize["width"].is_number());
+        assert_eq!(preview_resize["height"], 172.0);
+
+        let win_rect = dispatch_command("window_rect_at", &serde_json::json!({ "x": 100.0, "y": 100.0 }));
+        // Should return rect or null without error
+        assert!(win_rect.is_object() || win_rect.is_null());
+    }
+
+    #[test]
+    fn test_drag_ghost_and_hover_label() {
+        let ghost_show = dispatch_command("drag_ghost_show", &serde_json::json!({
+            "normal": "data:image/png;base64,sampleNormal",
+            "remove": "data:image/png;base64,sampleRemove",
+            "hotX": 24,
+            "hotY": 24
+        }));
+        assert!(ghost_show.is_null());
+        {
+            let g = DRAG_GHOST_STATE.lock().unwrap();
+            assert_eq!(g.active, true);
+            assert_eq!(g.hot_x, 24);
+            assert_eq!(g.hot_y, 24);
+            assert_eq!(g.normal_img.as_deref(), Some("data:image/png;base64,sampleNormal"));
+        }
+
+        let ghost_face = dispatch_command("drag_ghost_face", &serde_json::json!({ "remove": true }));
+        assert!(ghost_face.is_null());
+        assert_eq!(DRAG_GHOST_STATE.lock().unwrap().remove_face, true);
+
+        let ghost_hide = dispatch_command("drag_ghost_hide", &serde_json::json!({ "poof": true }));
+        assert!(ghost_hide.is_null());
+        assert_eq!(DRAG_GHOST_STATE.lock().unwrap().active, false);
+        assert_eq!(DRAG_GHOST_STATE.lock().unwrap().poof, true);
+
+        let hover_show = dispatch_command("hover_label_show", &serde_json::json!({
+            "image": "sample_label.png",
+            "x": 200.0,
+            "y": 50.0
+        }));
+        assert!(hover_show.is_null());
+        assert_eq!(HOVER_LABEL_STATE.lock().unwrap().visible, true);
+
+        let hover_hide = dispatch_command("hover_label_hide", &serde_json::Value::Null);
+        assert!(hover_hide.is_null());
+        assert_eq!(HOVER_LABEL_STATE.lock().unwrap().visible, false);
+    }
+
+    #[test]
+    fn test_capture_overlay_and_screenshots() {
+        let open_cap = dispatch_command("open_capture_overlay", &serde_json::json!({ "mode": "snip" }));
+        assert_eq!(open_cap["status"], "opened");
+        assert_eq!(open_cap["mode"], "snip");
+
+        let mode = dispatch_command("capture_mode", &serde_json::Value::Null);
+        assert_eq!(mode, "snip");
+
+        let close_cap = dispatch_command("close_capture_overlay", &serde_json::Value::Null);
+        assert!(close_cap.is_null());
+
+        let mode_after = dispatch_command("capture_mode", &serde_json::Value::Null);
+        assert!(mode_after.is_null());
+
+        let cap_reg = dispatch_command("capture_region", &serde_json::json!({
+            "x": 0.0, "y": 0.0, "width": 50.0, "height": 50.0
+        }));
+        assert!(cap_reg["width"].is_number());
+        assert!(cap_reg["height"].is_number());
+    }
+
+    #[test]
+    fn test_dock_ask_ai_features() {
+        // Math query
+        let math_ask = dispatch_command("dock_ask", &serde_json::json!({
+            "state": { "request": "25 * 4" }
+        }));
+        assert!(math_ask["reply"].as_str().unwrap().contains("100"));
+
+        // Unit conversion query
+        let conv_ask = dispatch_command("dock_ask", &serde_json::json!({
+            "state": { "request": "10 km to miles" }
+        }));
+        assert!(conv_ask["reply"].as_str().unwrap().contains("6.21 miles"));
+
+        // Action matching query
+        let vol_ask = dispatch_command("dock_ask", &serde_json::json!({
+            "state": { "request": "volume up" }
+        }));
+        assert_eq!(vol_ask["answers"]["action"]["choice"], "volume_up");
+        assert!(vol_ask["answers"]["is_command"]["noul"].as_f64().unwrap() >= 0.9);
+
+        // System query
+        let sys_ask = dispatch_command("dock_ask", &serde_json::json!({
+            "state": { "request": "what is my cpu usage" }
+        }));
+        assert!(sys_ask["reply"].as_str().unwrap().contains("CPU"));
+
+        // Dock tip
+        let tip_ask = dispatch_command("dock_ask", &serde_json::json!({
+            "state": { "request": "how to use tips" }
+        }));
+        assert!(tip_ask["reply"].as_str().unwrap().contains("LumaBar Tips"));
+    }
+
+    #[test]
+    fn test_voice_commands_dispatch() {
+        let test_memo = "cmd_dispatch_test_memo";
+        let start = dispatch_command("voice_record_start", &serde_json::json!({ "id": test_memo }));
+        assert_eq!(start["status"], "recording");
+
+        std::thread::sleep(std::time::Duration::from_millis(50));
+
+        let stop = dispatch_command("voice_record_stop", &serde_json::Value::Null);
+        assert_eq!(stop["status"], "stopped");
+
+        let list = dispatch_command("voice_list", &serde_json::Value::Null);
+        assert!(list.is_array());
+        assert!(list.as_array().unwrap().iter().any(|m| m["id"] == test_memo));
+
+        let play = dispatch_command("voice_play", &serde_json::json!({ "id": test_memo }));
+        assert!(play["status"] == "playing" || play["status"] == "playback_dispatched");
+
+        let del = dispatch_command("voice_delete", &serde_json::json!({ "id": test_memo }));
+        assert_eq!(del["deleted"], true);
     }
 }

@@ -9,6 +9,7 @@ pub mod network;
 pub mod settings;
 pub mod sysinfo_monitor;
 pub mod unsplash;
+pub mod voice;
 pub mod weather;
 pub mod win32;
 

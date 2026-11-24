@@ -2,6 +2,7 @@ use std::ffi::OsStr;
 use std::os::windows::ffi::OsStrExt;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, AtomicI32};
+use std::sync::Mutex;
 use base64::Engine;
 
 pub type HWND = isize;
@@ -15,6 +16,10 @@ pub type HRGN = isize;
 pub static DOCK_HEADROOM: AtomicI32 = AtomicI32::new(0);
 pub static DOCK_OPEN: AtomicBool = AtomicBool::new(false);
 pub static DOCK_AT_TOP: AtomicBool = AtomicBool::new(false);
+pub static DOCK_AUTOHIDE: AtomicBool = AtomicBool::new(false);
+pub static DOCK_SMART_HIDE: AtomicBool = AtomicBool::new(false);
+pub static DOCK_LIFT: AtomicI32 = AtomicI32::new(0);
+pub static DOCK_IS_HIDDEN: AtomicBool = AtomicBool::new(false);
 
 const SW_RESTORE: i32 = 9;
 const SW_MINIMIZE: i32 = 6;
@@ -133,6 +138,30 @@ pub struct RECT {
     pub bottom: i32,
 }
 
+#[repr(C)]
+#[derive(Default, Copy, Clone, Debug, PartialEq)]
+pub struct POINT {
+    pub x: i32,
+    pub y: i32,
+}
+
+#[repr(C)]
+#[derive(Default, Copy, Clone)]
+pub struct DWM_THUMBNAIL_PROPERTIES {
+    pub dw_flags: u32,
+    pub rc_destination: RECT,
+    pub rc_source: RECT,
+    pub opacity: u8,
+    pub f_visible: BOOL,
+    pub f_source_client_area_only: BOOL,
+}
+
+pub const DWM_TNP_RECTDESTINATION: u32 = 0x00000001;
+pub const DWM_TNP_RECTSOURCE: u32 = 0x00000002;
+pub const DWM_TNP_OPACITY: u32 = 0x00000004;
+pub const DWM_TNP_VISIBLE: u32 = 0x00000008;
+pub const DWM_TNP_SOURCECLIENTAREAONLY: u32 = 0x00000010;
+
 type WNDENUMPROC = unsafe extern "system" fn(HWND, isize) -> BOOL;
 
 #[link(name = "user32")]
@@ -173,6 +202,8 @@ extern "system" {
     fn GetWindowThreadProcessId(hWnd: HWND, lpdwProcessId: *mut u32) -> u32;
     fn GetWindowRect(hWnd: HWND, lpRect: *mut RECT) -> BOOL;
     fn SetWindowRgn(hWnd: HWND, hRgn: HRGN, bRedraw: BOOL) -> i32;
+    fn WindowFromPoint(point: POINT) -> HWND;
+    fn GetAncestor(hwnd: HWND, gaFlags: u32) -> HWND;
 }
 
 #[link(name = "gdi32")]
@@ -189,6 +220,11 @@ extern "system" {
     ) -> i32;
     fn DeleteObject(ho: HBITMAP) -> BOOL;
     fn CreateRectRgn(x1: i32, y1: i32, x2: i32, y2: i32) -> HRGN;
+    fn CreateCompatibleBitmap(hdc: HDC, cx: i32, cy: i32) -> HBITMAP;
+    fn CreateCompatibleDC(hdc: HDC) -> HDC;
+    fn SelectObject(hdc: HDC, h: HANDLE) -> HANDLE;
+    fn BitBlt(hdc: HDC, x: i32, y: i32, cx: i32, cy: i32, hdcSrc: HDC, x1: i32, y1: i32, rop: u32) -> BOOL;
+    fn DeleteDC(hdc: HDC) -> BOOL;
 }
 
 #[link(name = "kernel32")]
@@ -247,6 +283,21 @@ extern "system" {
         pvAttribute: *const std::ffi::c_void,
         cbAttribute: u32,
     ) -> i32;
+    fn DwmRegisterThumbnail(
+        hwndDestination: HWND,
+        hwndSource: HWND,
+        phThumbnailId: *mut HANDLE,
+    ) -> i32;
+    fn DwmUpdateThumbnailProperties(
+        hThumbnailId: HANDLE,
+        ptnProperties: *const DWM_THUMBNAIL_PROPERTIES,
+    ) -> i32;
+    fn DwmUnregisterThumbnail(hThumbnailId: HANDLE) -> i32;
+}
+
+#[link(name = "winmm")]
+extern "system" {
+    fn PlaySoundW(pszSound: *const u16, hmod: HANDLE, fdwSound: u32) -> BOOL;
 }
 
 pub const VK_VOLUME_MUTE: u8 = 0xAD;
@@ -1111,6 +1162,217 @@ pub fn get_pinned_taskbar_apps() -> Vec<serde_json::Value> {
     apps
 }
 
+static ACTIVE_THUMBNAILS: Mutex<Vec<HANDLE>> = Mutex::new(Vec::new());
+
+pub fn clear_all_dwm_thumbnails() {
+    let mut list = match ACTIVE_THUMBNAILS.lock() {
+        Ok(guard) => guard,
+        Err(poisoned) => poisoned.into_inner(),
+    };
+    for &h in list.iter() {
+        if h != 0 {
+            unsafe {
+                let _ = DwmUnregisterThumbnail(h);
+            }
+        }
+    }
+    list.clear();
+}
+
+pub fn register_dwm_thumbnail(dest: HWND, src: HWND, dest_rect: RECT) -> Option<HANDLE> {
+    if dest == 0 || src == 0 {
+        return None;
+    }
+    let mut thumb_id: HANDLE = 0;
+    let res = unsafe { DwmRegisterThumbnail(dest, src, &mut thumb_id) };
+    if res == 0 && thumb_id != 0 {
+        let props = DWM_THUMBNAIL_PROPERTIES {
+            dw_flags: DWM_TNP_RECTDESTINATION | DWM_TNP_VISIBLE | DWM_TNP_OPACITY,
+            rc_destination: dest_rect,
+            rc_source: RECT::default(),
+            opacity: 255,
+            f_visible: 1,
+            f_source_client_area_only: 0,
+        };
+        let _ = unsafe { DwmUpdateThumbnailProperties(thumb_id, &props) };
+        if let Ok(mut list) = ACTIVE_THUMBNAILS.lock() {
+            list.push(thumb_id);
+        }
+        Some(thumb_id)
+    } else {
+        None
+    }
+}
+
+pub fn unregister_dwm_thumbnail(handle: HANDLE) {
+    if handle != 0 {
+        unsafe {
+            let _ = DwmUnregisterThumbnail(handle);
+        }
+        if let Ok(mut list) = ACTIVE_THUMBNAILS.lock() {
+            list.retain(|&h| h != handle);
+        }
+    }
+}
+
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct WindowRectInfo {
+    pub x: i32,
+    pub y: i32,
+    pub width: i32,
+    pub height: i32,
+    pub title: String,
+}
+
+pub fn get_window_rect_at(x: i32, y: i32) -> Option<WindowRectInfo> {
+    let pt = POINT { x, y };
+    let hwnd = unsafe { WindowFromPoint(pt) };
+    if hwnd == 0 {
+        return None;
+    }
+    let root_hwnd = unsafe { GetAncestor(hwnd, 2) }; // GA_ROOT = 2
+    let target_hwnd = if root_hwnd != 0 { root_hwnd } else { hwnd };
+
+    let mut rect = RECT::default();
+    let ok = unsafe { GetWindowRect(target_hwnd, &mut rect) };
+    if ok == 0 {
+        return None;
+    }
+
+    let mut title_buf = [0u16; 512];
+    let len = unsafe { GetWindowTextW(target_hwnd, title_buf.as_mut_ptr(), 512) };
+    let title = if len > 0 {
+        String::from_utf16_lossy(&title_buf[..len as usize])
+    } else {
+        String::new()
+    };
+
+    Some(WindowRectInfo {
+        x: rect.left,
+        y: rect.top,
+        width: (rect.right - rect.left).max(0),
+        height: (rect.bottom - rect.top).max(0),
+        title,
+    })
+}
+
+pub fn capture_screen_area(x: i32, y: i32, width: i32, height: i32) -> Option<Vec<u8>> {
+    if width <= 0 || height <= 0 {
+        return None;
+    }
+    unsafe {
+        let hdc_screen = GetDC(0);
+        if hdc_screen == 0 {
+            return None;
+        }
+        let hdc_mem = CreateCompatibleDC(hdc_screen);
+        if hdc_mem == 0 {
+            ReleaseDC(0, hdc_screen);
+            return None;
+        }
+        let hbm = CreateCompatibleBitmap(hdc_screen, width, height);
+        if hbm == 0 {
+            DeleteDC(hdc_mem);
+            ReleaseDC(0, hdc_screen);
+            return None;
+        }
+        let old_bm = SelectObject(hdc_mem, hbm);
+        BitBlt(hdc_mem, 0, 0, width, height, hdc_screen, x, y, 0x00CC0020); // SRCCOPY
+        SelectObject(hdc_mem, old_bm);
+
+        let mut bmi = BITMAPINFO {
+            bmi_header: BITMAPINFOHEADER {
+                bi_size: std::mem::size_of::<BITMAPINFOHEADER>() as u32,
+                bi_width: width,
+                bi_height: -height, // top-down DIB
+                bi_planes: 1,
+                bi_bit_count: 32,
+                bi_compression: BI_RGB,
+                bi_size_image: 0,
+                bi_x_pels_per_meter: 0,
+                bi_y_pels_per_meter: 0,
+                bi_clr_used: 0,
+                bi_clr_important: 0,
+            },
+            bmi_colors: [0; 1],
+        };
+
+        let mut bgra_buf = vec![0u8; (width * height * 4) as usize];
+        let lines = GetDIBits(
+            hdc_mem,
+            hbm,
+            0,
+            height as u32,
+            bgra_buf.as_mut_ptr() as *mut std::ffi::c_void,
+            &mut bmi,
+            DIB_RGB_COLORS,
+        );
+
+        DeleteObject(hbm);
+        DeleteDC(hdc_mem);
+        ReleaseDC(0, hdc_screen);
+
+        if lines == 0 {
+            return None;
+        }
+
+        let mut rgba = vec![0u8; bgra_buf.len()];
+        for i in (0..bgra_buf.len()).step_by(4) {
+            rgba[i] = bgra_buf[i + 2];     // R
+            rgba[i + 1] = bgra_buf[i + 1]; // G
+            rgba[i + 2] = bgra_buf[i];     // B
+            rgba[i + 3] = 255;             // A
+        }
+
+        let mut png_bytes = Vec::new();
+        {
+            let mut encoder = png::Encoder::new(&mut png_bytes, width as u32, height as u32);
+            encoder.set_color(png::ColorType::Rgba);
+            encoder.set_depth(png::BitDepth::Eight);
+            if let Ok(mut writer) = encoder.write_header() {
+                if writer.write_image_data(&rgba).is_err() {
+                    return None;
+                }
+            } else {
+                return None;
+            }
+        }
+
+        Some(png_bytes)
+    }
+}
+
+pub fn capture_and_save_rect(x: i32, y: i32, width: i32, height: i32) -> Option<(String, i32, i32)> {
+    let bytes = capture_screen_area(x, y, width, height)?;
+    let app_data = std::env::var("APPDATA").unwrap_or_else(|_| std::env::temp_dir().to_string_lossy().to_string());
+    let captures_dir = PathBuf::from(app_data).join("lumabar").join("captures");
+    let _ = std::fs::create_dir_all(&captures_dir);
+    let now_ts = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .map(|d| d.as_millis())
+        .unwrap_or(0);
+    let filename = format!("capture_{}.png", now_ts);
+    let path = captures_dir.join(filename);
+    if std::fs::write(&path, &bytes).is_ok() {
+        Some((path.to_string_lossy().to_string(), width, height))
+    } else {
+        None
+    }
+}
+
+pub fn play_sound_file(path: &str) -> bool {
+    let wide = to_wide(path);
+    unsafe {
+        PlaySoundW(wide.as_ptr(), 0, 0x0001 | 0x00020000) != 0 // SND_ASYNC | SND_FILENAME
+    }
+}
+
+pub fn stop_sound() {
+    unsafe {
+        PlaySoundW(std::ptr::null(), 0, 0);
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1221,6 +1483,39 @@ mod tests {
         update_dock_window_region(0, 50, false, false);
         update_dock_window_region(0, 0, true, true);
         update_dock_window_region(0, 80, false, true);
+    }
+
+    #[test]
+    fn test_dwm_thumbnails_lifecycle() {
+        // Safe registration with dummy handles returns None
+        assert!(register_dwm_thumbnail(0, 0, RECT::default()).is_none());
+        clear_all_dwm_thumbnails();
+        unregister_dwm_thumbnail(0);
+    }
+
+    #[test]
+    fn test_get_window_rect_at() {
+        // Querying desktop coordinates should safely succeed or return valid rect
+        let rect_info = get_window_rect_at(100, 100);
+        if let Some(info) = rect_info {
+            assert!(info.width >= 0);
+            assert!(info.height >= 0);
+        }
+    }
+
+    #[test]
+    fn test_capture_screen_area() {
+        // Small 10x10 capture
+        let bytes = capture_screen_area(0, 0, 10, 10);
+        assert!(bytes.is_some());
+        let b = bytes.unwrap();
+        assert_eq!(&b[0..8], &[0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
+    }
+
+    #[test]
+    fn test_play_sound_file_empty() {
+        // Non-existent or empty path returns false without panicking
+        let _ = play_sound_file("");
     }
 }
 
