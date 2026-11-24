@@ -1,9 +1,9 @@
 use crate::{
-    ai_usage, crypto, forex, github, leetcode, media, network, settings, sysinfo_monitor,
+    ai_usage, crypto, forex, github, leetcode, media, network, overlay, settings, sysinfo_monitor,
     unsplash, voice, weather, win32,
 };
 use std::sync::Mutex;
-use tauri::{AppHandle, Manager, WebviewWindow};
+use tauri::{AppHandle, Emitter, Manager, WebviewWindow};
 
 #[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize)]
 pub struct DragGhostState {
@@ -43,6 +43,56 @@ pub static HOVER_LABEL_STATE: Mutex<HoverLabelState> = Mutex::new(HoverLabelStat
 
 pub static CAPTURE_MODE_STATE: Mutex<Option<String>> = Mutex::new(None);
 
+#[derive(Debug, Clone)]
+pub struct PopoverLayoutState {
+    pub kind: String,
+    pub left: f64,
+    pub top: Option<f64>,
+    pub anchor: Option<f64>,
+    pub bar_base: f64,
+    pub bar_at_top: bool,
+    pub width: f64,
+    pub height: f64,
+    pub gap: f64,
+    pub margin: f64,
+    pub focus: bool,
+    pub ready: bool,
+}
+
+impl Default for PopoverLayoutState {
+    fn default() -> Self {
+        Self {
+            kind: "menu".to_string(),
+            left: 0.0,
+            top: None,
+            anchor: None,
+            bar_base: 76.0,
+            bar_at_top: false,
+            width: 420.0,
+            height: 380.0,
+            gap: 8.0,
+            margin: 14.0,
+            focus: true,
+            ready: false,
+        }
+    }
+}
+
+pub static POPOVER_STATE: Mutex<PopoverLayoutState> = Mutex::new(PopoverLayoutState {
+    kind: String::new(),
+    left: 0.0,
+    top: None,
+    anchor: None,
+    bar_base: 76.0,
+    bar_at_top: false,
+    width: 420.0,
+    height: 380.0,
+    gap: 8.0,
+    margin: 14.0,
+    focus: true,
+    ready: false,
+});
+
 pub fn reposition_dock(app: &AppHandle) {
     if let Some(main_win) = app.get_webview_window("main") {
         if let Ok(Some(monitor)) = main_win.current_monitor() {
@@ -78,18 +128,36 @@ pub fn reposition_dock(app: &AppHandle) {
 
 pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -> serde_json::Value {
     match cmd {
+        "popover_ready" => {
+            if let Ok(mut st) = POPOVER_STATE.lock() {
+                st.ready = true;
+            }
+            serde_json::Value::Null
+        }
         "popover_show" => {
             if let Some(popover) = app.get_webview_window("popover") {
-                position_popover(&popover, payload);
+                let kind = payload
+                    .get("kind")
+                    .and_then(|v| v.as_str())
+                    .unwrap_or("menu")
+                    .to_string();
+                let focus = payload.get("focus").and_then(|v| v.as_bool()).unwrap_or(true);
+                update_popover_state_from_payload(&kind, focus, payload);
+                apply_popover_geometry(app, &popover);
                 #[cfg(target_os = "windows")]
                 crate::apply_vibrancy_effects(&popover);
+                let _ = popover.set_always_on_top(true);
                 let _ = popover.show();
-                let _ = popover.set_focus();
+                if focus {
+                    let _ = popover.set_focus();
+                }
+                let _ = app.emit_to("popover", "popover-open", &kind);
             }
             serde_json::Value::Null
         }
         "popover_hide" => {
             if let Some(popover) = app.get_webview_window("popover") {
+                let _ = app.emit_to("popover", "popover-hidden", ());
                 let _ = popover.hide();
             }
             serde_json::Value::Null
@@ -98,42 +166,118 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             if let Some(popover) = app.get_webview_window("popover") {
                 let h = payload.get("height").and_then(|v| v.as_f64());
                 let w = payload.get("width").and_then(|v| v.as_f64());
-                if let Some(h) = h {
-                    let scale = popover.scale_factor().unwrap_or(1.0);
-                    let current_w = popover
-                        .outer_size()
-                        .map(|s| s.width as f64 / scale)
-                        .unwrap_or(420.0);
-                    let target_w = w.unwrap_or(current_w);
-                    let _ = popover.set_size(tauri::Size::Logical(tauri::LogicalSize::new(target_w, h)));
+                if h.is_some() || w.is_some() {
+                    if let Ok(mut st) = POPOVER_STATE.lock() {
+                        if let Some(new_h) = h {
+                            st.height = new_h;
+                        }
+                        if let Some(new_w) = w {
+                            st.width = new_w;
+                        }
+                    }
+                    apply_popover_geometry(app, &popover);
                 }
             }
             serde_json::Value::Null
         }
+        "popover_follow_bar" => {
+            if let Some(bar_base) = payload.get("barBase").and_then(|v| v.as_f64()) {
+                let is_capture = POPOVER_STATE
+                    .lock()
+                    .map(|mut st| {
+                        st.bar_base = bar_base;
+                        st.kind == "capture"
+                    })
+                    .unwrap_or(false);
+                if !is_capture {
+                    if let Some(popover) = app.get_webview_window("popover") {
+                        if popover.is_visible().unwrap_or(false) {
+                            apply_popover_geometry(app, &popover);
+                        }
+                    }
+                }
+            }
+            serde_json::Value::Null
+        }
+        "appmenu_ready" => serde_json::Value::Null,
         "appmenu_show" => {
             if let Some(menu) = app.get_webview_window("menu") {
+                let rows = payload
+                    .get("rows")
+                    .cloned()
+                    .unwrap_or_else(|| serde_json::json!([]));
+                let left = payload.get("left").and_then(|v| v.as_f64()).unwrap_or(0.0);
+                let top = payload.get("top").and_then(|v| v.as_f64()).unwrap_or(0.0);
+                let part_h = payload
+                    .get("partHeight")
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(200.0);
+                let side_w = payload
+                    .get("sideWidth")
+                    .and_then(|v| v.as_f64())
+                    .unwrap_or(0.0);
+                let at_top = win32::DOCK_AT_TOP.load(std::sync::atomic::Ordering::SeqCst);
+
+                let (mon_x, mon_y, mon_w, mon_h, main_x, main_y, scale) = app
+                    .get_webview_window("main")
+                    .and_then(|mw| {
+                        let mon = mw.current_monitor().ok().flatten()?;
+                        let scale = mw.scale_factor().ok().unwrap_or_else(|| mon.scale_factor());
+                        let pos = mw.outer_position().ok()?;
+                        Some((
+                            mon.position().x,
+                            mon.position().y,
+                            mon.size().width as i32,
+                            mon.size().height as i32,
+                            pos.x,
+                            pos.y,
+                            scale,
+                        ))
+                    })
+                    .unwrap_or((0, 0, 1920, 1080, 0, 985, 1.0));
+
+                let (win_x, win_y, win_w, win_h, submenu_left) = compute_appmenu_physical_rect(
+                    main_x,
+                    main_y,
+                    left,
+                    top,
+                    part_h,
+                    side_w,
+                    at_top,
+                    scale,
+                    (mon_x, mon_y, mon_w, mon_h),
+                );
+
                 #[cfg(target_os = "windows")]
                 crate::apply_vibrancy_effects(&menu);
-                if let (Some(x), Some(y)) = (
-                    payload.get("left").and_then(|v| v.as_f64()),
-                    payload.get("top").and_then(|v| v.as_f64()),
-                ) {
-                    let _ = menu.set_position(tauri::Position::Logical(tauri::LogicalPosition::new(x, y)));
-                }
-                if let Some(part_h) = payload.get("partHeight").and_then(|v| v.as_f64()) {
-                    let side_w = payload.get("sideWidth").and_then(|v| v.as_f64()).unwrap_or(0.0);
-                    let target_w = 260.0 + side_w;
-                    let _ = menu.set_size(tauri::Size::Logical(tauri::LogicalSize::new(target_w, part_h + 30.0)));
-                }
+                let _ = menu.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
+                    win_w.max(1) as u32,
+                    win_h.max(1) as u32,
+                )));
+                let _ = menu.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(
+                    win_x, win_y,
+                )));
+                let _ = app.emit_to(
+                    "menu",
+                    "appmenu-rows",
+                    serde_json::json!({
+                        "rows": rows,
+                        "submenuLeft": submenu_left
+                    }),
+                );
+                let _ = menu.set_always_on_top(true);
                 let _ = menu.show();
                 let _ = menu.set_focus();
+                let _ = app.emit_to("menu", "appmenu-open", serde_json::Value::Null);
             }
             serde_json::Value::Null
         }
         "appmenu_hide" => {
             if let Some(menu) = app.get_webview_window("menu") {
+                let _ = app.emit_to("menu", "appmenu-closed", serde_json::Value::Null);
                 let _ = menu.hide();
             }
+            let _ = app.emit_to("main", "appmenu-hidden", serde_json::Value::Null);
             serde_json::Value::Null
         }
         "dock_headroom" => {
@@ -155,11 +299,27 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
         }
         "dock_resize" => {
             if let Some(main_win) = app.get_webview_window("main") {
-                let width = payload.get("width").and_then(|v| v.as_f64());
                 let height = payload.get("height").and_then(|v| v.as_f64());
+                let explicit_w = payload.get("width").and_then(|v| v.as_f64());
                 let at_top = win32::DOCK_AT_TOP.load(std::sync::atomic::Ordering::SeqCst);
-                if let (Some(w), Some(h)) = (width, height) {
-                    let _ = main_win.set_size(tauri::Size::Logical(tauri::LogicalSize::new(w, h)));
+                if let Some(h) = height {
+                    let (mon_w_logical, _mon_h_logical) = main_win
+                        .current_monitor()
+                        .ok()
+                        .flatten()
+                        .map(|m| {
+                            let scale = main_win.scale_factor().unwrap_or_else(|_| m.scale_factor());
+                            (
+                                m.size().width as f64 / scale,
+                                m.size().height as f64 / scale,
+                            )
+                        })
+                        .unwrap_or((1920.0, 1080.0));
+                    let target_w = explicit_w.unwrap_or(mon_w_logical).max(320.0);
+                    let _ = main_win.set_size(tauri::Size::Logical(tauri::LogicalSize::new(
+                        target_w,
+                        h.max(48.0),
+                    )));
                     reposition_dock(app);
                     #[cfg(target_os = "windows")]
                     if let Ok(hwnd) = main_win.hwnd() {
@@ -347,17 +507,43 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             }
         }
         "open_capture_overlay" => {
-            let mode = payload.get("mode").and_then(|v| v.as_str()).unwrap_or("region").to_string();
+            let mode = payload
+                .get("mode")
+                .and_then(|v| v.as_str())
+                .unwrap_or("region")
+                .to_string();
             if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
                 *m = Some(mode.clone());
             }
-            let opened = win32::shell_open("ms-screenclip:", None)
-                || win32::shell_open("SnippingTool.exe", None);
-            serde_json::json!({ "mode": mode, "status": if opened { "opened" } else { "fallback" } })
+            if let Some(popover) = app.get_webview_window("popover") {
+                if let Ok(mut st) = POPOVER_STATE.lock() {
+                    st.kind = "capture".to_string();
+                }
+                let (vx, vy, vw, vh) = win32::get_screen_bounds();
+                let _ = popover.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(vx, vy)));
+                let _ = popover.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
+                    vw.max(1) as u32,
+                    vh.max(1) as u32,
+                )));
+                let _ = popover.set_always_on_top(true);
+                let _ = popover.show();
+                let _ = popover.set_focus();
+                let _ = app.emit_to("popover", "popover-open", "capture");
+                let _ = app.emit_to("popover", "capture-open", &mode);
+                serde_json::json!({ "mode": mode, "status": "opened" })
+            } else {
+                let opened = win32::shell_open("ms-screenclip:", None)
+                    || win32::shell_open("SnippingTool.exe", None);
+                serde_json::json!({ "mode": mode, "status": if opened { "opened" } else { "fallback" } })
+            }
         }
         "close_capture_overlay" => {
             if let Ok(mut m) = CAPTURE_MODE_STATE.lock() {
                 *m = None;
+            }
+            if let Some(popover) = app.get_webview_window("popover") {
+                let _ = app.emit_to("popover", "popover-hidden", ());
+                let _ = popover.hide();
             }
             serde_json::Value::Null
         }
@@ -399,55 +585,6 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
             } else {
                 serde_json::json!({ "path": "", "width": 0, "height": 0 })
             }
-        }
-        "drag_ghost_show" => {
-            let normal = payload.get("normal").or_else(|| payload.get("normal_img")).and_then(|v| v.as_str()).map(String::from);
-            let remove = payload.get("remove").or_else(|| payload.get("remove_img")).and_then(|v| v.as_str()).map(String::from);
-            let hot_x = payload.get("hotX").or_else(|| payload.get("hot_x")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
-            let hot_y = payload.get("hotY").or_else(|| payload.get("hot_y")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
-            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
-                g.active = true;
-                g.normal_img = normal;
-                g.remove_img = remove;
-                g.hot_x = hot_x;
-                g.hot_y = hot_y;
-                g.remove_face = false;
-                g.poof = false;
-            }
-            serde_json::Value::Null
-        }
-        "drag_ghost_face" => {
-            let remove = payload.get("remove").and_then(|v| v.as_bool()).unwrap_or(false);
-            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
-                g.remove_face = remove;
-            }
-            serde_json::Value::Null
-        }
-        "drag_ghost_hide" => {
-            let poof = payload.get("poof").and_then(|v| v.as_bool()).unwrap_or(false);
-            if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
-                g.active = false;
-                g.poof = poof;
-            }
-            serde_json::Value::Null
-        }
-        "hover_label_show" => {
-            let image = payload.get("image").and_then(|v| v.as_str()).map(String::from);
-            let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0);
-            let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0);
-            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
-                l.visible = true;
-                l.image = image;
-                l.x = x;
-                l.y = y;
-            }
-            serde_json::Value::Null
-        }
-        "hover_label_hide" => {
-            if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
-                l.visible = false;
-            }
-            serde_json::Value::Null
         }
         "voice_record_start" => {
             let id = payload.get("id").and_then(|v| v.as_str());
@@ -557,10 +694,11 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             serde_json::Value::Null
         }
         "drag_ghost_show" => {
-            let normal = payload.get("normal").and_then(|v| v.as_str()).map(String::from);
-            let remove = payload.get("remove").and_then(|v| v.as_str()).map(String::from);
-            let hot_x = payload.get("hotX").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
-            let hot_y = payload.get("hotY").and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let normal = payload.get("normal").or_else(|| payload.get("normal_img")).and_then(|v| v.as_str()).map(String::from);
+            let remove = payload.get("remove").or_else(|| payload.get("remove_img")).and_then(|v| v.as_str()).map(String::from);
+            let hot_x = payload.get("hotX").or_else(|| payload.get("hot_x")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            let hot_y = payload.get("hotY").or_else(|| payload.get("hot_y")).and_then(|v| v.as_i64()).unwrap_or(0) as i32;
+            overlay::show_drag_ghost(normal.as_deref(), remove.as_deref(), hot_x, hot_y);
             if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
                 g.active = true;
                 g.normal_img = normal;
@@ -574,6 +712,7 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
         }
         "drag_ghost_face" => {
             let remove = payload.get("remove").and_then(|v| v.as_bool()).unwrap_or(false);
+            overlay::set_drag_ghost_face(remove);
             if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
                 g.remove_face = remove;
             }
@@ -581,6 +720,7 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
         }
         "drag_ghost_hide" => {
             let poof = payload.get("poof").and_then(|v| v.as_bool()).unwrap_or(false);
+            overlay::hide_drag_ghost();
             if let Ok(mut g) = DRAG_GHOST_STATE.lock() {
                 g.active = false;
                 g.poof = poof;
@@ -591,6 +731,7 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             let image = payload.get("image").and_then(|v| v.as_str()).map(String::from);
             let x = payload.get("x").and_then(|v| v.as_f64()).unwrap_or(0.0);
             let y = payload.get("y").and_then(|v| v.as_f64()).unwrap_or(0.0);
+            overlay::show_hover_label(image.as_deref(), x.round() as i32, y.round() as i32);
             if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
                 l.visible = true;
                 l.image = image;
@@ -600,6 +741,7 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
             serde_json::Value::Null
         }
         "hover_label_hide" => {
+            overlay::hide_hover_label();
             if let Ok(mut l) = HOVER_LABEL_STATE.lock() {
                 l.visible = false;
             }
@@ -910,7 +1052,7 @@ pub fn dispatch_command(cmd: &str, payload: &serde_json::Value) -> serde_json::V
                 serde_json::Value::Null
             }
         }
-        "get_app_catalog" => serde_json::json!([]),
+        "get_app_catalog" => win32::get_app_catalog(),
 
         // --- 5. Audio, Media & Speech ---
         "get_audio_state" => media::get_audio_state(),
@@ -1686,31 +1828,188 @@ fn evaluate_unit_conversion(s: &str) -> Option<String> {
     None
 }
 
-fn position_popover(popover: &WebviewWindow, payload: &serde_json::Value) {
-    let width = payload.get("width").and_then(|v| v.as_f64()).unwrap_or(420.0);
-    let height = payload.get("height").and_then(|v| v.as_f64()).unwrap_or(380.0);
+fn update_popover_state_from_payload(kind: &str, focus: bool, payload: &serde_json::Value) {
+    if let Ok(mut st) = POPOVER_STATE.lock() {
+        st.kind = kind.to_string();
+        st.left = payload.get("left").and_then(|v| v.as_f64()).unwrap_or(0.0);
+        st.top = payload.get("top").and_then(|v| v.as_f64());
+        st.anchor = payload.get("anchor").and_then(|v| v.as_f64());
+        st.bar_base = payload.get("barBase").and_then(|v| v.as_f64()).unwrap_or(st.bar_base);
+        st.bar_at_top = payload.get("barAtTop").and_then(|v| v.as_bool()).unwrap_or(false);
+        st.width = payload.get("width").and_then(|v| v.as_f64()).unwrap_or(420.0);
+        st.height = payload.get("height").and_then(|v| v.as_f64()).unwrap_or(380.0);
+        st.gap = payload.get("gap").and_then(|v| v.as_f64()).unwrap_or(8.0);
+        st.margin = payload.get("margin").and_then(|v| v.as_f64()).unwrap_or(14.0);
+        st.focus = focus;
+    }
+}
 
-    let _ = popover.set_size(tauri::Size::Logical(tauri::LogicalSize::new(width, height)));
+/// Compute physical `(x, y, win_w, win_h)` for the popover window matching frontend padding and dock edge anchoring.
+pub fn compute_popover_physical_rect(
+    state: &PopoverLayoutState,
+    main_x: i32,
+    main_y: i32,
+    scale: f64,
+    mon_bounds: (i32, i32, i32, i32),
+) -> (i32, i32, i32, i32) {
+    let (mon_x, mon_y, mon_w, mon_h) = mon_bounds;
+    let m = (state.margin * scale).round() as i32;
+    let w_phys = (state.width * scale).round() as i32;
+    let h_phys = (state.height * scale).round() as i32;
+    let win_w = ((state.width + state.margin * 2.0) * scale).round() as i32;
+    let win_h = ((state.height + state.margin * 2.0) * scale).round() as i32;
+    let max_x = mon_x + (mon_w - win_w).max(0);
+    let max_y = mon_y + (mon_h - win_h).max(0);
 
-    let left = payload.get("left").and_then(|v| v.as_f64());
-    let top = payload.get("top").and_then(|v| v.as_f64());
-
-    let (x, y) = if let (Some(l), Some(t)) = (left, top) {
-        if l == 0.0 && payload.get("kind").and_then(|k| k.as_str()) == Some("center") {
-            if let Ok(Some(mon)) = popover.current_monitor() {
-                let mon_w = mon.size().width as f64 / mon.scale_factor();
-                ((mon_w - width) / 2.0, t)
-            } else {
-                (l, t)
-            }
-        } else {
-            (l, t)
+    let x = match state.kind.as_str() {
+        "toast" => mon_x + mon_w - win_w,
+        "appWindows" => {
+            let center_x = main_x + (state.left * scale).round() as i32;
+            (center_x - win_w / 2).clamp(mon_x, max_x)
         }
-    } else {
-        (400.0, 500.0)
+        "menu" => {
+            let desired_card_x = main_x + (state.left * scale).round() as i32;
+            (desired_card_x - m).clamp(mon_x, max_x)
+        }
+        _ => {
+            if let Some(anchor_x) = state.anchor {
+                let center_x = main_x + (anchor_x * scale).round() as i32;
+                (center_x - win_w / 2).clamp(mon_x, max_x)
+            } else {
+                mon_x + (mon_w - win_w) / 2
+            }
+        }
     };
 
-    let _ = popover.set_position(tauri::Position::Logical(tauri::LogicalPosition::new(x, y)));
+    let y = if state.kind == "menu" {
+        let base_anchor = if let Some(top) = state.top {
+            main_y + (top * scale).round() as i32
+        } else if state.bar_at_top {
+            mon_y + ((state.bar_base + state.gap) * scale).round() as i32
+        } else {
+            (mon_y + mon_h) - ((state.bar_base + state.gap) * scale).round() as i32
+        };
+
+        if state.bar_at_top {
+            let below = base_anchor - m;
+            if below + win_h <= mon_y + mon_h {
+                below.clamp(mon_y, max_y)
+            } else {
+                (base_anchor - h_phys - m).clamp(mon_y, max_y)
+            }
+        } else {
+            let above = base_anchor - h_phys - m;
+            if above >= mon_y {
+                above.clamp(mon_y, max_y)
+            } else {
+                (base_anchor - m).clamp(mon_y, max_y)
+            }
+        }
+    } else {
+        let raw_y = if state.bar_at_top {
+            mon_y + ((state.bar_base + state.gap) * scale).round() as i32 - m
+        } else {
+            (mon_y + mon_h) - (((state.gap + state.bar_base) * scale).round() as i32 + m + h_phys)
+        };
+        raw_y.clamp(mon_y, max_y)
+    };
+
+    let _ = w_phys;
+    (x, y, win_w.max(1), win_h.max(1))
+}
+
+fn apply_popover_geometry(app: &AppHandle, popover: &WebviewWindow) {
+    let state = POPOVER_STATE
+        .lock()
+        .map(|s| s.clone())
+        .unwrap_or_default();
+
+    let (mon_x, mon_y, mon_w, mon_h, main_x, main_y, scale) = app
+        .get_webview_window("main")
+        .and_then(|mw| {
+            let mon = mw.current_monitor().ok().flatten()?;
+            let scale = mw.scale_factor().ok().unwrap_or_else(|| mon.scale_factor());
+            let pos = mw.outer_position().ok()?;
+            Some((
+                mon.position().x,
+                mon.position().y,
+                mon.size().width as i32,
+                mon.size().height as i32,
+                pos.x,
+                pos.y,
+                scale,
+            ))
+        })
+        .unwrap_or((0, 0, 1920, 1080, 0, 985, 1.0));
+
+    let (x, y, w, h) =
+        compute_popover_physical_rect(&state, main_x, main_y, scale, (mon_x, mon_y, mon_w, mon_h));
+    let _ = popover.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
+        w as u32,
+        h as u32,
+    )));
+    let _ = popover.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(x, y)));
+}
+
+/// Compute physical `(win_x, win_y, win_w, win_h, submenu_left)` for the `"menu"` context window.
+pub fn compute_appmenu_physical_rect(
+    main_x: i32,
+    main_y: i32,
+    left: f64,
+    top: f64,
+    part_height: f64,
+    side_width: f64,
+    bar_at_top: bool,
+    scale: f64,
+    mon_bounds: (i32, i32, i32, i32),
+) -> (i32, i32, i32, i32, bool) {
+    const MENU_WIDTH: f64 = 280.0;
+    const MENU_MARGIN: f64 = 14.0;
+    let (mon_x, mon_y, mon_w, mon_h) = mon_bounds;
+    let extra_side = if side_width > 0.0 { side_width.max(180.0) } else { 0.0 };
+    let win_w = ((MENU_WIDTH + extra_side + MENU_MARGIN * 2.0) * scale).round() as i32;
+    let win_h = ((part_height + MENU_MARGIN * 2.0 + 4.0) * scale).round() as i32;
+    let m = (MENU_MARGIN * scale).round() as i32;
+    let menu_w_phys = (MENU_WIDTH * scale).round() as i32;
+    let extra_phys = (extra_side * scale).round() as i32;
+
+    let click_x = main_x + (left * scale).round() as i32;
+    let click_y = main_y + (top * scale).round() as i32;
+
+    let right_edge_with_sub = click_x + menu_w_phys + extra_phys + m;
+    let submenu_left = extra_side > 0.0 && right_edge_with_sub > mon_x + mon_w;
+
+    let max_x = mon_x + (mon_w - win_w).max(0);
+    let max_y = mon_y + (mon_h - win_h).max(0);
+
+    let raw_x = if submenu_left {
+        click_x - menu_w_phys - extra_phys - m
+    } else if click_x + menu_w_phys + m > mon_x + mon_w {
+        mon_x + mon_w - win_w
+    } else {
+        click_x - m
+    };
+    let win_x = raw_x.clamp(mon_x, max_x);
+
+    let part_h_phys = (part_height * scale).round() as i32;
+    let raw_y = if bar_at_top {
+        let below = click_y - m;
+        if below + win_h <= mon_y + mon_h {
+            below
+        } else {
+            click_y - part_h_phys - m
+        }
+    } else {
+        let above = click_y - part_h_phys - m;
+        if above >= mon_y {
+            above
+        } else {
+            click_y - m
+        }
+    };
+    let win_y = raw_y.clamp(mon_y, max_y);
+
+    (win_x, win_y, win_w.max(1), win_h.max(1), submenu_left)
 }
 
 #[cfg(test)]
@@ -2387,5 +2686,110 @@ mod tests {
 
         let del = dispatch_command("voice_delete", &serde_json::json!({ "id": test_memo }));
         assert_eq!(del["deleted"], true);
+    }
+
+    #[test]
+    fn test_popover_geometry_centering_and_anchoring() {
+        let mon = (0, 0, 1920, 1080);
+
+        // Centered Widgets Picker above bottom dock
+        let center_state = PopoverLayoutState {
+            kind: "center".to_string(),
+            bar_base: 76.0,
+            bar_at_top: false,
+            width: 1080.0,
+            height: 620.0,
+            gap: 8.0,
+            margin: 14.0,
+            ..Default::default()
+        };
+        let (x, y, w, h) = compute_popover_physical_rect(&center_state, 0, 985, 1.0, mon);
+        assert_eq!(w, 1108);
+        assert_eq!(h, 648);
+        assert_eq!(x, (1920 - 1108) / 2);
+        assert_eq!(y, 1080 - (84 + 14 + 620));
+
+        // Anchored widget popover near left edge clamps cleanly
+        let widget_state = PopoverLayoutState {
+            kind: "widget:pomodoro".to_string(),
+            anchor: Some(40.0),
+            bar_base: 76.0,
+            bar_at_top: true,
+            width: 340.0,
+            height: 470.0,
+            gap: 8.0,
+            margin: 14.0,
+            ..Default::default()
+        };
+        let (wx, wy, ww, wh) = compute_popover_physical_rect(&widget_state, 0, 0, 1.0, mon);
+        assert_eq!(wx, 0);
+        assert_eq!(wy, 76 + 8 - 14);
+        assert_eq!(ww, 368);
+        assert_eq!(wh, 498);
+
+        // Toast aligns right
+        let toast_state = PopoverLayoutState {
+            kind: "toast".to_string(),
+            bar_base: 76.0,
+            bar_at_top: false,
+            width: 360.0,
+            height: 88.0,
+            gap: 2.0,
+            margin: 14.0,
+            ..Default::default()
+        };
+        let (tx, _ty, tw, _th) = compute_popover_physical_rect(&toast_state, 0, 985, 1.0, mon);
+        assert_eq!(tx + tw, 1920);
+    }
+
+    #[test]
+    fn test_appmenu_geometry_and_submenu_flip() {
+        let mon = (0, 0, 1920, 1080);
+        // Normal left side click: submenu opens to the right
+        let (x1, y1, w1, h1, sub_left1) =
+            compute_appmenu_physical_rect(0, 985, 200.0, 40.0, 220.0, 174.0, false, 1.0, mon);
+        assert!(!sub_left1);
+        assert!(w1 >= 280 + 180 + 28);
+        assert!(h1 >= 220 + 28);
+        assert!(x1 >= 0 && y1 >= 0);
+
+        // Right edge click: submenu flips to the left
+        let (x2, _y2, w2, _h2, sub_left2) =
+            compute_appmenu_physical_rect(0, 985, 1850.0, 40.0, 220.0, 174.0, false, 1.0, mon);
+        assert!(sub_left2);
+        assert!(x2 + w2 <= 1920);
+    }
+
+    #[test]
+    fn test_get_app_catalog_shape() {
+        let cat = dispatch_command("get_app_catalog", &serde_json::Value::Null);
+        assert!(cat.is_object());
+        assert!(cat["apps"].is_array());
+        assert!(cat["folders"].is_array());
+        assert!(!cat["apps"].as_array().unwrap().is_empty());
+        assert!(!cat["folders"].as_array().unwrap().is_empty());
+    }
+
+    #[test]
+    fn test_overlay_png_pbgra_decode() {
+        // 1x1 semi-transparent white RGBA PNG
+        let mut png_bytes = Vec::new();
+        {
+            let mut enc = png::Encoder::new(&mut png_bytes, 1, 1);
+            enc.set_color(png::ColorType::Rgba);
+            enc.set_depth(png::BitDepth::Eight);
+            let mut w = enc.write_header().unwrap();
+            w.write_image_data(&[200, 100, 50, 128]).unwrap();
+            w.finish().unwrap();
+        }
+        let b64 = base64::Engine::encode(&base64::engine::general_purpose::STANDARD, &png_bytes);
+        let url = format!("data:image/png;base64,{}", b64);
+        let decoded = overlay::decode_png_data_url_to_pbgra(&url).expect("should decode png");
+        assert_eq!(decoded.0, 1);
+        assert_eq!(decoded.1, 1);
+        assert_eq!(decoded.2.len(), 4);
+        assert_eq!(decoded.2[3], 128);
+        // Premultiplied B < 50
+        assert!(decoded.2[0] <= 26);
     }
 }

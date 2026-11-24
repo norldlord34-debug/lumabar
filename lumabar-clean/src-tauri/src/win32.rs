@@ -145,6 +145,28 @@ pub struct POINT {
     pub y: i32,
 }
 
+#[repr(C)]
+#[derive(Copy, Clone, Debug)]
+pub struct MONITORINFO {
+    pub cb_size: u32,
+    pub rc_monitor: RECT,
+    pub rc_work: RECT,
+    pub dw_flags: u32,
+}
+
+impl Default for MONITORINFO {
+    fn default() -> Self {
+        Self {
+            cb_size: std::mem::size_of::<Self>() as u32,
+            rc_monitor: RECT::default(),
+            rc_work: RECT::default(),
+            dw_flags: 0,
+        }
+    }
+}
+
+pub const MONITOR_DEFAULTTONEAREST: u32 = 0x00000002;
+
 #[repr(C, packed)]
 #[derive(Default, Copy, Clone)]
 pub struct DWM_THUMBNAIL_PROPERTIES {
@@ -221,6 +243,8 @@ extern "system" {
     fn CloseClipboard() -> BOOL;
     fn EmptyClipboard() -> BOOL;
     fn SetClipboardData(uFormat: u32, hMem: HANDLE) -> HANDLE;
+    fn MonitorFromWindow(hwnd: HWND, dwFlags: u32) -> HANDLE;
+    fn GetMonitorInfoW(hMonitor: HANDLE, lpmi: *mut MONITORINFO) -> BOOL;
 }
 
 #[link(name = "gdi32")]
@@ -1398,6 +1422,194 @@ pub fn get_screen_bounds() -> (i32, i32, i32, i32) {
         h = 1080;
     }
     (x, y, w, h)
+}
+
+fn monitor_info_for_hwnd(hwnd: HWND) -> Option<MONITORINFO> {
+    if hwnd == 0 {
+        return None;
+    }
+    unsafe {
+        let hmon = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+        if hmon == 0 {
+            return None;
+        }
+        let mut mi = MONITORINFO::default();
+        if GetMonitorInfoW(hmon, &mut mi) != 0 {
+            Some(mi)
+        } else {
+            None
+        }
+    }
+}
+
+/// Returns `(x, y, width, height)` in physical pixels for the monitor work area containing `hwnd`.
+pub fn get_monitor_work_area_for_hwnd(hwnd: HWND) -> (i32, i32, i32, i32) {
+    if let Some(mi) = monitor_info_for_hwnd(hwnd) {
+        let r = mi.rc_work;
+        let w = (r.right - r.left).max(1);
+        let h = (r.bottom - r.top).max(1);
+        return (r.left, r.top, w, h);
+    }
+    let w = unsafe { GetSystemMetrics(SM_CXSCREEN) }.max(1920);
+    let h = unsafe { GetSystemMetrics(SM_CYSCREEN) }.max(1080);
+    (0, 0, w, h)
+}
+
+/// Returns `(x, y, width, height)` in physical pixels for the full monitor bounds containing `hwnd`.
+pub fn get_monitor_bounds_for_hwnd(hwnd: HWND) -> (i32, i32, i32, i32) {
+    if let Some(mi) = monitor_info_for_hwnd(hwnd) {
+        let r = mi.rc_monitor;
+        let w = (r.right - r.left).max(1);
+        let h = (r.bottom - r.top).max(1);
+        return (r.left, r.top, w, h);
+    }
+    let w = unsafe { GetSystemMetrics(SM_CXSCREEN) }.max(1920);
+    let h = unsafe { GetSystemMetrics(SM_CYSCREEN) }.max(1080);
+    (0, 0, w, h)
+}
+
+static APP_CATALOG_CACHE: Mutex<Option<serde_json::Value>> = Mutex::new(None);
+
+fn collect_start_menu_apps(dir: &std::path::Path, depth: u8, out: &mut Vec<serde_json::Value>, seen: &mut std::collections::HashSet<String>) {
+    if depth > 3 || out.len() >= 80 {
+        return;
+    }
+    let Ok(entries) = std::fs::read_dir(dir) else {
+        return;
+    };
+    for entry in entries.flatten() {
+        if out.len() >= 80 {
+            break;
+        }
+        let path = entry.path();
+        if path.is_dir() {
+            collect_start_menu_apps(&path, depth + 1, out, seen);
+            continue;
+        }
+        let ext = path
+            .extension()
+            .and_then(|s| s.to_str())
+            .unwrap_or("")
+            .to_ascii_lowercase();
+        if ext != "lnk" {
+            continue;
+        }
+        let name = match path.file_stem().and_then(|s| s.to_str()) {
+            Some(s) if !s.trim().is_empty() => s.trim().to_string(),
+            _ => continue,
+        };
+        let lower = name.to_ascii_lowercase();
+        if lower.contains("uninstall") || lower.contains("desinstalar") || lower.contains("help") || lower.contains("readme") {
+            continue;
+        }
+        if !seen.insert(lower) {
+            continue;
+        }
+        let path_str = path.to_string_lossy().to_string();
+        let icon_data_url = get_file_icon_data_url(&path_str);
+        out.push(serde_json::json!({
+            "name": name,
+            "path": path_str,
+            "args": serde_json::Value::Null,
+            "appId": name,
+            "iconDataUrl": icon_data_url
+        }));
+    }
+}
+
+/// Enumerate installed applications and known user folders for the Widget Center Apps & Files section.
+pub fn get_app_catalog() -> serde_json::Value {
+    if let Ok(guard) = APP_CATALOG_CACHE.lock() {
+        if let Some(ref cached) = *guard {
+            return cached.clone();
+        }
+    }
+
+    let mut apps: Vec<serde_json::Value> = Vec::new();
+    let mut seen = std::collections::HashSet::new();
+
+    for pin in get_pinned_taskbar_apps() {
+        if let Some(name) = pin.get("name").and_then(|v| v.as_str()) {
+            let key = name.to_ascii_lowercase();
+            if seen.insert(key) {
+                apps.push(serde_json::json!({
+                    "name": name,
+                    "path": pin.get("path").cloned().unwrap_or(serde_json::Value::Null),
+                    "args": pin.get("args").cloned().unwrap_or(serde_json::Value::Null),
+                    "appId": pin.get("appId").cloned().unwrap_or_else(|| serde_json::json!(name)),
+                    "iconDataUrl": pin.get("iconDataUrl").cloned().unwrap_or(serde_json::Value::Null)
+                }));
+            }
+        }
+    }
+
+    if let Ok(appdata) = std::env::var("APPDATA") {
+        let p = PathBuf::from(appdata).join("Microsoft").join("Windows").join("Start Menu").join("Programs");
+        collect_start_menu_apps(&p, 0, &mut apps, &mut seen);
+    }
+    if let Ok(progdata) = std::env::var("ProgramData") {
+        let p = PathBuf::from(progdata).join("Microsoft").join("Windows").join("Start Menu").join("Programs");
+        collect_start_menu_apps(&p, 0, &mut apps, &mut seen);
+    }
+
+    for (name, path) in [
+        ("File Explorer", "C:\\Windows\\explorer.exe"),
+        ("Notepad", "C:\\Windows\\System32\\notepad.exe"),
+        ("Command Prompt", "C:\\Windows\\System32\\cmd.exe"),
+        ("Windows PowerShell", "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"),
+        ("Task Manager", "C:\\Windows\\System32\\Taskmgr.exe"),
+    ] {
+        if seen.insert(name.to_ascii_lowercase()) && std::path::Path::new(path).exists() {
+            let icon_data_url = get_file_icon_data_url(path);
+            apps.push(serde_json::json!({
+                "name": name,
+                "path": path,
+                "args": serde_json::Value::Null,
+                "appId": name,
+                "iconDataUrl": icon_data_url
+            }));
+        }
+    }
+
+    apps.sort_by(|a, b| {
+        let an = a.get("name").and_then(|v| v.as_str()).unwrap_or("").to_ascii_lowercase();
+        let bn = b.get("name").and_then(|v| v.as_str()).unwrap_or("").to_ascii_lowercase();
+        an.cmp(&bn)
+    });
+
+    let mut folders: Vec<serde_json::Value> = Vec::new();
+    if let Ok(home) = std::env::var("USERPROFILE") {
+        let candidates = [
+            ("Desktop", PathBuf::from(&home).join("Desktop")),
+            ("Downloads", PathBuf::from(&home).join("Downloads")),
+            ("Documents", PathBuf::from(&home).join("Documents")),
+            ("Pictures", PathBuf::from(&home).join("Pictures")),
+            ("Music", PathBuf::from(&home).join("Music")),
+            ("Videos", PathBuf::from(&home).join("Videos")),
+            ("Home", PathBuf::from(&home)),
+        ];
+        for (name, p) in candidates {
+            if p.exists() {
+                let p_str = p.to_string_lossy().to_string();
+                let icon_data_url = get_file_icon_data_url(&p_str);
+                folders.push(serde_json::json!({
+                    "name": name,
+                    "path": p_str,
+                    "iconDataUrl": icon_data_url
+                }));
+            }
+        }
+    }
+
+    let catalog = serde_json::json!({
+        "apps": apps,
+        "folders": folders
+    });
+
+    if let Ok(mut guard) = APP_CATALOG_CACHE.lock() {
+        *guard = Some(catalog.clone());
+    }
+    catalog
 }
 
 pub fn set_clipboard_text(text: &str) -> bool {
