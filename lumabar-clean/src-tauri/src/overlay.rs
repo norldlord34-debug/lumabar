@@ -25,15 +25,31 @@ struct HoverOverlayState {
 }
 
 #[derive(Default)]
+#[cfg_attr(test, allow(dead_code))]
 struct GhostOverlayState {
     active: bool,
     hot_x: i32,
     hot_y: i32,
+    last_x: i32,
+    last_y: i32,
+    has_pos: bool,
     remove_face: bool,
     normal: Option<BitmapData>,
     remove: Option<BitmapData>,
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, serde::Serialize)]
+pub(crate) struct DragGhostEventPayload {
+    pub kind: &'static str,
+    pub x: i32,
+    pub y: i32,
+}
+
+pub(crate) fn build_drag_ghost_event(kind: &'static str, x: i32, y: i32) -> DragGhostEventPayload {
+    DragGhostEventPayload { kind, x, y }
+}
+
+static OVERLAY_APP: Mutex<Option<tauri::AppHandle>> = Mutex::new(None);
 static HOVER_HWND: AtomicIsize = AtomicIsize::new(0);
 static GHOST_HWND: AtomicIsize = AtomicIsize::new(0);
 static HOVER_STATE: Mutex<HoverOverlayState> = Mutex::new(HoverOverlayState {
@@ -46,10 +62,28 @@ static GHOST_STATE: Mutex<GhostOverlayState> = Mutex::new(GhostOverlayState {
     active: false,
     hot_x: 0,
     hot_y: 0,
+    last_x: 0,
+    last_y: 0,
+    has_pos: false,
     remove_face: false,
     normal: None,
     remove: None,
 });
+
+pub fn set_app_handle(app: tauri::AppHandle) {
+    if let Ok(mut guard) = OVERLAY_APP.lock() {
+        *guard = Some(app);
+    }
+}
+
+#[cfg(not(test))]
+fn emit_drag_ghost_event(kind: &'static str, x: i32, y: i32) {
+    use tauri::Emitter;
+    let app = OVERLAY_APP.lock().ok().and_then(|g| g.clone());
+    if let Some(app) = app {
+        let _ = app.emit_to("main", "drag-ghost", build_drag_ghost_event(kind, x, y));
+    }
+}
 
 /// Decode a PNG data URL (or raw base64) into top-down premultiplied BGRA pixels for Win32 `UpdateLayeredWindow`.
 pub fn decode_png_data_url_to_pbgra(data_url: &str) -> Option<(i32, i32, Vec<u8>)> {
@@ -325,17 +359,40 @@ mod win32_overlay {
                 0
             }
             WM_APP_GHOST_UPDATE => {
-                let snapshot = GHOST_STATE.lock().ok().map(|s| {
+                let mut pt = POINT::default();
+                let _ = GetCursorPos(&mut pt);
+                if !crate::win32::is_left_mouse_down() {
+                    let was_active = GHOST_STATE
+                        .lock()
+                        .ok()
+                        .map(|mut s| {
+                            let prev = s.active;
+                            s.active = false;
+                            s.has_pos = false;
+                            prev
+                        })
+                        .unwrap_or(false);
+                    let _ = KillTimer(hwnd, GHOST_TIMER_ID);
+                    let _ = ShowWindow(hwnd, SW_HIDE);
+                    if was_active {
+                        emit_drag_ghost_event("up", pt.x, pt.y);
+                    }
+                    return 0;
+                }
+                let snapshot = GHOST_STATE.lock().ok().map(|mut s| {
                     let bmp = if s.remove_face {
                         s.remove.clone().or_else(|| s.normal.clone())
                     } else {
                         s.normal.clone()
                     };
+                    if s.active && bmp.is_some() {
+                        s.last_x = pt.x;
+                        s.last_y = pt.y;
+                        s.has_pos = true;
+                    }
                     (s.active, s.hot_x, s.hot_y, bmp)
                 });
                 if let Some((true, hot_x, hot_y, Some(bmp))) = snapshot {
-                    let mut pt = POINT::default();
-                    let _ = GetCursorPos(&mut pt);
                     render_bitmap_to_layered_hwnd(hwnd, pt.x - hot_x, pt.y - hot_y, &bmp);
                     let _ = ShowWindow(hwnd, SW_SHOWNOACTIVATE);
                     let _ = SetTimer(hwnd, GHOST_TIMER_ID, GHOST_TIMER_MS, 0);
@@ -346,13 +403,68 @@ mod win32_overlay {
                 0
             }
             WM_TIMER if w_param == GHOST_TIMER_ID => {
-                let snapshot = GHOST_STATE
+                let mut pt = POINT::default();
+                let has_pt = GetCursorPos(&mut pt) != 0;
+                if !crate::win32::is_left_mouse_down() {
+                    let was_active = GHOST_STATE
+                        .lock()
+                        .ok()
+                        .map(|mut s| {
+                            let prev = s.active;
+                            s.active = false;
+                            s.has_pos = false;
+                            prev
+                        })
+                        .unwrap_or(false);
+                    let _ = KillTimer(hwnd, GHOST_TIMER_ID);
+                    let _ = ShowWindow(hwnd, SW_HIDE);
+                    if was_active {
+                        emit_drag_ghost_event("up", pt.x, pt.y);
+                    }
+                    return 0;
+                }
+
+                enum GhostTick {
+                    Inactive,
+                    Unchanged(i32, i32),
+                    Moved(i32, i32),
+                }
+
+                let tick = GHOST_STATE
                     .lock()
                     .ok()
-                    .map(|s| (s.active, s.hot_x, s.hot_y));
-                if let Some((true, hot_x, hot_y)) = snapshot {
-                    let mut pt = POINT::default();
-                    if GetCursorPos(&mut pt) != 0 {
+                    .map(|mut s| {
+                        if !s.active {
+                            GhostTick::Inactive
+                        } else if has_pt && (!s.has_pos || pt.x != s.last_x || pt.y != s.last_y) {
+                            s.last_x = pt.x;
+                            s.last_y = pt.y;
+                            s.has_pos = true;
+                            GhostTick::Moved(s.hot_x, s.hot_y)
+                        } else {
+                            GhostTick::Unchanged(s.hot_x, s.hot_y)
+                        }
+                    })
+                    .unwrap_or(GhostTick::Inactive);
+
+                match tick {
+                    GhostTick::Inactive => {
+                        let _ = KillTimer(hwnd, GHOST_TIMER_ID);
+                        let _ = ShowWindow(hwnd, SW_HIDE);
+                    }
+                    GhostTick::Moved(hot_x, hot_y) if has_pt => {
+                        let _ = SetWindowPos(
+                            hwnd,
+                            0,
+                            pt.x - hot_x,
+                            pt.y - hot_y,
+                            0,
+                            0,
+                            SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE,
+                        );
+                        emit_drag_ghost_event("move", pt.x, pt.y);
+                    }
+                    GhostTick::Unchanged(hot_x, hot_y) if has_pt => {
                         let _ = SetWindowPos(
                             hwnd,
                             0,
@@ -363,9 +475,7 @@ mod win32_overlay {
                             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSIZE,
                         );
                     }
-                } else {
-                    let _ = KillTimer(hwnd, GHOST_TIMER_ID);
-                    let _ = ShowWindow(hwnd, SW_HIDE);
+                    _ => {}
                 }
                 0
             }
@@ -521,6 +631,7 @@ pub fn show_drag_ghost(
         st.active = normal.is_some() || remove.is_some();
         st.hot_x = hot_x;
         st.hot_y = hot_y;
+        st.has_pos = false;
         st.remove_face = false;
         st.normal = normal;
         st.remove = remove;
@@ -540,6 +651,22 @@ pub fn set_drag_ghost_face(remove: bool) {
 pub fn hide_drag_ghost() {
     if let Ok(mut st) = GHOST_STATE.lock() {
         st.active = false;
+        st.has_pos = false;
     }
     win32_overlay::notify(GHOST_HWND.load(Ordering::SeqCst), WM_APP_GHOST_UPDATE);
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_build_drag_ghost_event_payload() {
+        let mv = build_drag_ghost_event("move", 640, 1010);
+        let up = build_drag_ghost_event("up", 645, 900);
+        let mv_json = serde_json::to_value(mv).unwrap();
+        let up_json = serde_json::to_value(up).unwrap();
+        assert_eq!(mv_json, serde_json::json!({ "kind": "move", "x": 640, "y": 1010 }));
+        assert_eq!(up_json, serde_json::json!({ "kind": "up", "x": 645, "y": 900 }));
+    }
 }

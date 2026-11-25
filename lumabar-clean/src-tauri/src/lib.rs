@@ -17,15 +17,11 @@ pub mod win32;
 
 use tauri::Manager;
 
-#[cfg(target_os = "windows")]
-pub fn apply_vibrancy_effects(win: &tauri::WebviewWindow) {
+pub fn configure_transparent_window(win: &tauri::WebviewWindow) {
+    let _ = win.set_background_color(Some(tauri::window::Color(0, 0, 0, 0)));
+    #[cfg(target_os = "windows")]
     if let Ok(hwnd) = win.hwnd() {
-        win32::apply_dwm_backdrop(hwnd.0 as win32::HWND);
-    }
-    if window_vibrancy::apply_acrylic(win, Some((18, 18, 22, 120))).is_err() {
-        if window_vibrancy::apply_mica(win, Some(true)).is_err() {
-            let _ = window_vibrancy::apply_blur(win, Some((18, 18, 22, 120)));
-        }
+        win32::setup_dock_window_chrome(hwnd.0 as win32::HWND);
     }
 }
 
@@ -34,11 +30,11 @@ pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
             let handle = app.handle();
+            #[cfg(target_os = "windows")]
+            overlay::set_app_handle(handle.clone());
+
             if let Some(main_win) = handle.get_webview_window("main") {
-                #[cfg(target_os = "windows")]
-                if let Ok(hwnd) = main_win.hwnd() {
-                    win32::set_window_excluded_from_peek(hwnd.0 as win32::HWND);
-                }
+                configure_transparent_window(&main_win);
 
                 if let Ok(Some(monitor)) = main_win.current_monitor() {
                     let screen_size = monitor.size();
@@ -53,14 +49,11 @@ pub fn run() {
                 }
             }
 
-            #[cfg(target_os = "windows")]
-            {
-                if let Some(popover) = handle.get_webview_window("popover") {
-                    apply_vibrancy_effects(&popover);
-                }
-                if let Some(menu) = handle.get_webview_window("menu") {
-                    apply_vibrancy_effects(&menu);
-                }
+            if let Some(popover) = handle.get_webview_window("popover") {
+                configure_transparent_window(&popover);
+            }
+            if let Some(menu) = handle.get_webview_window("menu") {
+                configure_transparent_window(&menu);
             }
 
             if let Err(err) = tray::init_tray(app) {

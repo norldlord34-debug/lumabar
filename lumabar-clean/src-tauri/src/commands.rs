@@ -143,13 +143,16 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                     .to_string();
                 let focus = payload.get("focus").and_then(|v| v.as_bool()).unwrap_or(true);
                 update_popover_state_from_payload(&kind, focus, payload);
+                let _ = popover.set_background_color(Some(tauri::window::Color(0, 0, 0, 0)));
                 apply_popover_geometry(app, &popover);
-                #[cfg(target_os = "windows")]
-                crate::apply_vibrancy_effects(&popover);
                 let _ = popover.set_always_on_top(true);
                 let _ = popover.show();
                 if focus {
                     let _ = popover.set_focus();
+                    #[cfg(target_os = "windows")]
+                    if let Ok(hwnd) = popover.hwnd() {
+                        win32::focus_window(hwnd.0 as win32::HWND);
+                    }
                 }
                 let _ = app.emit_to("popover", "popover-open", &kind);
             }
@@ -248,15 +251,21 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                     (mon_x, mon_y, mon_w, mon_h),
                 );
 
+                let _ = menu.set_background_color(Some(tauri::window::Color(0, 0, 0, 0)));
+                let mut placed = false;
                 #[cfg(target_os = "windows")]
-                crate::apply_vibrancy_effects(&menu);
-                let _ = menu.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
-                    win_w.max(1) as u32,
-                    win_h.max(1) as u32,
-                )));
-                let _ = menu.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(
-                    win_x, win_y,
-                )));
+                if let Ok(hwnd) = menu.hwnd() {
+                    placed = win32::set_window_pos_dock(hwnd.0 as win32::HWND, win_x, win_y, win_w, win_h);
+                }
+                if !placed {
+                    let _ = menu.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
+                        win_w.max(1) as u32,
+                        win_h.max(1) as u32,
+                    )));
+                    let _ = menu.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(
+                        win_x, win_y,
+                    )));
+                }
                 let _ = app.emit_to(
                     "menu",
                     "appmenu-rows",
@@ -268,6 +277,10 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                 let _ = menu.set_always_on_top(true);
                 let _ = menu.show();
                 let _ = menu.set_focus();
+                #[cfg(target_os = "windows")]
+                if let Ok(hwnd) = menu.hwnd() {
+                    win32::focus_window(hwnd.0 as win32::HWND);
+                }
                 let _ = app.emit_to("menu", "appmenu-open", serde_json::Value::Null);
             }
             serde_json::Value::Null
@@ -303,24 +316,65 @@ pub fn handle_command(app: &AppHandle, cmd: &str, payload: &serde_json::Value) -
                 let explicit_w = payload.get("width").and_then(|v| v.as_f64());
                 let at_top = win32::DOCK_AT_TOP.load(std::sync::atomic::Ordering::SeqCst);
                 if let Some(h) = height {
-                    let (mon_w_logical, _mon_h_logical) = main_win
-                        .current_monitor()
-                        .ok()
-                        .flatten()
-                        .map(|m| {
-                            let scale = main_win.scale_factor().unwrap_or_else(|_| m.scale_factor());
-                            (
-                                m.size().width as f64 / scale,
-                                m.size().height as f64 / scale,
-                            )
-                        })
-                        .unwrap_or((1920.0, 1080.0));
-                    let target_w = explicit_w.unwrap_or(mon_w_logical).max(320.0);
-                    let _ = main_win.set_size(tauri::Size::Logical(tauri::LogicalSize::new(
-                        target_w,
-                        h.max(48.0),
-                    )));
-                    reposition_dock(app);
+                    let clamped_h = h.max(48.0);
+                    let mut positioned = false;
+                    #[cfg(target_os = "windows")]
+                    if let (Ok(hwnd), Ok(Some(monitor))) =
+                        (main_win.hwnd(), main_win.current_monitor())
+                    {
+                        let scale = main_win
+                            .scale_factor()
+                            .unwrap_or_else(|_| monitor.scale_factor());
+                        let mon_pos = monitor.position();
+                        let mon_size = monitor.size();
+                        let mon_w_logical = mon_size.width as f64 / scale;
+                        let target_w = explicit_w.unwrap_or(mon_w_logical).max(320.0);
+                        let phys_w = (target_w * scale).round() as i32;
+                        let phys_h = (clamped_h * scale).round() as i32;
+                        let lift = win32::DOCK_LIFT.load(std::sync::atomic::Ordering::SeqCst);
+                        let phys_lift = (lift as f64 * scale).round() as i32;
+                        let is_hidden =
+                            win32::DOCK_IS_HIDDEN.load(std::sync::atomic::Ordering::SeqCst);
+                        let target_x = mon_pos.x + (mon_size.width as i32 - phys_w) / 2;
+                        let target_y = if at_top {
+                            if is_hidden {
+                                mon_pos.y - phys_h + (4.0 * scale).round() as i32
+                            } else {
+                                mon_pos.y + phys_lift
+                            }
+                        } else if is_hidden {
+                            mon_pos.y + mon_size.height as i32 - (4.0 * scale).round() as i32
+                        } else {
+                            mon_pos.y + mon_size.height as i32 - phys_h - phys_lift
+                        };
+                        positioned = win32::set_window_pos_dock(
+                            hwnd.0 as win32::HWND,
+                            target_x,
+                            target_y,
+                            phys_w,
+                            phys_h,
+                        );
+                    }
+                    if !positioned {
+                        let (mon_w_logical, _mon_h_logical) = main_win
+                            .current_monitor()
+                            .ok()
+                            .flatten()
+                            .map(|m| {
+                                let scale = main_win.scale_factor().unwrap_or_else(|_| m.scale_factor());
+                                (
+                                    m.size().width as f64 / scale,
+                                    m.size().height as f64 / scale,
+                                )
+                            })
+                            .unwrap_or((1920.0, 1080.0));
+                        let target_w = explicit_w.unwrap_or(mon_w_logical).max(320.0);
+                        let _ = main_win.set_size(tauri::Size::Logical(tauri::LogicalSize::new(
+                            target_w,
+                            clamped_h,
+                        )));
+                        reposition_dock(app);
+                    }
                     #[cfg(target_os = "windows")]
                     if let Ok(hwnd) = main_win.hwnd() {
                         let scale = main_win.scale_factor().unwrap_or(1.0);
@@ -1944,11 +1998,18 @@ fn apply_popover_geometry(app: &AppHandle, popover: &WebviewWindow) {
 
     let (x, y, w, h) =
         compute_popover_physical_rect(&state, main_x, main_y, scale, (mon_x, mon_y, mon_w, mon_h));
-    let _ = popover.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
-        w as u32,
-        h as u32,
-    )));
-    let _ = popover.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(x, y)));
+    let mut placed = false;
+    #[cfg(target_os = "windows")]
+    if let Ok(hwnd) = popover.hwnd() {
+        placed = win32::set_window_pos_dock(hwnd.0 as win32::HWND, x, y, w, h);
+    }
+    if !placed {
+        let _ = popover.set_size(tauri::Size::Physical(tauri::PhysicalSize::new(
+            w as u32,
+            h as u32,
+        )));
+        let _ = popover.set_position(tauri::Position::Physical(tauri::PhysicalPosition::new(x, y)));
+    }
 }
 
 /// Compute physical `(win_x, win_y, win_w, win_h, submenu_left)` for the `"menu"` context window.

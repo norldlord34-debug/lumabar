@@ -197,6 +197,29 @@ pub const SND_NODEFAULT: u32 = 0x0002;
 pub const SND_FILENAME: u32 = 0x00020000;
 
 type WNDENUMPROC = unsafe extern "system" fn(HWND, isize) -> BOOL;
+type SUBCLASSPROC = unsafe extern "system" fn(HWND, u32, usize, isize, usize, usize) -> isize;
+
+const GWL_STYLE: i32 = -16;
+const WS_MAXIMIZEBOX: i32 = 0x00010000;
+const WS_MINIMIZEBOX: i32 = 0x00020000;
+const WS_EX_APPWINDOW: i32 = 0x00040000;
+const SWP_NOSIZE: u32 = 0x0001;
+const SWP_NOMOVE: u32 = 0x0002;
+const SWP_NOZORDER: u32 = 0x0004;
+const SWP_NOACTIVATE: u32 = 0x0010;
+const SWP_FRAMECHANGED: u32 = 0x0020;
+const SWP_NOCOPYBITS: u32 = 0x0100;
+
+#[link(name = "comctl32")]
+extern "system" {
+    fn SetWindowSubclass(
+        hWnd: HWND,
+        pfnSubclass: Option<SUBCLASSPROC>,
+        uIdSubclass: usize,
+        dwRefData: usize,
+    ) -> BOOL;
+    fn DefSubclassProc(hWnd: HWND, uMsg: u32, wParam: usize, lParam: isize) -> isize;
+}
 
 #[link(name = "user32")]
 extern "system" {
@@ -206,6 +229,16 @@ extern "system" {
     fn IsIconic(hWnd: HWND) -> BOOL;
     fn IsWindowVisible(hWnd: HWND) -> BOOL;
     fn GetWindowLongW(hWnd: HWND, nIndex: i32) -> i32;
+    fn SetWindowLongW(hWnd: HWND, nIndex: i32, dwNewLong: i32) -> i32;
+    fn SetWindowPos(
+        hWnd: HWND,
+        hWndInsertAfter: HWND,
+        X: i32,
+        Y: i32,
+        cx: i32,
+        cy: i32,
+        uFlags: u32,
+    ) -> BOOL;
     fn GetWindowTextW(hWnd: HWND, lpString: *mut u16, nMaxCount: i32) -> i32;
     fn PostMessageW(hWnd: HWND, Msg: u32, wParam: usize, lParam: isize) -> BOOL;
     fn EnumWindows(lpEnumFunc: WNDENUMPROC, lParam: isize) -> BOOL;
@@ -234,6 +267,7 @@ extern "system" {
     ) -> isize;
     fn GetClassLongPtrW(hWnd: HWND, nIndex: i32) -> usize;
     fn GetWindowThreadProcessId(hWnd: HWND, lpdwProcessId: *mut u32) -> u32;
+    fn AttachThreadInput(idAttach: u32, idAttachTo: u32, fAttach: BOOL) -> BOOL;
     fn GetWindowRect(hWnd: HWND, lpRect: *mut RECT) -> BOOL;
     fn SetWindowRgn(hWnd: HWND, hRgn: HRGN, bRedraw: BOOL) -> i32;
     fn WindowFromPoint(point: POINT) -> HWND;
@@ -270,6 +304,7 @@ extern "system" {
 
 #[link(name = "kernel32")]
 extern "system" {
+    fn GetCurrentThreadId() -> u32;
     fn GetSystemPowerStatus(lpSystemPowerStatus: *mut SYSTEM_POWER_STATUS) -> BOOL;
     fn GlobalMemoryStatusEx(lpBuffer: *mut MEMORYSTATUSEX) -> BOOL;
     fn OpenProcess(dwDesiredAccess: u32, bInheritHandle: BOOL, dwProcessId: u32) -> HANDLE;
@@ -373,12 +408,32 @@ pub fn is_left_mouse_down() -> bool {
 }
 
 pub fn focus_window(hwnd: HWND) -> bool {
+    if hwnd == 0 {
+        return false;
+    }
     unsafe {
         if IsIconic(hwnd) != 0 {
             ShowWindow(hwnd, SW_RESTORE);
         }
         BringWindowToTop(hwnd);
-        SetForegroundWindow(hwnd) != 0
+        if SetForegroundWindow(hwnd) != 0 {
+            return true;
+        }
+        let fg = GetForegroundWindow();
+        if fg != 0 && fg != hwnd {
+            let fg_tid = GetWindowThreadProcessId(fg, std::ptr::null_mut());
+            let cur_tid = GetCurrentThreadId();
+            if fg_tid != 0 && cur_tid != 0 && fg_tid != cur_tid {
+                let attached = AttachThreadInput(cur_tid, fg_tid, 1) != 0;
+                BringWindowToTop(hwnd);
+                let ok = SetForegroundWindow(hwnd) != 0;
+                if attached {
+                    AttachThreadInput(cur_tid, fg_tid, 0);
+                }
+                return ok;
+            }
+        }
+        false
     }
 }
 
@@ -540,6 +595,96 @@ pub struct BITMAPINFO_MONO {
     pub bmi_colors: [u32; 2],
 }
 
+unsafe extern "system" fn dock_subclass_proc(
+    hwnd: HWND,
+    msg: u32,
+    w_param: usize,
+    l_param: isize,
+    _id_subclass: usize,
+    _ref_data: usize,
+) -> isize {
+    const WM_ERASEBKGND: u32 = 0x0014;
+    const WM_NCPAINT: u32 = 0x0085;
+    const WM_NCACTIVATE: u32 = 0x0086;
+    const WM_STYLECHANGING: u32 = 0x007C;
+    match msg {
+        WM_ERASEBKGND => 1,
+        WM_NCPAINT => 0,
+        WM_NCACTIVATE => 1,
+        WM_STYLECHANGING if (w_param as i32) == GWL_EXSTYLE && l_param != 0 => {
+            #[repr(C)]
+            struct StyleStruct {
+                style_old: u32,
+                style_new: u32,
+            }
+            let ss = &mut *(l_param as *mut StyleStruct);
+            ss.style_new = (ss.style_new | WS_EX_TOOLWINDOW as u32) & !(WS_EX_APPWINDOW as u32);
+            DefSubclassProc(hwnd, msg, w_param, l_param)
+        }
+        _ => DefSubclassProc(hwnd, msg, w_param, l_param),
+    }
+}
+
+/// Applies Win32 borderless tool-window flags, DWM peek exclusion, and background/non-client
+/// paint suppression so transparent overlays never paint a white frame or erase background.
+pub fn setup_dock_window_chrome(hwnd: HWND) {
+    if hwnd == 0 {
+        return;
+    }
+    const DOCK_SUBCLASS_ID: usize = 0x646f_636b; // 'dock'
+    unsafe {
+        let ex_style = GetWindowLongW(hwnd, GWL_EXSTYLE);
+        let new_ex_style = (ex_style | WS_EX_TOOLWINDOW) & !WS_EX_APPWINDOW;
+        if new_ex_style != ex_style {
+            SetWindowLongW(hwnd, GWL_EXSTYLE, new_ex_style);
+        }
+
+        let style = GetWindowLongW(hwnd, GWL_STYLE);
+        let new_style = style & !(WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+        if new_style != style {
+            SetWindowLongW(hwnd, GWL_STYLE, new_style);
+        }
+
+        SetWindowPos(
+            hwnd,
+            0,
+            0,
+            0,
+            0,
+            0,
+            SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED,
+        );
+        SetWindowSubclass(hwnd, Some(dock_subclass_proc), DOCK_SUBCLASS_ID, 0);
+        // Disable Windows 11 automatic 1px DWM window border if DWM falls back to frame rendering.
+        const DWMWA_BORDER_COLOR: u32 = 34;
+        const DWMWA_COLOR_NONE: u32 = 0xFFFFFFFE;
+        let _ = DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_BORDER_COLOR,
+            &DWMWA_COLOR_NONE as *const _ as *const std::ffi::c_void,
+            std::mem::size_of::<u32>() as u32,
+        );
+    }
+    let _ = set_window_excluded_from_peek(hwnd);
+}
+
+pub fn set_window_pos_dock(hwnd: HWND, x: i32, y: i32, width: i32, height: i32) -> bool {
+    if hwnd == 0 {
+        return false;
+    }
+    unsafe {
+        SetWindowPos(
+            hwnd,
+            0,
+            x,
+            y,
+            width.max(1),
+            height.max(1),
+            SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOCOPYBITS,
+        ) != 0
+    }
+}
+
 pub fn set_window_excluded_from_peek(hwnd: HWND) -> bool {
     const DWMWA_EXCLUDED_FROM_PEEK: u32 = 12; // 0xC
     let exclude: BOOL = 1;
@@ -554,42 +699,14 @@ pub fn set_window_excluded_from_peek(hwnd: HWND) -> bool {
     res == 0
 }
 
-pub fn apply_dwm_backdrop(hwnd: HWND) -> bool {
-    const DWMWA_SYSTEMBACKDROP_TYPE: u32 = 38;
-    const DWMSBT_TRANSIENTWINDOW: u32 = 3; // Acrylic
-    const DWMSBT_MAINWINDOW: u32 = 2; // Mica
-    let mut backdrop = DWMSBT_TRANSIENTWINDOW;
-    let res = unsafe {
-        DwmSetWindowAttribute(
-            hwnd,
-            DWMWA_SYSTEMBACKDROP_TYPE,
-            &backdrop as *const _ as *const std::ffi::c_void,
-            std::mem::size_of::<u32>() as u32,
-        )
-    };
-    if res == 0 {
-        return true;
-    }
-    backdrop = DWMSBT_MAINWINDOW;
-    let res = unsafe {
-        DwmSetWindowAttribute(
-            hwnd,
-            DWMWA_SYSTEMBACKDROP_TYPE,
-            &backdrop as *const _ as *const std::ffi::c_void,
-            std::mem::size_of::<u32>() as u32,
-        )
-    };
-    res == 0
-}
-
 pub fn update_dock_window_region(hwnd: HWND, headroom: i32, open: bool, dock_at_top: bool) {
     if hwnd == 0 {
         return;
     }
     unsafe {
         if open || headroom <= 0 {
-            // Setting hRgn to 0 clears the clipping region, allowing clicks across the entire window
-            SetWindowRgn(hwnd, 0, 1);
+            // Clear region without synchronous redraw (bRedraw = 0) so DWM preserves alpha=0 pixels
+            SetWindowRgn(hwnd, 0, 0);
         } else {
             let mut rect = RECT::default();
             if GetWindowRect(hwnd, &mut rect) != 0 {
@@ -607,7 +724,7 @@ pub fn update_dock_window_region(hwnd: HWND, headroom: i32, open: bool, dock_at_
                     let hrgn = CreateRectRgn(0, y_top, width, y_bottom);
                     if hrgn != 0 {
                         // After a successful call to SetWindowRgn, the system owns the region handle
-                        SetWindowRgn(hwnd, hrgn, 1);
+                        SetWindowRgn(hwnd, hrgn, 0);
                     }
                 }
             }
@@ -1753,6 +1870,8 @@ mod tests {
     fn test_set_window_excluded_from_peek() {
         // Calling with dummy HWND should not panic
         let _ = set_window_excluded_from_peek(0);
+        setup_dock_window_chrome(0);
+        assert!(!set_window_pos_dock(0, 0, 0, 100, 100));
     }
 
     #[test]
